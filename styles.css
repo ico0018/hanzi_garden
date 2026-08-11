@@ -421,6 +421,22 @@ h1 {
   letter-spacing: 0.08em;
 }
 
+.listen-button {
+  margin: 0 0 12px;
+  padding: 10px 16px;
+  background: #fff6cb;
+  border: 3px solid var(--ink);
+  border-radius: 12px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.listen-button:hover,
+.listen-button:focus-visible {
+  background: #ffd65a;
+}
+
 .tianzi-grid {
   width: 260px;
   height: 260px;

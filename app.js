@@ -737,6 +737,10 @@ function saveDictationProgress(lessonIndex, charIndex, value) {
   localStorage.setItem(`hanzi-dictation-${lessonIndex}`, JSON.stringify(progress));
 }
 
+function speakDictationWord(word) {
+  speakChinese(`${word.word}。请写出这个词语。${word.meaning}`, document.getElementById("dictation-status"));
+}
+
 function renderDictation(lessonIndex) {
   dictationLessonIndex = lessonIndex;
   const lesson = lessons[dictationLessonIndex];
@@ -757,6 +761,7 @@ function renderDictation(lessonIndex) {
     <section class="dictation-card">
       <p class="dictation-step">第 ${dictationCharIndex + 1} 个组词</p>
       <p class="dictation-pinyin">${dictationWord.pinyin}</p>
+      <button class="listen-button" type="button">🔊 听写</button>
       <p class="dictation-hint">请在每个田字格中写完这个词语。写错时可以查看讲解。</p>
       <div class="tianzi-grid-list">
         ${wordCharacters.map((item, index) => `<div class="tianzi-grid" data-character="${item}"><div id="dictation-target-${index}" class="dictation-target" aria-label="第 ${index + 1} 个字书写区"></div></div>`).join("")}
@@ -795,6 +800,7 @@ function renderDictation(lessonIndex) {
     });
   });
 
+  charDetail.querySelector(".listen-button").addEventListener("click", () => speakDictationWord(dictationWord));
   charDetail.querySelector(".retry-dictation").addEventListener("click", () => renderDictation(dictationLessonIndex));
   charDetail.querySelector(".next-dictation").addEventListener("click", () => renderDictation(dictationLessonIndex));
   charDetail.querySelector(".review-dictation").addEventListener("click", () => {
