@@ -29,6 +29,89 @@ body {
   padding: 24px;
 }
 
+.welcome-screen {
+  width: min(760px, 100%);
+  min-height: calc(100vh - 48px);
+  display: grid;
+  place-items: center;
+}
+
+.welcome-card {
+  width: 100%;
+  padding: 40px;
+  text-align: center;
+  background: linear-gradient(145deg, #fffdf9, #fff1bd);
+  border: 3px solid var(--ink);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+}
+
+.welcome-card h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+}
+
+.welcome-intro,
+.book-selection-status {
+  color: var(--muted);
+}
+
+.book-selector {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 26px 0 14px;
+}
+
+.book-option {
+  min-height: 72px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  color: var(--ink);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.book-option small {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.book-option.active {
+  background: var(--accent);
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.book-option:disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+}
+
+.start-learning-button {
+  min-width: 180px;
+  margin-top: 12px;
+  padding: 14px 24px;
+  background: var(--accent);
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  font: inherit;
+  font-size: 1.15rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.start-learning-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 button {
   font: inherit;
 }
@@ -510,6 +593,27 @@ h1 {
     border-width: 0;
     border-radius: 0;
     padding: 14px 12px 22px;
+  }
+
+  .welcome-screen {
+    min-height: 100vh;
+  }
+
+  .welcome-card {
+    padding: 28px 16px;
+    border-radius: 18px;
+  }
+
+  .book-selector {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 20px;
+  }
+
+  .book-option {
+    min-height: 64px;
+    padding: 8px 4px;
+    font-size: 0.92rem;
   }
 
   .topbar {

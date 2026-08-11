@@ -7,7 +7,18 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="app-shell">
+    <main id="welcome-screen" class="welcome-screen">
+      <section class="welcome-card">
+        <p class="eyebrow">汉字乐园 v3.0</p>
+        <h1>欢迎来到汉字乐园</h1>
+        <p class="welcome-intro">选择年级和册别，开始今天的生字学习与听写。</p>
+        <div id="book-selector" class="book-selector" aria-label="选择年级和册别"></div>
+        <p id="book-selection-status" class="book-selection-status" aria-live="polite"></p>
+        <button id="start-learning-button" class="start-learning-button" type="button">开始学习</button>
+      </section>
+    </main>
+
+    <div id="app-shell" class="app-shell" hidden>
       <header class="topbar">
         <div>
           <p class="eyebrow">校内生字学习</p>
