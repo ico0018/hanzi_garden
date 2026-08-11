@@ -540,6 +540,8 @@ function startLearning() {
   if (!selectedBook?.available) return;
   welcomeScreen.hidden = true;
   appShell.hidden = false;
+  window.location.hash = "learn";
+  window.scrollTo(0, 0);
   render();
 }
 
@@ -711,7 +713,10 @@ function renderDetail() {
         <div class="stroke-demo" aria-label="笔画演示">
           <div class="writer-target" id="writer-target"></div>
         </div>
-        <button class="animate-button" type="button">演示笔画</button>
+        <div class="character-actions">
+          <button class="animate-button" type="button">演示笔画</button>
+          <button class="practice-button" type="button">我来试试</button>
+        </div>
       </div>
 
       <div class="info-panel">
@@ -742,6 +747,7 @@ function renderDetail() {
 
   const animateButton = charDetail.querySelector(".animate-button");
   animateButton.addEventListener("click", () => animateStrokes());
+  charDetail.querySelector(".practice-button").addEventListener("click", () => renderCharacterPractice(character));
 
   charDetail.querySelectorAll(".speak-word-button").forEach((button) => {
     button.addEventListener("click", () => {
@@ -771,6 +777,36 @@ function renderDetail() {
   }
 
   animateStrokes();
+}
+
+function renderCharacterPractice(character) {
+  charDetail.innerHTML = `
+    <section class="dictation-card practice-card">
+      <p class="dictation-step">我来试试</p>
+      <p class="dictation-hint">请按正确笔顺，在田字格中写一遍“${character.char}”。</p>
+      <div class="tianzi-grid practice-grid"><div id="practice-target" class="dictation-target" aria-label="${character.char}田字格书写区"></div></div>
+      <p id="practice-status" class="dictation-status" aria-live="polite">准备好后开始书写。</p>
+      <div class="dictation-actions"><button class="secondary-button retry-practice" type="button">重新书写</button><button class="primary-button return-learning" type="button">返回学习</button></div>
+    </section>`;
+
+  const target = document.getElementById("practice-target");
+  const size = target.clientWidth;
+  const practiceWriter = HanziWriter.create(target, character.char, {
+    width: size, height: size, padding: 12, showCharacter: false, showOutline: false,
+    drawingColor: "#1d1d1d", drawingWidth: 5, highlightColor: "#f4b942", highlightOnComplete: true
+  });
+  practiceWriter.quiz({
+    leniency: 1.15,
+    showHintAfterMisses: 2,
+    onMistake: () => {
+      document.getElementById("practice-status").textContent = "这笔不太对，再试一次。";
+    },
+    onComplete: (summary) => {
+      document.getElementById("practice-status").textContent = summary.totalMistakes === 0 ? "✓ 写得很棒！" : "✓ 写完了，再多练一次会更好。";
+    }
+  });
+  charDetail.querySelector(".retry-practice").addEventListener("click", () => renderCharacterPractice(character));
+  charDetail.querySelector(".return-learning").addEventListener("click", renderDetail);
 }
 
 function getDictationProgress(lessonIndex) {
@@ -882,6 +918,7 @@ async function init() {
   }
   renderBookSelector();
   startLearningButton.addEventListener("click", startLearning);
+  if (window.location.hash === "#learn") startLearning();
 }
 
 init();

@@ -380,7 +380,7 @@ h1 {
 }
 
 .animate-button {
-  width: 100%;
+  flex: 1;
   background: var(--accent);
   border: 3px solid var(--ink);
   border-radius: 14px;
@@ -411,6 +411,22 @@ h1 {
 .word-card h4 {
   margin: 0 0 6px;
   font-size: 1.3rem;
+}
+
+.character-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.practice-button {
+  flex: 1;
+  background: #ecfdf5;
+  border: 3px solid var(--ink);
+  border-radius: 14px;
+  padding: 12px 16px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 .primary-button {
@@ -545,6 +561,10 @@ h1 {
 .dictation-target {
   width: 100%;
   height: 100%;
+}
+
+.practice-grid {
+  margin: 18px auto;
 }
 
 .dictation-actions {
