@@ -439,7 +439,8 @@ h1 {
 
 .tianzi-grid {
   width: 260px;
-  height: 260px;
+  aspect-ratio: 1;
+  height: auto;
   margin: 0;
   border: 3px solid #d96b6b;
   background-image: linear-gradient(to right, transparent 49.5%, #e7a6a6 49.5%, #e7a6a6 50.5%, transparent 50.5%), linear-gradient(to bottom, transparent 49.5%, #e7a6a6 49.5%, #e7a6a6 50.5%, transparent 50.5%), linear-gradient(45deg, transparent 49.7%, #f0c4c4 49.7%, #f0c4c4 50.3%, transparent 50.3%), linear-gradient(-45deg, transparent 49.7%, #f0c4c4 49.7%, #f0c4c4 50.3%, transparent 50.3%);
@@ -494,5 +495,119 @@ h1 {
   .topbar {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    display: block;
+    padding: 0;
+  }
+
+  .app-shell {
+    width: 100%;
+    min-height: 100vh;
+    border-width: 0;
+    border-radius: 0;
+    padding: 14px 12px 22px;
+  }
+
+  .topbar {
+    padding: 4px 2px 14px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .lesson-nav {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 8px;
+    margin: 0 -12px 14px;
+    padding: 0 12px 8px;
+    scrollbar-width: thin;
+  }
+
+  .lesson-button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 8px 12px;
+  }
+
+  .content-wrap {
+    gap: 12px;
+  }
+
+  .lesson-overview {
+    padding: 14px;
+    gap: 12px;
+  }
+
+  .lesson-overview-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .detail-layout {
+    gap: 12px;
+  }
+
+  .char-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 64px;
+    grid-template-rows: 1fr;
+    overflow-x: auto;
+    gap: 8px;
+    padding: 2px 0 8px;
+    scrollbar-width: thin;
+  }
+
+  .char-button {
+    min-height: 64px;
+    padding: 7px 4px;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    text-align: center;
+  }
+
+  .char-button .char-mini {
+    font-size: 1.75rem;
+  }
+
+  .char-button .char-read {
+    font-size: 0.72rem;
+  }
+
+  .char-detail {
+    border-radius: 16px;
+    padding: 12px;
+  }
+
+  .character-box {
+    padding: 14px;
+  }
+
+  .dictation-card {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 16px 10px;
+    border-radius: 14px;
+  }
+
+  .tianzi-grid-list {
+    gap: 8px;
+    margin: 14px auto;
+  }
+
+  .tianzi-grid {
+    width: min(260px, calc((100vw - 74px) / 2));
+  }
+
+  .dictation-actions {
+    flex-wrap: wrap;
   }
 }

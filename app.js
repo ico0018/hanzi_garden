@@ -779,8 +779,10 @@ function renderDictation(lessonIndex) {
   };
 
   wordCharacters.forEach((targetCharacter, index) => {
-    const writer = HanziWriter.create(`dictation-target-${index}`, targetCharacter, {
-      width: 250, height: 250, padding: 12, showCharacter: false, showOutline: false,
+    const writerTarget = document.getElementById(`dictation-target-${index}`);
+    const writerSize = writerTarget.clientWidth;
+    const writer = HanziWriter.create(writerTarget, targetCharacter, {
+      width: writerSize, height: writerSize, padding: 12, showCharacter: false, showOutline: false,
       drawingColor: "#1d1d1d", drawingWidth: 5, highlightColor: "#f4b942", highlightOnComplete: true
     });
     writer.quiz({
