@@ -487,11 +487,6 @@ const lessonNav = document.getElementById("lesson-nav");
 const lessonOverview = document.getElementById("lesson-overview");
 const charList = document.getElementById("char-list");
 const charDetail = document.getElementById("char-detail");
-const welcomeScreen = document.getElementById("welcome-screen");
-const appShell = document.getElementById("app-shell");
-const bookSelector = document.getElementById("book-selector");
-const bookSelectionStatus = document.getElementById("book-selection-status");
-const startLearningButton = document.getElementById("start-learning-button");
 
 let lessons = defaultLessons;
 let currentLessonIndex = 0;
@@ -501,49 +496,6 @@ let dictationWriter = null;
 let dictationLessonIndex = 0;
 let dictationCharIndex = 0;
 let speechVoices = [];
-let selectedBookId = "3-upper";
-
-const bookCatalog = Array.from({ length: 6 }, (_, gradeIndex) => {
-  const grade = gradeIndex + 1;
-  return ["upper", "lower"].map((term) => ({
-    id: `${grade}-${term}`,
-    grade,
-    term,
-    label: `${grade}年级${term === "upper" ? "上册" : "下册"}`,
-    dataFile: `${grade}年级${term === "upper" ? "上" : "下"}.txt`,
-    available: grade === 3 && term === "upper"
-  }));
-}).flat();
-
-function renderBookSelector() {
-  bookSelector.innerHTML = bookCatalog.map((book) => `
-    <button class="book-option ${book.id === selectedBookId ? "active" : ""}" type="button" data-book-id="${book.id}" ${book.available ? "" : "disabled"}>
-      <span>${book.label}</span>
-      <small>${book.available ? "已准备" : "数据待补充"}</small>
-    </button>
-  `).join("");
-
-  bookSelector.querySelectorAll(".book-option:not(:disabled)").forEach((button) => {
-    button.addEventListener("click", () => {
-      selectedBookId = button.dataset.bookId;
-      renderBookSelector();
-    });
-  });
-
-  const selectedBook = bookCatalog.find((book) => book.id === selectedBookId);
-  bookSelectionStatus.textContent = `当前选择：${selectedBook.label}（${selectedBook.dataFile}）`;
-  startLearningButton.disabled = !selectedBook.available;
-}
-
-function startLearning() {
-  const selectedBook = bookCatalog.find((book) => book.id === selectedBookId);
-  if (!selectedBook?.available) return;
-  welcomeScreen.hidden = true;
-  appShell.hidden = false;
-  window.location.hash = "learn";
-  window.scrollTo(0, 0);
-  render();
-}
 
 function loadSpeechVoices() {
   speechVoices = "speechSynthesis" in window ? window.speechSynthesis.getVoices() : [];
@@ -916,9 +868,7 @@ async function init() {
   if (loadedLessons && loadedLessons.length) {
     lessons = loadedLessons;
   }
-  renderBookSelector();
-  startLearningButton.addEventListener("click", startLearning);
-  if (window.location.hash === "#learn") startLearning();
+  render();
 }
 
 init();
