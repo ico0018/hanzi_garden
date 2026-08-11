@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>汉字乐园</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">校内生字学习</p>
+          <h1>汉字乐园</h1>
+        </div>
+      </header>
+
+      <nav id="lesson-nav" class="lesson-nav" aria-label="课程导航"></nav>
+
+      <main class="content-wrap">
+        <section id="lesson-overview" class="lesson-overview" aria-live="polite"></section>
+
+        <div class="detail-layout">
+          <aside id="char-list" class="char-list" aria-label="生字列表"></aside>
+          <section id="char-detail" class="char-detail" aria-live="polite"></section>
+        </div>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@2.0.2/dist/hanzi-writer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pinyin-pro@3.18.2/dist/index.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
