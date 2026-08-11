@@ -742,6 +742,7 @@ function renderCharacterPractice(character) {
     </section>`;
 
   const target = document.getElementById("practice-target");
+  target.addEventListener("touchmove", (event) => event.preventDefault(), { passive: false });
   const size = target.clientWidth;
   const practiceWriter = HanziWriter.create(target, character.char, {
     width: size, height: size, padding: 12, showCharacter: false, showOutline: false,
@@ -814,6 +815,7 @@ function renderDictation(lessonIndex) {
 
   wordCharacters.forEach((targetCharacter, index) => {
     const writerTarget = document.getElementById(`dictation-target-${index}`);
+    writerTarget.addEventListener("touchmove", (event) => event.preventDefault(), { passive: false });
     const writerSize = writerTarget.clientWidth;
     const writer = HanziWriter.create(writerTarget, targetCharacter, {
       width: writerSize, height: writerSize, padding: 12, showCharacter: false, showOutline: false,
