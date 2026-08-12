@@ -903,7 +903,7 @@ function renderDictation(lessonIndex) {
     const status = document.getElementById("dictation-status");
     saveDictationProgress(dictationLessonIndex, dictationCharIndex, true);
     status.textContent = hasMistake ? "✓ 词语已完成并保存，建议再查看讲解巩固笔顺。" : "✓ 这个组词全部写对了，已保存完成！";
-    if (!hasMistake) celebrateDictation();
+    celebrateDictation();
     charDetail.querySelector(".next-dictation").hidden = false;
   };
 
