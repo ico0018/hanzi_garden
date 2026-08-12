@@ -496,6 +496,82 @@ let dictationWriter = null;
 let dictationLessonIndex = 0;
 let dictationCharIndex = 0;
 let speechVoices = [];
+let activeAudio = null;
+
+// 真人录音优先：audio-cmn 收录了 HSK 词语及单字的普通话录音。
+const HUMAN_AUDIO_BASE_URL = "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/hsk";
+
+function playHumanChinese(text, statusElement) {
+  const phrase = String(text || "").replace(/\s/g, "");
+  if (!phrase) return;
+
+  if (activeAudio) {
+    activeAudio.pause();
+    activeAudio = null;
+  }
+
+  const audio = new Audio(`${HUMAN_AUDIO_BASE_URL}/cmn-${encodeURIComponent(phrase)}.mp3`);
+  let settled = false;
+  let playAttempted = false;
+  let fallbackTimer = null;
+  const useFallback = () => {
+    if (settled) return;
+    settled = true;
+    window.clearTimeout(fallbackTimer);
+    // 少量超出词库的词语仍可使用设备中较自然的中文语音。
+    speakChinese(phrase, statusElement);
+  };
+
+  activeAudio = audio;
+  audio.preload = "auto";
+  audio.oncanplay = () => {
+    if (settled || playAttempted) return;
+    playAttempted = true;
+    window.clearTimeout(fallbackTimer);
+    audio.play().then(() => {
+      settled = true;
+    }).catch(useFallback);
+  };
+  audio.onplaying = () => {
+    if (statusElement) statusElement.textContent = "正在播放真人录音…";
+  };
+  audio.onerror = useFallback;
+  audio.onended = () => {
+    if (activeAudio === audio) activeAudio = null;
+  };
+  // 网络不可用时不让按钮一直停在加载状态。
+  fallbackTimer = window.setTimeout(useFallback, 3500);
+  audio.load();
+}
+
+function getPracticeProgress(lessonIndex) {
+  return JSON.parse(localStorage.getItem(`hanzi-practice-${lessonIndex}`) || "{}");
+}
+
+function savePracticeProgress(lessonIndex, charIndex) {
+  const progress = getPracticeProgress(lessonIndex);
+  progress[charIndex] = true;
+  localStorage.setItem(`hanzi-practice-${lessonIndex}`, JSON.stringify(progress));
+}
+
+function celebrateDictation() {
+  const celebration = document.createElement("div");
+  celebration.className = "firework-rain";
+  celebration.setAttribute("aria-hidden", "true");
+
+  for (let index = 0; index < 56; index += 1) {
+    const spark = document.createElement("i");
+    spark.style.setProperty("--x", `${Math.random() * 100}vw`);
+    spark.style.setProperty("--delay", `${Math.random() * 0.75}s`);
+    spark.style.setProperty("--duration", `${1.7 + Math.random() * 1.1}s`);
+    spark.style.setProperty("--color", ["#ff5d7d", "#ffd65a", "#54c6eb", "#8bd17c", "#b68cff"][index % 5]);
+    spark.style.setProperty("--size", `${6 + Math.random() * 8}px`);
+    celebration.appendChild(spark);
+  }
+
+  document.body.appendChild(celebration);
+  window.setTimeout(() => celebration.remove(), 3600);
+}
 
 function loadSpeechVoices() {
   speechVoices = "speechSynthesis" in window ? window.speechSynthesis.getVoices() : [];
@@ -626,12 +702,14 @@ function renderOverview() {
 
 function renderCharList() {
   const lesson = lessons[currentLessonIndex];
+  const practiceProgress = getPracticeProgress(currentLessonIndex);
   charList.innerHTML = lesson.chars
     .map(
       (item, index) => `
         <button class="char-button ${index === currentCharIndex ? "active" : ""}" data-index="${index}" type="button">
           <span class="char-mini">${item.char}</span>
           <span class="char-read">${item.pinyin}</span>
+          ${practiceProgress[index] ? '<span class="learned-check" aria-label="已写对" title="已写对">✓</span>' : ""}
         </button>
       `
     )
@@ -661,6 +739,7 @@ function renderDetail() {
         <div class="character-header">
           <div class="big-char">${character.char}</div>
           <span class="pinyin-tag">${character.pinyin}</span>
+          <button class="speak-character-button" type="button" data-character="${character.char}" aria-label="朗读${character.char}" title="真人录音朗读">🔊</button>
         </div>
         <div class="stroke-demo" aria-label="笔画演示">
           <div class="writer-target" id="writer-target"></div>
@@ -681,7 +760,7 @@ function renderDetail() {
                   <div class="word-card">
                     <div class="word-heading">
                       <h4>${word.word}</h4>
-                      <button class="speak-word-button" type="button" data-word="${word.word}" data-meaning="${word.meaning}" aria-label="朗读${word.word}及释义" title="朗读组词和释义">🔊</button>
+                      <button class="speak-word-button" type="button" data-word="${word.word}" aria-label="朗读${word.word}" title="真人录音朗读">🔊</button>
                     </div>
                     <span class="word-pinyin">${word.pinyin}</span>
                     <span class="meaning-pinyin">${getMeaningPinyin(word.meaning)}</span>
@@ -701,10 +780,13 @@ function renderDetail() {
   animateButton.addEventListener("click", () => animateStrokes());
   charDetail.querySelector(".practice-button").addEventListener("click", () => renderCharacterPractice(character));
 
+  charDetail.querySelector(".speak-character-button").addEventListener("click", (event) => {
+    playHumanChinese(event.currentTarget.dataset.character);
+  });
+
   charDetail.querySelectorAll(".speak-word-button").forEach((button) => {
     button.addEventListener("click", () => {
-      if (!("speechSynthesis" in window)) return;
-      speakChinese(`${button.dataset.word}。${button.dataset.meaning}`);
+      playHumanChinese(button.dataset.word);
     });
   });
 
@@ -732,6 +814,8 @@ function renderDetail() {
 }
 
 function renderCharacterPractice(character) {
+  const practiceLessonIndex = currentLessonIndex;
+  const practiceCharIndex = currentCharIndex;
   charDetail.innerHTML = `
     <section class="dictation-card practice-card">
       <p class="dictation-step">我来试试</p>
@@ -755,11 +839,20 @@ function renderCharacterPractice(character) {
       document.getElementById("practice-status").textContent = "这笔不太对，再试一次。";
     },
     onComplete: (summary) => {
-      document.getElementById("practice-status").textContent = summary.totalMistakes === 0 ? "✓ 写得很棒！" : "✓ 写完了，再多练一次会更好。";
+      savePracticeProgress(practiceLessonIndex, practiceCharIndex);
+      renderCharList();
+      if (summary.totalMistakes === 0) {
+        document.getElementById("practice-status").textContent = "✓ 写得很棒！已在生字列表中标记。";
+      } else {
+        document.getElementById("practice-status").textContent = "✓ 写完了，已在生字列表中标记；再多练一次会更好。";
+      }
     }
   });
   charDetail.querySelector(".retry-practice").addEventListener("click", () => renderCharacterPractice(character));
-  charDetail.querySelector(".return-learning").addEventListener("click", renderDetail);
+  charDetail.querySelector(".return-learning").addEventListener("click", () => {
+    renderCharList();
+    renderDetail();
+  });
 }
 
 function getDictationProgress(lessonIndex) {
@@ -773,7 +866,7 @@ function saveDictationProgress(lessonIndex, charIndex, value) {
 }
 
 function speakDictationWord(word) {
-  speakChinese(`${word.word}。请写出这个词语。${word.meaning}`, document.getElementById("dictation-status"));
+  playHumanChinese(word.word, document.getElementById("dictation-status"));
 }
 
 function renderDictation(lessonIndex) {
@@ -810,6 +903,7 @@ function renderDictation(lessonIndex) {
     const status = document.getElementById("dictation-status");
     saveDictationProgress(dictationLessonIndex, dictationCharIndex, true);
     status.textContent = hasMistake ? "✓ 词语已完成并保存，建议再查看讲解巩固笔顺。" : "✓ 这个组词全部写对了，已保存完成！";
+    if (!hasMistake) celebrateDictation();
     charDetail.querySelector(".next-dictation").hidden = false;
   };
 

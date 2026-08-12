@@ -458,6 +458,7 @@ h1 {
   margin: 0;
 }
 
+.speak-character-button,
 .speak-word-button {
   width: 30px;
   height: 30px;
@@ -472,9 +473,66 @@ h1 {
 }
 
 .speak-word-button:hover,
-.speak-word-button:focus-visible {
+.speak-word-button:focus-visible,
+.speak-character-button:hover,
+.speak-character-button:focus-visible {
   background: #ffd65a;
   transform: scale(1.06);
+}
+
+.speak-character-button {
+  margin-left: 2px;
+}
+
+.char-button {
+  position: relative;
+}
+
+.learned-check {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  border: 2px solid #2e9b57;
+  border-radius: 50%;
+  background: #e9f9ed;
+  color: #218447;
+  font-size: 0.75rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.firework-rain {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.firework-rain i {
+  position: absolute;
+  top: -24px;
+  left: var(--x);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: var(--color);
+  box-shadow: 0 0 10px var(--color), 0 0 20px var(--color);
+  animation: firework-fall var(--duration) var(--delay) ease-in forwards;
+}
+
+@keyframes firework-fall {
+  0% { transform: translate3d(0, 0, 0) scale(0.3); opacity: 0; }
+  16% { opacity: 1; transform: translate3d(20px, 18vh, 0) scale(1.35); }
+  100% { transform: translate3d(-45px, 105vh, 0) scale(0.55); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .firework-rain i { animation-duration: 0.01ms; }
 }
 
 .word-card .word-pinyin {
