@@ -507,7 +507,7 @@ h1 {
 
 .firework-rain {
   position: fixed;
-  z-index: 1000;
+  z-index: 2147483647;
   inset: 0;
   overflow: hidden;
   pointer-events: none;
@@ -526,13 +526,9 @@ h1 {
 }
 
 @keyframes firework-fall {
-  0% { transform: translate3d(0, 0, 0) scale(0.3); opacity: 0; }
-  16% { opacity: 1; transform: translate3d(20px, 18vh, 0) scale(1.35); }
+  0% { transform: translate3d(0, 0, 0) scale(0.45); opacity: 1; }
+  16% { opacity: 1; transform: translate3d(20px, 18vh, 0) scale(1.55); }
   100% { transform: translate3d(-45px, 105vh, 0) scale(0.55); opacity: 0; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .firework-rain i { animation-duration: 0.01ms; }
 }
 
 .word-card .word-pinyin {
