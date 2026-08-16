@@ -443,6 +443,25 @@ h1 {
   max-width: 760px;
 }
 
+#dictation-detail {
+  min-width: 0;
+}
+
+.daily-writing-grid {
+  width: min(220px, calc((100vw - 90px) / 2));
+}
+
+.writing-complete-note {
+  display: none;
+  margin: 16px 0 0;
+  color: #195d33;
+  font-weight: 800;
+}
+
+.writing-complete-note.is-visible {
+  display: block;
+}
+
 .daily-dictation-card h2 {
   margin: 0;
 }

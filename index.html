@@ -17,15 +17,18 @@
 
       <nav id="app-tabs" class="app-tabs" aria-label="功能切换"></nav>
 
-      <nav id="lesson-nav" class="lesson-nav" aria-label="课程导航"></nav>
-
-      <main class="content-wrap">
+      <main id="learning-view" class="content-wrap">
+        <nav id="lesson-nav" class="lesson-nav" aria-label="课程导航"></nav>
         <section id="lesson-overview" class="lesson-overview" aria-live="polite"></section>
-
         <div class="detail-layout">
           <aside id="char-list" class="char-list" aria-label="生字列表"></aside>
           <section id="char-detail" class="char-detail" aria-live="polite"></section>
         </div>
+      </main>
+
+      <main id="dictation-view" class="content-wrap" hidden>
+        <section id="dictation-overview" class="lesson-overview" aria-live="polite"></section>
+        <section id="dictation-detail" aria-live="polite"></section>
       </main>
     </div>
 

@@ -483,12 +483,16 @@ const defaultLessons = [
   }
 ];
 
-const lessonNav = document.getElementById("lesson-nav");
 const appTabs = document.getElementById("app-tabs");
+const learningView = document.getElementById("learning-view");
+const dictationView = document.getElementById("dictation-view");
+const lessonNav = document.getElementById("lesson-nav");
 const lessonOverview = document.getElementById("lesson-overview");
 const charList = document.getElementById("char-list");
 const charDetail = document.getElementById("char-detail");
 const detailLayout = document.querySelector(".detail-layout");
+const dictationOverview = document.getElementById("dictation-overview");
+const dictationDetail = document.getElementById("dictation-detail");
 
 let lessons = defaultLessons;
 let currentLessonIndex = 0;
@@ -787,32 +791,30 @@ function renderAppTabs() {
 }
 
 function renderDailyDictation() {
-  lessonNav.hidden = true;
-  charList.hidden = true;
-  detailLayout.classList.add("single-panel");
   const queue = getDailyQueue();
   const state = getTodayQueueState();
   const results = state.results || {};
   const pending = queue.filter((item) => !results[item.id]);
   const completedCount = queue.length - pending.length;
 
-  lessonOverview.innerHTML = `
+  dictationOverview.innerHTML = `
     <div><h2>每日听写</h2><p>每天最多 15 个生词；系统只安排复习，你自己决定会不会写。</p></div>
     <div class="lesson-badge">${completedCount} / ${queue.length} 已标记</div>
   `;
 
   if (!queue.length) {
-    charDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><h2>今天还没有可听写的生词</h2><p class="daily-review-note">已学词汇会在复习日期自动回到这里。</p></section>`;
+    dictationDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><h2>今天还没有可听写的生词</h2><p class="daily-review-note">已学词汇会在复习日期自动回到这里。</p></section>`;
     return;
   }
 
   if (!pending.length) {
-    charDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><div class="daily-finished"><h2>今日 15 词已完成</h2><p>明天会根据你的手动标记安排下一次复习。</p></div></section>`;
+    dictationDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><div class="daily-finished"><h2>今日 15 词已完成</h2><p>明天会根据你的手动标记安排下一次复习。</p></div></section>`;
     return;
   }
 
   const item = pending[0];
-  charDetail.innerHTML = `
+  const wordCharacters = Array.from(item.word).filter((character) => /[\u3400-\u9fff]/.test(character));
+  dictationDetail.innerHTML = `
     <section class="dictation-card daily-dictation-card">
       <p class="dictation-step">第 ${completedCount + 1} / ${queue.length} 个</p>
       <span class="daily-count">${item.lessonTitle}</span>
@@ -820,25 +822,81 @@ function renderDailyDictation() {
       <p class="dictation-pinyin">${item.pinyin}</p>
       <button class="listen-button daily-listen" type="button">🔊 听写</button>
       <button class="secondary-button reveal-dictation" type="button">显示答案</button>
-      <p class="daily-review-note">写完后请手动标记；系统不会自动判断对错。</p>
-      <div class="manual-mark-actions">
+      <p id="daily-writing-status" class="daily-review-note">请按笔顺在田字格中写完这个词的每个汉字，完成后才可手动标记。</p>
+      <div class="tianzi-grid-list">
+        ${wordCharacters.map((character, index) => `<div class="tianzi-grid daily-writing-grid"><div id="daily-writing-${index}" class="dictation-target" aria-label="${character}书写区"></div></div>`).join("")}
+      </div>
+      <p class="writing-complete-note">已完成全词书写，请自己判断掌握情况。</p>
+      <div class="manual-mark-actions" hidden>
         <button class="mark-known" type="button">我会写<br><small>下次间隔更久</small></button>
         <button class="mark-unknown" type="button">我不会写<br><small>明天继续出现</small></button>
       </div>
     </section>
   `;
 
-  charDetail.querySelector(".daily-listen").addEventListener("click", () => playHumanChinese(item.word));
-  charDetail.querySelector(".reveal-dictation").addEventListener("click", () => {
+  const manualMarkActions = dictationDetail.querySelector(".manual-mark-actions");
+  const writingStatus = dictationDetail.querySelector("#daily-writing-status");
+  const unlockManualMarking = () => {
+    writingStatus.textContent = "全词已写完。请你自己选择会不会写；系统不会自动替你标记。";
+    dictationDetail.querySelector(".writing-complete-note").classList.add("is-visible");
+    manualMarkActions.hidden = false;
+  };
+
+  dictationDetail.querySelector(".daily-listen").addEventListener("click", () => playHumanChinese(item.word, writingStatus));
+  dictationDetail.querySelector(".reveal-dictation").addEventListener("click", () => {
     const answer = document.getElementById("daily-dictation-word");
     answer.textContent = item.word;
     answer.classList.remove("is-hidden");
   });
-  charDetail.querySelector(".mark-known").addEventListener("click", () => {
+
+  if (!window.HanziWriter || !wordCharacters.length) {
+    writingStatus.textContent = "书写工具未加载。完成纸上书写后，可继续手动确认。";
+    const continueButton = document.createElement("button");
+    continueButton.className = "secondary-button";
+    continueButton.type = "button";
+    continueButton.textContent = "我已完成书写";
+    continueButton.addEventListener("click", () => {
+      continueButton.remove();
+      unlockManualMarking();
+    });
+    writingStatus.after(continueButton);
+  } else {
+    const completedCharacters = new Set();
+    wordCharacters.forEach((character, index) => {
+      const target = document.getElementById(`daily-writing-${index}`);
+      target.addEventListener("touchmove", (event) => event.preventDefault(), { passive: false });
+      const size = target.clientWidth;
+      const writer = HanziWriter.create(target, character, {
+        width: size,
+        height: size,
+        padding: 12,
+        showCharacter: false,
+        showOutline: false,
+        drawingColor: "#1d1d1d",
+        drawingWidth: 5,
+        highlightColor: "#f4b942",
+        highlightOnComplete: true
+      });
+      writer.quiz({
+        leniency: 1.15,
+        showHintAfterMisses: 2,
+        onMistake: () => {
+          writingStatus.textContent = "这笔不太对，再试一次；完成全词后再由你手动标记。";
+        },
+        onComplete: () => {
+          completedCharacters.add(index);
+          target.parentElement.classList.add("is-complete");
+          if (completedCharacters.size === wordCharacters.length) unlockManualMarking();
+        }
+      });
+    });
+  }
+
+  dictationDetail.querySelector(".mark-known").addEventListener("click", () => {
     saveManualDictationResult(item, true);
     renderDailyDictation();
   });
-  charDetail.querySelector(".mark-unknown").addEventListener("click", () => {
+  dictationDetail.querySelector(".mark-unknown").addEventListener("click", () => {
     saveManualDictationResult(item, false);
     renderDailyDictation();
   });
@@ -1134,11 +1192,13 @@ function animateStrokes() {
 function render() {
   renderAppTabs();
   if (activeView === "dictation") {
+    learningView.hidden = true;
+    dictationView.hidden = false;
     renderDailyDictation();
     return;
   }
-  lessonNav.hidden = false;
-  charList.hidden = false;
+  learningView.hidden = false;
+  dictationView.hidden = true;
   detailLayout.classList.remove("single-panel");
   renderLessons();
   renderOverview();
