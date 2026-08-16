@@ -414,6 +414,102 @@ h1 {
   font-size: 1.3rem;
 }
 
+.app-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.app-tab {
+  border: 3px solid var(--ink);
+  border-radius: 999px;
+  padding: 10px 18px;
+  background: var(--card);
+  color: var(--ink);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.app-tab.active {
+  background: var(--accent);
+}
+
+.detail-layout.single-panel {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.daily-dictation-card {
+  max-width: 760px;
+}
+
+.daily-dictation-card h2 {
+  margin: 0;
+}
+
+.daily-count {
+  display: inline-flex;
+  margin: 12px 0 4px;
+  padding: 6px 11px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: #fff6cb;
+  font-weight: 800;
+}
+
+.daily-prompt {
+  margin: 18px 0 6px;
+  font-size: clamp(2.4rem, 7vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.daily-prompt.is-hidden {
+  letter-spacing: 0;
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+.daily-review-note {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.manual-mark-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.manual-mark-actions button {
+  min-height: 60px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.mark-known {
+  border: 3px solid #237945;
+  border-radius: 14px;
+  background: #e9f9ed;
+  color: #195d33;
+}
+
+.mark-unknown {
+  border: 3px solid #a34e36;
+  border-radius: 14px;
+  background: #fff0e7;
+  color: #853a27;
+}
+
+.daily-finished {
+  padding: 18px;
+  border: 3px solid #237945;
+  border-radius: 16px;
+  background: #e9f9ed;
+}
+
 .character-actions {
   display: flex;
   gap: 10px;
@@ -712,6 +808,15 @@ h1 {
     scrollbar-width: thin;
   }
 
+  .app-tabs {
+    margin-bottom: 14px;
+  }
+
+  .app-tab {
+    flex: 1;
+    padding: 9px 8px;
+  }
+
   .lesson-button {
     flex: 0 0 auto;
     white-space: nowrap;
@@ -792,5 +897,9 @@ h1 {
 
   .dictation-actions {
     flex-wrap: wrap;
+  }
+
+  .manual-mark-actions {
+    grid-template-columns: 1fr;
   }
 }

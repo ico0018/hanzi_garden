@@ -484,9 +484,11 @@ const defaultLessons = [
 ];
 
 const lessonNav = document.getElementById("lesson-nav");
+const appTabs = document.getElementById("app-tabs");
 const lessonOverview = document.getElementById("lesson-overview");
 const charList = document.getElementById("char-list");
 const charDetail = document.getElementById("char-detail");
+const detailLayout = document.querySelector(".detail-layout");
 
 let lessons = defaultLessons;
 let currentLessonIndex = 0;
@@ -497,6 +499,12 @@ let dictationLessonIndex = 0;
 let dictationCharIndex = 0;
 let speechVoices = [];
 let activeAudio = null;
+let activeView = "learning";
+
+const DAILY_DICTATION_SIZE = 15;
+const DICTATION_PROGRESS_KEY = "hanzi-daily-dictation-progress-v1";
+const DICTATION_QUEUE_KEY = "hanzi-daily-dictation-queue-v1";
+const EBBINGHAUS_INTERVALS = [2, 4, 7, 15, 30, 60];
 
 // 真人录音优先：audio-cmn 收录了 HSK 词语及单字的普通话录音。
 const HUMAN_AUDIO_BASE_URL = "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/hsk";
@@ -665,6 +673,177 @@ async function loadLessonsFromTxt() {
   return defaultLessons;
 }
 
+function formatDate(date) {
+  const local = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+  return local.toISOString().slice(0, 10);
+}
+
+function todayKey() {
+  return formatDate(new Date());
+}
+
+function addDays(dateString, days) {
+  const date = new Date(`${dateString}T12:00:00`);
+  date.setDate(date.getDate() + days);
+  return formatDate(date);
+}
+
+function getDictationItems() {
+  return lessons.flatMap((lesson, lessonIndex) =>
+    lesson.chars.map((character, charIndex) => ({
+      id: `${lessonIndex}:${charIndex}`,
+      order: lessonIndex * 1000 + charIndex,
+      lessonTitle: lesson.title,
+      character: character.char,
+      word: character.words[0]?.word || character.char,
+      pinyin: character.words[0]?.pinyin || character.pinyin
+    }))
+  );
+}
+
+function getDailyDictationProgress() {
+  try {
+    return JSON.parse(localStorage.getItem(DICTATION_PROGRESS_KEY) || "{}");
+  } catch (error) {
+    return {};
+  }
+}
+
+function saveDailyDictationProgress(progress) {
+  localStorage.setItem(DICTATION_PROGRESS_KEY, JSON.stringify(progress));
+}
+
+function getDailyQueue() {
+  const date = todayKey();
+  const items = getDictationItems();
+  const itemById = new Map(items.map((item) => [item.id, item]));
+  const progress = getDailyDictationProgress();
+  let savedQueue = null;
+
+  try {
+    savedQueue = JSON.parse(localStorage.getItem(DICTATION_QUEUE_KEY) || "null");
+  } catch (error) {
+    savedQueue = null;
+  }
+
+  if (savedQueue?.date === date && Array.isArray(savedQueue.ids)) {
+    return savedQueue.ids.map((id) => itemById.get(id)).filter(Boolean).slice(0, DAILY_DICTATION_SIZE);
+  }
+
+  const dueItems = items
+    .filter((item) => progress[item.id]?.dueDate && progress[item.id].dueDate <= date)
+    .sort((a, b) => {
+      const dueCompare = progress[a.id].dueDate.localeCompare(progress[b.id].dueDate);
+      return dueCompare || a.order - b.order;
+    });
+  const dueIds = new Set(dueItems.map((item) => item.id));
+  const newItems = items.filter((item) => !progress[item.id] && !dueIds.has(item.id));
+  const queue = [...dueItems, ...newItems].slice(0, DAILY_DICTATION_SIZE);
+
+  localStorage.setItem(DICTATION_QUEUE_KEY, JSON.stringify({ date, ids: queue.map((item) => item.id), results: {} }));
+  return queue;
+}
+
+function getTodayQueueState() {
+  try {
+    return JSON.parse(localStorage.getItem(DICTATION_QUEUE_KEY) || "{}");
+  } catch (error) {
+    return {};
+  }
+}
+
+function saveManualDictationResult(item, known) {
+  const date = todayKey();
+  const progress = getDailyDictationProgress();
+  const previous = progress[item.id] || { successCount: 0 };
+  const successCount = known ? Math.min((previous.successCount || 0) + 1, EBBINGHAUS_INTERVALS.length) : 0;
+  const interval = known ? EBBINGHAUS_INTERVALS[successCount - 1] : 1;
+  progress[item.id] = {
+    successCount,
+    dueDate: addDays(date, interval),
+    lastResult: known ? "known" : "unknown",
+    lastReviewed: date
+  };
+  saveDailyDictationProgress(progress);
+
+  const state = getTodayQueueState();
+  if (state.date === date) {
+    state.results = { ...(state.results || {}), [item.id]: known ? "known" : "unknown" };
+    localStorage.setItem(DICTATION_QUEUE_KEY, JSON.stringify(state));
+  }
+}
+
+function renderAppTabs() {
+  appTabs.innerHTML = `
+    <button class="app-tab ${activeView === "learning" ? "active" : ""}" type="button" data-view="learning">生字学习</button>
+    <button class="app-tab ${activeView === "dictation" ? "active" : ""}" type="button" data-view="dictation">每日听写</button>
+  `;
+  appTabs.querySelectorAll(".app-tab").forEach((button) => {
+    button.addEventListener("click", () => {
+      activeView = button.dataset.view;
+      render();
+    });
+  });
+}
+
+function renderDailyDictation() {
+  lessonNav.hidden = true;
+  charList.hidden = true;
+  detailLayout.classList.add("single-panel");
+  const queue = getDailyQueue();
+  const state = getTodayQueueState();
+  const results = state.results || {};
+  const pending = queue.filter((item) => !results[item.id]);
+  const completedCount = queue.length - pending.length;
+
+  lessonOverview.innerHTML = `
+    <div><h2>每日听写</h2><p>每天最多 15 个生词；系统只安排复习，你自己决定会不会写。</p></div>
+    <div class="lesson-badge">${completedCount} / ${queue.length} 已标记</div>
+  `;
+
+  if (!queue.length) {
+    charDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><h2>今天还没有可听写的生词</h2><p class="daily-review-note">已学词汇会在复习日期自动回到这里。</p></section>`;
+    return;
+  }
+
+  if (!pending.length) {
+    charDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><div class="daily-finished"><h2>今日 15 词已完成</h2><p>明天会根据你的手动标记安排下一次复习。</p></div></section>`;
+    return;
+  }
+
+  const item = pending[0];
+  charDetail.innerHTML = `
+    <section class="dictation-card daily-dictation-card">
+      <p class="dictation-step">第 ${completedCount + 1} / ${queue.length} 个</p>
+      <span class="daily-count">${item.lessonTitle}</span>
+      <p id="daily-dictation-word" class="daily-prompt is-hidden">请先听读音，再写下来</p>
+      <p class="dictation-pinyin">${item.pinyin}</p>
+      <button class="listen-button daily-listen" type="button">🔊 听写</button>
+      <button class="secondary-button reveal-dictation" type="button">显示答案</button>
+      <p class="daily-review-note">写完后请手动标记；系统不会自动判断对错。</p>
+      <div class="manual-mark-actions">
+        <button class="mark-known" type="button">我会写<br><small>下次间隔更久</small></button>
+        <button class="mark-unknown" type="button">我不会写<br><small>明天继续出现</small></button>
+      </div>
+    </section>
+  `;
+
+  charDetail.querySelector(".daily-listen").addEventListener("click", () => playHumanChinese(item.word));
+  charDetail.querySelector(".reveal-dictation").addEventListener("click", () => {
+    const answer = document.getElementById("daily-dictation-word");
+    answer.textContent = item.word;
+    answer.classList.remove("is-hidden");
+  });
+  charDetail.querySelector(".mark-known").addEventListener("click", () => {
+    saveManualDictationResult(item, true);
+    renderDailyDictation();
+  });
+  charDetail.querySelector(".mark-unknown").addEventListener("click", () => {
+    saveManualDictationResult(item, false);
+    renderDailyDictation();
+  });
+}
+
 function renderLessons() {
   lessonNav.innerHTML = lessons
     .map(
@@ -697,7 +876,10 @@ function renderOverview() {
       <button class="primary-button start-dictation" type="button">每日听写</button>
     </div>
   `;
-  lessonOverview.querySelector(".start-dictation").addEventListener("click", () => renderDictation(currentLessonIndex));
+  lessonOverview.querySelector(".start-dictation").addEventListener("click", () => {
+    activeView = "dictation";
+    render();
+  });
 }
 
 function renderCharList() {
@@ -950,7 +1132,14 @@ function animateStrokes() {
 }
 
 function render() {
+  renderAppTabs();
+  if (activeView === "dictation") {
+    renderDailyDictation();
+    return;
+  }
+  lessonNav.hidden = false;
   charList.hidden = false;
+  detailLayout.classList.remove("single-panel");
   renderLessons();
   renderOverview();
   renderCharList();
