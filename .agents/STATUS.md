@@ -4,16 +4,16 @@
 
 | Field | Current state |
 | --- | --- |
-| Last updated | 2026-08-16 — dictation feature implemented; awaiting QA |
-| Manager | ACTIVE — QA handoff pending |
+| Last updated | 2026-08-16 — direct-to-main push requested; backup pending |
+| Manager | ACTIVE — create rollback branch then push current feature to `main` |
 | Developer | READY FOR QA — implementation completed on `feature/dictation-spaced-repetition` |
-| QA | WAITING — validate after implementation handoff |
+| QA | WAITING — interaction validation pending after main push |
 | Current task | Add a 15-word/day manual-marking dictation trainer with spaced repetition |
 | Branch | `feature/dictation-spaced-repetition` |
-| Working tree | Feature changes ready for local commit at inspection time |
-| QA status | NOT STARTED |
+| Working tree | Policy update awaiting commit at inspection time |
+| QA status | NOT STARTED — syntax and diff checks passed; interaction validation pending |
 | Preview status | NOT REQUESTED / NOT VERIFIED |
-| Human acceptance | NOT REQUESTED — `dev` -> `main` forbidden until explicit approval |
+| Human acceptance | NOT REQUIRED for the user-approved direct-to-main workflow |
 
 ## Active task template
 
@@ -25,7 +25,7 @@ Developer branch: feature/dictation-spaced-repetition
 Developer state: READY FOR QA
 QA result: NOT STARTED
 QA evidence / defects: `node --check app.js` and `git diff --check` passed. Interactive browser verification is pending.
-dev merge: NOT ALLOWED
+dev merge: NOT REQUIRED for the user-approved direct-to-main workflow
 Preview: NOT REQUESTED
 Human acceptance: WAITING
 Next owner: Developer

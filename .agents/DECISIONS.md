@@ -2,6 +2,12 @@
 
 Add durable decisions at the top with date, decision, rationale, and source.
 
+## 2026-08-16 — Direct GitHub main visibility
+
+- Decision: The verified current work is pushed directly to GitHub `main` so the user can view it immediately.
+- Safeguard: Before every such push, Manager creates a local `backup/*` branch at the exact pre-push commit. Never force-push `main`; correct a problem from the named backup branch.
+- Source: User instruction.
+
 ## 2026-08-16 — Daily dictation scheduling
 
 - Decision: The Dictation tab uses existing lesson characters in lesson order, with each character's first listed word as the listening prompt.
