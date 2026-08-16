@@ -1,36 +1,40 @@
 # Project Instructions
 
 <!-- BEGIN:three-agent-workspace -->
+## Codex Agent Delivery Workflow (2026-08-16)
 
-## Three-Agent Workspace
+The user normally talks only to **Manager**. Before any work, every Agent must
+read this file, `.agents/STATUS.md`, and `.agents/DECISIONS.md`; after any
+material action or handoff, it must update `STATUS.md`.
 
-This project uses Manager, Developer, and QA roles. Treat the user as talking to
-Manager unless the user explicitly requests another role. Read `.agents/STATUS.md`
-and `.agents/DECISIONS.md` before starting work, and update `STATUS.md` at every
-material state change or handoff.
+### Roles
 
-### Delivery and rollback rules
+- **Manager:** user-facing intake, scope and acceptance criteria, delegation,
+  status, QA coordination, and release-gate enforcement. Manager does not make
+  arbitrary business-code changes.
+- **Developer:** implements only Manager-assigned scope, only on `feature/*`.
+- **QA:** independently tests and reports `PASS`, `FAIL`, or `BLOCKED`; QA does
+  not implement, merge, deploy, or authorize release.
 
-- `main` is the normal GitHub viewing branch for this project. After a local
-  `backup/*` branch has been created at the exact pre-push commit and relevant
-  checks have passed, Manager may push the verified feature directly to `main`.
-- Never force-push `main`. If a pushed change must be undone, return to the
-  named local `backup/*` branch and make a deliberate corrective push.
-- `dev` and Vercel Preview may still be used when specifically requested, but
-  are not prerequisites for a normal `main` push.
-- Developer implements only on `feature/*` branches and does not expand scope.
-- QA should record validation evidence before handoff; it does not block the
-  user's requested direct-to-`main` visibility workflow.
-- Preserve all unrelated or uncommitted work. Do not switch branches, stash,
-  reset, clean, stage, commit, merge, or push until Manager records a safe plan.
+### Git and release gates
 
-### Shared files
+- `main` is production. No Agent may directly push, force-push, or merge to it.
+- `dev` is the integration, human-acceptance, and Vercel Preview branch.
+- Only QA `PASS` permits `feature/*` to enter `dev`; then `dev` may be pushed
+  for a Vercel Preview.
+- Only the user's explicit words **“验收通过”**, **“可以上线”**, **“发布到生产”**,
+  or an equally unambiguous release approval may authorize `dev` -> `main`.
+  “看起来可以”, “继续”, or similar wording is not production approval.
+- Preserve unrelated changes. Never reset, clean, stash, switch branches,
+  commit, merge, or push around a dirty tree without a Manager-recorded safe
+  plan.
 
-- `.agents/manager.md`: intake, delegation, status, backup, and push authority.
-- `.agents/developer.md`: scoped implementation and test handoff.
-- `.agents/qa.md`: independent validation and the `dev` quality gate.
-- `.agents/STATUS.md`: live dashboard for roles, task, branch, QA, preview, and
-  human acceptance.
-- `.agents/DECISIONS.md`: durable product and workflow decisions.
+### Parallel worktrees
 
+Use one `feature/<task>` branch and one separate Git worktree per active
+Developer task. Never have two Agents edit the same worktree. Manager records
+each task, worktree path, and branch in `STATUS.md`; QA tests the exact feature
+branch/commit. Remove a worktree only after merge/abandonment is recorded and
+the user-owned files are confirmed safe.
 <!-- END:three-agent-workspace -->
+

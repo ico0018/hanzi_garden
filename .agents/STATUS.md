@@ -1,5 +1,42 @@
 # Delivery Status
 
+> Read before work. Every Agent updates this dashboard at start, block, and handoff.
+
+## Current snapshot
+
+| Field | Current state |
+| --- | --- |
+| Last updated | 2026-08-16 — multi-project workspace normalized; no business changes made |
+| Manager | Waiting — user-facing intake only; no new task assigned |
+| Developer | Waiting — no implementation task assigned |
+| QA | Waiting — no QA handoff assigned |
+| Current task | None — previous work state preserved below |
+| Branch | `feature/dictation-spaced-repetition` |
+| Worktree | Primary: `F:\chinese webapp`; no additional Agent worktree recorded |
+| QA status | Waiting — no test target assigned |
+| Preview status | Not requested / not verified |
+| Human acceptance | Waiting — main release forbidden without explicit approval |
+
+## Required task record
+
+`
+Task:
+Acceptance criteria:
+Developer branch: feature/<task>
+Developer worktree:
+Developer state: Running | Waiting | Blocked | Done
+QA result: Waiting | PASS | FAIL | BLOCKED
+QA evidence / defects:
+dev merge: Not allowed | Ready | Completed
+Preview: Not requested | Deploying | Ready — <URL>
+Human acceptance: Waiting | Approved — <exact user words and timestamp>
+Next owner:
+`
+
+## Previous status preserved for context
+
+# Delivery Status
+
 > Update this dashboard at every material state change and handoff.
 
 | Field | Current state |
@@ -30,3 +67,4 @@ Preview: NOT REQUESTED
 Human acceptance: WAITING
 Next owner: Developer
 ```
+
