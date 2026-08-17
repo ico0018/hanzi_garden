@@ -6,15 +6,15 @@
 
 | Field | Current state |
 | --- | --- |
-| Last updated | 2026-08-16 — QA PASS; Developer checkpoint commit pending |
-| Manager | Active — checkpointing verified feature for handoff |
-| Developer | Done — QA-PASS implementation checkpointed |
-| QA | PASS — static syntax, diff, and interaction-path validation completed |
-| Current task | Correct exclusive tab, completion modals, and learning outcome indicators |
-| Branch | `feature/dictation-interaction` |
-| Worktree | Developer: `F:\chinese webapp\.worktrees\dictation-interaction` |
-| QA status | PASS — ready for Manager review; no merge performed |
-| Preview status | Not requested / not verified |
+| Last updated | 2026-08-17 — Daily Dictation commit 7954325 integrated into dev after QA PASS |
+| Manager | Active — daily dictation preview coordination |
+| Developer | Done — daily dictation feature integrated |
+| QA | PASS — commit 7954325 |
+| Current task | Daily Dictation first — legacy-aligned flow; memory redesign deferred |
+| Branch | `dev` |
+| Worktree | Integration: `F:\chinese webapp\.worktrees\daily-dictation-dev` |
+| QA status | PASS — 15-item persisted queue, reveal control, listening, Tianzige and manual self-assessment verified |
+| Preview status | Not requested / not verified — dev contains 7954325 |
 | Human acceptance | Waiting — main release forbidden without explicit approval |
 
 ## 2026-08-17 Daily dictation handoff
@@ -24,13 +24,13 @@ Task: Complete the old-version-style daily dictation flow before any memory/spac
 Acceptance criteria: Daily queue is capped at 15; each prompt has a listen action; pinyin and word answer are hidden until the learner chooses to reveal them; each word character has a Tianzige handwriting area; learner manually marks “我会写 / 我不会写” after writing; queue and result persist locally. Memory/spacing redesign is out of scope.
 Developer branch: feature/dictation-interaction
 Developer worktree: F:\chinese webapp\.worktrees\dictation-interaction
-Developer state: Done — pending independent QA
-QA result: Waiting
-QA evidence / defects: `node --check app.js` and `git diff --check` passed. Manual assessment is accessible even when HanziWriter reports stroke mistakes; the tool never assigns a result automatically.
-dev merge: Not allowed
+Developer state: Done — `7954325 feat: align daily dictation flow`
+QA result: PASS
+QA evidence / defects: `node --check app.js` and `git diff 7954325^ 7954325 --check` passed. QA confirmed queue cap/persistence, hidden pinyin and answer, listen control, Tianzige/HanziWriter targets, manual self-assessment and next-item progression.
+dev merge: Completed — fast-forwarded to `7954325`
 Preview: Not requested
 Human acceptance: Waiting
-Next owner: QA
+Next owner: Manager
 ```
 
 ## Required task record
