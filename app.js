@@ -859,12 +859,17 @@ function renderDailyDictation() {
       <p class="dictation-step">第 ${completedCount + 1} / ${queue.length} 个</p>
       <span class="daily-count">${item.lessonTitle}</span>
       <p class="daily-prompt is-hidden">请先听读音，再写下来</p>
-      <p class="dictation-pinyin">${item.pinyin}</p>
       <button class="listen-button daily-listen" type="button">🔊 听写</button>
+      <button class="secondary-button reveal-dictation" type="button" aria-expanded="false">需要提示或答案</button>
+      <div class="dictation-answer" hidden>
+        <p class="dictation-pinyin">${item.pinyin}</p>
+        <p class="dictation-answer-word">答案：${item.word}</p>
+      </div>
       <p id="daily-writing-status" class="daily-review-note">请按笔顺在田字格中写完这个词的每个汉字，完成后才可手动标记。</p>
       <div class="tianzi-grid-list">
-        ${wordCharacters.map((character, index) => `<div class="tianzi-grid daily-writing-grid"><div id="daily-writing-${index}" class="dictation-target" aria-label="${character}书写区"></div></div>`).join("")}
+        ${wordCharacters.map((character, index) => `<div class="tianzi-grid daily-writing-grid"><div id="daily-writing-${index}" class="dictation-target" aria-label="第 ${index + 1} 个字书写区"></div></div>`).join("")}
       </div>
+      <div class="dictation-actions"><button class="primary-button finish-dictation-writing" type="button">完成书写，进行自评</button></div>
       <p class="writing-complete-note">已完成全词书写，请在弹窗中选择掌握情况。</p>
     </section>
   `;
@@ -893,18 +898,18 @@ function renderDailyDictation() {
   };
 
   dictationDetail.querySelector(".daily-listen").addEventListener("click", () => playHumanChinese(item.word, writingStatus));
+  const revealButton = dictationDetail.querySelector(".reveal-dictation");
+  revealButton.addEventListener("click", () => {
+    const answer = dictationDetail.querySelector(".dictation-answer");
+    const isHidden = answer.hidden;
+    answer.hidden = !isHidden;
+    revealButton.setAttribute("aria-expanded", String(isHidden));
+    revealButton.textContent = isHidden ? "隐藏提示和答案" : "需要提示或答案";
+  });
+  dictationDetail.querySelector(".finish-dictation-writing").addEventListener("click", unlockManualMarking);
 
   if (!window.HanziWriter || !wordCharacters.length) {
     writingStatus.textContent = "书写工具未加载。完成纸上书写后，可继续手动确认。";
-    const continueButton = document.createElement("button");
-    continueButton.className = "secondary-button";
-    continueButton.type = "button";
-    continueButton.textContent = "我已完成书写";
-    continueButton.addEventListener("click", () => {
-      continueButton.remove();
-      unlockManualMarking();
-    });
-    writingStatus.after(continueButton);
   } else {
     const completedCharacters = new Set();
     wordCharacters.forEach((character, index) => {
@@ -931,7 +936,9 @@ function renderDailyDictation() {
         onComplete: () => {
           completedCharacters.add(index);
           target.parentElement.classList.add("is-complete");
-          if (completedCharacters.size === wordCharacters.length) unlockManualMarking();
+          if (completedCharacters.size === wordCharacters.length) {
+            writingStatus.textContent = "全词已写完。请点击“完成书写，进行自评”选择会不会写。";
+          }
         }
       });
     });

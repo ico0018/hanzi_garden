@@ -17,6 +17,22 @@
 | Preview status | Not requested / not verified |
 | Human acceptance | Waiting — main release forbidden without explicit approval |
 
+## 2026-08-17 Daily dictation handoff
+
+```text
+Task: Complete the old-version-style daily dictation flow before any memory/spacing redesign.
+Acceptance criteria: Daily queue is capped at 15; each prompt has a listen action; pinyin and word answer are hidden until the learner chooses to reveal them; each word character has a Tianzige handwriting area; learner manually marks “我会写 / 我不会写” after writing; queue and result persist locally. Memory/spacing redesign is out of scope.
+Developer branch: feature/dictation-interaction
+Developer worktree: F:\chinese webapp\.worktrees\dictation-interaction
+Developer state: Done — pending independent QA
+QA result: Waiting
+QA evidence / defects: `node --check app.js` and `git diff --check` passed. Manual assessment is accessible even when HanziWriter reports stroke mistakes; the tool never assigns a result automatically.
+dev merge: Not allowed
+Preview: Not requested
+Human acceptance: Waiting
+Next owner: QA
+```
+
 ## Required task record
 
 `

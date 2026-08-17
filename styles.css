@@ -755,6 +755,21 @@ h1 {
   letter-spacing: 0.08em;
 }
 
+.dictation-answer {
+  margin: 4px 0 16px;
+  padding: 12px;
+  border: 2px dashed #d96b6b;
+  border-radius: 12px;
+  background: #fff9e5;
+}
+
+.dictation-answer-word {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
 .listen-button {
   margin: 0 0 12px;
   padding: 10px 16px;
