@@ -6,14 +6,14 @@
 
 | Field | Current state |
 | --- | --- |
-| Last updated | 2026-08-16 — multi-project workspace normalized; no business changes made |
-| Manager | Waiting — user-facing intake only; no new task assigned |
-| Developer | Waiting — no implementation task assigned |
-| QA | Waiting — no QA handoff assigned |
-| Current task | None — previous work state preserved below |
-| Branch | `feature/dictation-spaced-repetition` |
-| Worktree | Primary: `F:\chinese webapp`; no additional Agent worktree recorded |
-| QA status | Waiting — no test target assigned |
+| Last updated | 2026-08-16 — QA PASS; Developer checkpoint commit pending |
+| Manager | Active — checkpointing verified feature for handoff |
+| Developer | Done — QA-PASS implementation checkpointed |
+| QA | PASS — static syntax, diff, and interaction-path validation completed |
+| Current task | Correct exclusive tab, completion modals, and learning outcome indicators |
+| Branch | `feature/dictation-interaction` |
+| Worktree | Developer: `F:\chinese webapp\.worktrees\dictation-interaction` |
+| QA status | PASS — ready for Manager review; no merge performed |
 | Preview status | Not requested / not verified |
 | Human acceptance | Waiting — main release forbidden without explicit approval |
 
