@@ -523,28 +523,40 @@ function playHumanChinese(text, statusElement) {
   }
 
   const audio = new Audio(`${HUMAN_AUDIO_BASE_URL}/cmn-${encodeURIComponent(phrase)}.mp3`);
-  let settled = false;
+  activeAudio = audio;
+
+  let fallbackStarted = false;
+  let humanPlaybackStarted = false;
   let playAttempted = false;
   let fallbackTimer = null;
   const useFallback = () => {
-    if (settled) return;
-    settled = true;
-    window.clearTimeout(fallbackTimer);
-    // 少量超出词库的词语仍可使用设备中较自然的中文语音。
+    if (fallbackStarted || humanPlaybackStarted) return;
+    fallbackStarted = true;
+    if (fallbackTimer) window.clearTimeout(fallbackTimer);
+    if (activeAudio === audio) {
+      audio.pause();
+      activeAudio = null;
+    }
     speakChinese(phrase, statusElement);
   };
 
-  activeAudio = audio;
   audio.preload = "auto";
   audio.oncanplay = () => {
-    if (settled || playAttempted) return;
+    if (fallbackStarted || humanPlaybackStarted || playAttempted) return;
     playAttempted = true;
-    window.clearTimeout(fallbackTimer);
-    audio.play().then(() => {
-      settled = true;
-    }).catch(useFallback);
+    try {
+      Promise.resolve(audio.play()).catch(useFallback);
+    } catch (error) {
+      useFallback();
+    }
   };
   audio.onplaying = () => {
+    if (fallbackStarted) {
+      audio.pause();
+      return;
+    }
+    humanPlaybackStarted = true;
+    if (fallbackTimer) window.clearTimeout(fallbackTimer);
     if (statusElement) statusElement.textContent = "正在播放真人录音…";
   };
   audio.onerror = useFallback;
@@ -869,15 +881,16 @@ function renderDailyDictation() {
       <div class="tianzi-grid-list">
         ${wordCharacters.map((character, index) => `<div class="tianzi-grid daily-writing-grid"><div id="daily-writing-${index}" class="dictation-target" aria-label="第 ${index + 1} 个字书写区"></div></div>`).join("")}
       </div>
-      <div class="dictation-actions"><button class="primary-button finish-dictation-writing" type="button">完成书写，进行自评</button></div>
       <p class="writing-complete-note">已完成全词书写，请在弹窗中选择掌握情况。</p>
     </section>
   `;
 
   const writingStatus = dictationDetail.querySelector("#daily-writing-status");
+  const completedCharacters = new Set();
   let assessmentOpened = false;
-  const unlockManualMarking = () => {
+  const openAssessmentAfterWriting = () => {
     if (assessmentOpened) return;
+    if (completedCharacters.size !== wordCharacters.length) return;
     assessmentOpened = true;
     writingStatus.textContent = "全词已写完。请你自己选择会不会写；系统不会自动替你标记。";
     dictationDetail.querySelector(".writing-complete-note").classList.add("is-visible");
@@ -906,12 +919,9 @@ function renderDailyDictation() {
     revealButton.setAttribute("aria-expanded", String(isHidden));
     revealButton.textContent = isHidden ? "隐藏提示和答案" : "需要提示或答案";
   });
-  dictationDetail.querySelector(".finish-dictation-writing").addEventListener("click", unlockManualMarking);
-
   if (!window.HanziWriter || !wordCharacters.length) {
-    writingStatus.textContent = "书写工具未加载。完成纸上书写后，可继续手动确认。";
+    writingStatus.textContent = "书写工具加载失败，请刷新页面后重试。";
   } else {
-    const completedCharacters = new Set();
     wordCharacters.forEach((character, index) => {
       const target = document.getElementById(`daily-writing-${index}`);
       target.addEventListener("touchmove", (event) => event.preventDefault(), { passive: false });
@@ -937,7 +947,9 @@ function renderDailyDictation() {
           completedCharacters.add(index);
           target.parentElement.classList.add("is-complete");
           if (completedCharacters.size === wordCharacters.length) {
-            writingStatus.textContent = "全词已写完。请点击“完成书写，进行自评”选择会不会写。";
+            writingStatus.textContent = "全词写完啦！";
+            dictationDetail.querySelector(".writing-complete-note")?.classList.add("is-visible");
+            openAssessmentAfterWriting();
           }
         }
       });
