@@ -11,10 +11,10 @@ Task: Integrate user-provided Grade 1, Grade 2 and Grade 4 character datasets an
 Developer branch: feature/add-multi-grade-data
 Developer worktree: F:\chinese webapp\.worktrees\add-multi-grade-data
 Developer state: Done — `a56c6d4 feat: add multi-grade book datasets`
-QA result: Waiting
-QA evidence / defects: Parser validation passed for all four available books (1-upper: 25 lessons/100 chars; 2-upper: 35/250; 3-upper: 23/250; 4-upper: 25/250). `node --check` passed for app, welcome, and catalog scripts; `git diff --check` passed. Browser interaction remains for QA.
-dev merge: Not allowed — awaiting QA PASS
-Next owner: QA
+QA result: PASS
+QA evidence / defects: Independent QA verified exact `a30251b` / `a56c6d4`: syntax and diff checks, catalog availability, script load order, URL propagation, fail-closed invalid selection, original-data preservation, parser counts, and book-scoped practice/dictation keys all passed.
+dev merge: Completed — `1e2dd42 merge: add multi-grade book datasets`
+Next owner: Manager
 ```
 
 ## 2026-08-19 Audio fallback and write-before-review
