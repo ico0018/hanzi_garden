@@ -1,6 +1,6 @@
 // Fixed textbook vocabulary adapter.
-// IMPORTANT: the learning scope comes ONLY from the textbook `writing` table.
-// `recognition` is never used to build the site's character list.
+// IMPORTANT: character scope comes ONLY from the textbook `writing` table.
+// `recognition` is never used to build the site's learning list.
 (function () {
   const originalFetch = window.fetch.bind(window);
   const DATASET_COMMIT = "68faa378f2211fb1b9152f9df45eb8fa2c4fb2b4";
@@ -43,27 +43,72 @@
     return short ? `${short} ${title}` : title;
   }
 
-  function fixedWordsForCharacter(character, wordEntry, lessonTitle) {
-    const textbookWords = Array.isArray(wordEntry?.characters) ? wordEntry.characters : [];
-    const containing = textbookWords.filter((word) =>
-      Array.isArray(word) && word.some((item) => item.character === character.character)
+  function sameLesson(entry, writingEntry) {
+    return Boolean(
+      (entry?.lesson && entry.lesson === writingEntry.lesson) ||
+      (entry?.short && writingEntry.short && entry.short === writingEntry.short)
     );
-    const multiCharacter = containing.filter((word) => wordText(word).length > 1);
-    const chosen = (multiCharacter.length ? multiCharacter : containing).slice(0, 3);
+  }
+
+  function flattenWords(wordEntries) {
+    const result = [];
+    wordEntries.forEach((entry) => {
+      (entry.characters || []).forEach((characters) => {
+        if (!Array.isArray(characters)) return;
+        const text = wordText(characters);
+        if (!text) return;
+        result.push({
+          text,
+          pinyin: wordPinyin(characters),
+          lesson: entry.lesson || "",
+          short: entry.short || ""
+        });
+      });
+    });
+    return result;
+  }
+
+  function containsCharacter(word, character) {
+    return word.text.includes(character.character);
+  }
+
+  function chooseWords(character, writingEntry, lessonTitle, wordEntries, allWords) {
+    const lessonEntries = wordEntries.filter((entry) => sameLesson(entry, writingEntry));
+    const lessonWords = flattenWords(lessonEntries)
+      .filter((word) => containsCharacter(word, character) && word.text.length > 1);
+
+    const volumeWords = allWords
+      .filter((word) => containsCharacter(word, character) && word.text.length > 1);
+
+    const chosen = [];
+    const seen = new Set();
+    const pushUnique = (word, sourceLabel) => {
+      if (!word || seen.has(word.text) || chosen.length >= 3) return;
+      seen.add(word.text);
+      chosen.push({
+        word: word.text,
+        pinyin: word.pinyin,
+        meaning: sourceLabel
+      });
+    };
+
+    // The FIRST word is the dictation word because app.js always uses words[0].
+    // Prefer the same lesson / textbook appendix vocabulary for dictation.
+    lessonWords.forEach((word) => pushUnique(word, `《${lessonTitle}》课内词语`));
+
+    // Learning page aims for three fixed compounds. Supplement from the same book's
+    // fixed vocabulary list rather than inventing words in the browser.
+    volumeWords.forEach((word) => pushUnique(word, "本册教材固定词语"));
 
     if (!chosen.length) {
-      return [{
+      chosen.push({
         word: character.character,
         pinyin: character.pinyin || "",
         meaning: `《${lessonTitle}》写字表生字`
-      }];
+      });
     }
 
-    return chosen.map((word) => ({
-      word: wordText(word),
-      pinyin: wordPinyin(word),
-      meaning: `《${lessonTitle}》课内固定词语`
-    }));
+    return chosen;
   }
 
   function buildAppText(dataset) {
@@ -73,20 +118,16 @@
     }
 
     const wordEntries = Array.isArray(volume.words) ? volume.words : [];
+    const allWords = flattenWords(wordEntries);
     const output = [];
 
-    // Deliberately iterate ONLY volume.writing. Do not touch volume.recognition.
+    // Only the 写字表 determines which characters appear in the app.
     volume.writing.forEach((writingEntry) => {
       const lessonTitle = textbookTitle(volume, writingEntry);
       output.push(`[${lessonTitle}]`);
 
-      const wordEntry = wordEntries.find((entry) =>
-        (entry.lesson && entry.lesson === writingEntry.lesson) ||
-        (entry.short && entry.short === writingEntry.short)
-      );
-
       (writingEntry.characters || []).forEach((character) => {
-        const fixedWords = fixedWordsForCharacter(character, wordEntry, lessonTitle);
+        const fixedWords = chooseWords(character, writingEntry, lessonTitle, wordEntries, allWords);
         const groups = fixedWords.map((item) => `${item.word}|${item.pinyin}|${item.meaning}`);
         output.push(`${character.character}|${character.pinyin || ""}|${groups.join(";")}`);
       });
@@ -121,8 +162,6 @@
       });
     } catch (error) {
       console.error("Writing-table curriculum failed to load", error);
-      // Never fall back to old local files here: some legacy files contain recognition-table
-      // characters. Failing visibly is safer than silently showing the wrong curriculum.
       return new Response("", {
         status: 503,
         statusText: "Writing-table curriculum unavailable",
