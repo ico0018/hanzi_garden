@@ -40,13 +40,13 @@ Task: Repair the welcome-page “开始学习” control reported as unresponsiv
 Acceptance criteria: Clicking the default Grade 3 Upper start control must enter `index.html?book=3-upper`, including when the external welcome script does not execute; normal welcome-script behavior remains intact.
 Developer branch: feature/start-learning-button-fix
 Developer worktree: F:\chinese webapp\.worktrees\start-learning-button-fix
-Developer state: Done — pending commit and independent QA
-QA result: Waiting
-QA evidence / defects: `node --check welcome.js`, `node --check app.js`, diff check, and a DOM-stub click-navigation test pass. Browser attachment remains unavailable in this environment.
-dev merge: Not allowed — awaiting QA PASS
-Preview: Not requested
+Developer state: Done — `427ff63 fix: make welcome start control navigate reliably`
+QA result: PASS
+QA evidence / defects: QA independently verified exact `427ff63`: clean worktree, `node --check welcome.js`, `node --check app.js`, and `git diff 427ff63^ 427ff63 --check` pass; a DOM-stub test confirmed the fallback invokes `window.location.assign('index.html?book=3-upper')`, preserving the only enabled Grade 3 Upper selection.
+dev merge: Completed — merged as `e633745 merge: repair welcome start control`
+Preview: Ready locally — http://127.0.0.1:4173/welcome.html (HTTP 200)
 Human acceptance: Waiting
-Next owner: QA
+Next owner: User
 ```
 
 ## Required task record
