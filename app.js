@@ -493,6 +493,11 @@ const charDetail = document.getElementById("char-detail");
 const detailLayout = document.querySelector(".detail-layout");
 const dictationOverview = document.getElementById("dictation-overview");
 const dictationDetail = document.getElementById("dictation-detail");
+const switchBookButton = document.getElementById("switch-book-button");
+
+switchBookButton?.addEventListener("click", () => {
+  window.location.href = "welcome.html";
+});
 
 let lessons = defaultLessons;
 let currentLessonIndex = 0;
@@ -504,10 +509,11 @@ let dictationCharIndex = 0;
 let speechVoices = [];
 let activeAudio = null;
 let activeView = "learning";
+const BOOK_CATALOG = window.HANZI_BOOK_CATALOG || {};
+const selectedBookId = new URLSearchParams(window.location.search).get("book") || "3-upper";
+const selectedBook = BOOK_CATALOG[selectedBookId];
 
 const DAILY_DICTATION_SIZE = 15;
-const DICTATION_PROGRESS_KEY = "hanzi-daily-dictation-progress-v1";
-const DICTATION_QUEUE_KEY = "hanzi-daily-dictation-queue-v1";
 const EBBINGHAUS_INTERVALS = [2, 4, 7, 15, 30, 60];
 
 // 真人录音优先：audio-cmn 收录了 HSK 词语及单字的普通话录音。
@@ -523,28 +529,40 @@ function playHumanChinese(text, statusElement) {
   }
 
   const audio = new Audio(`${HUMAN_AUDIO_BASE_URL}/cmn-${encodeURIComponent(phrase)}.mp3`);
-  let settled = false;
+  activeAudio = audio;
+
+  let fallbackStarted = false;
+  let humanPlaybackStarted = false;
   let playAttempted = false;
   let fallbackTimer = null;
   const useFallback = () => {
-    if (settled) return;
-    settled = true;
-    window.clearTimeout(fallbackTimer);
-    // 少量超出词库的词语仍可使用设备中较自然的中文语音。
+    if (fallbackStarted || humanPlaybackStarted) return;
+    fallbackStarted = true;
+    if (fallbackTimer) window.clearTimeout(fallbackTimer);
+    if (activeAudio === audio) {
+      audio.pause();
+      activeAudio = null;
+    }
     speakChinese(phrase, statusElement);
   };
 
-  activeAudio = audio;
   audio.preload = "auto";
   audio.oncanplay = () => {
-    if (settled || playAttempted) return;
+    if (fallbackStarted || humanPlaybackStarted || playAttempted) return;
     playAttempted = true;
-    window.clearTimeout(fallbackTimer);
-    audio.play().then(() => {
-      settled = true;
-    }).catch(useFallback);
+    try {
+      Promise.resolve(audio.play()).catch(useFallback);
+    } catch (error) {
+      useFallback();
+    }
   };
   audio.onplaying = () => {
+    if (fallbackStarted) {
+      audio.pause();
+      return;
+    }
+    humanPlaybackStarted = true;
+    if (fallbackTimer) window.clearTimeout(fallbackTimer);
     if (statusElement) statusElement.textContent = "正在播放真人录音…";
   };
   audio.onerror = useFallback;
@@ -556,9 +574,19 @@ function playHumanChinese(text, statusElement) {
   audio.load();
 }
 
+function practiceProgressKey(lessonIndex) {
+  return `hanzi-practice-v2-${selectedBookId}-${lessonIndex}`;
+}
+
 function getPracticeProgress(lessonIndex) {
+  const key = practiceProgressKey(lessonIndex);
   try {
-    return JSON.parse(localStorage.getItem(`hanzi-practice-${lessonIndex}`) || "{}");
+    let raw = localStorage.getItem(key);
+    if (raw === null && selectedBookId === "3-upper") {
+      raw = localStorage.getItem(`hanzi-practice-${lessonIndex}`);
+      if (raw !== null) localStorage.setItem(key, raw);
+    }
+    return JSON.parse(raw || "{}");
   } catch (error) {
     return {};
   }
@@ -567,7 +595,7 @@ function getPracticeProgress(lessonIndex) {
 function savePracticeProgress(lessonIndex, charIndex, status) {
   const progress = getPracticeProgress(lessonIndex);
   progress[charIndex] = { status, updatedAt: todayKey() };
-  localStorage.setItem(`hanzi-practice-${lessonIndex}`, JSON.stringify(progress));
+  localStorage.setItem(practiceProgressKey(lessonIndex), JSON.stringify(progress));
 }
 
 function getPracticeStatus(lessonIndex, charIndex) {
@@ -704,17 +732,14 @@ function parseLessonsText(text) {
   return parsedLessons.filter((lesson) => lesson.chars.length > 0);
 }
 
-async function loadLessonsFromTxt() {
-  try {
-    const response = await fetch("生字数据.txt", { cache: "no-store" });
-    if (!response.ok) throw new Error("txt not found");
-    const text = await response.text();
-    const parsed = parseLessonsText(text);
-    if (parsed.length) return parsed;
-  } catch (error) {
-    console.warn("Using built-in lesson data fallback:", error);
-  }
-  return defaultLessons;
+async function loadLessonsFromTxt(bookId) {
+  const book = BOOK_CATALOG[bookId];
+  if (!book?.available || !book.dataFile) throw new Error(`Unknown or unavailable book: ${bookId}`);
+  const response = await fetch(encodeURI(book.dataFile), { cache: "no-store" });
+  if (!response.ok) throw new Error(`Failed to load ${book.dataFile}: ${response.status}`);
+  const parsed = parseLessonsText(await response.text());
+  if (!parsed.length) throw new Error(`No valid lessons parsed from ${book.dataFile}`);
+  return parsed;
 }
 
 function formatDate(date) {
@@ -735,7 +760,7 @@ function addDays(dateString, days) {
 function getDictationItems() {
   return lessons.flatMap((lesson, lessonIndex) =>
     lesson.chars.map((character, charIndex) => ({
-      id: `${lessonIndex}:${charIndex}`,
+      id: `${selectedBookId}:${lessonIndex}:${charIndex}`,
       order: lessonIndex * 1000 + charIndex,
       lessonTitle: lesson.title,
       character: character.char,
@@ -745,16 +770,31 @@ function getDictationItems() {
   );
 }
 
+function dailyDictationProgressKey() {
+  return `hanzi-daily-dictation-progress-v2-${selectedBookId}`;
+}
+
+function dailyDictationQueueKey() {
+  return `hanzi-daily-dictation-queue-v2-${selectedBookId}`;
+}
+
 function getDailyDictationProgress() {
   try {
-    return JSON.parse(localStorage.getItem(DICTATION_PROGRESS_KEY) || "{}");
+    let raw = localStorage.getItem(dailyDictationProgressKey());
+    if (raw === null && selectedBookId === "3-upper") {
+      const legacy = JSON.parse(localStorage.getItem("hanzi-daily-dictation-progress-v1") || "{}");
+      const migrated = Object.fromEntries(Object.entries(legacy).map(([id, value]) => [`3-upper:${id}`, value]));
+      raw = JSON.stringify(migrated);
+      localStorage.setItem(dailyDictationProgressKey(), raw);
+    }
+    return JSON.parse(raw || "{}");
   } catch (error) {
     return {};
   }
 }
 
 function saveDailyDictationProgress(progress) {
-  localStorage.setItem(DICTATION_PROGRESS_KEY, JSON.stringify(progress));
+  localStorage.setItem(dailyDictationProgressKey(), JSON.stringify(progress));
 }
 
 function getDailyQueue() {
@@ -765,7 +805,17 @@ function getDailyQueue() {
   let savedQueue = null;
 
   try {
-    savedQueue = JSON.parse(localStorage.getItem(DICTATION_QUEUE_KEY) || "null");
+    let raw = localStorage.getItem(dailyDictationQueueKey());
+    if (raw === null && selectedBookId === "3-upper") {
+      const legacy = JSON.parse(localStorage.getItem("hanzi-daily-dictation-queue-v1") || "null");
+      if (legacy) {
+        legacy.ids = (legacy.ids || []).map((id) => `3-upper:${id}`);
+        legacy.results = Object.fromEntries(Object.entries(legacy.results || {}).map(([id, value]) => [`3-upper:${id}`, value]));
+        raw = JSON.stringify(legacy);
+        localStorage.setItem(dailyDictationQueueKey(), raw);
+      }
+    }
+    savedQueue = JSON.parse(raw || "null");
   } catch (error) {
     savedQueue = null;
   }
@@ -784,13 +834,13 @@ function getDailyQueue() {
   const newItems = items.filter((item) => !progress[item.id] && !dueIds.has(item.id));
   const queue = [...dueItems, ...newItems].slice(0, DAILY_DICTATION_SIZE);
 
-  localStorage.setItem(DICTATION_QUEUE_KEY, JSON.stringify({ date, ids: queue.map((item) => item.id), results: {} }));
+  localStorage.setItem(dailyDictationQueueKey(), JSON.stringify({ date, ids: queue.map((item) => item.id), results: {} }));
   return queue;
 }
 
 function getTodayQueueState() {
   try {
-    return JSON.parse(localStorage.getItem(DICTATION_QUEUE_KEY) || "{}");
+    return JSON.parse(localStorage.getItem(dailyDictationQueueKey()) || "{}");
   } catch (error) {
     return {};
   }
@@ -813,7 +863,7 @@ function saveManualDictationResult(item, known) {
   const state = getTodayQueueState();
   if (state.date === date) {
     state.results = { ...(state.results || {}), [item.id]: known ? "known" : "unknown" };
-    localStorage.setItem(DICTATION_QUEUE_KEY, JSON.stringify(state));
+    localStorage.setItem(dailyDictationQueueKey(), JSON.stringify(state));
   }
 }
 
@@ -869,15 +919,16 @@ function renderDailyDictation() {
       <div class="tianzi-grid-list">
         ${wordCharacters.map((character, index) => `<div class="tianzi-grid daily-writing-grid"><div id="daily-writing-${index}" class="dictation-target" aria-label="第 ${index + 1} 个字书写区"></div></div>`).join("")}
       </div>
-      <div class="dictation-actions"><button class="primary-button finish-dictation-writing" type="button">完成书写，进行自评</button></div>
       <p class="writing-complete-note">已完成全词书写，请在弹窗中选择掌握情况。</p>
     </section>
   `;
 
   const writingStatus = dictationDetail.querySelector("#daily-writing-status");
+  const completedCharacters = new Set();
   let assessmentOpened = false;
-  const unlockManualMarking = () => {
+  const openAssessmentAfterWriting = () => {
     if (assessmentOpened) return;
+    if (completedCharacters.size !== wordCharacters.length) return;
     assessmentOpened = true;
     writingStatus.textContent = "全词已写完。请你自己选择会不会写；系统不会自动替你标记。";
     dictationDetail.querySelector(".writing-complete-note").classList.add("is-visible");
@@ -906,12 +957,9 @@ function renderDailyDictation() {
     revealButton.setAttribute("aria-expanded", String(isHidden));
     revealButton.textContent = isHidden ? "隐藏提示和答案" : "需要提示或答案";
   });
-  dictationDetail.querySelector(".finish-dictation-writing").addEventListener("click", unlockManualMarking);
-
   if (!window.HanziWriter || !wordCharacters.length) {
-    writingStatus.textContent = "书写工具未加载。完成纸上书写后，可继续手动确认。";
+    writingStatus.textContent = "书写工具加载失败，请刷新页面后重试。";
   } else {
-    const completedCharacters = new Set();
     wordCharacters.forEach((character, index) => {
       const target = document.getElementById(`daily-writing-${index}`);
       target.addEventListener("touchmove", (event) => event.preventDefault(), { passive: false });
@@ -937,7 +985,9 @@ function renderDailyDictation() {
           completedCharacters.add(index);
           target.parentElement.classList.add("is-complete");
           if (completedCharacters.size === wordCharacters.length) {
-            writingStatus.textContent = "全词已写完。请点击“完成书写，进行自评”选择会不会写。";
+            writingStatus.textContent = "全词写完啦！";
+            dictationDetail.querySelector(".writing-complete-note")?.classList.add("is-visible");
+            openAssessmentAfterWriting();
           }
         }
       });
@@ -1165,13 +1215,19 @@ function renderCharacterPractice(character) {
 }
 
 function getDictationProgress(lessonIndex) {
-  return JSON.parse(localStorage.getItem(`hanzi-dictation-${lessonIndex}`) || "{}");
+  const key = `hanzi-dictation-v2-${selectedBookId}-${lessonIndex}`;
+  let raw = localStorage.getItem(key);
+  if (raw === null && selectedBookId === "3-upper") {
+    raw = localStorage.getItem(`hanzi-dictation-${lessonIndex}`);
+    if (raw !== null) localStorage.setItem(key, raw);
+  }
+  return JSON.parse(raw || "{}");
 }
 
 function saveDictationProgress(lessonIndex, charIndex, value) {
   const progress = getDictationProgress(lessonIndex);
   progress[charIndex] = value;
-  localStorage.setItem(`hanzi-dictation-${lessonIndex}`, JSON.stringify(progress));
+  localStorage.setItem(`hanzi-dictation-v2-${selectedBookId}-${lessonIndex}`, JSON.stringify(progress));
 }
 
 function speakDictationWord(word) {
@@ -1278,11 +1334,28 @@ function render() {
 async function init() {
   loadSpeechVoices();
   if ("speechSynthesis" in window) window.speechSynthesis.onvoiceschanged = loadSpeechVoices;
-  const loadedLessons = await loadLessonsFromTxt();
-  if (loadedLessons && loadedLessons.length) {
-    lessons = loadedLessons;
+  if (!selectedBook?.available) {
+    renderLoadError();
+    return;
   }
-  render();
+  try {
+    lessons = await loadLessonsFromTxt(selectedBookId);
+    document.querySelector(".topbar h1").textContent = `汉字乐园 · ${selectedBook.label}`;
+    render();
+  } catch (error) {
+    console.error(error);
+    renderLoadError();
+  }
+}
+
+function renderLoadError() {
+  learningView.hidden = false;
+  dictationView.hidden = true;
+  appTabs.innerHTML = "";
+  lessonNav.innerHTML = "";
+  lessonOverview.innerHTML = `<section class="dictation-card"><h2>教材数据加载失败</h2><p>请返回重新选择教材后再试。</p><a class="primary-button" href="welcome.html">返回选择教材</a></section>`;
+  charList.innerHTML = "";
+  charDetail.innerHTML = "";
 }
 
 init();

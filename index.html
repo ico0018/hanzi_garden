@@ -9,9 +9,14 @@
   <body>
     <div class="app-shell">
       <header class="topbar">
-        <div>
-          <p class="eyebrow">校内生字学习</p>
-          <h1>汉字乐园</h1>
+        <div class="topbar-left">
+          <button id="switch-book-button" class="switch-book-button" type="button">
+            ← 切换教材
+          </button>
+          <div>
+            <p class="eyebrow">校内生字学习</p>
+            <h1>汉字乐园</h1>
+          </div>
         </div>
       </header>
 
@@ -34,6 +39,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@2.0.2/dist/hanzi-writer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pinyin-pro@3.18.2/dist/index.js"></script>
+    <script src="book-catalog.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

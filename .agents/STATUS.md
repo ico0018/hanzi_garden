@@ -4,7 +4,62 @@
 
 ## Current snapshot
 
-> Release update — 2026-08-18: User explicitly authorized production release. QA-passed `dev` was merged into `main` as `ba8bdfa release: merge dev into main`; pre-release local backup is `backup/2026-08-18-before-welcome-release`. GitHub push is the remaining release step.
+## 2026-08-19 Switch-book navigation integration
+
+```text
+Task: Add a persistent header-level “← 切换教材” control to the multi-book learning page.
+Developer branch: feature/add-multi-grade-data
+Developer commit: 7a5572c feat: add switch-book navigation
+QA result: PASS
+QA evidence / defects: Exact commit `7a5572c1e5a8033786adc10c03fda199c113737c` passed `node --check app.js` and `git diff --check 7a5572c^ 7a5572c`; static QA confirmed a persistent pre-tab header control, `welcome.html` navigation only, no storage mutation, and <=640px responsive layout.
+dev merge: Completed — `e720efb merge: add switch-book navigation`
+Preview: Not requested
+Human acceptance: Waiting
+Next owner: User
+```
+
+## 2026-08-19 Multi-book global navigation addition
+
+```text
+Task: Add a persistent, header-level “← 切换教材” control to the multi-book learning page.
+Acceptance criteria:
+- `index.html?book=1-upper`, `2-upper`, `3-upper`, and `4-upper` each show the control at the upper left in the app header.
+- The control is visible in both 生字学习 and 每日听写, returns to `welcome.html`, and makes no localStorage or progress mutation.
+- Desktop, iPad, and narrow mobile layouts keep the title unobstructed.
+Developer branch: feature/add-multi-grade-data
+Developer worktree: F:\chinese webapp\.worktrees\add-multi-grade-data
+Developer state: Done - header-level switch-book control implemented; no commit created.
+QA result: PASS
+QA evidence / defects: Independent QA on the uncommitted `feature/add-multi-grade-data` candidate: `node --check app.js` and `git diff --check` passed. The `switch-book-button` is in the static App Shell header before `#app-tabs`, so it remains present for both learning and dictation views. Its click handler only sets `window.location.href = "welcome.html"`; the handler contains no storage mutation. At <=640px `.topbar-left` becomes a left-aligned column with an 8px gap, preserving the title. Static assertions passed for all of these conditions. Browser interaction was not run.
+dev merge: Not allowed — awaiting QA PASS
+Next owner: QA
+```
+
+## 2026-08-19 Multi-book dataset integration
+
+```text
+Task: Integrate user-provided Grade 1, Grade 2 and Grade 4 character datasets and complete multi-book loading.
+Developer branch: feature/add-multi-grade-data
+Developer worktree: F:\chinese webapp\.worktrees\add-multi-grade-data
+Developer state: Done — `a56c6d4 feat: add multi-grade book datasets`
+QA result: PASS
+QA evidence / defects: Independent QA verified exact `a30251b` / `a56c6d4`: syntax and diff checks, catalog availability, script load order, URL propagation, fail-closed invalid selection, original-data preservation, parser counts, and book-scoped practice/dictation keys all passed.
+dev merge: Completed — `1e2dd42 merge: add multi-grade book datasets`
+Next owner: Manager
+```
+
+## 2026-08-19 Audio fallback and write-before-review
+
+```text
+Task: Fix audio fallback and enforce write-before-review daily dictation.
+Developer branch: feature/fix-audio-dictation-flow
+Developer worktree: F:\chinese webapp\.worktrees\fix-audio-dictation-flow
+Developer state: Done — `ad0ec06 fix: fallback audio and require dictation writing`
+QA result: PASS
+QA evidence / defects: Independent QA passed exact `a983df0` / `ad0ec06`: syntax and diff checks; mocked error, rejected play, synchronous throw, and timeout each produced one TTS fallback; human `onplaying` suppressed fallback; the daily flow has no manual bypass, gates assessment on every HanziWriter completion, and fails closed without HanziWriter. Browser/iPad interaction remains unexecuted.
+dev merge: Completed — `0bb73cb merge: fix audio and dictation flow`
+Next owner: Manager
+```
 
 | Field | Current state |
 | --- | --- |
