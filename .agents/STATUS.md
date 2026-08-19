@@ -4,6 +4,19 @@
 
 ## Current snapshot
 
+## 2026-08-19 Audio fallback and write-before-review
+
+```text
+Task: Fix audio fallback and enforce write-before-review daily dictation.
+Developer branch: feature/fix-audio-dictation-flow
+Developer worktree: F:\chinese webapp\.worktrees\fix-audio-dictation-flow
+Developer state: Done — `ad0ec06 fix: fallback audio and require dictation writing`
+QA result: Waiting
+QA evidence / defects: `node --check app.js`, `git diff --check`, audio fallback state tests (error, play rejection, and no fallback after human playback), and daily-dictation gate static tests pass. Browser/device interaction remains for independent QA.
+dev merge: Not allowed — awaiting QA PASS
+Next owner: QA
+```
+
 | Field | Current state |
 | --- | --- |
 | Last updated | 2026-08-17 — Daily Dictation commit 7954325 integrated into dev after QA PASS |
