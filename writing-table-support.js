@@ -1,13 +1,6 @@
 // Fixed textbook vocabulary adapter.
-//
-// Every book is backed by a pinned, structured Renjiao/统编版 dataset containing:
-// - lessons: textbook lesson titles
-// - writing: characters students are required to write
-// - words: fixed textbook vocabulary grouped by lesson
-//
-// The app does NOT invent or randomly generate words. For each writing character we
-// deterministically use the first textbook word(s), in textbook order, from the same
-// lesson that contain that character. Daily dictation always uses the first one.
+// IMPORTANT: the learning scope comes ONLY from the textbook `writing` table.
+// `recognition` is never used to build the site's character list.
 (function () {
   const originalFetch = window.fetch.bind(window);
   const DATASET_COMMIT = "68faa378f2211fb1b9152f9df45eb8fa2c4fb2b4";
@@ -30,10 +23,10 @@
   const selectedBookId = new URLSearchParams(window.location.search).get("book") || "3-upper";
   let fixedDatasetPromise = null;
 
-  function isLocalBookDataRequest(input) {
+  function isBookDataRequest(input) {
     const url = typeof input === "string" ? input : input?.url || "";
     const decoded = decodeURI(url);
-    return /(?:生字数据|\.txt(?:$|\?))/i.test(decoded);
+    return /生字数据/i.test(decoded) || /\.txt(?:$|\?)/i.test(decoded);
   }
 
   function wordText(wordCharacters) {
@@ -55,9 +48,6 @@
     const containing = textbookWords.filter((word) =>
       Array.isArray(word) && word.some((item) => item.character === character.character)
     );
-
-    // Prefer actual multi-character textbook words. Preserve textbook order so the
-    // first dictation word is stable on every browser/device.
     const multiCharacter = containing.filter((word) => wordText(word).length > 1);
     const chosen = (multiCharacter.length ? multiCharacter : containing).slice(0, 3);
 
@@ -72,13 +62,12 @@
     return chosen.map((word) => ({
       word: wordText(word),
       pinyin: wordPinyin(word),
-      meaning: `《${lessonTitle}》课内词语`
+      meaning: `《${lessonTitle}》课内固定词语`
     }));
   }
 
   function buildAppText(dataset) {
-    const grade = dataset?.grades?.[0];
-    const volume = grade?.volumes?.[0];
+    const volume = dataset?.grades?.[0]?.volumes?.[0];
     if (!volume || !Array.isArray(volume.writing)) {
       throw new Error("Textbook dataset has no writing table");
     }
@@ -86,6 +75,7 @@
     const wordEntries = Array.isArray(volume.words) ? volume.words : [];
     const output = [];
 
+    // Deliberately iterate ONLY volume.writing. Do not touch volume.recognition.
     volume.writing.forEach((writingEntry) => {
       const lessonTitle = textbookTitle(volume, writingEntry);
       output.push(`[${lessonTitle}]`);
@@ -97,9 +87,7 @@
 
       (writingEntry.characters || []).forEach((character) => {
         const fixedWords = fixedWordsForCharacter(character, wordEntry, lessonTitle);
-        const groups = fixedWords.map((item) =>
-          `${item.word}|${item.pinyin}|${item.meaning}`
-        );
+        const groups = fixedWords.map((item) => `${item.word}|${item.pinyin}|${item.meaning}`);
         output.push(`${character.character}|${character.pinyin || ""}|${groups.join(";")}`);
       });
     });
@@ -112,7 +100,7 @@
     if (!sourceFile) throw new Error(`No fixed textbook source for ${selectedBookId}`);
 
     if (!fixedDatasetPromise) {
-      fixedDatasetPromise = originalFetch(`${DATASET_BASE}/${sourceFile}`, { cache: "force-cache" })
+      fixedDatasetPromise = originalFetch(`${DATASET_BASE}/${sourceFile}`, { cache: "no-store" })
         .then((response) => {
           if (!response.ok) throw new Error(`Fixed textbook dataset failed: ${response.status}`);
           return response.json();
@@ -123,7 +111,7 @@
   }
 
   window.fetch = async function (input, init) {
-    if (!isLocalBookDataRequest(input)) return originalFetch(input, init);
+    if (!isBookDataRequest(input)) return originalFetch(input, init);
 
     try {
       const fixedText = await getFixedBookText();
@@ -132,11 +120,14 @@
         headers: { "Content-Type": "text/plain; charset=utf-8" }
       });
     } catch (error) {
-      // Keep the site usable if the pinned curriculum CDN is temporarily unavailable.
-      // The checked-in local book file remains a fallback only; no random word generation
-      // is performed here.
-      console.warn("Fixed textbook vocabulary unavailable; using local fallback.", error);
-      return originalFetch(input, init);
+      console.error("Writing-table curriculum failed to load", error);
+      // Never fall back to old local files here: some legacy files contain recognition-table
+      // characters. Failing visibly is safer than silently showing the wrong curriculum.
+      return new Response("", {
+        status: 503,
+        statusText: "Writing-table curriculum unavailable",
+        headers: { "Content-Type": "text/plain; charset=utf-8" }
+      });
     }
   };
 })();
