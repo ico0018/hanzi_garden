@@ -4,6 +4,8 @@
 
 ## Current snapshot
 
+> Release update — 2026-08-18: User explicitly authorized production release. QA-passed `dev` was merged into `main` as `ba8bdfa release: merge dev into main`; pre-release local backup is `backup/2026-08-18-before-welcome-release`. GitHub push is the remaining release step.
+
 | Field | Current state |
 | --- | --- |
 | Last updated | 2026-08-17 — Daily Dictation commit 7954325 integrated into dev after QA PASS |
