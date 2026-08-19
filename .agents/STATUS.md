@@ -33,6 +33,22 @@ Human acceptance: Waiting
 Next owner: Manager
 ```
 
+## 2026-08-18 Welcome start-button repair
+
+```text
+Task: Repair the welcome-page “开始学习” control reported as unresponsive.
+Acceptance criteria: Clicking the default Grade 3 Upper start control must enter `index.html?book=3-upper`, including when the external welcome script does not execute; normal welcome-script behavior remains intact.
+Developer branch: feature/start-learning-button-fix
+Developer worktree: F:\chinese webapp\.worktrees\start-learning-button-fix
+Developer state: Done — pending commit and independent QA
+QA result: Waiting
+QA evidence / defects: `node --check welcome.js`, `node --check app.js`, diff check, and a DOM-stub click-navigation test pass. Browser attachment remains unavailable in this environment.
+dev merge: Not allowed — awaiting QA PASS
+Preview: Not requested
+Human acceptance: Waiting
+Next owner: QA
+```
+
 ## Required task record
 
 `
