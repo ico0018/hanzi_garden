@@ -1,18 +1,9 @@
 const bookSelector = document.getElementById("book-selector");
 const bookSelectionStatus = document.getElementById("book-selection-status");
 const startLearningButton = document.getElementById("start-learning-button");
+const bookCatalog = Object.values(window.HANZI_BOOK_CATALOG || {});
 
-const bookCatalog = Array.from({ length: 6 }, (_, gradeIndex) => {
-  const grade = gradeIndex + 1;
-  return ["upper", "lower"].map((term) => ({
-    id: `${grade}-${term}`,
-    label: `${grade}年级${term === "upper" ? "上册" : "下册"}`,
-    dataFile: `${grade}年级${term === "upper" ? "上" : "下"}.txt`,
-    available: grade === 3 && term === "upper"
-  }));
-}).flat();
-
-let selectedBookId = "3-upper";
+let selectedBookId = bookCatalog.find((book) => book.available)?.id || "";
 
 function renderBookSelector() {
   bookSelector.innerHTML = bookCatalog.map((book) => `
@@ -30,11 +21,14 @@ function renderBookSelector() {
   });
 
   const selectedBook = bookCatalog.find((book) => book.id === selectedBookId);
-  bookSelectionStatus.textContent = `当前选择：${selectedBook.label}（${selectedBook.dataFile}）`;
+  bookSelectionStatus.textContent = selectedBook
+    ? `当前选择：${selectedBook.label}（${selectedBook.dataFile}）`
+    : "暂无可用教材数据。";
+  startLearningButton.disabled = !selectedBook;
 }
 
 startLearningButton.addEventListener("click", () => {
-  window.location.href = `index.html?book=${encodeURIComponent(selectedBookId)}`;
+  if (selectedBookId) window.location.href = `index.html?book=${encodeURIComponent(selectedBookId)}`;
 });
 
 renderBookSelector();
