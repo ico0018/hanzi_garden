@@ -1,6 +1,9 @@
 // Fixed textbook vocabulary adapter.
-// IMPORTANT: character scope comes ONLY from the textbook `writing` table.
-// `recognition` is never used to build the site's learning list.
+// IMPORTANT: character scope comes ONLY from the textbook 写字表.
+//
+// 三年级上册 is intentionally NOT intercepted here. The checked-in 生字数据.txt
+// has been verified against the user's textbook 写字表 (250 characters) and already
+// contains three curated words per character. It is the source of truth for 3-upper.
 (function () {
   const originalFetch = window.fetch.bind(window);
   const DATASET_COMMIT = "68faa378f2211fb1b9152f9df45eb8fa2c4fb2b4";
@@ -10,7 +13,6 @@
     "1-lower": "121.json",
     "2-upper": "211.json",
     "2-lower": "221.json",
-    "3-upper": "311.json",
     "3-lower": "321.json",
     "4-upper": "411.json",
     "4-lower": "421.json",
@@ -57,89 +59,60 @@
         if (!Array.isArray(characters)) return;
         const text = wordText(characters);
         if (!text) return;
-        result.push({
-          text,
-          pinyin: wordPinyin(characters),
-          lesson: entry.lesson || "",
-          short: entry.short || ""
-        });
+        result.push({ text, pinyin: wordPinyin(characters), lesson: entry.lesson || "", short: entry.short || "" });
       });
     });
     return result;
   }
 
-  function containsCharacter(word, character) {
-    return word.text.includes(character.character);
-  }
-
   function chooseWords(character, writingEntry, lessonTitle, wordEntries, allWords) {
-    const lessonEntries = wordEntries.filter((entry) => sameLesson(entry, writingEntry));
-    const lessonWords = flattenWords(lessonEntries)
-      .filter((word) => containsCharacter(word, character) && word.text.length > 1);
-
+    const lessonWords = flattenWords(wordEntries.filter((entry) => sameLesson(entry, writingEntry)))
+      .filter((word) => word.text.includes(character.character) && word.text.length > 1);
     const volumeWords = allWords
-      .filter((word) => containsCharacter(word, character) && word.text.length > 1);
+      .filter((word) => word.text.includes(character.character) && word.text.length > 1);
 
     const chosen = [];
     const seen = new Set();
     const pushUnique = (word, sourceLabel) => {
       if (!word || seen.has(word.text) || chosen.length >= 3) return;
       seen.add(word.text);
-      chosen.push({
-        word: word.text,
-        pinyin: word.pinyin,
-        meaning: sourceLabel
-      });
+      chosen.push({ word: word.text, pinyin: word.pinyin, meaning: sourceLabel });
     };
 
-    // The FIRST word is the dictation word because app.js always uses words[0].
-    // Prefer the same lesson / textbook appendix vocabulary for dictation.
+    // app.js uses words[0] for daily dictation, so same-lesson vocabulary comes first.
     lessonWords.forEach((word) => pushUnique(word, `《${lessonTitle}》课内词语`));
-
-    // Learning page aims for three fixed compounds. Supplement from the same book's
-    // fixed vocabulary list rather than inventing words in the browser.
     volumeWords.forEach((word) => pushUnique(word, "本册教材固定词语"));
 
     if (!chosen.length) {
-      chosen.push({
-        word: character.character,
-        pinyin: character.pinyin || "",
-        meaning: `《${lessonTitle}》写字表生字`
-      });
+      chosen.push({ word: character.character, pinyin: character.pinyin || "", meaning: `《${lessonTitle}》写字表生字` });
     }
-
     return chosen;
   }
 
   function buildAppText(dataset) {
     const volume = dataset?.grades?.[0]?.volumes?.[0];
-    if (!volume || !Array.isArray(volume.writing)) {
-      throw new Error("Textbook dataset has no writing table");
-    }
+    if (!volume || !Array.isArray(volume.writing)) throw new Error("Textbook dataset has no writing table");
 
     const wordEntries = Array.isArray(volume.words) ? volume.words : [];
     const allWords = flattenWords(wordEntries);
     const output = [];
 
-    // Only the 写字表 determines which characters appear in the app.
+    // Only 写字表 determines which characters appear. recognition is never read here.
     volume.writing.forEach((writingEntry) => {
       const lessonTitle = textbookTitle(volume, writingEntry);
       output.push(`[${lessonTitle}]`);
-
       (writingEntry.characters || []).forEach((character) => {
         const fixedWords = chooseWords(character, writingEntry, lessonTitle, wordEntries, allWords);
         const groups = fixedWords.map((item) => `${item.word}|${item.pinyin}|${item.meaning}`);
         output.push(`${character.character}|${character.pinyin || ""}|${groups.join(";")}`);
       });
     });
-
     return output.join("\n");
   }
 
   async function getFixedBookText() {
     const sourceFile = BOOK_SOURCE[selectedBookId];
     if (!sourceFile) throw new Error(`No fixed textbook source for ${selectedBookId}`);
-
     if (!fixedDatasetPromise) {
       fixedDatasetPromise = originalFetch(`${DATASET_BASE}/${sourceFile}`, { cache: "no-store" })
         .then((response) => {
@@ -152,14 +125,13 @@
   }
 
   window.fetch = async function (input, init) {
+    // Verified local curriculum: do not override 三年级上册.
+    if (selectedBookId === "3-upper") return originalFetch(input, init);
     if (!isBookDataRequest(input)) return originalFetch(input, init);
 
     try {
       const fixedText = await getFixedBookText();
-      return new Response(fixedText, {
-        status: 200,
-        headers: { "Content-Type": "text/plain; charset=utf-8" }
-      });
+      return new Response(fixedText, { status: 200, headers: { "Content-Type": "text/plain; charset=utf-8" } });
     } catch (error) {
       console.error("Writing-table curriculum failed to load", error);
       return new Response("", {
