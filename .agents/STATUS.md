@@ -11,10 +11,10 @@ Task: Fix audio fallback and enforce write-before-review daily dictation.
 Developer branch: feature/fix-audio-dictation-flow
 Developer worktree: F:\chinese webapp\.worktrees\fix-audio-dictation-flow
 Developer state: Done — `ad0ec06 fix: fallback audio and require dictation writing`
-QA result: Waiting
-QA evidence / defects: `node --check app.js`, `git diff --check`, audio fallback state tests (error, play rejection, and no fallback after human playback), and daily-dictation gate static tests pass. Browser/device interaction remains for independent QA.
-dev merge: Not allowed — awaiting QA PASS
-Next owner: QA
+QA result: PASS
+QA evidence / defects: Independent QA passed exact `a983df0` / `ad0ec06`: syntax and diff checks; mocked error, rejected play, synchronous throw, and timeout each produced one TTS fallback; human `onplaying` suppressed fallback; the daily flow has no manual bypass, gates assessment on every HanziWriter completion, and fails closed without HanziWriter. Browser/iPad interaction remains unexecuted.
+dev merge: Completed — `0bb73cb merge: fix audio and dictation flow`
+Next owner: Manager
 ```
 
 | Field | Current state |
