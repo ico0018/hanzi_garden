@@ -4,6 +4,19 @@
 
 ## Current snapshot
 
+## 2026-08-19 Multi-book dataset integration
+
+```text
+Task: Integrate user-provided Grade 1, Grade 2 and Grade 4 character datasets and complete multi-book loading.
+Developer branch: feature/add-multi-grade-data
+Developer worktree: F:\chinese webapp\.worktrees\add-multi-grade-data
+Developer state: Done — `a56c6d4 feat: add multi-grade book datasets`
+QA result: Waiting
+QA evidence / defects: Parser validation passed for all four available books (1-upper: 25 lessons/100 chars; 2-upper: 35/250; 3-upper: 23/250; 4-upper: 25/250). `node --check` passed for app, welcome, and catalog scripts; `git diff --check` passed. Browser interaction remains for QA.
+dev merge: Not allowed — awaiting QA PASS
+Next owner: QA
+```
+
 ## 2026-08-19 Audio fallback and write-before-review
 
 ```text

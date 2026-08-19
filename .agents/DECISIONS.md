@@ -1,5 +1,14 @@
 # Decisions Log
 
+## 2026-08-19 — Multi-book character dataset architecture
+
+- Decision: Hanzi Garden uses one shared learning application and selects curriculum data through the `book` query parameter.
+- Decision: Each available grade/term maps explicitly to one user-provided data file.
+- Decision: Learning and dictation progress are isolated by book ID.
+- Decision: Missing curriculum data must never silently fall back to another grade.
+- Rationale: Multiple grades now share the same application and must not mix curriculum or learner progress.
+- Source: User instruction, 2026-08-19.
+
 ## 2026-08-19 — Daily dictation write-before-review gate
 
 - Decision: Daily Dictation manual “我会写 / 我不会写” assessment is available only after every HanziWriter target for the current word fires `onComplete`.
