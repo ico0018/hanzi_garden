@@ -4,6 +4,23 @@
 
 ## Current snapshot
 
+## 2026-08-19 Multi-book global navigation addition
+
+```text
+Task: Add a persistent, header-level “← 切换教材” control to the multi-book learning page.
+Acceptance criteria:
+- `index.html?book=1-upper`, `2-upper`, `3-upper`, and `4-upper` each show the control at the upper left in the app header.
+- The control is visible in both 生字学习 and 每日听写, returns to `welcome.html`, and makes no localStorage or progress mutation.
+- Desktop, iPad, and narrow mobile layouts keep the title unobstructed.
+Developer branch: feature/add-multi-grade-data
+Developer worktree: F:\chinese webapp\.worktrees\add-multi-grade-data
+Developer state: Done - header-level switch-book control implemented; no commit created.
+QA result: PASS
+QA evidence / defects: Independent QA on the uncommitted `feature/add-multi-grade-data` candidate: `node --check app.js` and `git diff --check` passed. The `switch-book-button` is in the static App Shell header before `#app-tabs`, so it remains present for both learning and dictation views. Its click handler only sets `window.location.href = "welcome.html"`; the handler contains no storage mutation. At <=640px `.topbar-left` becomes a left-aligned column with an 8px gap, preserving the title. Static assertions passed for all of these conditions. Browser interaction was not run.
+dev merge: Not allowed — awaiting QA PASS
+Next owner: QA
+```
+
 ## 2026-08-19 Multi-book dataset integration
 
 ```text

@@ -493,6 +493,11 @@ const charDetail = document.getElementById("char-detail");
 const detailLayout = document.querySelector(".detail-layout");
 const dictationOverview = document.getElementById("dictation-overview");
 const dictationDetail = document.getElementById("dictation-detail");
+const switchBookButton = document.getElementById("switch-book-button");
+
+switchBookButton?.addEventListener("click", () => {
+  window.location.href = "welcome.html";
+});
 
 let lessons = defaultLessons;
 let currentLessonIndex = 0;
