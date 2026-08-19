@@ -4,6 +4,18 @@
 
 ## Current snapshot
 
+## 2026-08-19 Production release authorization
+
+```text
+Release scope: QA-passed multi-book curriculum support, audio/dictation fixes, and persistent switch-book navigation from dev.
+Human acceptance: Approved — user said “合并到main并推送github”, 2026-08-19.
+Rollback branch: backup/2026-08-19-pre-main-release at 60c04e5.
+main merge: Completed — c62b93d merge: release dev to production.
+Verification: node --check app.js, node --check welcome.js, node --check book-catalog.js, and git diff --check origin/main...HEAD passed.
+GitHub push: Pending.
+Next owner: Manager
+```
+
 ## 2026-08-19 Switch-book navigation integration
 
 ```text
