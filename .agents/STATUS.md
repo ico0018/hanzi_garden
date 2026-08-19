@@ -4,6 +4,20 @@
 
 ## Current snapshot
 
+## 2026-08-19 Switch-book navigation integration
+
+```text
+Task: Add a persistent header-level “← 切换教材” control to the multi-book learning page.
+Developer branch: feature/add-multi-grade-data
+Developer commit: 7a5572c feat: add switch-book navigation
+QA result: PASS
+QA evidence / defects: Exact commit `7a5572c1e5a8033786adc10c03fda199c113737c` passed `node --check app.js` and `git diff --check 7a5572c^ 7a5572c`; static QA confirmed a persistent pre-tab header control, `welcome.html` navigation only, no storage mutation, and <=640px responsive layout.
+dev merge: Completed — `e720efb merge: add switch-book navigation`
+Preview: Not requested
+Human acceptance: Waiting
+Next owner: User
+```
+
 ## 2026-08-19 Multi-book global navigation addition
 
 ```text
