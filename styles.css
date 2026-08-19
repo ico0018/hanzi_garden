@@ -135,6 +135,32 @@ button {
   padding: 6px 8px 18px;
 }
 
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.switch-book-button {
+  border: 2px solid var(--ink);
+  background: var(--card);
+  border-radius: 12px;
+  padding: 8px 12px;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.switch-book-button:hover {
+  background: var(--accent-soft);
+}
+
+.switch-book-button:active {
+  transform: scale(0.98);
+}
+
 .eyebrow {
   margin: 0 0 6px;
   color: var(--muted);
@@ -892,6 +918,12 @@ h1 {
 
   .topbar {
     padding: 4px 2px 14px;
+  }
+
+  .topbar-left {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
   }
 
   h1 {
