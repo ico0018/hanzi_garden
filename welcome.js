@@ -22,7 +22,7 @@ function renderBookSelector() {
 
   const selectedBook = bookCatalog.find((book) => book.id === selectedBookId);
   bookSelectionStatus.textContent = selectedBook
-    ? `当前选择：${selectedBook.label}（${selectedBook.dataFile}）`
+    ? `当前选择：${selectedBook.label}`
     : "暂无可用教材数据。";
   startLearningButton.disabled = !selectedBook;
 }
