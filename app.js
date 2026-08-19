@@ -557,13 +557,53 @@ function playHumanChinese(text, statusElement) {
 }
 
 function getPracticeProgress(lessonIndex) {
-  return JSON.parse(localStorage.getItem(`hanzi-practice-${lessonIndex}`) || "{}");
+  try {
+    return JSON.parse(localStorage.getItem(`hanzi-practice-${lessonIndex}`) || "{}");
+  } catch (error) {
+    return {};
+  }
 }
 
-function savePracticeProgress(lessonIndex, charIndex) {
+function savePracticeProgress(lessonIndex, charIndex, status) {
   const progress = getPracticeProgress(lessonIndex);
-  progress[charIndex] = true;
+  progress[charIndex] = { status, updatedAt: todayKey() };
   localStorage.setItem(`hanzi-practice-${lessonIndex}`, JSON.stringify(progress));
+}
+
+function getPracticeStatus(lessonIndex, charIndex) {
+  const entry = getPracticeProgress(lessonIndex)[charIndex];
+  // Keep the original true values usable for children who practiced before this update.
+  if (entry === true) return "learned";
+  return entry?.status || null;
+}
+
+function openSelfAssessmentModal({ title, message, knownLabel, unknownLabel, onKnown, onUnknown }) {
+  const modal = document.createElement("div");
+  modal.className = "self-assessment-modal";
+  modal.setAttribute("role", "dialog");
+  modal.setAttribute("aria-modal", "true");
+  modal.setAttribute("aria-labelledby", "self-assessment-title");
+  modal.innerHTML = `
+    <div class="self-assessment-panel">
+      <h2 id="self-assessment-title">${title}</h2>
+      <p>${message}</p>
+      <div class="self-assessment-actions">
+        <button class="mark-known" type="button">${knownLabel}</button>
+        <button class="mark-unknown" type="button">${unknownLabel}</button>
+      </div>
+    </div>`;
+
+  const close = () => modal.remove();
+  modal.querySelector(".mark-known").addEventListener("click", () => {
+    close();
+    onKnown();
+  });
+  modal.querySelector(".mark-unknown").addEventListener("click", () => {
+    close();
+    onUnknown();
+  });
+  document.body.appendChild(modal);
+  modal.querySelector("button").focus();
 }
 
 function celebrateDictation() {
@@ -818,48 +858,58 @@ function renderDailyDictation() {
     <section class="dictation-card daily-dictation-card">
       <p class="dictation-step">第 ${completedCount + 1} / ${queue.length} 个</p>
       <span class="daily-count">${item.lessonTitle}</span>
-      <p id="daily-dictation-word" class="daily-prompt is-hidden">请先听读音，再写下来</p>
-      <p class="dictation-pinyin">${item.pinyin}</p>
+      <p class="daily-prompt is-hidden">请先听读音，再写下来</p>
       <button class="listen-button daily-listen" type="button">🔊 听写</button>
-      <button class="secondary-button reveal-dictation" type="button">显示答案</button>
+      <button class="secondary-button reveal-dictation" type="button" aria-expanded="false">需要提示或答案</button>
+      <div class="dictation-answer" hidden>
+        <p class="dictation-pinyin">${item.pinyin}</p>
+        <p class="dictation-answer-word">答案：${item.word}</p>
+      </div>
       <p id="daily-writing-status" class="daily-review-note">请按笔顺在田字格中写完这个词的每个汉字，完成后才可手动标记。</p>
       <div class="tianzi-grid-list">
-        ${wordCharacters.map((character, index) => `<div class="tianzi-grid daily-writing-grid"><div id="daily-writing-${index}" class="dictation-target" aria-label="${character}书写区"></div></div>`).join("")}
+        ${wordCharacters.map((character, index) => `<div class="tianzi-grid daily-writing-grid"><div id="daily-writing-${index}" class="dictation-target" aria-label="第 ${index + 1} 个字书写区"></div></div>`).join("")}
       </div>
-      <p class="writing-complete-note">已完成全词书写，请自己判断掌握情况。</p>
-      <div class="manual-mark-actions" hidden>
-        <button class="mark-known" type="button">我会写<br><small>下次间隔更久</small></button>
-        <button class="mark-unknown" type="button">我不会写<br><small>明天继续出现</small></button>
-      </div>
+      <div class="dictation-actions"><button class="primary-button finish-dictation-writing" type="button">完成书写，进行自评</button></div>
+      <p class="writing-complete-note">已完成全词书写，请在弹窗中选择掌握情况。</p>
     </section>
   `;
 
-  const manualMarkActions = dictationDetail.querySelector(".manual-mark-actions");
   const writingStatus = dictationDetail.querySelector("#daily-writing-status");
+  let assessmentOpened = false;
   const unlockManualMarking = () => {
+    if (assessmentOpened) return;
+    assessmentOpened = true;
     writingStatus.textContent = "全词已写完。请你自己选择会不会写；系统不会自动替你标记。";
     dictationDetail.querySelector(".writing-complete-note").classList.add("is-visible");
-    manualMarkActions.hidden = false;
+    openSelfAssessmentModal({
+      title: "写完啦，自己来判断",
+      message: "这次听写，你会写吗？",
+      knownLabel: "我会写",
+      unknownLabel: "我不会写",
+      onKnown: () => {
+        saveManualDictationResult(item, true);
+        renderDailyDictation();
+      },
+      onUnknown: () => {
+        saveManualDictationResult(item, false);
+        renderDailyDictation();
+      }
+    });
   };
 
   dictationDetail.querySelector(".daily-listen").addEventListener("click", () => playHumanChinese(item.word, writingStatus));
-  dictationDetail.querySelector(".reveal-dictation").addEventListener("click", () => {
-    const answer = document.getElementById("daily-dictation-word");
-    answer.textContent = item.word;
-    answer.classList.remove("is-hidden");
+  const revealButton = dictationDetail.querySelector(".reveal-dictation");
+  revealButton.addEventListener("click", () => {
+    const answer = dictationDetail.querySelector(".dictation-answer");
+    const isHidden = answer.hidden;
+    answer.hidden = !isHidden;
+    revealButton.setAttribute("aria-expanded", String(isHidden));
+    revealButton.textContent = isHidden ? "隐藏提示和答案" : "需要提示或答案";
   });
+  dictationDetail.querySelector(".finish-dictation-writing").addEventListener("click", unlockManualMarking);
 
   if (!window.HanziWriter || !wordCharacters.length) {
     writingStatus.textContent = "书写工具未加载。完成纸上书写后，可继续手动确认。";
-    const continueButton = document.createElement("button");
-    continueButton.className = "secondary-button";
-    continueButton.type = "button";
-    continueButton.textContent = "我已完成书写";
-    continueButton.addEventListener("click", () => {
-      continueButton.remove();
-      unlockManualMarking();
-    });
-    writingStatus.after(continueButton);
   } else {
     const completedCharacters = new Set();
     wordCharacters.forEach((character, index) => {
@@ -886,20 +936,14 @@ function renderDailyDictation() {
         onComplete: () => {
           completedCharacters.add(index);
           target.parentElement.classList.add("is-complete");
-          if (completedCharacters.size === wordCharacters.length) unlockManualMarking();
+          if (completedCharacters.size === wordCharacters.length) {
+            writingStatus.textContent = "全词已写完。请点击“完成书写，进行自评”选择会不会写。";
+          }
         }
       });
     });
   }
 
-  dictationDetail.querySelector(".mark-known").addEventListener("click", () => {
-    saveManualDictationResult(item, true);
-    renderDailyDictation();
-  });
-  dictationDetail.querySelector(".mark-unknown").addEventListener("click", () => {
-    saveManualDictationResult(item, false);
-    renderDailyDictation();
-  });
 }
 
 function renderLessons() {
@@ -942,14 +986,14 @@ function renderOverview() {
 
 function renderCharList() {
   const lesson = lessons[currentLessonIndex];
-  const practiceProgress = getPracticeProgress(currentLessonIndex);
   charList.innerHTML = lesson.chars
     .map(
       (item, index) => `
         <button class="char-button ${index === currentCharIndex ? "active" : ""}" data-index="${index}" type="button">
           <span class="char-mini">${item.char}</span>
           <span class="char-read">${item.pinyin}</span>
-          ${practiceProgress[index] ? '<span class="learned-check" aria-label="已写对" title="已写对">✓</span>' : ""}
+          ${getPracticeStatus(currentLessonIndex, index) === "learned" ? '<span class="learned-check" aria-label="已学会" title="已学会">✓</span>' : ""}
+          ${getPracticeStatus(currentLessonIndex, index) === "review" ? '<span class="review-warning" aria-label="还要复习" title="还要复习">!</span>' : ""}
         </button>
       `
     )
@@ -1065,8 +1109,41 @@ function renderCharacterPractice(character) {
       <div class="dictation-actions"><button class="secondary-button retry-practice" type="button">重新书写</button><button class="primary-button return-learning" type="button">返回学习</button></div>
     </section>`;
 
+  const completePractice = () => {
+    openSelfAssessmentModal({
+      title: "写完啦，自己来判断",
+      message: `“${character.char}”这次学会了吗？`,
+      knownLabel: "已学会",
+      unknownLabel: "还要复习",
+      onKnown: () => {
+        savePracticeProgress(practiceLessonIndex, practiceCharIndex, "learned");
+        renderCharList();
+        document.getElementById("practice-status").textContent = "已标记为学会，生字列表有绿色对勾。";
+      },
+      onUnknown: () => {
+        savePracticeProgress(practiceLessonIndex, practiceCharIndex, "review");
+        renderCharList();
+        document.getElementById("practice-status").textContent = "已标记为还要复习，生字列表有红色提示。";
+      }
+    });
+  };
   const target = document.getElementById("practice-target");
   target.addEventListener("touchmove", (event) => event.preventDefault(), { passive: false });
+  if (!window.HanziWriter) {
+    document.getElementById("practice-status").textContent = "书写工具未加载；完成纸上书写后再确认。";
+    const doneButton = document.createElement("button");
+    doneButton.type = "button";
+    doneButton.className = "primary-button";
+    doneButton.textContent = "我已完成书写";
+    doneButton.addEventListener("click", completePractice, { once: true });
+    target.after(doneButton);
+    charDetail.querySelector(".retry-practice").addEventListener("click", () => renderCharacterPractice(character));
+    charDetail.querySelector(".return-learning").addEventListener("click", () => {
+      renderCharList();
+      renderDetail();
+    });
+    return;
+  }
   const size = target.clientWidth;
   const practiceWriter = HanziWriter.create(target, character.char, {
     width: size, height: size, padding: 12, showCharacter: false, showOutline: false,
@@ -1078,15 +1155,7 @@ function renderCharacterPractice(character) {
     onMistake: () => {
       document.getElementById("practice-status").textContent = "这笔不太对，再试一次。";
     },
-    onComplete: (summary) => {
-      savePracticeProgress(practiceLessonIndex, practiceCharIndex);
-      renderCharList();
-      if (summary.totalMistakes === 0) {
-        document.getElementById("practice-status").textContent = "✓ 写得很棒！已在生字列表中标记。";
-      } else {
-        document.getElementById("practice-status").textContent = "✓ 写完了，已在生字列表中标记；再多练一次会更好。";
-      }
-    }
+    onComplete: completePractice
   });
   charDetail.querySelector(".retry-practice").addEventListener("click", () => renderCharacterPractice(character));
   charDetail.querySelector(".return-learning").addEventListener("click", () => {

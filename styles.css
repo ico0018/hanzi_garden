@@ -193,6 +193,11 @@ h1 {
   gap: 18px;
 }
 
+/* `.content-wrap` sets display:flex, so explicitly preserve the tab's hidden state. */
+.content-wrap[hidden] {
+  display: none !important;
+}
+
 .lesson-overview {
   display: flex;
   justify-content: space-between;
@@ -620,6 +625,66 @@ h1 {
   line-height: 1;
 }
 
+.review-warning {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: grid;
+  width: 20px;
+  height: 18px;
+  place-items: center;
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  background: #d9534f;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 900;
+  line-height: 1.25;
+  padding-top: 4px;
+}
+
+.self-assessment-modal {
+  position: fixed;
+  z-index: 2147483646;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgba(29, 29, 29, 0.55);
+}
+
+.self-assessment-panel {
+  width: min(100%, 420px);
+  padding: 26px;
+  text-align: center;
+  background: #fffdf4;
+  border: 3px solid var(--ink);
+  border-radius: 20px;
+  box-shadow: 8px 8px 0 rgba(29, 29, 29, 0.18);
+}
+
+.self-assessment-panel h2 {
+  margin: 0 0 10px;
+}
+
+.self-assessment-panel p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.self-assessment-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.self-assessment-actions button {
+  min-height: 58px;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
 .firework-rain {
   position: fixed;
   z-index: 2147483647;
@@ -688,6 +753,21 @@ h1 {
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: 0.08em;
+}
+
+.dictation-answer {
+  margin: 4px 0 16px;
+  padding: 12px;
+  border: 2px dashed #d96b6b;
+  border-radius: 12px;
+  background: #fff9e5;
+}
+
+.dictation-answer-word {
+  margin: 0;
+  color: var(--ink);
+  font-size: 1.25rem;
+  font-weight: 800;
 }
 
 .listen-button {
