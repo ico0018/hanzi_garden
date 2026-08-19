@@ -10,18 +10,11 @@
     <div class="app-shell">
       <header class="topbar">
         <div class="topbar-left">
-          <button id="switch-book-button" class="switch-book-button" type="button">
-            ← 切换教材
-          </button>
-          <div>
-            <p class="eyebrow">校内生字学习</p>
-            <h1>汉字乐园</h1>
-          </div>
+          <button id="switch-book-button" class="switch-book-button" type="button">← 切换教材</button>
+          <div><p class="eyebrow">校内生字学习</p><h1>汉字乐园</h1></div>
         </div>
       </header>
-
       <nav id="app-tabs" class="app-tabs" aria-label="功能切换"></nav>
-
       <main id="learning-view" class="content-wrap">
         <nav id="lesson-nav" class="lesson-nav" aria-label="课程导航"></nav>
         <section id="lesson-overview" class="lesson-overview" aria-live="polite"></section>
@@ -30,16 +23,15 @@
           <section id="char-detail" class="char-detail" aria-live="polite"></section>
         </div>
       </main>
-
       <main id="dictation-view" class="content-wrap" hidden>
         <section id="dictation-overview" class="lesson-overview" aria-live="polite"></section>
         <section id="dictation-detail" aria-live="polite"></section>
       </main>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@2.0.2/dist/hanzi-writer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pinyin-pro@3.18.2/dist/index.js"></script>
     <script src="book-catalog.js"></script>
+    <script src="writing-table-support.js?v=1"></script>
     <script src="app.js?v=4"></script>
   </body>
 </html>
