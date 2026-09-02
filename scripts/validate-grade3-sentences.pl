@@ -8,6 +8,7 @@ use utf8;
 # Usage:
 #   perl scripts/validate-grade3-sentences.pl
 #   perl scripts/validate-grade3-sentences.pl 生字数据.txt
+#   perl scripts/validate-grade3-sentences.pl --self-test
 #
 # The Grade 3 Upper source must use this optional extension of the established
 # data format. Other book files intentionally remain valid without it:
@@ -16,6 +17,8 @@ use utf8;
 binmode STDOUT, ':encoding(UTF-8)';
 binmode STDERR, ':encoding(UTF-8)';
 
+my $self_test = @ARGV && $ARGV[0] eq '--self-test';
+shift @ARGV if $self_test;
 my $data_file = shift @ARGV // '生字数据.txt';
 die "Usage: $0 [生字数据.txt]\n" if @ARGV;
 
@@ -24,6 +27,21 @@ sub trim {
   $value //= '';
   $value =~ s/^\s+|\s+$//g;
   return $value;
+}
+
+sub normalize_sentence {
+  my ($sentence) = @_;
+  $sentence = trim($sentence);
+  # Ignore whitespace and punctuation when checking that sentence bodies are
+  # individually authored rather than trivial punctuation variations.
+  $sentence =~ s/[\s\p{P}\p{S}]//g;
+  return $sentence;
+}
+
+sub is_word_list_metadata {
+  my ($sentence) = @_;
+  return $sentence =~ /(?:这个|该|上述)(?:词语|词|组词)/
+    || $sentence =~ /(?:学习|认识|朗读|书写|讲解|记住).{0,12}(?:词语|组词)/;
 }
 
 sub read_lines {
@@ -63,9 +81,21 @@ sub parse_first_group_word {
   return $parts[0];
 }
 
+if ($self_test) {
+  die "Self-test failed: old metadata template was accepted\n"
+    unless is_word_list_metadata('今天，我们学习了“山坡”这个组词。');
+  die "Self-test failed: natural contextual sentence was rejected\n"
+    if is_word_list_metadata('我们在山坡上放风筝。');
+  die "Self-test failed: punctuation-only duplicate was not normalized\n"
+    unless normalize_sentence('我们在山坡上放风筝。') eq normalize_sentence('我们在山坡上放风筝！');
+  print "PASS: metadata-template and normalized-duplicate guards work.\n";
+  exit 0;
+}
+
 my @failures;
 my @grade3_entries = data_lines($data_file);
 my $sentence_count = 0;
+my %normalized_sentence_lines;
 
 for my $entry (@grade3_entries) {
   my ($line_number, $line) = @$entry;
@@ -96,7 +126,15 @@ for my $entry (@grade3_entries) {
     push @failures, "$data_file:$line_number sentence does not contain '$linked_word'";
   } elsif ($sentence !~ /[。！？!?]\z/) {
     push @failures, "$data_file:$line_number sentence must end in sentence punctuation";
+  } elsif (is_word_list_metadata($sentence)) {
+    push @failures, "$data_file:$line_number is a word-list or learning metadata statement, not a contextual sentence";
   } else {
+    my $normalized = normalize_sentence($sentence);
+    if (my $original_line = $normalized_sentence_lines{$normalized}) {
+      push @failures, "$data_file:$line_number duplicates the normalized sentence body from line $original_line";
+      next;
+    }
+    $normalized_sentence_lines{$normalized} = $line_number;
     $sentence_count++;
   }
 }
@@ -140,5 +178,5 @@ if (@failures) {
   exit 1;
 }
 
-print "PASS: $sentence_count / " . scalar(@grade3_entries) . " Grade 3 Upper characters have a linked sentence; ";
+print "PASS: $sentence_count / " . scalar(@grade3_entries) . " Grade 3 Upper characters have a linked, unique contextual sentence; ";
 print "$legacy_entry_count legacy entries across $legacy_file_count populated textbook files remain parseable.\n";

@@ -2,8 +2,10 @@
 
 ## Current status
 
-Candidate implementation complete on `feature/third-grade-pdf-sentences`; ready
-for independent QA.
+QA-001 corrected; ready for independent re-test. The first candidate's uniform
+metadata sentence was structurally valid but not a natural contextual usage. It
+has been replaced by 250 individually authored, child-appropriate sentences
+that use their linked group words as semantic components.
 
 ## Delivered in this candidate
 
@@ -15,9 +17,9 @@ for independent QA.
 - A visible `造句` card on the 生字学习 detail page, including the linked group
   word.
 - 250/250 current 三年级上册 entries carry a linked first group word and an
-  in-sentence occurrence of that word.
-- `scripts/validate-grade3-sentences.pl` for repeatable completeness and legacy
-  compatibility verification, plus an idempotent sentence-field population tool.
+  in-sentence occurrence of that word, in 250 unique normalized sentence bodies.
+- `scripts/validate-grade3-sentences.pl` for repeatable completeness, natural
+  context, normalized-sentence uniqueness, and legacy-compatibility verification.
 
 ## BLOCKED: requested PDF curriculum replacement
 
@@ -30,10 +32,11 @@ without any application-code change once the PDF is supplied.
 ## Verification run
 
 ```text
-perl -c scripts/populate-grade3-sentence-fields.pl
 perl -c scripts/validate-grade3-sentences.pl
+perl scripts/validate-grade3-sentences.pl --self-test
 perl scripts/validate-grade3-sentences.pl
-# PASS: 250 / 250 Grade 3 Upper characters have a linked sentence;
+# PASS: metadata-template and normalized-duplicate guards work.
+# PASS: 250 / 250 Grade 3 Upper characters have a linked, unique contextual sentence;
 #       600 legacy entries across 3 populated textbook files remain parseable.
 git diff --check
 ```
