@@ -176,7 +176,12 @@ function parseLessonsText(text) {
     const cells = rawLine.split("|").map((cell) => cell.trim());
     if (cells.length < 3) continue;
     const [char, pinyin, ...rest] = cells;
-    const words = rest.join("|")
+    // `||` introduces optional sentence metadata while leaving the established
+    // word-list format unchanged for every existing textbook file.
+    const [wordSource, linkedGroupWord = "", sentenceText = ""] = rest.join("|")
+      .split("||")
+      .map((part) => part.trim());
+    const words = wordSource
       .split(";")
       .map((group) => group.trim())
       .filter(Boolean)
@@ -187,7 +192,13 @@ function parseLessonsText(text) {
       })
       .filter(Boolean);
     if (!char || !words.length) continue;
-    currentLesson.chars.push({ char, pinyin, words });
+    const sentence = sentenceText
+      ? {
+          groupWord: linkedGroupWord || words[0]?.word || "",
+          text: sentenceText
+        }
+      : null;
+    currentLesson.chars.push({ char, pinyin, words, sentence });
   }
 
   return parsedLessons.filter((lesson) => lesson.chars.length > 0);
@@ -591,6 +602,7 @@ function renderDetail() {
   const character = lesson.chars[currentCharIndex];
   cacheHumanAudio(character.char);
   character.words.forEach((word) => cacheHumanAudio(word.word));
+  if (character.sentence?.groupWord) cacheHumanAudio(character.sentence.groupWord);
 
   charDetail.innerHTML = `
     <div class="character-panel">
@@ -622,6 +634,14 @@ function renderDetail() {
               </div>`).join("")}
           </div>
         </div>
+        ${character.sentence?.text ? `
+          <section class="sentence-card" aria-label="造句">
+            <div class="sentence-heading">
+              <h3 class="sentence-title">造句</h3>
+              <span class="sentence-group-word">关联组词：${escapeHtml(character.sentence.groupWord)}</span>
+            </div>
+            <p class="sentence-text">${escapeHtml(character.sentence.text)}</p>
+          </section>` : ""}
       </div>
     </div>`;
 

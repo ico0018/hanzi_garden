@@ -757,6 +757,43 @@ h1 {
   line-height: 1.5;
 }
 
+.sentence-card {
+  padding: 14px 16px;
+  background: #fff8df;
+  border: 3px solid var(--ink);
+  border-radius: 16px;
+}
+
+.sentence-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sentence-title {
+  margin: 0;
+  font-size: 1.15rem;
+}
+
+.sentence-group-word {
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #fff;
+  color: #8b4d24;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.sentence-text {
+  margin: 10px 0 0;
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.7;
+}
+
 .dictation-card {
   max-width: 600px;
   margin: 0 auto;

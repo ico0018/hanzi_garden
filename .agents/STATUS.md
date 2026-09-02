@@ -4,6 +4,22 @@
 
 ## Current snapshot
 
+## 2026-09-02 — Grade 3 sentence-learning candidate
+
+```text
+Task: Add an optional, backwards-compatible sentence and linked group-word field to the character data model; show it in the character-learning page; give every current Grade 3 Upper character a sentence; and add reproducible data validation.
+Acceptance criteria: Every non-comment character entry in 生字数据.txt has a sentence linked to its first group word; each sentence contains that linked word; legacy textbook files remain parseable; the learning page renders the linked group word and “造句”; verification is reproducible.
+Developer branch: feature/third-grade-pdf-sentences
+Developer worktree: /root/Documents/Codex/2026-09-02/https-github-com-ico0018-hanzi-garden/worktrees/third-grade-pdf-sentences
+Developer state: Done — optional sentence data/parsing/rendering and self-check tooling are implemented and verified; ready for independent QA.
+QA result: Waiting
+QA evidence / defects: `perl scripts/validate-grade3-sentences.pl` passed: 250/250 Grade 3 Upper characters have a linked sentence and 600 legacy entries across 3 populated textbook files remain parseable. `perl -c` passed for both tooling scripts and `git diff --check` passed. PDF source was not present in the local workspace, /tmp, history, or the available remote baseline, so the exact Grade 3 textbook-word replacement is BLOCKED pending the user-provided PDF; this candidate must not represent current data as a PDF replacement. Node/browser runtime verification remains a QA follow-up because Node is unavailable in this environment.
+dev merge: Not allowed
+Preview: Not requested
+Human acceptance: Waiting
+Next owner: QA
+```
+
 ## 2026-08-19 Production release authorization
 
 ```text
@@ -168,4 +184,3 @@ Preview: NOT REQUESTED
 Human acceptance: WAITING
 Next owner: Developer
 ```
-
