@@ -12,12 +12,12 @@ Acceptance criteria: Every non-comment character entry in 生字数据.txt has a
 Developer branch: feature/third-grade-pdf-sentences
 Developer worktree: /root/Documents/Codex/2026-09-02/https-github-com-ico0018-hanzi-garden/worktrees/third-grade-pdf-sentences
 Developer state: Done — QA-001 corrected: all 250 sentences are individually authored natural-context uses of their linked first group word; the former automatic metadata-population tool was removed.
-QA result: Waiting — re-test requested after QA-001 correction
-QA evidence / defects: The first candidate passed structural validation (250/250 linked sentences and 600 legacy entries parseable) but QA correctly rejected its normalized “今天，我们学习了‘<词>’这个组词。” template as a non-contextual word-list meta statement, not an actual use of the group word. The corrected validator now rejects word-list/learning metadata statements, fails on duplicate normalized sentence bodies, and includes a self-test for both guards. `perl scripts/validate-grade3-sentences.pl --self-test` and the full 250-entry validation pass. PDF source was not present in the local workspace, /tmp, history, or the available remote baseline, so the exact Grade 3 textbook-word replacement is BLOCKED pending the user-provided PDF; this candidate must not represent current data as a PDF replacement. Node/browser runtime verification remains a QA follow-up because Node is unavailable in this environment.
-dev merge: Not allowed
-Preview: Not requested
-Human acceptance: Waiting
-Next owner: QA
+QA result: PASS for the exact feature candidate `8e9073fea6dd266d444b19e4cf73836d2b72a373`; the user accepted the disclosed PDF-source and browser-runtime limitations for this release.
+QA evidence / defects: Independent QA verified 250/250 linked unique contextual sentences and 600 legacy entries; parser, source-preservation, escaping, diff, and validator self-test checks passed. PDF source replacement and browser DOM/three-viewport evidence remain known gaps: neither a PDF nor Node/Chromium/agent-browser was available. The user explicitly accepted the current candidate rather than asserting that the PDF curriculum replacement is done; full evidence is in `.agents/QA.md` in the Manager worktree.
+dev merge: Completed locally — fast-forwarded `dev` from `7eb22aa` to `8e9073f`; release checks passed, remote push pending
+Preview: Static HTTP probe passed — `index.html`, scripts, styles and the current Grade 3 data file returned HTTP 200; browser runtime not available in this environment
+Human acceptance: Approved — user said “验收pass，合并到main吧”, 2026-09-02
+Next owner: Manager — push `dev`, fast-forward `main` through a clean release worktree, then push without force
 ```
 
 ## 2026-08-19 Production release authorization
