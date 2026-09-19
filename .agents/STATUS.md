@@ -12,10 +12,12 @@ Acceptance criteria: The supplied 28 words are stored one per line in a UTF-8 TX
 Developer branch: feature/daily-word-bank-current
 Developer worktree: F:\chinese webapp\.worktrees\daily-word-bank-current
 Developer state: Done — explicit Grade 3 Upper bank, v4 isolation, and focused Node behavior test completed.
-QA result: Waiting
-QA evidence / defects: Developer checks passed: `node --check app.js`, `node --check daily-word-bank.js`, `node --check scripts/test-daily-word-bank.js`, `node scripts/test-daily-word-bank.js`, and `git diff --check`. The existing Perl sentence validator could not run because Perl is unavailable in this Windows environment.
-dev merge: Not allowed — awaiting independent QA PASS
-Next owner: QA
+QA result: PASS
+QA evidence / defects: Independent QA passed exact `c793bacd551b0fe46e11b44717b3c991e0c5109a`: TXT contents/order, Grade 3-only source, non-generated empty state for other books, v4 storage isolation, load order, syntax checks, test script, and diff check. Final main checks also passed: `node --check app.js`, `node --check daily-word-bank.js`, `node scripts/test-daily-word-bank.js`, and `git diff --check origin/main...HEAD`.
+dev merge: Completed — GitHub `dev` fast-forwarded to `c793bac`.
+main merge: Completed — `735c106 merge: release editable daily word bank`.
+GitHub push: Pending
+Next owner: Manager
 ```
 
 ## 2026-09-02 — Grade 3 sentence-learning candidate
