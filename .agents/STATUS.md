@@ -4,6 +4,20 @@
 
 ## Current snapshot
 
+## 2026-09-19 — Explicit daily word-bank refresh
+
+```text
+Task: Replace generated daily-dictation phrases with an editable Grade 3 Upper word bank.
+Acceptance criteria: The supplied 28 words are stored one per line in a UTF-8 TXT file; only that file supplies Grade 3 Upper daily dictation; other books show a configured-bank empty state; v4 keys do not read/migrate generated queues.
+Developer branch: feature/daily-word-bank-current
+Developer worktree: F:\chinese webapp\.worktrees\daily-word-bank-current
+Developer state: Done — explicit Grade 3 Upper bank, v4 isolation, and focused Node behavior test completed.
+QA result: Waiting
+QA evidence / defects: Developer checks passed: `node --check app.js`, `node --check daily-word-bank.js`, `node --check scripts/test-daily-word-bank.js`, `node scripts/test-daily-word-bank.js`, and `git diff --check`. The existing Perl sentence validator could not run because Perl is unavailable in this Windows environment.
+dev merge: Not allowed — awaiting independent QA PASS
+Next owner: QA
+```
+
 ## 2026-09-02 — Grade 3 sentence-learning candidate
 
 ```text
