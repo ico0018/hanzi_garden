@@ -4,6 +4,22 @@
 
 ## Current snapshot
 
+## 2026-10-07 — Project README refresh
+
+```text
+Task: Add a clear README that reflects the current Hanzi Garden implementation.
+Acceptance criteria: Document only currently available books and implemented learning/dictation behavior; include local run, static deployment, curriculum data format, core files, browser-local progress, and frontend dependencies; do not claim unavailable curriculum support.
+Developer branch: feature/update-readme-dev
+Developer worktree: GitHub connector edit; no local worktree created
+Developer state: Done — README added in 32b537369e568eb597eed9a369854832cd0bf2ca
+QA result: Waiting
+QA evidence / defects: README content checked against index.html, app.js, book-catalog.js, daily-word-bank.js, vercel.json, and current curriculum availability. Independent QA has not run.
+dev merge: Not allowed — awaiting QA PASS
+Preview: Not requested
+Human acceptance: Waiting
+Next owner: QA / User
+```
+
 ## 2026-09-19 — Explicit daily word-bank refresh
 
 ```text
