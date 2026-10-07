@@ -12,12 +12,12 @@ Acceptance criteria: Document only currently available books and implemented lea
 Developer branch: feature/update-readme-dev
 Developer worktree: GitHub connector edit; no local worktree created
 Developer state: Done — README added in 32b537369e568eb597eed9a369854832cd0bf2ca
-QA result: Waiting
-QA evidence / defects: README content checked against index.html, app.js, book-catalog.js, daily-word-bank.js, vercel.json, and current curriculum availability. Independent QA has not run.
-dev merge: Not allowed — awaiting QA PASS
-Preview: Not requested
-Human acceptance: Waiting
-Next owner: QA / User
+QA result: PASS
+QA evidence / defects: Diff contains only README.md plus this status record; README was checked against index.html, app.js, book-catalog.js, daily-word-bank.js, vercel.json and current curriculum availability; Vercel status check passed on 410eea340602a7f78c28fbfb1af779e9c6e41ae1.
+dev merge: Completed — PR #2 merged as 4be195e3870e95e80e85ae9960d486ecdf854e3c
+Preview: Vercel check passed
+Human acceptance: Approved — user said “给main加一个readme”, 2026-10-07
+Next owner: Manager — release dev to main
 ```
 
 ## 2026-09-19 — Explicit daily word-bank refresh
