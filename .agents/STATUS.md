@@ -28,10 +28,12 @@ Acceptance criteria: The supplied 28 words are stored one per line in a UTF-8 TX
 Developer branch: feature/daily-word-bank-current
 Developer worktree: F:\chinese webapp\.worktrees\daily-word-bank-current
 Developer state: Done — explicit Grade 3 Upper bank, v4 isolation, and focused Node behavior test completed.
-QA result: Waiting
-QA evidence / defects: Developer checks passed: `node --check app.js`, `node --check daily-word-bank.js`, `node --check scripts/test-daily-word-bank.js`, `node scripts/test-daily-word-bank.js`, and `git diff --check`. The existing Perl sentence validator could not run because Perl is unavailable in this Windows environment.
-dev merge: Not allowed — awaiting independent QA PASS
-Next owner: QA
+QA result: PASS
+QA evidence / defects: Independent QA passed exact `c793bacd551b0fe46e11b44717b3c991e0c5109a`: TXT contents/order, Grade 3-only source, non-generated empty state for other books, v4 storage isolation, load order, syntax checks, test script, and diff check. Final main checks also passed: `node --check app.js`, `node --check daily-word-bank.js`, `node scripts/test-daily-word-bank.js`, and `git diff --check origin/main...HEAD`.
+dev merge: Completed — GitHub `dev` fast-forwarded to `c793bac`.
+main merge: Completed — `735c106 merge: release editable daily word bank`.
+GitHub push: Completed — origin/main advanced from 9e3645e to 5f05c94.
+Next owner: Manager
 ```
 
 ## 2026-09-02 — Grade 3 sentence-learning candidate
@@ -214,3 +216,121 @@ Preview: NOT REQUESTED
 Human acceptance: WAITING
 Next owner: Developer
 ```
+## 2026-10-08 — Unified user system tool sync
+Task: Integrate account/profile scoped cloud learning data without changing learning rules.
+Developer branch: feature/unified-user-system
+Developer worktree: F:/taskHelper/unified/hanzi (separate checkout; sole Developer)
+Developer state: Running — storage inventory complete, implementing durable optimistic sync.
+QA result: Waiting
+Preview: Tencent isolated preview requested; production and DNS forbidden.
+Human acceptance: Waiting; do not merge main.
+Next owner: Developer / Manager
+
+## 2026-10-08 — Unified user sync handoff
+Developer state: Done — static account UI, isolated per-user/profile caches, durable outbox, optimistic conflict and export/recovery handling implemented; old guest keys retained.
+Tests: 10 tool cloud regressions PASS; existing daily word-bank test PASS; app/cloud/ui syntax and diff checks PASS. Cross-tool independent QA 27 PASS.
+QA result: Waiting — exact feature commit pending independent API/browser review.
+dev/main merge: Not allowed; user requested Tencent branch preview and owner review before main.
+Next owner: QA / Manager.
+
+2026-10-08 follow-up: canonical payload comparison handles PostgreSQL JSONB key ordering without false dirty/conflict; accounts without child do not reload on every focus. New regression cases PASS.
+
+2026-10-08 follow-up: local storage quota failures now explicitly report not saved/not synced; last readable payload is retained. Cloud regression remains 10 PASS per tool.
+
+## 2026-10-08 — Unified accounts and cloud sync: Manager final local gate
+
+Task: Connect existing static Hanzi learning records to the shared parent/child API, preserve guest history and original curriculum, and prepare only isolated Tencent branch deployment.
+Developer worktree: F:/taskHelper/unified/hanzi
+Developer branch: feature/unified-user-system
+Developer state: Done; business commit 94fe0ff29bb1fbc658a4ad94a9d231bd6e16bd7d.
+QA result: LOCAL IMPLEMENTATION PASS. Original word-bank and syntax tests; cloud10; independent three-adapter sync30; real PostgreSQL/API integration and browser account/child/offline/multi-device checks pass. Main QA report is recorded in portal docs/unified-qa.md.
+Draft PR: https://github.com/ico0018/hanzi_garden/pull/4 (base dev).
+dev merge: Not performed; draft review only.
+Preview: Current local localhost8321 available. Tencent deployment NOT VERIFIED; awaiting current user SSH-credential reuse authorization after auto-review rejection. COS/SMTP and deployed HTTPS remain pending.
+Human acceptance: Waiting; main merge and production release forbidden.
+Next owner: Manager — finish authorized isolated deployment after credential confirmation; user then checks actual cloud environment.
+
+## 2026-10-08 — Tencent isolated owner-review gate
+
+Manager state: Done — feature branch deployed to Tencent Guangzhou, /srv/xuebabangbang-unified-preview with rootless Docker and loopback Nginx; original production services and content unchanged.
+QA result: Deployed cloud account/security, three tools, child isolation, offline recovery, second-browser restore, authenticated account/admin mobile layouts PASS. Database restart and fresh restore match all11 table hashes; cloud-backup-server-results evidence recorded in portal/docs/evidence.
+Preview: http://localhost:8321/ through fixed-host-key SSH tunnel; account8320, guwen8322, taskhelper8323; local private mail helper8324.
+External gates: COS missing bucket/role, real SMTP and production-domain HTTPS/filing unverified; timer explicitly local-only and ubuntu.
+Human acceptance: WAITING — READY FOR OWNER REVIEW; main/dev merge not performed, DNS NOT CHANGED.
+Next owner: User — manual check; Manager handles requested fixes, no production action without separate authorization.
+
+## 2026-10-08 — Parent controls simplification (active)
+Task: Chinese arithmetic three-choice parent gate; move sync/import/export to parent pages; remove repeated password and 15-minute lock.
+Acceptance: Server checks arithmetic for signed-in sessions, same login retains parent access; student UI hides record tools; preserve account/admin authentication and learning data isolation.
+Developer branch: feature/unified-user-system in all four repositories.
+Developer worktrees: accounts sole owner F:/taskHelper/unified/portal; tool_sync sole owner F:/taskHelper/unified/taskhelper, hanzi, guwen. Separate existing feature checkouts; no overlapping business-file writers.
+QA: qa independently verifies exact candidate; Manager coordinates/deploys only after PASS.
+Safe plan: Existing trees clean at intake; preserve all prior changes. No merges, production/DNS changes. Tencent isolated preview only.
+Human acceptance: Waiting. Next owner: Developers / QA.
+
+
+## 2026-10-08 — Parent controls simplification: Developer handoff
+Developer worktrees: Sole editor of taskhelper/hanzi/guwen feature/unified-user-system checkouts; no curriculum edits.
+Developer state: Implemented Chinese multiplication question with three numeric choices. Signed mode uses server parentReady for the whole current login; guest uses tab-scoped sessionStorage and explicit parent exit. Password/PIN setup and 15-minute timer removed. Task records inside /parent/ gate; Hanzi/Guwen parent.html on original origin. Student pages show only parent entry and learning content; automatic cloud sync still runs.
+Tests: Task40 core/parent PASS; each tool11 cloud regressions PASS; each static tool4 parent UI regressions PASS. Final lint/typecheck/build and exact candidate QA follow.
+Safety: No push/deploy/merge/DNS/production actions; original guest records, caches and recovery copies retained. Explicit parent-lock/logout clears grant.
+Next owner: QA / Manager — inspect exact feature heads and only update isolated Tencent preview after PASS.
+
+Final developer checks: Task40 tests/lint/typecheck/webpack build PASS; each cloud11 and static parent UI4 PASS; Hanzi original word-bank PASS; Guwen original Node20 and Python27 PASS. Feature candidates ready for independent QA, no release performed.
+
+Parent UI follow-up: wrong/expired server challenge400 and rate-limit429 display friendly Chinese; no changes to authentication or learning rules. Targeted tests updated.
+
+## 2026-10-08 — Parent simplification final isolated gate
+Business source ffaa0b705497b2371889f5a3783c7bc5aa5dc77f; later status-only commit. Sole tool_sync Developer handed off final source, no overlap.
+QA: PASS — independent local/API and deployed375/768/1440 browser. Student record management hidden, parent same-origin import/conflict export/restore works, one current-login arithmetic grant reused, task/child data isolated, no browser errors. Full report portal/docs/unified-parent-qa.md.
+Preview: Deployed Tencent existing isolated rootless/ubuntu/loopback environment. Original production and existing data unchanged. No database migration.
+Manager: Feature branches saved; no dev/main merges or DNS changes.
+Human acceptance: WAITING — ready for manual inspection, no release authorized.
+Next owner: User.
+
+## 2026-10-08 — Central parent record controls (active follow-up)
+Task: Remove every parent entry from Hanzi/Guwen student pages; put both tools' local import/backup/recovery controls directly on the central parent page.
+Confirmed user preference: Taskhelper /parent/ is the central parent page; portal business changes unnecessary.
+Developer tool_sync sole writer static Hanzi/Guwen and taskhelper existing feature/unified-user-system checkouts; accounts read-only portal preparation if preference changes. QA independently verifies exact candidate.
+Safe plan: Four trees clean at intake; preserve existing auth/math/learning data, no unrelated refactors. UI embedding must keep records at each tool's own origin, no cross-origin storage access or arbitrary postMessage data operations.
+Release: Only existing Tencent isolated preview; no main/dev merges, DNS/production changes.
+Next owner: Developer / QA; human acceptance waiting.
+
+## 2026-10-08 — Central parent controls: isolated deployment handoff
+
+User confirmed Taskhelper /parent/ placement. Exact final business sources Task9e9c98b, Hanzi5af7888, Guwend9fcc04 passed independent local13 and applicable Developer checks. Manager deployed static-only archive plus two exact preview CSP locations, EXIT0. Database content and app image unchanged, production homepage unchanged, no migrations or new public ports. Deployment evidence unified/qa/central-release-results.json.
+QA is now running actual cloud browser record/import/cancel/conflict/child/gate checks. Human readiness stays PENDING cloud browser PASS; no main/dev merges or production release. Manager-owned STATUS remains the only unstaged Hanzi file, intentionally preserved for final documentation commit.
+Next owner: QA / Manager.
+## 2026-10-08 — Central parent record controls: final isolated gate
+
+User confirmed Taskhelper /parent/ as central parent page. All Hanzi/Guwen learning pages now have no parent entry or record-management DOM. Both same-origin record widgets are directly visible under the existing Task parent gate; one child selector and exit, no repeated password/math or fifteen-minute lock. Original guest data, account/child isolation and background sync preserved.
+
+Business sources: Task9e9c98bbb8f9059a471451116cbbed86985dc08b / Hanzi5af788877c523fa2b0e563ae171845aee3fce3f9 / Guwend9fcc04e721ff89e1333cea3915e89e270c965fb. Portal business81abd4a89b9f37295c7e8c5c3aa64940b8a5eb61/image unchanged; portal ops/docs-only changes and later Hanzi Manager docs separately saved.
+
+PASS: independent13 local cases; Task43 + cloud11 + lint/typecheck/final static build; both staticUI8/cloud11/syntax and original curriculum checks. Independent actual cloud browser375/768/1440: student removal, real two widgets, inline import cancellation/confirmation, backups/conflict recovery, child isolation, one mode exit, signed/forged activation rejected. Report portal/docs/unified-parent-central-qa.md and evidence parent-central-controls-*.json.
+
+Only /srv/xuebabangbang-unified-preview updated, static-only and two exact preview CSP locations. No database migration/container restart; original business data SHA 5ed4a9b04bdbf33caba9bfe130c5b5f0791d1e10edbd79093baad07553cd1e26 unchanged, appimage sha256:60c4365bf757b85fd55c382164f5338bda5f3d02f26c0a873a711664371b60f0 unchanged, productionhomepage SHA 05c355b6bf439819fc155d2508da24451bd96ddb1f8a7f4d18f2b074c4de84c5 unchanged. Backup backups/preview-20261008T095858Z-21637.dump, original static/Nginx rollback private parent-central-review/rollback. Rootless Docker/ubuntu/loopback/SSH retained; no new public ports, main/dev/DNS/production unchanged.
+
+Manual entry http://localhost:8323/parent/ with existing SSH connection; student8321/8322 can inspect entry removal. All Draft PRs stay unmerged. SMTP/COS still unconfigured, no new claim. STOP for manual owner acceptance; no production action or merge without explicit approval.
+
+Safe commit plan: Developer business files already committed and independently validated at above heads; Manager commits only owned STATUS/DECISIONS and portal docs/evidence, stages exact paths, excludes private runtime and secrets. No merges or resets, later documentation heads do not change deployed business artifacts.
+Next owner: User — manual acceptance.
+
+## 2026-10-08 — Public IP preview (authorized follow-up)
+
+User explicitly requests Tencent public IP access, no localhost/SSH requirement, no DNS migration. This supersedes prior loopback-only inspection restriction for isolated preview, does not authorize production/main/dev merge. Plan: trusted IP HTTPS at existing allowed443, shared account root and /hanzi/, /guwen/, /taskhelper/ static prefixes, no production server block changes. Rootless app/db stay loopback/private; retain original data and backup.
+Developer worktrees on existing feature/unified-user-system: accounts owns portal build/deployment-template configuration; tool_sync owns minimal path-compatible widgets/static URLs and Task build. Manager owns server certificate/isolated route deployment/status; QA independently verifies actual public browser/cookies/gates/data. Separate source writers, trees clean at intake; only Manager STATUS dirty intentionally. No credentials committed or printed.
+Next owner: Developers / Manager / QA. Human acceptance waiting.
+## 2026-10-08 — Public IP server deployment handoff
+
+User explicitly authorizes public Tencent IP, no localhost/SSH requirement, no DNS migration or main/dev merge. New canonical origin https://134.175.136.31; tools /hanzi/, /guwen/, /taskhelper/ and central parent /taskhelper/parent/. Private rootless app127.0.0.1:3200/database preserved.
+
+Server deployment PASS: business Portal0a67d2c/Task97ea361, Hanzi5af7888 and Guwend9fcc04 unchanged; later portal renewal ops b4b12bc/docs-only separate. No migration; before/after complete business data SHA 0276adc3308abe64df832a1fddf85c79d06e6435cc00ab02ef842e3a1ffe5226 unchanged, image sha256:227e92a8f24659cc6db2c9b89a2eea254b07d8da7a9752bfd762d6cda989555c, original homepage SHA 05c355b6bf439819fc155d2508da24451bd96ddb1f8a7f4d18f2b074c4de84c5 unchanged and original services active. TLS normal CA check + unknownHost421 internally passed. Backup preview-20261008T140946Z-2654.dump retained privately.
+
+PASS independent local17, Portal developer20/independent19+Hostguard/lint/typecheck/build, Task45/lint/typecheck/build/cloud11, each staticUI8/cloud11. Certbot5.8 IPcertificate issued; ubuntu renewal timer active twice perday Asia/Shanghai, actual service success, ACME dryrun and Nginx hook PASS. No secrets committed.
+
+BLOCKED public gate: Windows curl and actual Chrome20secTCP443 timeout, no TLS/HTTP metadata; UFW allows443 but has zero exterior hits. No public fixture/auth/rate suite run. Exact CVM Guangzhou ins-ed8etx60 needs cloud rule TCP443/source0.0.0.0/0 allow. Browser control helper cannot initialize; no metadata CAM role listed. User status question pending for cloud rule; elapsed time is not approval or success. Do not claim READY FOR OWNER REVIEW until exterior functional checks pass.
+
+Documentation: portal/docs/unified-public-ip.md, unified-public-ip-qa.md, evidence/public-ip-*.json. All features saved/Draft unmerged; main/dev/DNS/production unchanged. Next owner: User provides cloud-rule state; Manager/QA complete exterior validation. No production action authorized.
+
+Safe commit plan: preserve Manager STATUS and exact developer feature commits; stage only owned docs/status/evidence. No broad adds, main/dev merge or resets.
