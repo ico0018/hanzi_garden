@@ -315,3 +315,22 @@ Manual entry http://localhost:8323/parent/ with existing SSH connection; student
 
 Safe commit plan: Developer business files already committed and independently validated at above heads; Manager commits only owned STATUS/DECISIONS and portal docs/evidence, stages exact paths, excludes private runtime and secrets. No merges or resets, later documentation heads do not change deployed business artifacts.
 Next owner: User — manual acceptance.
+
+## 2026-10-08 — Public IP preview (authorized follow-up)
+
+User explicitly requests Tencent public IP access, no localhost/SSH requirement, no DNS migration. This supersedes prior loopback-only inspection restriction for isolated preview, does not authorize production/main/dev merge. Plan: trusted IP HTTPS at existing allowed443, shared account root and /hanzi/, /guwen/, /taskhelper/ static prefixes, no production server block changes. Rootless app/db stay loopback/private; retain original data and backup.
+Developer worktrees on existing feature/unified-user-system: accounts owns portal build/deployment-template configuration; tool_sync owns minimal path-compatible widgets/static URLs and Task build. Manager owns server certificate/isolated route deployment/status; QA independently verifies actual public browser/cookies/gates/data. Separate source writers, trees clean at intake; only Manager STATUS dirty intentionally. No credentials committed or printed.
+Next owner: Developers / Manager / QA. Human acceptance waiting.
+## 2026-10-08 — Public IP server deployment handoff
+
+User explicitly authorizes public Tencent IP, no localhost/SSH requirement, no DNS migration or main/dev merge. New canonical origin https://134.175.136.31; tools /hanzi/, /guwen/, /taskhelper/ and central parent /taskhelper/parent/. Private rootless app127.0.0.1:3200/database preserved.
+
+Server deployment PASS: business Portal0a67d2c/Task97ea361, Hanzi5af7888 and Guwend9fcc04 unchanged; later portal renewal ops b4b12bc/docs-only separate. No migration; before/after complete business data SHA 0276adc3308abe64df832a1fddf85c79d06e6435cc00ab02ef842e3a1ffe5226 unchanged, image sha256:227e92a8f24659cc6db2c9b89a2eea254b07d8da7a9752bfd762d6cda989555c, original homepage SHA 05c355b6bf439819fc155d2508da24451bd96ddb1f8a7f4d18f2b074c4de84c5 unchanged and original services active. TLS normal CA check + unknownHost421 internally passed. Backup preview-20261008T140946Z-2654.dump retained privately.
+
+PASS independent local17, Portal developer20/independent19+Hostguard/lint/typecheck/build, Task45/lint/typecheck/build/cloud11, each staticUI8/cloud11. Certbot5.8 IPcertificate issued; ubuntu renewal timer active twice perday Asia/Shanghai, actual service success, ACME dryrun and Nginx hook PASS. No secrets committed.
+
+BLOCKED public gate: Windows curl and actual Chrome20secTCP443 timeout, no TLS/HTTP metadata; UFW allows443 but has zero exterior hits. No public fixture/auth/rate suite run. Exact CVM Guangzhou ins-ed8etx60 needs cloud rule TCP443/source0.0.0.0/0 allow. Browser control helper cannot initialize; no metadata CAM role listed. User status question pending for cloud rule; elapsed time is not approval or success. Do not claim READY FOR OWNER REVIEW until exterior functional checks pass.
+
+Documentation: portal/docs/unified-public-ip.md, unified-public-ip-qa.md, evidence/public-ip-*.json. All features saved/Draft unmerged; main/dev/DNS/production unchanged. Next owner: User provides cloud-rule state; Manager/QA complete exterior validation. No production action authorized.
+
+Safe commit plan: preserve Manager STATUS and exact developer feature commits; stage only owned docs/status/evidence. No broad adds, main/dev merge or resets.
