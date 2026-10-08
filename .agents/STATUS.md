@@ -279,3 +279,11 @@ Next owner: QA / Manager — inspect exact feature heads and only update isolate
 Final developer checks: Task40 tests/lint/typecheck/webpack build PASS; each cloud11 and static parent UI4 PASS; Hanzi original word-bank PASS; Guwen original Node20 and Python27 PASS. Feature candidates ready for independent QA, no release performed.
 
 Parent UI follow-up: wrong/expired server challenge400 and rate-limit429 display friendly Chinese; no changes to authentication or learning rules. Targeted tests updated.
+
+## 2026-10-08 — Parent simplification final isolated gate
+Business source ffaa0b705497b2371889f5a3783c7bc5aa5dc77f; later status-only commit. Sole tool_sync Developer handed off final source, no overlap.
+QA: PASS — independent local/API and deployed375/768/1440 browser. Student record management hidden, parent same-origin import/conflict export/restore works, one current-login arithmetic grant reused, task/child data isolated, no browser errors. Full report portal/docs/unified-parent-qa.md.
+Preview: Deployed Tencent existing isolated rootless/ubuntu/loopback environment. Original production and existing data unchanged. No database migration.
+Manager: Feature branches saved; no dev/main merges or DNS changes.
+Human acceptance: WAITING — ready for manual inspection, no release authorized.
+Next owner: User.
