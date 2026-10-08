@@ -249,3 +249,12 @@ dev merge: Not performed; draft review only.
 Preview: Current local localhost8321 available. Tencent deployment NOT VERIFIED; awaiting current user SSH-credential reuse authorization after auto-review rejection. COS/SMTP and deployed HTTPS remain pending.
 Human acceptance: Waiting; main merge and production release forbidden.
 Next owner: Manager — finish authorized isolated deployment after credential confirmation; user then checks actual cloud environment.
+
+## 2026-10-08 — Tencent isolated owner-review gate
+
+Manager state: Done — feature branch deployed to Tencent Guangzhou, /srv/xuebabangbang-unified-preview with rootless Docker and loopback Nginx; original production services and content unchanged.
+QA result: Deployed cloud account/security, three tools, child isolation, offline recovery, second-browser restore, authenticated account/admin mobile layouts PASS. Database restart and fresh restore match all11 table hashes; cloud-backup-server-results evidence recorded in portal/docs/evidence.
+Preview: http://localhost:8321/ through fixed-host-key SSH tunnel; account8320, guwen8322, taskhelper8323; local private mail helper8324.
+External gates: COS missing bucket/role, real SMTP and production-domain HTTPS/filing unverified; timer explicitly local-only and ubuntu.
+Human acceptance: WAITING — READY FOR OWNER REVIEW; main/dev merge not performed, DNS NOT CHANGED.
+Next owner: User — manual check; Manager handles requested fixes, no production action without separate authorization.

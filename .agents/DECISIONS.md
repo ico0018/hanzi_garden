@@ -85,3 +85,8 @@ Add durable decisions at the top with date, decision, rationale, and source.
 - Keep the static tool and old guest localStorage keys. Cloud cache is scoped by both account and child, with revision/outbox metadata; importing guest data is explicit on the original tool origin.
 - Keep curriculum and handwriting/self-review rules unchanged. Conflicts require an explicit decision; preserve both candidates and a downloadable recovery copy.
 - The user requested deployment of feature/unified-user-system to a Tencent isolated preview. This overrides the historical Vercel preview preference for this task. DNS and production are unchanged; no main merge until explicit owner approval after manual review.
+
+## 2026-10-08 — Deployed inspection access
+- Current user explicitly authorized reusing prior SSH credential. Host key remains pinned; password is neither printed nor committed.
+- Preview uses Ubuntu rootless Docker and separate loopback Nginx listeners. Main/DNS and existing services remain unchanged; direct Tencent preview supersedes Vercel for this task.
+- COS/SMTP missing configuration remains a visible gate. Daily backup explicitly targets local storage until COS is configured and tested.
