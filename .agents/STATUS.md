@@ -234,3 +234,5 @@ dev/main merge: Not allowed; user requested Tencent branch preview and owner rev
 Next owner: QA / Manager.
 
 2026-10-08 follow-up: canonical payload comparison handles PostgreSQL JSONB key ordering without false dirty/conflict; accounts without child do not reload on every focus. New regression cases PASS.
+
+2026-10-08 follow-up: local storage quota failures now explicitly report not saved/not synced; last readable payload is retained. Cloud regression remains 10 PASS per tool.
