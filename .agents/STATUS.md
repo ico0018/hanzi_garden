@@ -258,3 +258,22 @@ Preview: http://localhost:8321/ through fixed-host-key SSH tunnel; account8320, 
 External gates: COS missing bucket/role, real SMTP and production-domain HTTPS/filing unverified; timer explicitly local-only and ubuntu.
 Human acceptance: WAITING — READY FOR OWNER REVIEW; main/dev merge not performed, DNS NOT CHANGED.
 Next owner: User — manual check; Manager handles requested fixes, no production action without separate authorization.
+
+## 2026-10-08 — Parent controls simplification (active)
+Task: Chinese arithmetic three-choice parent gate; move sync/import/export to parent pages; remove repeated password and 15-minute lock.
+Acceptance: Server checks arithmetic for signed-in sessions, same login retains parent access; student UI hides record tools; preserve account/admin authentication and learning data isolation.
+Developer branch: feature/unified-user-system in all four repositories.
+Developer worktrees: accounts sole owner F:/taskHelper/unified/portal; tool_sync sole owner F:/taskHelper/unified/taskhelper, hanzi, guwen. Separate existing feature checkouts; no overlapping business-file writers.
+QA: qa independently verifies exact candidate; Manager coordinates/deploys only after PASS.
+Safe plan: Existing trees clean at intake; preserve all prior changes. No merges, production/DNS changes. Tencent isolated preview only.
+Human acceptance: Waiting. Next owner: Developers / QA.
+
+
+## 2026-10-08 — Parent controls simplification: Developer handoff
+Developer worktrees: Sole editor of taskhelper/hanzi/guwen feature/unified-user-system checkouts; no curriculum edits.
+Developer state: Implemented Chinese multiplication question with three numeric choices. Signed mode uses server parentReady for the whole current login; guest uses tab-scoped sessionStorage and explicit parent exit. Password/PIN setup and 15-minute timer removed. Task records inside /parent/ gate; Hanzi/Guwen parent.html on original origin. Student pages show only parent entry and learning content; automatic cloud sync still runs.
+Tests: Task40 core/parent PASS; each tool11 cloud regressions PASS; each static tool4 parent UI regressions PASS. Final lint/typecheck/build and exact candidate QA follow.
+Safety: No push/deploy/merge/DNS/production actions; original guest records, caches and recovery copies retained. Explicit parent-lock/logout clears grant.
+Next owner: QA / Manager — inspect exact feature heads and only update isolated Tencent preview after PASS.
+
+Final developer checks: Task40 tests/lint/typecheck/webpack build PASS; each cloud11 and static parent UI4 PASS; Hanzi original word-bank PASS; Guwen original Node20 and Python27 PASS. Feature candidates ready for independent QA, no release performed.

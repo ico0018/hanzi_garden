@@ -158,4 +158,13 @@ hanzi_garden/
 
 本机修改即时持久保存，dirty/generation 随缓存保存，刷新和断网后仍可重试。同步失败显示失败，不显示完成。revision 409 停止自动写入，用户可导出本机+云端冲突+游客的备份并明确选择；选择前不会静默覆盖，选择时另存 `:recovery:<timestamp>` 恢复副本。切孩子重载本工具，原孩子未上传记录仍留在原隔离缓存。账号中心提供完整云端导出。
 
-验证：`node scripts/test-cloud-sync.cjs` 运行10项同步回归；汉字另运行 `node scripts/test-daily-word-bank.js`，古文运行 `node --test tests/*.test.cjs` 与 `python -m unittest discover -s tests`。这两个静态仓库没有 lint/typecheck/build 工程配置，部署是静态文件复制。
+验证：`node scripts/test-cloud-sync.cjs` 运行11项同步回归；汉字另运行 `node scripts/test-daily-word-bank.js`，古文运行 `node --test tests/*.test.cjs` 与 `python -m unittest discover -s tests`。这两个静态仓库没有 lint/typecheck/build 工程配置，部署是静态文件复制。
+
+
+## 家长页面与简洁学习页面
+
+`parent.html` 是本工具同origin的家长入口，包含账号中心、孩子切换、同步状态、游客记录导入、备份、冲突选择与恢复。学生页只显示“家长入口”，后台仍自动同步，不向孩子展示存储和同步操作。
+
+家长回答一道中文数字计算题、从三个数字中选择正确结果即可进入。账号模式由服务器签发与校验题目，读取统一Session的 `parentReady`；当前登录持续有效，不再输入密码/PIN，也没有15分钟自动锁定。已在账号中心或另一工具进入家长模式后直接继承当前Session。主动“退出家长模式”调用服务端 parent-lock，或退出登录后才失效。游客仅作本机误点确认，以sessionStorage保存当前标签页状态，刷新可继续，主动退出清除；这不替代真正的账号认证。旧游客学习数据和遗留设置不会被删除。
+
+运行 `node scripts/test-parent-ui.cjs`：学生无记录控件、三选一正确/错误答案、已授权Session免重复题目、显式退出、游客刷新保持；原有云同步回归新增服务端Session授权撤销，共11项。家长页题目或请求失败时可换题重试。

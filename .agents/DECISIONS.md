@@ -90,3 +90,10 @@ Add durable decisions at the top with date, decision, rationale, and source.
 - Current user explicitly authorized reusing prior SSH credential. Host key remains pinned; password is neither printed nor committed.
 - Preview uses Ubuntu rootless Docker and separate loopback Nginx listeners. Main/DNS and existing services remain unchanged; direct Tencent preview supersedes Vercel for this task.
 - COS/SMTP missing configuration remains a visible gate. Daily backup explicitly targets local storage until COS is configured and tested.
+
+
+## 2026-10-08 — Parent arithmetic and current-login access
+- Source: User's follow-up requirement. Parent mode uses a Chinese-number multiplication question with three answers; remove password/PIN setup and the 15-minute parent lock.
+- Signed-in permission follows server Session parentReady and ends at explicit parent-lock or logout. Guest mode is a local tab-scoped misclick guard, not authentication.
+- Sync status, imports, exports and conflict/recovery actions belong on each tool's same-origin parent page; student learning keeps only a compact parent entry while automatic sync continues.
+- Keep learning rules, old localStorage and account/profile isolation. Existing production and main remain unchanged pending separate owner acceptance.
