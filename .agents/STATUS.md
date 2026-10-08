@@ -287,3 +287,31 @@ Preview: Deployed Tencent existing isolated rootless/ubuntu/loopback environment
 Manager: Feature branches saved; no dev/main merges or DNS changes.
 Human acceptance: WAITING — ready for manual inspection, no release authorized.
 Next owner: User.
+
+## 2026-10-08 — Central parent record controls (active follow-up)
+Task: Remove every parent entry from Hanzi/Guwen student pages; put both tools' local import/backup/recovery controls directly on the central parent page.
+Confirmed user preference: Taskhelper /parent/ is the central parent page; portal business changes unnecessary.
+Developer tool_sync sole writer static Hanzi/Guwen and taskhelper existing feature/unified-user-system checkouts; accounts read-only portal preparation if preference changes. QA independently verifies exact candidate.
+Safe plan: Four trees clean at intake; preserve existing auth/math/learning data, no unrelated refactors. UI embedding must keep records at each tool's own origin, no cross-origin storage access or arbitrary postMessage data operations.
+Release: Only existing Tencent isolated preview; no main/dev merges, DNS/production changes.
+Next owner: Developer / QA; human acceptance waiting.
+
+## 2026-10-08 — Central parent controls: isolated deployment handoff
+
+User confirmed Taskhelper /parent/ placement. Exact final business sources Task9e9c98b, Hanzi5af7888, Guwend9fcc04 passed independent local13 and applicable Developer checks. Manager deployed static-only archive plus two exact preview CSP locations, EXIT0. Database content and app image unchanged, production homepage unchanged, no migrations or new public ports. Deployment evidence unified/qa/central-release-results.json.
+QA is now running actual cloud browser record/import/cancel/conflict/child/gate checks. Human readiness stays PENDING cloud browser PASS; no main/dev merges or production release. Manager-owned STATUS remains the only unstaged Hanzi file, intentionally preserved for final documentation commit.
+Next owner: QA / Manager.
+## 2026-10-08 — Central parent record controls: final isolated gate
+
+User confirmed Taskhelper /parent/ as central parent page. All Hanzi/Guwen learning pages now have no parent entry or record-management DOM. Both same-origin record widgets are directly visible under the existing Task parent gate; one child selector and exit, no repeated password/math or fifteen-minute lock. Original guest data, account/child isolation and background sync preserved.
+
+Business sources: Task9e9c98bbb8f9059a471451116cbbed86985dc08b / Hanzi5af788877c523fa2b0e563ae171845aee3fce3f9 / Guwend9fcc04e721ff89e1333cea3915e89e270c965fb. Portal business81abd4a89b9f37295c7e8c5c3aa64940b8a5eb61/image unchanged; portal ops/docs-only changes and later Hanzi Manager docs separately saved.
+
+PASS: independent13 local cases; Task43 + cloud11 + lint/typecheck/final static build; both staticUI8/cloud11/syntax and original curriculum checks. Independent actual cloud browser375/768/1440: student removal, real two widgets, inline import cancellation/confirmation, backups/conflict recovery, child isolation, one mode exit, signed/forged activation rejected. Report portal/docs/unified-parent-central-qa.md and evidence parent-central-controls-*.json.
+
+Only /srv/xuebabangbang-unified-preview updated, static-only and two exact preview CSP locations. No database migration/container restart; original business data SHA 5ed4a9b04bdbf33caba9bfe130c5b5f0791d1e10edbd79093baad07553cd1e26 unchanged, appimage sha256:60c4365bf757b85fd55c382164f5338bda5f3d02f26c0a873a711664371b60f0 unchanged, productionhomepage SHA 05c355b6bf439819fc155d2508da24451bd96ddb1f8a7f4d18f2b074c4de84c5 unchanged. Backup backups/preview-20261008T095858Z-21637.dump, original static/Nginx rollback private parent-central-review/rollback. Rootless Docker/ubuntu/loopback/SSH retained; no new public ports, main/dev/DNS/production unchanged.
+
+Manual entry http://localhost:8323/parent/ with existing SSH connection; student8321/8322 can inspect entry removal. All Draft PRs stay unmerged. SMTP/COS still unconfigured, no new claim. STOP for manual owner acceptance; no production action or merge without explicit approval.
+
+Safe commit plan: Developer business files already committed and independently validated at above heads; Manager commits only owned STATUS/DECISIONS and portal docs/evidence, stages exact paths, excludes private runtime and secrets. No merges or resets, later documentation heads do not change deployed business artifacts.
+Next owner: User — manual acceptance.

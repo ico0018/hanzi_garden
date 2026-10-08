@@ -97,3 +97,10 @@ Add durable decisions at the top with date, decision, rationale, and source.
 - Signed-in permission follows server Session parentReady and ends at explicit parent-lock or logout. Guest mode is a local tab-scoped misclick guard, not authentication.
 - Sync status, imports, exports and conflict/recovery actions belong on each tool's same-origin parent page; student learning keeps only a compact parent entry while automatic sync continues.
 - Keep learning rules, old localStorage and account/profile isolation. Existing production and main remain unchanged pending separate owner acceptance.
+
+## 2026-10-08 — Central Taskhelper parent records (supersedes earlier student entry placement)
+
+- Source: User now explicitly removes parent entries from Hanzi/Guwen and selects Taskhelper /parent/ for both tools' local record buttons.
+- Student DOM creates no entry/panel/record placeholders; automatic cloud sync and original curriculum continue.
+- Central parent embeds each original tool origin with one central child/mode selector. No record/ID/URL action payload traverses postMessage; exact origin/window and allowed fields enforced. Signed permission still requires server parentReady; guest hint only follows central local arithmetic and cannot activate signed accounts.
+- Inline confirmations permit cancel without learning-record writes; conflicts preserve both versions. Only isolated branch preview is deployed, no main/dev merge, DNS or production change. Manual acceptance is still pending.
