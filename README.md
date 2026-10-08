@@ -158,4 +158,4 @@ hanzi_garden/
 
 本机修改即时持久保存，dirty/generation 随缓存保存，刷新和断网后仍可重试。同步失败显示失败，不显示完成。revision 409 停止自动写入，用户可导出本机+云端冲突+游客的备份并明确选择；选择前不会静默覆盖，选择时另存 `:recovery:<timestamp>` 恢复副本。切孩子重载本工具，原孩子未上传记录仍留在原隔离缓存。账号中心提供完整云端导出。
 
-验证：`node scripts/test-cloud-sync.cjs` 运行8项同步回归；汉字另运行 `node scripts/test-daily-word-bank.js`，古文运行 `node --test tests/*.test.cjs` 与 `python -m unittest discover -s tests`。这两个静态仓库没有 lint/typecheck/build 工程配置，部署是静态文件复制。
+验证：`node scripts/test-cloud-sync.cjs` 运行10项同步回归；汉字另运行 `node scripts/test-daily-word-bank.js`，古文运行 `node --test tests/*.test.cjs` 与 `python -m unittest discover -s tests`。这两个静态仓库没有 lint/typecheck/build 工程配置，部署是静态文件复制。

@@ -228,7 +228,9 @@ Next owner: Developer / Manager
 
 ## 2026-10-08 — Unified user sync handoff
 Developer state: Done — static account UI, isolated per-user/profile caches, durable outbox, optimistic conflict and export/recovery handling implemented; old guest keys retained.
-Tests: 8 tool cloud regressions PASS; existing daily word-bank test PASS; app/cloud/ui syntax and diff checks PASS. Cross-tool independent QA 27 PASS.
+Tests: 10 tool cloud regressions PASS; existing daily word-bank test PASS; app/cloud/ui syntax and diff checks PASS. Cross-tool independent QA 27 PASS.
 QA result: Waiting — exact feature commit pending independent API/browser review.
 dev/main merge: Not allowed; user requested Tencent branch preview and owner review before main.
 Next owner: QA / Manager.
+
+2026-10-08 follow-up: canonical payload comparison handles PostgreSQL JSONB key ordering without false dirty/conflict; accounts without child do not reload on every focus. New regression cases PASS.
