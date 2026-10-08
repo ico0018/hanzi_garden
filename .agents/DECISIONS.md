@@ -80,3 +80,8 @@ Add durable decisions at the top with date, decision, rationale, and source.
 - `dev` is for human acceptance and Vercel Preview.
 - `main` is production and requires explicit human release approval.
 
+
+## 2026-10-08 — Unified users and Tencent isolated preview
+- Keep the static tool and old guest localStorage keys. Cloud cache is scoped by both account and child, with revision/outbox metadata; importing guest data is explicit on the original tool origin.
+- Keep curriculum and handwriting/self-review rules unchanged. Conflicts require an explicit decision; preserve both candidates and a downloadable recovery copy.
+- The user requested deployment of feature/unified-user-system to a Tencent isolated preview. This overrides the historical Vercel preview preference for this task. DNS and production are unchanged; no main merge until explicit owner approval after manual review.

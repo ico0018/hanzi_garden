@@ -262,7 +262,7 @@ function practiceProgressKey() {
 
 function getPracticeProgress() {
   try {
-    return JSON.parse(localStorage.getItem(practiceProgressKey()) || "{}");
+    return JSON.parse((window.XbbStorage || localStorage).getItem(practiceProgressKey()) || "{}");
   } catch (error) {
     return {};
   }
@@ -274,7 +274,7 @@ function savePracticeProgress(lessonIndex, charIndex, status) {
   if (!lesson || !character) return;
   const progress = getPracticeProgress();
   progress[stableItemId(lesson, character)] = { status, updatedAt: todayKey() };
-  localStorage.setItem(practiceProgressKey(), JSON.stringify(progress));
+  (window.XbbStorage || localStorage).setItem(practiceProgressKey(), JSON.stringify(progress));
 }
 
 function getPracticeStatus(lessonIndex, charIndex) {
@@ -287,11 +287,11 @@ function getPracticeStatus(lessonIndex, charIndex) {
 }
 
 function migratePracticeProgress() {
-  if (localStorage.getItem(practiceProgressKey())) return;
+  if ((window.XbbStorage || localStorage).getItem(practiceProgressKey())) return;
   const migrated = {};
   lessons.forEach((lesson, lessonIndex) => {
-    let raw = localStorage.getItem(`hanzi-practice-v2-${selectedBookId}-${lessonIndex}`);
-    if (raw === null && selectedBookId === "3-upper") raw = localStorage.getItem(`hanzi-practice-${lessonIndex}`);
+    let raw = (window.XbbStorage || localStorage).getItem(`hanzi-practice-v2-${selectedBookId}-${lessonIndex}`);
+    if (raw === null && selectedBookId === "3-upper") raw = (window.XbbStorage || localStorage).getItem(`hanzi-practice-${lessonIndex}`);
     if (!raw) return;
     try {
       const legacy = JSON.parse(raw);
@@ -302,7 +302,7 @@ function migratePracticeProgress() {
       console.warn("Skipping invalid legacy practice progress", error);
     }
   });
-  localStorage.setItem(practiceProgressKey(), JSON.stringify(migrated));
+  (window.XbbStorage || localStorage).setItem(practiceProgressKey(), JSON.stringify(migrated));
 }
 
 function dailyDictationProgressKey() {
@@ -319,14 +319,14 @@ function getDictationItems() {
 
 function getDailyDictationProgress() {
   try {
-    return JSON.parse(localStorage.getItem(dailyDictationProgressKey()) || "{}");
+    return JSON.parse((window.XbbStorage || localStorage).getItem(dailyDictationProgressKey()) || "{}");
   } catch (error) {
     return {};
   }
 }
 
 function saveDailyDictationProgress(progress) {
-  localStorage.setItem(dailyDictationProgressKey(), JSON.stringify(progress));
+  (window.XbbStorage || localStorage).setItem(dailyDictationProgressKey(), JSON.stringify(progress));
 }
 
 function getDailyQueue() {
@@ -336,7 +336,7 @@ function getDailyQueue() {
   const progress = getDailyDictationProgress();
   let savedQueue = null;
   try {
-    savedQueue = JSON.parse(localStorage.getItem(dailyDictationQueueKey()) || "null");
+    savedQueue = JSON.parse((window.XbbStorage || localStorage).getItem(dailyDictationQueueKey()) || "null");
   } catch (error) {
     savedQueue = null;
   }
@@ -354,13 +354,13 @@ function getDailyQueue() {
   const dueIds = new Set(dueItems.map((item) => item.id));
   const newItems = items.filter((item) => !progress[item.id] && !dueIds.has(item.id));
   const queue = [...dueItems, ...newItems].slice(0, DAILY_DICTATION_SIZE);
-  localStorage.setItem(dailyDictationQueueKey(), JSON.stringify({ date, ids: queue.map((item) => item.id), results: {} }));
+  (window.XbbStorage || localStorage).setItem(dailyDictationQueueKey(), JSON.stringify({ date, ids: queue.map((item) => item.id), results: {} }));
   return queue;
 }
 
 function getTodayQueueState() {
   try {
-    return JSON.parse(localStorage.getItem(dailyDictationQueueKey()) || "{}");
+    return JSON.parse((window.XbbStorage || localStorage).getItem(dailyDictationQueueKey()) || "{}");
   } catch (error) {
     return {};
   }
@@ -383,7 +383,7 @@ function saveManualDictationResult(item, known) {
   const state = getTodayQueueState();
   if (state.date === date) {
     state.results = { ...(state.results || {}), [item.id]: known ? "known" : "unknown" };
-    localStorage.setItem(dailyDictationQueueKey(), JSON.stringify(state));
+    (window.XbbStorage || localStorage).setItem(dailyDictationQueueKey(), JSON.stringify(state));
   }
 }
 
@@ -771,6 +771,7 @@ function renderLoadError() {
 }
 
 async function init() {
+  if (window.XbbCloudReady) await window.XbbCloudReady;
   loadSpeechVoices();
   if ("speechSynthesis" in window) window.speechSynthesis.onvoiceschanged = loadSpeechVoices;
   if (!selectedBook?.available) {

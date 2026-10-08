@@ -148,3 +148,14 @@ hanzi_garden/
 所有学习状态都保存在当前浏览器的 `localStorage` 中，没有登录系统，也不会同步到其他设备。
 
 清除浏览器站点数据后，本机学习记录也会一起清除。
+## 统一账号与云同步（开发分支）
+
+保持静态 HTML/JS 与现有免费游客学习。登录 Cookie 只由统一 API 管理，工具不保存认证 Token。部署必须包含 `cloud-config.js`、`cloud-sync.js`、`cloud-ui.js`、`cloud-ui.css`。配置文件中 `apiBase` 默认 `https://api.xuebabangbang.cn`，`portalBase` 默认 `https://xuebabangbang.cn`；腾讯隔离预览可使用相同 origin（或 `apiBase: ''` 同源）。地址末尾不要加 `/`。API 必须允许本站 Origin 和带凭据请求。
+
+每个工具只在自己的 origin 读取游客 localStorage。首次登录不自动搬数据，先选择孩子，再点“导入本机游客记录”确认；原有游客键保留。登录缓存按 `xbb:state:v1:<tool>:<userId>:<profileId>` 隔离，教材/录音等静态资源不进入云数据。页面打开先确认 Session、孩子和云记录，再加载学习流程；Session 暂时不可达时可继续最近孩子的本机缓存，联网后重试验证身份。
+
+学习原数据以 key → 原JSON字符串组成 schemaVersion 1 的 JSON payload；汉字包含生字掌握及每日听写进度、队列，古文包含阅读、学习及屏幕默写进度。旧书籍/课文身份和原有判定规则不变。
+
+本机修改即时持久保存，dirty/generation 随缓存保存，刷新和断网后仍可重试。同步失败显示失败，不显示完成。revision 409 停止自动写入，用户可导出本机+云端冲突+游客的备份并明确选择；选择前不会静默覆盖，选择时另存 `:recovery:<timestamp>` 恢复副本。切孩子重载本工具，原孩子未上传记录仍留在原隔离缓存。账号中心提供完整云端导出。
+
+验证：`node scripts/test-cloud-sync.cjs` 运行8项同步回归；汉字另运行 `node scripts/test-daily-word-bank.js`，古文运行 `node --test tests/*.test.cjs` 与 `python -m unittest discover -s tests`。这两个静态仓库没有 lint/typecheck/build 工程配置，部署是静态文件复制。

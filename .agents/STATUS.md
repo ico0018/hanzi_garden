@@ -216,3 +216,19 @@ Preview: NOT REQUESTED
 Human acceptance: WAITING
 Next owner: Developer
 ```
+## 2026-10-08 — Unified user system tool sync
+Task: Integrate account/profile scoped cloud learning data without changing learning rules.
+Developer branch: feature/unified-user-system
+Developer worktree: F:/taskHelper/unified/hanzi (separate checkout; sole Developer)
+Developer state: Running — storage inventory complete, implementing durable optimistic sync.
+QA result: Waiting
+Preview: Tencent isolated preview requested; production and DNS forbidden.
+Human acceptance: Waiting; do not merge main.
+Next owner: Developer / Manager
+
+## 2026-10-08 — Unified user sync handoff
+Developer state: Done — static account UI, isolated per-user/profile caches, durable outbox, optimistic conflict and export/recovery handling implemented; old guest keys retained.
+Tests: 8 tool cloud regressions PASS; existing daily word-bank test PASS; app/cloud/ui syntax and diff checks PASS. Cross-tool independent QA 27 PASS.
+QA result: Waiting — exact feature commit pending independent API/browser review.
+dev/main merge: Not allowed; user requested Tencent branch preview and owner review before main.
+Next owner: QA / Manager.
