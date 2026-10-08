@@ -236,3 +236,16 @@ Next owner: QA / Manager.
 2026-10-08 follow-up: canonical payload comparison handles PostgreSQL JSONB key ordering without false dirty/conflict; accounts without child do not reload on every focus. New regression cases PASS.
 
 2026-10-08 follow-up: local storage quota failures now explicitly report not saved/not synced; last readable payload is retained. Cloud regression remains 10 PASS per tool.
+
+## 2026-10-08 — Unified accounts and cloud sync: Manager final local gate
+
+Task: Connect existing static Hanzi learning records to the shared parent/child API, preserve guest history and original curriculum, and prepare only isolated Tencent branch deployment.
+Developer worktree: F:/taskHelper/unified/hanzi
+Developer branch: feature/unified-user-system
+Developer state: Done; business commit 94fe0ff29bb1fbc658a4ad94a9d231bd6e16bd7d.
+QA result: LOCAL IMPLEMENTATION PASS. Original word-bank and syntax tests; cloud10; independent three-adapter sync30; real PostgreSQL/API integration and browser account/child/offline/multi-device checks pass. Main QA report is recorded in portal docs/unified-qa.md.
+Draft PR: https://github.com/ico0018/hanzi_garden/pull/4 (base dev).
+dev merge: Not performed; draft review only.
+Preview: Current local localhost8321 available. Tencent deployment NOT VERIFIED; awaiting current user SSH-credential reuse authorization after auto-review rejection. COS/SMTP and deployed HTTPS remain pending.
+Human acceptance: Waiting; main merge and production release forbidden.
+Next owner: Manager — finish authorized isolated deployment after credential confirmation; user then checks actual cloud environment.
