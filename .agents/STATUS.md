@@ -277,3 +277,5 @@ Safety: No push/deploy/merge/DNS/production actions; original guest records, cac
 Next owner: QA / Manager — inspect exact feature heads and only update isolated Tencent preview after PASS.
 
 Final developer checks: Task40 tests/lint/typecheck/webpack build PASS; each cloud11 and static parent UI4 PASS; Hanzi original word-bank PASS; Guwen original Node20 and Python27 PASS. Feature candidates ready for independent QA, no release performed.
+
+Parent UI follow-up: wrong/expired server challenge400 and rate-limit429 display friendly Chinese; no changes to authentication or learning rules. Targeted tests updated.
