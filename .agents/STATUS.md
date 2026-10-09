@@ -17,7 +17,7 @@ QA evidence / defects: Independent Chrome/Playwright browser scenarios, syntax c
 dev merge: Completed — QA-passed feature and delivery records integrated; production approval recorded below.
 Preview: Ready — dev code deployment 8997bfc succeeded at https://hanzi-garden-15kbalrse-ico0018s-projects.vercel.app ; Vercel login required. Feature preview remote smoke was auth-protected; local UI and external-library smoke PASS.
 Human acceptance: Approved — user said “可以上线”, recorded 2026-10-09 21:01 Asia/Shanghai.
-Production release: Merged — main merge 6e3d613a979f4987532f31d38a3e7342da094cb6; syntax, both behavior tests and merged diff checks PASS. Rollback branch backup/2026-10-09-pre-dictation-count-release at bc62e56ea3eb8b9c3e1acfcc5651041fae4aee0a. Main push and Vercel production verification in progress.
+Production release: Completed — main merge 6e3d613a979f4987532f31d38a3e7342da094cb6, published main commit 0e776d14d60187ca9c652f487a3dfa28e430dbb3. Vercel Production reports success at https://hanzi-garden-4jdl2qnef-ico0018s-projects.vercel.app . Syntax, both behavior tests and merged diff checks PASS; released app/assets unchanged from independent QA commit. Live browser smoke redirected to Vercel login, so production interactions remain unverified without an authenticated session. Rollback branch backup/2026-10-09-pre-dictation-count-release at bc62e56ea3eb8b9c3e1acfcc5651041fae4aee0a. Final delivery record is on dev to avoid another documentation-only production redeploy.
 ```
 
 
