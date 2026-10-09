@@ -15,7 +15,7 @@ Developer state: Done — exact code commit 6f559c3ead74ac43f893508fa541ca436988
 QA result: PASS — independently tested exact code commit 6f559c3ead74ac43f893508fa541ca436988bb64.
 QA evidence / defects: Independent Chrome/Playwright browser scenarios, syntax checks, both behavior tests and diff checks passed. Verified accessible keyboard choices, persistence/book scope, preserved resized/legacy 15 queues/results, due/new ordering, unique bank 28 cap, actual 0/1/10/28 copy, manual writing gate and 2/1-day schedule, and desktop/tablet/mobile layouts. Actual external HanziWriter/pinyin load smoke passed. No defects. Full evidence: .agents/QA-dictation-count-options.md.
 dev merge: Completed — fast-forwarded dev to QA documentation commit 7e119f5; Manager delivery record committed afterward.
-Preview: Feature deployment reported successful by Manager — https://hanzi-garden-jvsfgkkv5-ico0018s-projects.vercel.app ; browser smoke redirected to Vercel login (auth-protected).
+Preview: Ready — dev code deployment 8997bfc succeeded at https://hanzi-garden-15kbalrse-ico0018s-projects.vercel.app ; Vercel login required. Feature preview remote smoke was auth-protected; local UI and external-library smoke PASS.
 Human acceptance: Waiting — production release still requires explicit user approval.
 Next owner: User — review preview and explicitly approve production release if satisfied.
 ```
