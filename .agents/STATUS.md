@@ -11,13 +11,13 @@ Task: Let the learner choose 10, 20 or 30 daily dictation words.
 Acceptance criteria: Exactly three accessible choices, default 10 and book-scoped persistent preference; queue respects selected cap, preserves same-day queue/results when resizing, appends due/new items without duplicates; old 15-word queues remain usable; actual queue count is shown when fewer words are eligible; completion copy uses actual count; desktop/tablet/mobile layout works; existing self-assessment and scheduling remain intact.
 Developer branch: feature/dictation-count-options
 Developer worktree: C:\Users\Administrator\Documents\Codex\2026-10-09\https-github-com-ico0018-hanzi-garden\work\dictation-count-options
-Developer state: Done — implemented 10/20/30 choices with persistent preference and non-destructive same-day resizing; feature commit pending handoff
-QA result: Waiting
-QA evidence / defects: Developer checks passed: new focused queue/count behavior test, existing explicit word-bank test, syntax checks for app.js and both test scripts, and git diff --check. Independent browser QA pending.
- dev merge: Not allowed — awaiting QA PASS
-Preview: Not requested
-Human acceptance: Waiting
-Next owner: QA — test exact feature commit supplied at handoff
+Developer state: Done — exact code commit 6f559c3ead74ac43f893508fa541ca436988bb64 on feature/dictation-count-options; feature pushed to origin by Manager.
+QA result: PASS — independently tested exact code commit 6f559c3ead74ac43f893508fa541ca436988bb64.
+QA evidence / defects: Independent Chrome/Playwright browser scenarios, syntax checks, both behavior tests and diff checks passed. Verified accessible keyboard choices, persistence/book scope, preserved resized/legacy 15 queues/results, due/new ordering, unique bank 28 cap, actual 0/1/10/28 copy, manual writing gate and 2/1-day schedule, and desktop/tablet/mobile layouts. Actual external HanziWriter/pinyin load smoke passed. No defects. Full evidence: .agents/QA-dictation-count-options.md.
+dev merge: Ready — independent QA PASS permits Manager integration into dev.
+Preview: Feature deployment reported successful by Manager — https://hanzi-garden-jvsfgkkv5-ico0018s-projects.vercel.app ; browser smoke redirected to Vercel login (auth-protected).
+Human acceptance: Waiting — production release still requires explicit user approval.
+Next owner: Manager — integrate QA-passed feature into dev and present for human acceptance.
 ```
 
 
