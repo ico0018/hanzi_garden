@@ -470,6 +470,60 @@ h1 {
   grid-template-columns: minmax(0, 1fr);
 }
 
+#dictation-overview {
+  gap: 16px;
+}
+
+#dictation-overview > div:first-child {
+  min-width: 0;
+}
+
+#dictation-overview .lesson-badge {
+  flex-shrink: 0;
+}
+
+.daily-size-picker {
+  margin: 14px 0 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.daily-size-picker legend {
+  margin-bottom: 8px;
+  font-weight: 800;
+}
+
+.daily-size-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.daily-size-option {
+  min-height: 44px;
+  padding: 8px 14px;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  background: white;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.daily-size-option[aria-pressed="true"] {
+  background: var(--accent);
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.08);
+}
+
+.daily-size-option:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+#dictation-overview .daily-size-note {
+  margin-top: 10px;
+}
+
 .daily-dictation-card {
   max-width: 760px;
 }

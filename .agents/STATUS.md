@@ -4,6 +4,23 @@
 
 ## Current snapshot
 
+## 2026-10-09 — Daily dictation count options
+
+```text
+Task: Let the learner choose 10, 20 or 30 daily dictation words.
+Acceptance criteria: Exactly three accessible choices, default 10 and book-scoped persistent preference; queue respects selected cap, preserves same-day queue/results when resizing, appends due/new items without duplicates; old 15-word queues remain usable; actual queue count is shown when fewer words are eligible; completion copy uses actual count; desktop/tablet/mobile layout works; existing self-assessment and scheduling remain intact.
+Developer branch: feature/dictation-count-options
+Developer worktree: C:\Users\Administrator\Documents\Codex\2026-10-09\https-github-com-ico0018-hanzi-garden\work\dictation-count-options
+Developer state: Done — exact code commit 6f559c3ead74ac43f893508fa541ca436988bb64 on feature/dictation-count-options; feature pushed to origin by Manager.
+QA result: PASS — independently tested exact code commit 6f559c3ead74ac43f893508fa541ca436988bb64.
+QA evidence / defects: Independent Chrome/Playwright browser scenarios, syntax checks, both behavior tests and diff checks passed. Verified accessible keyboard choices, persistence/book scope, preserved resized/legacy 15 queues/results, due/new ordering, unique bank 28 cap, actual 0/1/10/28 copy, manual writing gate and 2/1-day schedule, and desktop/tablet/mobile layouts. Actual external HanziWriter/pinyin load smoke passed. No defects. Full evidence: .agents/QA-dictation-count-options.md.
+dev merge: Completed — QA-passed feature and delivery records integrated; production approval recorded below.
+Preview: Ready — dev code deployment 8997bfc succeeded at https://hanzi-garden-15kbalrse-ico0018s-projects.vercel.app ; Vercel login required. Feature preview remote smoke was auth-protected; local UI and external-library smoke PASS.
+Human acceptance: Approved — user said “可以上线”, recorded 2026-10-09 21:01 Asia/Shanghai.
+Production release: Authorized — QA code unchanged; rollback branch backup/2026-10-09-pre-dictation-count-release at bc62e56ea3eb8b9c3e1acfcc5651041fae4aee0a; main merge/push and deployment verification pending.
+```
+
+
 ## 2026-10-07 — Project README refresh
 
 ```text

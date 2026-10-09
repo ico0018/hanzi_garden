@@ -25,7 +25,8 @@ let activeAudio = null;
 const BOOK_CATALOG = window.HANZI_BOOK_CATALOG || {};
 const selectedBookId = new URLSearchParams(window.location.search).get("book") || "3-upper";
 const selectedBook = BOOK_CATALOG[selectedBookId];
-const DAILY_DICTATION_SIZE = 15;
+const DAILY_DICTATION_SIZES = [10, 20, 30];
+const DEFAULT_DAILY_DICTATION_SIZE = 10;
 const EBBINGHAUS_INTERVALS = [2, 4, 7, 15, 30, 60];
 const DAILY_DICTATION_BANK_FILES = {
   "3-upper": "每日词语听写题库.txt"
@@ -313,6 +314,19 @@ function dailyDictationQueueKey() {
   return `hanzi-daily-dictation-queue-v4-${selectedBookId}`;
 }
 
+function dailyDictationSizeKey() {
+  return `hanzi-daily-dictation-size-v1-${selectedBookId}`;
+}
+
+function getDailyDictationSize() {
+  try {
+    const size = Number(localStorage.getItem(dailyDictationSizeKey()));
+    return DAILY_DICTATION_SIZES.includes(size) ? size : DEFAULT_DAILY_DICTATION_SIZE;
+  } catch (error) {
+    return DEFAULT_DAILY_DICTATION_SIZE;
+  }
+}
+
 function getDictationItems() {
   return dailyDictationItems;
 }
@@ -331,6 +345,7 @@ function saveDailyDictationProgress(progress) {
 
 function getDailyQueue() {
   const date = todayKey();
+  const size = getDailyDictationSize();
   const items = getDictationItems();
   const itemById = new Map(items.map((item) => [item.id, item]));
   const progress = getDailyDictationProgress();
@@ -341,21 +356,24 @@ function getDailyQueue() {
     savedQueue = null;
   }
 
-  if (savedQueue?.date === date && Array.isArray(savedQueue.ids)) {
-    return savedQueue.ids.map((id) => itemById.get(id)).filter(Boolean).slice(0, DAILY_DICTATION_SIZE);
-  }
-
+  const sameDay = savedQueue?.date === date && Array.isArray(savedQueue.ids);
+  const state = sameDay ? savedQueue : { date, ids: [], results: {} };
+  // Keep the full saved queue and results: lowering the cap only hides its tail.
+  const savedIds = new Set(state.ids);
+  const queue = Array.from(savedIds, (id) => itemById.get(id)).filter(Boolean);
   const dueItems = items
-    .filter((item) => progress[item.id]?.dueDate && progress[item.id].dueDate <= date)
+    .filter((item) => !savedIds.has(item.id) && progress[item.id]?.dueDate && progress[item.id].dueDate <= date)
     .sort((a, b) => {
       const dueCompare = progress[a.id].dueDate.localeCompare(progress[b.id].dueDate);
       return dueCompare || a.order - b.order;
     });
-  const dueIds = new Set(dueItems.map((item) => item.id));
-  const newItems = items.filter((item) => !progress[item.id] && !dueIds.has(item.id));
-  const queue = [...dueItems, ...newItems].slice(0, DAILY_DICTATION_SIZE);
-  localStorage.setItem(dailyDictationQueueKey(), JSON.stringify({ date, ids: queue.map((item) => item.id), results: {} }));
-  return queue;
+  const newItems = items.filter((item) => !savedIds.has(item.id) && !progress[item.id]);
+  const additions = [...dueItems, ...newItems].slice(0, Math.max(0, size - queue.length));
+  if (!sameDay || additions.length) {
+    state.ids = [...state.ids, ...additions.map((item) => item.id)];
+    localStorage.setItem(dailyDictationQueueKey(), JSON.stringify(state));
+  }
+  return [...queue, ...additions].slice(0, size);
 }
 
 function getTodayQueueState() {
@@ -430,6 +448,7 @@ function renderDailyDictation() {
     dictationDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><h2>本教材暂未配置每日词语听写题库</h2><p class="daily-review-note">请先在题库文件中配置词语后再开始听写。</p></section>`;
     return;
   }
+  const size = getDailyDictationSize();
   const queue = getDailyQueue();
   const state = getTodayQueueState();
   const results = state.results || {};
@@ -437,15 +456,33 @@ function renderDailyDictation() {
   const completedCount = queue.length - pending.length;
 
   dictationOverview.innerHTML = `
-    <div><h2>每日听写</h2><p>每天最多 15 个生词；系统只安排复习，你自己决定会不会写。</p></div>
+    <div><h2>每日听写</h2><p>每天最多 ${size} 个词；系统安排复习，你自己决定会不会写。</p>
+      <fieldset class="daily-size-picker">
+        <legend>每天听写几个词？</legend>
+        <div class="daily-size-options">
+          ${DAILY_DICTATION_SIZES.map((count) => `<button class="daily-size-option" type="button" data-size="${count}" aria-pressed="${count === size}">${count} 个词</button>`).join("")}
+        </div>
+      </fieldset>
+      ${queue.length < size ? `<p class="daily-size-note">今天可听写 ${queue.length} 个词。</p>` : ""}
+    </div>
     <div class="lesson-badge">${completedCount} / ${queue.length} 已标记</div>`;
+
+  dictationOverview.querySelectorAll(".daily-size-option").forEach((button) => {
+    button.addEventListener("click", () => {
+      const selectedSize = Number(button.dataset.size);
+      if (selectedSize === size) return;
+      localStorage.setItem(dailyDictationSizeKey(), String(selectedSize));
+      renderDailyDictation();
+      dictationOverview.querySelector(`[data-size="${selectedSize}"]`)?.focus();
+    });
+  });
 
   if (!queue.length) {
     dictationDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><h2>今天还没有可听写的生词</h2><p class="daily-review-note">已学词汇会在复习日期自动回到这里。</p></section>`;
     return;
   }
   if (!pending.length) {
-    dictationDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><div class="daily-finished"><h2>今日 15 词已完成</h2><p>明天会根据你的手动标记安排下一次复习。</p></div></section>`;
+    dictationDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><div class="daily-finished"><h2>今日 ${queue.length} 词已完成</h2><p>明天会根据你的手动标记安排下一次复习。</p></div></section>`;
     return;
   }
 

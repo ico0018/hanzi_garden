@@ -1,5 +1,13 @@
 # Decisions Log
 
+## 2026-10-09 — Daily dictation count selection
+
+- Decision: Daily dictation offers 10, 20 or 30 words, defaults to 10, and persists the preference by book in the current browser. This supersedes the former fixed 15-word cap.
+- Decision: Lowering the count hides the tail of the same-day queue without discarding saved IDs or manual results; raising it restores that queue and appends eligible due/new words without duplicates. Existing v4 15-word queues remain usable.
+- Decision: When fewer words are eligible, show and complete the actual count; never repeat words to fill the selected count.
+- Rationale: The learner can adjust daily workload while retaining progress and the existing handwriting/self-assessment schedule.
+- Source: User request for 10/20/30 options, 2026-10-09; Manager-assigned acceptance criteria.
+
 ## 2026-08-19 — Multi-book character dataset architecture
 
 - Decision: Hanzi Garden uses one shared learning application and selects curriculum data through the `book` query parameter.
