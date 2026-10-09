@@ -4,6 +4,23 @@
 
 ## Current snapshot
 
+## 2026-10-09 — Daily dictation count options
+
+```text
+Task: Let the learner choose 10, 20 or 30 daily dictation words.
+Acceptance criteria: Exactly three accessible choices, default 10 and book-scoped persistent preference; queue respects selected cap, preserves same-day queue/results when resizing, appends due/new items without duplicates; old 15-word queues remain usable; actual queue count is shown when fewer words are eligible; completion copy uses actual count; desktop/tablet/mobile layout works; existing self-assessment and scheduling remain intact.
+Developer branch: feature/dictation-count-options
+Developer worktree: C:\Users\Administrator\Documents\Codex\2026-10-09\https-github-com-ico0018-hanzi-garden\work\dictation-count-options
+Developer state: Done — implemented 10/20/30 choices with persistent preference and non-destructive same-day resizing; feature commit pending handoff
+QA result: Waiting
+QA evidence / defects: Developer checks passed: new focused queue/count behavior test, existing explicit word-bank test, syntax checks for app.js and both test scripts, and git diff --check. Independent browser QA pending.
+ dev merge: Not allowed — awaiting QA PASS
+Preview: Not requested
+Human acceptance: Waiting
+Next owner: QA — test exact feature commit supplied at handoff
+```
+
+
 ## 2026-10-07 — Project README refresh
 
 ```text
