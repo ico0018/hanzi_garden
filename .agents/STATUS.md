@@ -8,11 +8,13 @@
 
 - Task: User requested “词语表也要补全，就用课本后面词语表”. Populate all six daily dictation banks only from the pinned source volume.words, retaining order and legitimate duplicate entries.
 - Developer branch/worktree: `feature/grades-4-6`, `F:\chinese webapp\.worktrees\grades-4-6`; safe plan: continue the clean isolated worktree, preserve existing curricula and Grade 3 Upper bank/IDs; no merge/push.
-- Developer state: Done for available-source integration; QA: Waiting for this new scope. Earlier curriculum QA PASS remains recorded separately.
+- Developer state: Done for available-source integration; implementation QA: PASS on exact commit `c09ce64bde79263b7c701d1c9516c8981b4f0f47`. Earlier curriculum QA PASS remains recorded separately.
 - Implementation: Editable one-word-per-line TXT banks: 四上240、四下171（未齐）、五上222、五下139、六上224、六下162词。Four copied whole-lesson blocks removed from source 421; missing lessons explicitly disclosed in UI. New book/occurrence IDs isolate results; Grade 3 bank and IDs preserved.
 - Verification: `node scripts/test-textbook-word-banks.js`, `node scripts/build-textbook-word-banks.js`, `node scripts/test-grade-4-6.js`, `node scripts/test-daily-word-bank.js`, JS syntax and diff checks PASS. Local bank loader, source order/counts, duplicate IDs, book-isolated persisted progress, 15-item cap and unsupported-book empty state tested.
+- Content completeness: Pending — four-lower source has missing lesson words; all six original textbook facsimiles / printing versions remain unverified. Implementation QA PASS does not certify textbook completeness.
+- Local preview: Ready — http://127.0.0.1:4180/welcome.html; human acceptance waiting. No merge, push or deployment.
 - Source limitation: Community 2019 textbook transcription; no primary textbook facsimile supplied. Source 4-lower misses lessons and contains four copied blocks. GitHub file history (2026-10-10 check) shows only source commit 283c9990fc56fc7d4760da261ce9dc5fc643c2cf, no newer correction. Full four-lower word-table completion requires reliable missing textbook pages; other banks remain version-unverified transcriptions.
-- Next owner: QA, then Manager / User for source gap; no merge/push.
+- Next owner: Manager / User — review preview and provide reliable textbook word-table pages for source gap; no merge/push.
 
 ## 2026-10-10 — Grade 4–6 local curriculum completion
 
