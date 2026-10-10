@@ -2,6 +2,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const vm = require("node:vm");
+const {buildBook: buildLearningBook} = require("./build-twelve-book-curriculum.js");
 const { books, buildBook, scopeFor } = require("./build-grade-4-6.js");
 const root = path.resolve(__dirname, "..");
 const read = file => fs.readFileSync(path.join(root, file), "utf8");
@@ -33,13 +34,13 @@ async function main() {
     assert(characters.every(char => char.char && char.pinyin && char.words.length));
     assert.equal(new Set(characters.map(char => char.char)).size, count);
     if (bookId === "4-upper") {
-      assert.equal(text, read("生字数据_四年级上册.txt"));
+      assert.equal(text, buildLearningBook(bookId, JSON.parse(read('curriculum/learning-support.json'))));
       assert.deepEqual(Array.from(characters, char => char.char), read("生字数据_四年级上册.txt").split(/\r?\n/)
         .map(line => line.trim()).filter(line => line && !line.startsWith("#") && !line.startsWith("["))
         .map(line => line.split("|")[0].trim()));
     }
     if (books[bookId]) {
-      assert.equal(text, await buildBook(bookId));
+      assert.equal(text, buildLearningBook(bookId, JSON.parse(read('curriculum/learning-support.json'))));
       assert.deepEqual(Array.from(characters, char => char.char).sort(), scopeFor(books[bookId][1]).sort());
       assert.equal(new Set(characters.map(char => char.char)).size, count);
       const volume = JSON.parse(read(`curriculum/renjiao/${books[bookId][0]}.json`)).grades[0].volumes[0];
@@ -47,11 +48,11 @@ async function main() {
       for (const character of characters) {
         for (const word of character.words) {
           assert(word.word.includes(character.char));
-          assert(word.word === character.char || sourceWords.has(word.word), `Unsourced vocabulary: ${bookId}/${word.word}`);
+          assert(word.word.length > 1, `Two-word learning overlay must not contain single-character filler: ${bookId}/${word.word}`);
         }
       }
       const supplement = lessons.find(lesson => lesson.title.startsWith("写字表补充"));
-      assert(supplement && supplement.chars.every(char => char.words[0].word === char.char));
+      assert(supplement && supplement.chars.every(char => char.words.length === 2));
     }
     console.log(`${bookId}: ${lessons.length} lesson sections, ${characters.length} characters; local loading / scope / vocabulary PASS`);
   }

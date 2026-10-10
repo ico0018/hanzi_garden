@@ -1,7 +1,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const root = path.resolve(__dirname, "..");
-const sources = { "4-upper": "411", "4-lower": "421", "5-upper": "511", "5-lower": "521", "6-upper": "611", "6-lower": "621" };
+const sources = { "2-lower": "221", "4-upper": "411", "4-lower": "421", "5-upper": "511", "5-lower": "521", "6-upper": "611", "6-lower": "621" };
 
 function wordEntries(bookId) {
   const volume = JSON.parse(fs.readFileSync(path.join(root, `curriculum/renjiao/${sources[bookId]}.json`), "utf8")).grades[0].volumes[0];
@@ -23,7 +23,9 @@ function buildBank(bookId) {
   for (const entry of wordEntries(bookId)) {
     output.push(`# ${entry.lesson}`);
     for (const characters of entry.characters) {
-      const word = characters.map(item => item.character).join("");
+      const rawWord = characters.map(item => item.character).join("");
+      // Documented obvious transcription erratum; retain original JSON for audit.
+      const word = bookId === "5-lower" && rawWord === "露馅儿子" ? "露馅儿" : rawWord;
       if (!word || characters.some(item => !item.character)) throw new Error(`Invalid source word: ${bookId}/${entry.lesson}`);
       output.push(word);
     }

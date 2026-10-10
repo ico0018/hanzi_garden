@@ -1071,3 +1071,18 @@ h1 {
     grid-template-columns: 1fr;
   }
 }
+.daily-size-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.daily-size-control select {
+  padding: 6px 10px;
+  border: 1px solid #d8d2c4;
+  border-radius: 8px;
+  background: white;
+  font: inherit;
+}

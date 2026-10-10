@@ -1,5 +1,7 @@
 # Local Grade 4–6 curriculum
 
+Current catalog uses the twelve-book two-word overlays described in [../README.md](../README.md). The original/generated baseline sources below are retained for audit; the newer overlay selects two real words/usages per character and corrects exposed 露馅儿子 to 露馅儿. Daily choices are now 10/20/30 rather than the former fixed 15.
+
 Original metadata: [vipzhicheng/shukong-app](https://github.com/vipzhicheng/shukong-app/tree/68faa378f2211fb1b9152f9df45eb8fa2c4fb2b4/public/books/renjiao), commit `68faa378f2211fb1b9152f9df45eb8fa2c4fb2b4`. The six JSON files are downloaded verbatim. Source license: MIT, see LICENSE.txt (Copyright (c) [2025] [Shu Kong APP]). These are the same pinned datasets used previously by writing-table-support.js remotely.
 
 For newly enabled books, the existing repository writing-table TXT determines the exact character set. Source JSON supplies lesson grouping, readings and word-list vocabulary for matching characters. Source-only characters are excluded; repeated source characters are deduplicated. Missing characters remain available under **写字表补充（课次待核对）**, with one honest single-character fallback rather than invented vocabulary or a guessed lesson. Readings for these entries come from the same book's recognition/word records when available; otherwise the fixed pinyin-pro 3.18.2 dictionary already used by this app. Dictionary defaults for polyphonic characters need contextual textbook confirmation.

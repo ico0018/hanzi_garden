@@ -4,6 +4,18 @@
 
 ## Current snapshot
 
+## 2026-10-10 — Twelve-book curriculum and adjustable dictation
+
+- Task: User requests 10/20/30 daily dictation choices for every grade, exactly two useful words per character, and Grade 1/2/3 lower-term completion.
+- Developer branch/worktree: `feature/grades-4-6`, `F:\chinese webapp\.worktrees\grades-4-6`; continue clean isolated worktree; preserve original curriculum files and existing progress IDs. No merge/push.
+- Developer state: Done; QA: Waiting for this candidate. New choices default to 10; resizing preserves completed results, the full assigned list, order and review progress; old v4 15-item queues remain compatible.
+- Implementation: All twelve books enabled and loaded locally; first/second/third lower scopes 200/250/250. All 2,600 learning entries have exactly two distinct multi-character words or clearly marked natural usage phrases; original TXT files untouched, curated first-word priority retained where valid, Grade 3 sentences preserved except explicit 打欠欠 -> 打哈欠 correction. Existing Grade 2 Upper has 250 entries / 246 unique chars, preserved.
+- Dictation: Per-book 10/20/30 setting; dynamic actual completion count; controls remain visible for unconfigured banks. Grade 2 Lower imports 278 available source words; Grade 1 sources have no formal word table, Grade 3 Lower source words are incorrectly copied from Grade 3 Upper and are not enabled. Four-lower source remains incomplete.
+- Verification: All-twelve runtime-parser/scope/exact-two/provenance/reading/meaning/sentence tests, 10/20/30 persistence and resizing / new-day / legacy-15 / small-bank / book-isolation tests, source-bank and Grade 3 bank regressions, data reproduction, JS syntax and diff checks PASS. Browser QA pending.
+- Data audit: Pinned 321 writing and words have incorrect upper-term content. Lower-term learning uses its preserved raw writing table with honest 25-character groups labeled 课次待核对, not the copied lesson mapping. Reviewed general vocabulary and dictionary word provenance are separate from textbook dictation banks.
+- Source plan: Existing raw writing tables fix character scope; pinned community textbook JSON and existing curated words provide metadata; honest general-vocabulary supplement for gaps, separate from textbook dictation tables.
+- Next owner: Independent QA on scoped feature commit, then Manager / User; no merge/push.
+
 ## 2026-10-10 — Grade 4–6 textbook word-table banks
 
 - Task: User requested “词语表也要补全，就用课本后面词语表”. Populate all six daily dictation banks only from the pinned source volume.words, retaining order and legitimate duplicate entries.
