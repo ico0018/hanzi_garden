@@ -37,9 +37,11 @@ for (const book of Object.keys(books)) {
 // Explicitly retain readable evidence for QA; these assertions catch wrong
 // pinyin-pro default selections rather than merely checking nonempty strings.
 for (const [word,pinyin] of Object.entries({伯父:'bó fù',搜查:'sōu chá',呕吐:'ǒu tù',
-  喧嚣:'xuān xiāo',晕倒:'yùn dǎo',肩膀:'jiān bǎng',仿佛:'fǎng fú'})) {
+  喧嚣:'xuān xiāo',晕倒:'yùn dǎo',肩膀:'jiān bǎng',仿佛:'fǎng fú',
+  赢得:'yíng dé',蚂蚱:'mà zha',欺负:'qī fu'})) {
   assert.equal(wordCandidates({char:Array.from(word)[0],words:[{word,pinyin:'wrong-default',meaning:'review regression'}]})[0].pinyin,pinyin);
   assert(all.filter(w=>w.word===word).every(w=>w.pinyin===pinyin));
+  if(['赢得','蚂蚱','欺负'].includes(word)) assert(all.some(w=>w.word===word),`${word}: runtime regression coverage`);
 }
 if(process.argv.includes('--export')) console.log(JSON.stringify({reviewedOriginalRecords:966,reviewedOriginalItems:1397,
   actualUsedSupportEntries:used.length,distinctUsedSupportWords:new Set(used.map(w=>w.word)).size,entries:used}));

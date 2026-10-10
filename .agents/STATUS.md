@@ -4,6 +4,14 @@
 
 ## Current snapshot
 
+## 2026-10-10 — Final three contextual-reading corrections
+
+- Task: QA found 赢得 / 蚂蚱 / 欺负 readings still wrong on cc01a38; Manager assigned only these three corrections.
+- Branch/worktree: feature/grades-4-6, F:\chinese webapp\.worktrees\grades-4-6; clean isolated candidate continued; no merge/push.
+- Developer state: Corrected to yíng dé / mà zha / qī fu with explicit contextual overrides, actual-runtime regression coverage, and regenerated local learning/support-review exports. All other behavior and word selection unchanged.
+- QA: Previous candidate FAIL; new candidate waiting for focused re-verification. Textbook source/completeness limitations and unconfigured dictation banks remain unchanged.
+- Verification: Full twelve-book parser/exact-two/scope/reproduction and vocabulary reading regressions PASS; next owner independent QA.
+
 ## 2026-10-10 — QA vocabulary and contextual-reading repair
 
 - Task: Repair QA FAIL on `3b7fd90177bdaf1fa20b0655d91c87b44fde02f1`: default dictionary readings and inappropriate/obscure supplemental words.
