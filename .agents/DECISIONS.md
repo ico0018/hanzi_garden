@@ -1,5 +1,12 @@
 # Decisions Log
 
+## 2026-10-10 — Full supplemental vocabulary review after QA FAIL
+
+- Decision: Do not accept nonempty automated pinyin as a content check. Reviewer inspected all 966 original support records / 1,397 items; apply 155 explicit word-selection repairs, contextual readings and neutral tones, with committed review evidence and actual-used export.
+- Decision: Keep original source artifacts untouched; suppress exposed inappropriate/obscure examples (including original 入阁) in learning overlay. Preserve valid curated priority; do not add supplemental vocabulary to textbook dictation banks.
+- Decision: Character headings are book-specific; 三下 佛 is fú in 仿佛, without changing 佛像/活佛 word readings elsewhere. Word pinyin remains contextual and independent of character headings.
+- Source: Manager-assigned QA FAIL repair and complete vocabulary-review report. These reviews do not certify textbook edition alignment or fill unavailable textbook word-table pages.
+
 ## 2026-10-10 — Adjustable daily count and two-word learning cards
 
 - Decision: Every book offers 10/20/30 daily dictation choices, default 10, stored per book. Existing queue/progress IDs remain compatible; resizing retains results and assigned order without repeats.

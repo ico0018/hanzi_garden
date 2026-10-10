@@ -10,6 +10,7 @@ const books = {
   '6-upper': ['611', '生字数据_6年级上册.txt'], '6-lower': ['621', '生字数据_6年级下册.txt']
 };
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
+const vocabularyReview = JSON.parse(read('curriculum/vocabulary-review.json'));
 const volumes = Object.fromEntries(Object.entries(books).filter(([, [source]]) => source)
   .map(([book, [source]]) => [book, JSON.parse(read(`curriculum/renjiao/${source}.json`)).grades[0].volumes[0]]));
 function sourceWords(volume) {
@@ -35,9 +36,18 @@ function baseLessons(bookId, support = {}) {
       character.words.unshift({word:'哈欠',pinyin:'hā qian',meaning:'困倦时张嘴深吸气的动作。'});
       if (character.sentence) character.sentence = {groupWord:'哈欠',text:character.sentence.text.replace(/打欠欠/g,'打哈欠')};
     }
+    for (const lesson of parsed) for (const character of lesson.chars) {
+      character.pinyin = vocabularyReview.characterHeadings?.[bookId]?.[character.char] || character.pinyin;
+    }
     return parsed;
   }
-  if (!['1-lower', '2-lower', '3-lower'].includes(bookId)) return parse(read(`curriculum/renjiao/${bookId}.txt`));
+  if (!['1-lower', '2-lower', '3-lower'].includes(bookId)) {
+    const existing = parse(read(`curriculum/renjiao/${bookId}.txt`));
+    for (const lesson of existing) for (const character of lesson.chars) {
+      character.pinyin = vocabularyReview.characterHeadings?.[bookId]?.[character.char] || character.pinyin;
+    }
+    return existing;
+  }
   const scope = rawScope(bookId);
   const allowed = new Set(scope);
   const volume = volumes[bookId];
@@ -59,15 +69,29 @@ function baseLessons(bookId, support = {}) {
       chars: remaining.slice(start, start + groupSize).map(char => ({char,
         pinyin: readings.find(c => c.character === char)?.pinyin || support.characterReadings?.[char] || '', words: [], sentence: null}))});
   }
+  if (bookId === '3-lower') for (const lesson of lessons) for (const character of lesson.chars) {
+    // 荷花 uses 仿佛. This contextual character reading must not change
+    // 佛像/活佛 in other books or their independent word readings.
+    if (character.char === '佛') {
+      character.pinyin = 'fú';
+      character.words = vocabularyReview.replacements['佛'].map(item => ({
+        word: item.word, pinyin: item.pinyin,
+        meaning: `${item.kind === 'phrase' ? '用法短语：' : ''}${item.definition}`
+      }));
+    }
+  }
+  for (const lesson of lessons) for (const character of lesson.chars) {
+    character.pinyin = vocabularyReview.characterHeadings?.[bookId]?.[character.char] || character.pinyin;
+  }
   return lessons;
 }
 function validWords(character, words) {
   const result = [];
   const seen = new Set();
   for (const word of words) {
-    if (!word.word || ['噢呀', '噢哟', '露馅儿子', '曰过', '曰道', '打欠欠', '哭笑'].includes(word.word) || Array.from(word.word).length < 2 || !word.word.includes(character) || !word.pinyin || !word.meaning || seen.has(word.word)) continue;
+    if (!word.word || ['噢呀', '噢哟', '露馅儿子', '曰过', '曰道', '打欠欠', '哭笑', '乱伦', '姨太太', '上吊', '裸体', '玉音', '京官', '入阁', '茅台', '茅台酒'].includes(word.word) || Array.from(word.word).length < 2 || !word.word.includes(character) || !word.pinyin || !word.meaning || seen.has(word.word)) continue;
     seen.add(word.word);
-    result.push(word);
+    result.push({...word, pinyin: vocabularyReview.readingOverrides[word.word] || word.pinyin});
   }
   return result;
 }

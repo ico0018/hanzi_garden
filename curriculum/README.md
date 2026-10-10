@@ -15,3 +15,16 @@ Offline reproduction: `node scripts/build-twelve-book-curriculum.js`. Verificati
 Daily counts are per-book 10/20/30, default 10. Queue IDs/results and book progress remain v4-compatible. The saved assigned list retains previously assigned items even when shrinking; increasing restores that order and appends unseen candidates. Completed results and scheduled reviews are never deleted by resizing. Completion text uses the actual available count, including banks smaller than the selected limit.
 
 Original textbook facsimile/printing alignment is still unverified. Four-lower textbook word-table source remains incomplete. See renjiao/README.md for those source limitations; implementation tests do not certify authoritative textbook completeness.
+# Supplemental vocabulary review
+
+After QA found inappropriate automatic selections and incorrect contextual
+readings, all 966 original support records / 1,397 items were reviewed.
+`vocabulary-review.json` records 155 explicit selection replacements, contextual
+pinyin/neutral-tone overrides and book-specific character headings.
+`used-vocabulary-review.json` records 1,399 actual support occurrences (1,348
+distinct words) in the 2,600-entry local runtime curriculum. Reproduce it with
+`node scripts/test-vocabulary-review.js --export`; review regression checks use
+the actual app parser and generated book files. Original source artifacts remain
+unchanged. Dictionary provenance labels are not dictionary definitions; authored
+meanings and explicitly labelled usage phrases remain distinct from textbook
+word-table entries. Primary textbook page/version verification remains pending.

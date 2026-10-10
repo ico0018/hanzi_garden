@@ -4,6 +4,16 @@
 
 ## Current snapshot
 
+## 2026-10-10 — QA vocabulary and contextual-reading repair
+
+- Task: Repair QA FAIL on `3b7fd90177bdaf1fa20b0655d91c87b44fde02f1`: default dictionary readings and inappropriate/obscure supplemental words.
+- Developer branch/worktree: `feature/grades-4-6`, `F:\chinese webapp\.worktrees\grades-4-6`; clean isolated worktree continued; no merge/push.
+- Developer state: Ready for new QA. Vocabulary reviewer inspected all 966 original support-character records / 1,397 original support items; applied 155 reviewed character replacements plus contextual reading/neutral-tone fixes and per-book character headings. Exported actual runtime support usage: 1,399 occurrences / 1,348 distinct words in curriculum/used-vocabulary-review.json. All 2,600 learning entries retain exactly two words/usages.
+- QA: FAIL on prior candidate; new candidate pending. Keep curated words and book-specific character readings distinct from contextual word readings; 三下 仿佛 uses fú without globally rewriting 佛像/活佛.
+- Verification: Actual twelve-book parser/scope/exact-two/source/sentence checks, full vocabulary review/contextual-reading/child-suitability checks, 10/20/30 resizing and persistence, legacy-15 queue compatibility, textbook-bank and Grade 3 bank regression, reproduction and diff checks PASS. Independent QA remains pending; prior QA FAIL is not erased.
+- Limits: Original textbook facsimile/version and faulty lower-term source gaps remain unresolved. Grade 1 banks and Grade 3 Lower bank are not configured; selector visible with an honest no-bank explanation. Four-lower word bank remains partial. No merge/push.
+- Next owner: Independent QA on new scoped feature commit.
+
 ## 2026-10-10 — Twelve-book curriculum and adjustable dictation
 
 - Task: User requests 10/20/30 daily dictation choices for every grade, exactly two useful words per character, and Grade 1/2/3 lower-term completion.
