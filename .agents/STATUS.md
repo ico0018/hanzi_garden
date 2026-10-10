@@ -11,8 +11,10 @@
 - Developer: Integrated; prior grades-4-6 candidate remains untouched. Conflict resolution retains latest production accessible 10/20/30 buttons, keyboard focus restoration and queue algorithm; shares those controls with unconfigured books and adds honest bank/source notes. Preserves latest README with only current book/bank facts updated. App/CSS cache versions bumped. Original source artifacts unchanged.
 - Acceptance: Run both daily-count suites, twelve-book 2600/5200 parser/scope/word review, source-bank regressions, generation reproduction and syntax checks. Existing source/completeness/browser-handwriting limitations remain disclosed.
 - Verification: Both daily-count behavior suites (including unconfigured UI), twelve-book 2600/5200 exact-two/source/parser checks, full vocabulary/context reading regression, Grade 4–6 local loading, all textbook banks and Grade 3 preserved bank, data reproduction, JS syntax and diff checks PASS. Content-reproduction tests now normalize checkout CRLF without weakening content/scope assertions.
-- QA: Pending on integrated feature commit; previous standalone implementation PASS does not substitute for integration QA.
-- Next owner: Independent QA, then Manager release.
+- QA: Independent PASS on exact integrated implementation commit `b4dfd7524bfc9cff3cbcc474068870727667b223`; this STATUS-only follow-up does not change tested app/data assets. User production approval remains the explicit words “合并到main，发布”.
+- Manager release safety plan: Confirm clean main-local and preserve other worktrees. Local dev 9b4d149 differs from remote dev only by prior history; do not reset it. Fast-forward remote dev (currently e9c7bdf) directly from feature/release-twelve-books; create backup/2026-10-10-before-twelve-book-release at latest remote main 0e776d1, then fast-forward clean main-local to the same approved candidate and push. Manager alone executes main/dev updates and checks Vercel automatic deployment.
+- Release: Not yet executed by Developer; no push or main/dev merge. Source gaps, unconfigured Grade 1/2-upper/3-lower dictation banks, incomplete four-lower bank and untested real-browser handwriting remain recorded limitations.
+- Next owner: Manager — execute approved release plan and verify deployment.
 
 ## 2026-10-09 — Daily dictation count options
 
