@@ -9,8 +9,11 @@
 - Task: QA found 赢得 / 蚂蚱 / 欺负 readings still wrong on cc01a38; Manager assigned only these three corrections.
 - Branch/worktree: feature/grades-4-6, F:\chinese webapp\.worktrees\grades-4-6; clean isolated candidate continued; no merge/push.
 - Developer state: Corrected to yíng dé / mà zha / qī fu with explicit contextual overrides, actual-runtime regression coverage, and regenerated local learning/support-review exports. All other behavior and word selection unchanged.
-- QA: Previous candidate FAIL; new candidate waiting for focused re-verification. Textbook source/completeness limitations and unconfigured dictation banks remain unchanged.
-- Verification: Full twelve-book parser/exact-two/scope/reproduction and vocabulary reading regressions PASS; next owner independent QA.
+- QA: Independent PASS on exact implementation commit `3c7d5a59f70a4f1e2b997ba6d18189d97e488f80`. Earlier failed candidates remain recorded; this documentation-only follow-up does not alter the tested implementation.
+- Verification: All twelve books / 2,600 learning records / 5,200 displayed words or marked usage phrases passed actual-parser, exact-two, local scope and reproduction checks. Full support-word review, independent vocabulary spot checks, contextual readings (including final 赢得 / 蚂蚱 / 欺负 corrections), 10/20/30 persistence, mid-day increase/shrink, retained completed results, legacy-15 compatibility, new-day/book isolation, and existing word-bank regressions PASS.
+- Local preview: Ready — http://127.0.0.1:4180/welcome.html; human acceptance waiting. No merge, push or deployment.
+- Limits: Real-browser handwriting interaction was not tested. Grade 1 Upper/Lower, Grade 2 Upper and Grade 3 Lower have no configured dictation word bank; their selection controls do not imply usable dictation. Grade 4 Lower word table remains incomplete. Lesson mapping / textbook edition alignment still require original textbook pages for verification.
+- Next owner: Manager / User — local acceptance, source-page verification and protected release gates.
 
 ## 2026-10-10 — QA vocabulary and contextual-reading repair
 
