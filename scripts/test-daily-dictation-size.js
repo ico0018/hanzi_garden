@@ -133,6 +133,14 @@ assert.match(finished.elements.get("dictation-detail").innerHTML, /今日 10 词
 assert.equal(finished.state().ids.length, 28);
 assert.equal(Object.keys(finished.state().results).length, 28);
 
+const unconfigured = createHarness('1-lower');
+unconfigured.run('dailyDictationBankStatus = "not-configured"; renderDailyDictation()');
+assert.equal((unconfigured.elements.get('dictation-overview').innerHTML.match(/class="daily-size-option"/g)||[]).length,3);
+assert.match(unconfigured.elements.get('dictation-detail').innerHTML,/词语表待补充/);
+unconfigured.elements.get('dictation-overview').querySelector('[data-size="20"]').click();
+assert.equal(unconfigured.run('getDailyDictationSize()'),20);
+assert.match(unconfigured.elements.get('dictation-detail').innerHTML,/词语表待补充/);
+
 for (const broken of ["{", "null", JSON.stringify({ date, ids: "bad" })]) {
   const corrupt = createHarness();
   corrupt.storage.set(corrupt.key, broken);

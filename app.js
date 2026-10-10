@@ -25,12 +25,9 @@ let activeAudio = null;
 const BOOK_CATALOG = window.HANZI_BOOK_CATALOG || {};
 const selectedBookId = new URLSearchParams(window.location.search).get("book") || "3-upper";
 const selectedBook = BOOK_CATALOG[selectedBookId];
-const DAILY_DICTATION_SIZES = [10, 20, 30];
-const DEFAULT_DAILY_DICTATION_SIZE = 10;
+const DAILY_DICTATION_SIZE_OPTIONS = [10, 20, 30];
 const EBBINGHAUS_INTERVALS = [2, 4, 7, 15, 30, 60];
-const DAILY_DICTATION_BANK_FILES = {
-  "3-upper": "每日词语听写题库.txt"
-};
+const DAILY_DICTATION_BANK_FILES = window.HANZI_DAILY_WORD_BANK?.bankFiles || {};
 const HUMAN_AUDIO_BASE_URL = "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/hsk";
 const AUDIO_CACHE_LIMIT = 40;
 const audioCache = new Map();
@@ -321,10 +318,33 @@ function dailyDictationSizeKey() {
 function getDailyDictationSize() {
   try {
     const size = Number(localStorage.getItem(dailyDictationSizeKey()));
-    return DAILY_DICTATION_SIZES.includes(size) ? size : DEFAULT_DAILY_DICTATION_SIZE;
+    return DAILY_DICTATION_SIZE_OPTIONS.includes(size) ? size : 10;
   } catch (error) {
-    return DEFAULT_DAILY_DICTATION_SIZE;
+    return 10;
   }
+}
+
+function setDailyDictationSize(size) {
+  const value = Number(size);
+  if (!DAILY_DICTATION_SIZE_OPTIONS.includes(value)) return;
+  localStorage.setItem(dailyDictationSizeKey(), String(value));
+}
+
+function dailyDictationSizeControl() {
+  const size = getDailyDictationSize();
+  return `<fieldset class="daily-size-picker"><legend>每天听写几个词？</legend><div class="daily-size-options">${DAILY_DICTATION_SIZE_OPTIONS.map(count => `<button class="daily-size-option" type="button" data-size="${count}" aria-pressed="${count === size}">${count} 个词</button>`).join("")}</div></fieldset>`;
+}
+
+function bindDailyDictationSizeControl() {
+  dictationOverview.querySelectorAll(".daily-size-option").forEach(button => {
+    button.addEventListener("click", () => {
+      const size = Number(button.dataset.size);
+      if (size === getDailyDictationSize()) return;
+      setDailyDictationSize(size);
+      renderDailyDictation();
+      dictationOverview.querySelector(`[data-size="${size}"]`)?.focus();
+    });
+  });
 }
 
 function getDictationItems() {
@@ -444,8 +464,9 @@ function renderDailyDictation() {
   if (dailyDictationBankStatus !== "ready") {
     dictationOverview.innerHTML = `
       <div><h2>每日听写</h2><p>每日词语听写只使用已配置的教材题库。</p></div>
-      <div class="lesson-badge">题库未配置</div>`;
-    dictationDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><h2>本教材暂未配置每日词语听写题库</h2><p class="daily-review-note">请先在题库文件中配置词语后再开始听写。</p></section>`;
+      <div>${dailyDictationSizeControl()}<div class="lesson-badge">题库未配置</div></div>`;
+    bindDailyDictationSizeControl();
+    dictationDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><h2>本教材听写词语表待补充</h2><p class="daily-review-note">${escapeHtml(window.HANZI_DAILY_WORD_BANK?.unconfiguredBankNotes?.[selectedBookId] || "本册听写词语表正在补充，可先进行生字学习。")}</p></section>`;
     return;
   }
   const size = getDailyDictationSize();
@@ -457,25 +478,13 @@ function renderDailyDictation() {
 
   dictationOverview.innerHTML = `
     <div><h2>每日听写</h2><p>每天最多 ${size} 个词；系统安排复习，你自己决定会不会写。</p>
-      <fieldset class="daily-size-picker">
-        <legend>每天听写几个词？</legend>
-        <div class="daily-size-options">
-          ${DAILY_DICTATION_SIZES.map((count) => `<button class="daily-size-option" type="button" data-size="${count}" aria-pressed="${count === size}">${count} 个词</button>`).join("")}
-        </div>
-      </fieldset>
+      ${dailyDictationSizeControl()}
       ${queue.length < size ? `<p class="daily-size-note">今天可听写 ${queue.length} 个词。</p>` : ""}
+      ${window.HANZI_DAILY_WORD_BANK?.textbookBankNotes[selectedBookId] ? `<p class="daily-review-note">${escapeHtml(window.HANZI_DAILY_WORD_BANK.textbookBankNotes[selectedBookId])}</p>` : ""}
     </div>
     <div class="lesson-badge">${completedCount} / ${queue.length} 已标记</div>`;
 
-  dictationOverview.querySelectorAll(".daily-size-option").forEach((button) => {
-    button.addEventListener("click", () => {
-      const selectedSize = Number(button.dataset.size);
-      if (selectedSize === size) return;
-      localStorage.setItem(dailyDictationSizeKey(), String(selectedSize));
-      renderDailyDictation();
-      dictationOverview.querySelector(`[data-size="${selectedSize}"]`)?.focus();
-    });
-  });
+  bindDailyDictationSizeControl();
 
   if (!queue.length) {
     dictationDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><h2>今天还没有可听写的生词</h2><p class="daily-review-note">已学词汇会在复习日期自动回到这里。</p></section>`;

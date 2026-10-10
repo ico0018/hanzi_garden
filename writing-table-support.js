@@ -23,6 +23,7 @@
   };
 
   const selectedBookId = new URLSearchParams(window.location.search).get("book") || "3-upper";
+  const LOCAL_TEXT_BOOKS = new Set(["4-upper", "4-lower", "5-upper", "5-lower", "6-upper", "6-lower"]);
   let fixedDatasetPromise = null;
 
   function isBookDataRequest(input) {
@@ -126,7 +127,7 @@
 
   window.fetch = async function (input, init) {
     // Verified local curriculum: do not override 三年级上册.
-    if (selectedBookId === "3-upper") return originalFetch(input, init);
+    if (selectedBookId === "3-upper" || LOCAL_TEXT_BOOKS.has(selectedBookId)) return originalFetch(input, init);
     if (!isBookDataRequest(input)) return originalFetch(input, init);
 
     try {

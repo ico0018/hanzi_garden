@@ -8,9 +8,11 @@
 
 - Human release authorization: User explicitly said “合并到main，发布”. Manager owns final main/dev integration and push; Developer must not push or merge production branches.
 - Safe plan: Manager confirmed main-local and daily-dictation-dev clean; preserve all unrelated dirty worktrees. New isolated feature/release-twelve-books at F:\chinese webapp\.worktrees\release-twelve-books starts from origin/dev e9c7bdf (origin/main 0e776d1); integrate reviewed feature c92dd48, retaining newer README and existing daily-count design while meeting per-book and compatible-queue requirements.
-- Developer: Integrating only this new feature worktree; prior grades-4-6 candidate remains untouched. Independent QA required on the integrated commit before Manager release.
+- Developer: Integrated; prior grades-4-6 candidate remains untouched. Conflict resolution retains latest production accessible 10/20/30 buttons, keyboard focus restoration and queue algorithm; shares those controls with unconfigured books and adds honest bank/source notes. Preserves latest README with only current book/bank facts updated. App/CSS cache versions bumped. Original source artifacts unchanged.
 - Acceptance: Run both daily-count suites, twelve-book 2600/5200 parser/scope/word review, source-bank regressions, generation reproduction and syntax checks. Existing source/completeness/browser-handwriting limitations remain disclosed.
-- Next owner: Developer, then independent QA, then Manager release.
+- Verification: Both daily-count behavior suites (including unconfigured UI), twelve-book 2600/5200 exact-two/source/parser checks, full vocabulary/context reading regression, Grade 4–6 local loading, all textbook banks and Grade 3 preserved bank, data reproduction, JS syntax and diff checks PASS. Content-reproduction tests now normalize checkout CRLF without weakening content/scope assertions.
+- QA: Pending on integrated feature commit; previous standalone implementation PASS does not substitute for integration QA.
+- Next owner: Independent QA, then Manager release.
 
 ## 2026-10-09 — Daily dictation count options
 
@@ -44,6 +46,65 @@ Preview: Vercel check passed
 Human acceptance: Approved — user said “给main加一个readme”, 2026-10-07
 Next owner: Manager — release dev to main
 ```
+
+## 2026-10-10 — Final three contextual-reading corrections
+
+- Task: QA found 赢得 / 蚂蚱 / 欺负 readings still wrong on cc01a38; Manager assigned only these three corrections.
+- Branch/worktree: feature/grades-4-6, F:\chinese webapp\.worktrees\grades-4-6; clean isolated candidate continued; no merge/push.
+- Developer state: Corrected to yíng dé / mà zha / qī fu with explicit contextual overrides, actual-runtime regression coverage, and regenerated local learning/support-review exports. All other behavior and word selection unchanged.
+- QA: Independent PASS on exact implementation commit `3c7d5a59f70a4f1e2b997ba6d18189d97e488f80`. Earlier failed candidates remain recorded; this documentation-only follow-up does not alter the tested implementation.
+- Verification: All twelve books / 2,600 learning records / 5,200 displayed words or marked usage phrases passed actual-parser, exact-two, local scope and reproduction checks. Full support-word review, independent vocabulary spot checks, contextual readings (including final 赢得 / 蚂蚱 / 欺负 corrections), 10/20/30 persistence, mid-day increase/shrink, retained completed results, legacy-15 compatibility, new-day/book isolation, and existing word-bank regressions PASS.
+- Local preview: Ready — http://127.0.0.1:4180/welcome.html; human acceptance waiting. No merge, push or deployment.
+- Limits: Real-browser handwriting interaction was not tested. Grade 1 Upper/Lower, Grade 2 Upper and Grade 3 Lower have no configured dictation word bank; their selection controls do not imply usable dictation. Grade 4 Lower word table remains incomplete. Lesson mapping / textbook edition alignment still require original textbook pages for verification.
+- Next owner: Manager / User — local acceptance, source-page verification and protected release gates.
+
+## 2026-10-10 — QA vocabulary and contextual-reading repair
+
+- Task: Repair QA FAIL on `3b7fd90177bdaf1fa20b0655d91c87b44fde02f1`: default dictionary readings and inappropriate/obscure supplemental words.
+- Developer branch/worktree: `feature/grades-4-6`, `F:\chinese webapp\.worktrees\grades-4-6`; clean isolated worktree continued; no merge/push.
+- Developer state: Ready for new QA. Vocabulary reviewer inspected all 966 original support-character records / 1,397 original support items; applied 155 reviewed character replacements plus contextual reading/neutral-tone fixes and per-book character headings. Exported actual runtime support usage: 1,399 occurrences / 1,348 distinct words in curriculum/used-vocabulary-review.json. All 2,600 learning entries retain exactly two words/usages.
+- QA: FAIL on prior candidate; new candidate pending. Keep curated words and book-specific character readings distinct from contextual word readings; 三下 仿佛 uses fú without globally rewriting 佛像/活佛.
+- Verification: Actual twelve-book parser/scope/exact-two/source/sentence checks, full vocabulary review/contextual-reading/child-suitability checks, 10/20/30 resizing and persistence, legacy-15 queue compatibility, textbook-bank and Grade 3 bank regression, reproduction and diff checks PASS. Independent QA remains pending; prior QA FAIL is not erased.
+- Limits: Original textbook facsimile/version and faulty lower-term source gaps remain unresolved. Grade 1 banks and Grade 3 Lower bank are not configured; selector visible with an honest no-bank explanation. Four-lower word bank remains partial. No merge/push.
+- Next owner: Independent QA on new scoped feature commit.
+
+## 2026-10-10 — Twelve-book curriculum and adjustable dictation
+
+- Task: User requests 10/20/30 daily dictation choices for every grade, exactly two useful words per character, and Grade 1/2/3 lower-term completion.
+- Developer branch/worktree: `feature/grades-4-6`, `F:\chinese webapp\.worktrees\grades-4-6`; continue clean isolated worktree; preserve original curriculum files and existing progress IDs. No merge/push.
+- Developer state: Done; QA: Waiting for this candidate. New choices default to 10; resizing preserves completed results, the full assigned list, order and review progress; old v4 15-item queues remain compatible.
+- Implementation: All twelve books enabled and loaded locally; first/second/third lower scopes 200/250/250. All 2,600 learning entries have exactly two distinct multi-character words or clearly marked natural usage phrases; original TXT files untouched, curated first-word priority retained where valid, Grade 3 sentences preserved except explicit 打欠欠 -> 打哈欠 correction. Existing Grade 2 Upper has 250 entries / 246 unique chars, preserved.
+- Dictation: Per-book 10/20/30 setting; dynamic actual completion count; controls remain visible for unconfigured banks. Grade 2 Lower imports 278 available source words; Grade 1 sources have no formal word table, Grade 3 Lower source words are incorrectly copied from Grade 3 Upper and are not enabled. Four-lower source remains incomplete.
+- Verification: All-twelve runtime-parser/scope/exact-two/provenance/reading/meaning/sentence tests, 10/20/30 persistence and resizing / new-day / legacy-15 / small-bank / book-isolation tests, source-bank and Grade 3 bank regressions, data reproduction, JS syntax and diff checks PASS. Browser QA pending.
+- Data audit: Pinned 321 writing and words have incorrect upper-term content. Lower-term learning uses its preserved raw writing table with honest 25-character groups labeled 课次待核对, not the copied lesson mapping. Reviewed general vocabulary and dictionary word provenance are separate from textbook dictation banks.
+- Source plan: Existing raw writing tables fix character scope; pinned community textbook JSON and existing curated words provide metadata; honest general-vocabulary supplement for gaps, separate from textbook dictation tables.
+- Next owner: Independent QA on scoped feature commit, then Manager / User; no merge/push.
+
+## 2026-10-10 — Grade 4–6 textbook word-table banks
+
+- Task: User requested “词语表也要补全，就用课本后面词语表”. Populate all six daily dictation banks only from the pinned source volume.words, retaining order and legitimate duplicate entries.
+- Developer branch/worktree: `feature/grades-4-6`, `F:\chinese webapp\.worktrees\grades-4-6`; safe plan: continue the clean isolated worktree, preserve existing curricula and Grade 3 Upper bank/IDs; no merge/push.
+- Developer state: Done for available-source integration; implementation QA: PASS on exact commit `c09ce64bde79263b7c701d1c9516c8981b4f0f47`. Earlier curriculum QA PASS remains recorded separately.
+- Implementation: Editable one-word-per-line TXT banks: 四上240、四下171（未齐）、五上222、五下139、六上224、六下162词。Four copied whole-lesson blocks removed from source 421; missing lessons explicitly disclosed in UI. New book/occurrence IDs isolate results; Grade 3 bank and IDs preserved.
+- Verification: `node scripts/test-textbook-word-banks.js`, `node scripts/build-textbook-word-banks.js`, `node scripts/test-grade-4-6.js`, `node scripts/test-daily-word-bank.js`, JS syntax and diff checks PASS. Local bank loader, source order/counts, duplicate IDs, book-isolated persisted progress, 15-item cap and unsupported-book empty state tested.
+- Content completeness: Pending — four-lower source has missing lesson words; all six original textbook facsimiles / printing versions remain unverified. Implementation QA PASS does not certify textbook completeness.
+- Local preview: Ready — http://127.0.0.1:4180/welcome.html; human acceptance waiting. No merge, push or deployment.
+- Source limitation: Community 2019 textbook transcription; no primary textbook facsimile supplied. Source 4-lower misses lessons and contains four copied blocks. GitHub file history (2026-10-10 check) shows only source commit 283c9990fc56fc7d4760da261ce9dc5fc643c2cf, no newer correction. Full four-lower word-table completion requires reliable missing textbook pages; other banks remain version-unverified transcriptions.
+- Next owner: Manager / User — review preview and provide reliable textbook word-table pages for source gap; no merge/push.
+
+## 2026-10-10 — Grade 4–6 local curriculum completion
+
+- Task: Enable Grade 4, 5 and 6, both terms, with pinned local writing-table and vocabulary data.
+- Developer branch/worktree: `feature/grades-4-6`, `F:\chinese webapp\.worktrees\grades-4-6` (main baseline c4f5b75).
+- Safe plan: Dedicated clean feature worktree; preserve the dirty primary checkout and all existing curated TXT files. No merge or push.
+- Developer state: Done; QA: PASS on exact feature commit `743c72a35397d279dd4b439ed7b758e542f67a89`. Grade 3 daily word-bank policy stays unchanged.
+- Implementation: All six books available, local-only curriculum loading. 四上250字 uses its preserved curated TXT; 四下250、五上220、五下180、六上180、六下120字 exactly match existing raw writing tables. Five new rich local TXTs include pinned lesson/vocabulary metadata plus honest supplementary sections (8/21/7/12/3 chars) where source metadata is missing.
+- Verification: Independent QA passed all-six catalog/navigation checks, local HTTP 200, character counts/scope, nonempty pinyin, vocabulary source checks, generated-data reproduction, Grade 3 daily-bank regression, syntax and diff checks. Live browser handwriting interaction was not tested; textbook edition alignment and source metadata remain documented limitations in curriculum/renjiao/README.md.
+- Local preview: Ready — http://127.0.0.1:4180/welcome.html.
+- Feature delivery: Ready for human review; dev merge not performed; main unchanged; no deployment or push.
+- Human acceptance: Waiting.
+- Source: vipzhicheng/shukong-app commit 68faa378f2211fb1b9152f9df45eb8fa2c4fb2b4, MIT.
+- Next owner: Manager / User — review local preview; protected release gates remain in force.
 
 ## 2026-09-19 — Explicit daily word-bank refresh
 

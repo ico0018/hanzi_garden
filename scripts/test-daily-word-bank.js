@@ -15,8 +15,11 @@ const bank = sandbox.window.HANZI_DAILY_WORD_BANK;
 const words = Array.from(bank.parseDailyWordBank(fs.readFileSync(path.join(root, "每日词语听写题库.txt"), "utf8")));
 
 assert.deepEqual(words, expectedWords, "the editable bank must retain the supplied words and order");
-assert.deepEqual(Array.from(bank.createDailyDictationItems("4-upper", words)), [], "unconfigured books must not generate phrases");
+assert.deepEqual(Array.from(bank.createDailyDictationItems("3-lower", words)), [], "unconfigured books must not generate phrases");
 assert.deepEqual(Array.from(bank.createDailyDictationItems("3-upper", words), (item) => item.word), expectedWords);
+assert.deepEqual(Array.from(bank.createDailyDictationItems("3-upper", words), (item) => item.id),
+  expectedWords.map(word => encodeURIComponent(["3-upper", "daily-word-bank-v4", word].join("|"))),
+  "Grade 3 existing item IDs/results must be preserved");
 
 const app = fs.readFileSync(path.join(root, "app.js"), "utf8");
 assert.match(app, /hanzi-daily-dictation-progress-v4-/);
