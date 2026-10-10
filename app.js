@@ -27,9 +27,7 @@ const selectedBookId = new URLSearchParams(window.location.search).get("book") |
 const selectedBook = BOOK_CATALOG[selectedBookId];
 const DAILY_DICTATION_SIZE = 15;
 const EBBINGHAUS_INTERVALS = [2, 4, 7, 15, 30, 60];
-const DAILY_DICTATION_BANK_FILES = {
-  "3-upper": "每日词语听写题库.txt"
-};
+const DAILY_DICTATION_BANK_FILES = window.HANZI_DAILY_WORD_BANK?.bankFiles || {};
 const HUMAN_AUDIO_BASE_URL = "https://raw.githubusercontent.com/hugolpz/audio-cmn/master/64k/hsk";
 const AUDIO_CACHE_LIMIT = 40;
 const audioCache = new Map();
@@ -437,7 +435,7 @@ function renderDailyDictation() {
   const completedCount = queue.length - pending.length;
 
   dictationOverview.innerHTML = `
-    <div><h2>每日听写</h2><p>每天最多 15 个生词；系统只安排复习，你自己决定会不会写。</p></div>
+    <div><h2>每日听写</h2><p>每天最多 15 个生词；系统只安排复习，你自己决定会不会写。</p>${window.HANZI_DAILY_WORD_BANK?.textbookBankNotes[selectedBookId] ? `<p class="daily-review-note">${escapeHtml(window.HANZI_DAILY_WORD_BANK.textbookBankNotes[selectedBookId])}</p>` : ""}</div>
     <div class="lesson-badge">${completedCount} / ${queue.length} 已标记</div>`;
 
   if (!queue.length) {

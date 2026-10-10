@@ -1,5 +1,13 @@
 # Decisions Log
 
+## 2026-10-10 — Grade 4–6 explicit textbook word-table banks
+
+- Decision: Configure editable one-word-per-line daily dictation banks for Grade 4, 5 and 6, both terms, sourced solely from pinned volume.words (textbook word-table transcription), not generated character group words or writing/recognition scope.
+- Decision: Preserve source lesson/word order and legitimate repeated entries; remove only four exact copied whole-lesson blocks in source 421, and label that bank incomplete. New banks use occurrence-order IDs to distinguish duplicates and namespace by book; Grade 3 Upper retains its supplied 28 words and current IDs/results.
+- Decision: Unsupported books retain the unconfigured empty state. Daily cap and write-before-assessment gate remain unchanged.
+- Source: User said “词语表也要补全，就用课本后面词语表”, 2026-10-10. This extends the earlier Grade 3-only bank policy for these six books.
+- Limitation: Community 2019 transcription is available; primary textbook pages have not been supplied or verified against this source.
+
 ## 2026-08-19 — Multi-book character dataset architecture
 
 - Decision: Hanzi Garden uses one shared learning application and selects curriculum data through the `book` query parameter.
