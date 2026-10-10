@@ -4,6 +4,14 @@
 
 ## Current snapshot
 
+## 2026-10-10 — Authorized twelve-book production integration
+
+- Human release authorization: User explicitly said “合并到main，发布”. Manager owns final main/dev integration and push; Developer must not push or merge production branches.
+- Safe plan: Manager confirmed main-local and daily-dictation-dev clean; preserve all unrelated dirty worktrees. New isolated feature/release-twelve-books at F:\chinese webapp\.worktrees\release-twelve-books starts from origin/dev e9c7bdf (origin/main 0e776d1); integrate reviewed feature c92dd48, retaining newer README and existing daily-count design while meeting per-book and compatible-queue requirements.
+- Developer: Integrating only this new feature worktree; prior grades-4-6 candidate remains untouched. Independent QA required on the integrated commit before Manager release.
+- Acceptance: Run both daily-count suites, twelve-book 2600/5200 parser/scope/word review, source-bank regressions, generation reproduction and syntax checks. Existing source/completeness/browser-handwriting limitations remain disclosed.
+- Next owner: Developer, then independent QA, then Manager release.
+
 ## 2026-10-09 — Daily dictation count options
 
 ```text
