@@ -4,6 +4,17 @@
 
 ## Current snapshot
 
+## 2026-10-10 — Grade 4–6 local curriculum completion
+
+- Task: Enable Grade 4, 5 and 6, both terms, with pinned local writing-table and vocabulary data.
+- Developer branch/worktree: `feature/grades-4-6`, `F:\chinese webapp\.worktrees\grades-4-6` (main baseline c4f5b75).
+- Safe plan: Dedicated clean feature worktree; preserve the dirty primary checkout and all existing curated TXT files. No merge or push.
+- Developer state: Done; QA: Waiting. Grade 3 daily word-bank policy stays unchanged.
+- Implementation: All six books available, local-only curriculum loading. 四上250字 uses its preserved curated TXT; 四下250、五上220、五下180、六上180、六下120字 exactly match existing raw writing tables. Five new rich local TXTs include pinned lesson/vocabulary metadata plus honest supplementary sections (8/21/7/12/3 chars) where source metadata is missing.
+- Verification: `node scripts/test-grade-4-6.js`, `node scripts/build-grade-4-6.js`, `node scripts/test-daily-word-bank.js`, JS syntax and `git diff --check` PASS. Browser QA pending. Source/edition/pinyin-default limitations documented in curriculum/renjiao/README.md.
+- Source: vipzhicheng/shukong-app commit 68faa378f2211fb1b9152f9df45eb8fa2c4fb2b4, MIT.
+- Next owner: Independent QA on the scoped feature commit; no merge/push.
+
 ## 2026-09-19 — Explicit daily word-bank refresh
 
 ```text
