@@ -9,11 +9,14 @@
 - Task: Enable Grade 4, 5 and 6, both terms, with pinned local writing-table and vocabulary data.
 - Developer branch/worktree: `feature/grades-4-6`, `F:\chinese webapp\.worktrees\grades-4-6` (main baseline c4f5b75).
 - Safe plan: Dedicated clean feature worktree; preserve the dirty primary checkout and all existing curated TXT files. No merge or push.
-- Developer state: Done; QA: Waiting. Grade 3 daily word-bank policy stays unchanged.
+- Developer state: Done; QA: PASS on exact feature commit `743c72a35397d279dd4b439ed7b758e542f67a89`. Grade 3 daily word-bank policy stays unchanged.
 - Implementation: All six books available, local-only curriculum loading. 四上250字 uses its preserved curated TXT; 四下250、五上220、五下180、六上180、六下120字 exactly match existing raw writing tables. Five new rich local TXTs include pinned lesson/vocabulary metadata plus honest supplementary sections (8/21/7/12/3 chars) where source metadata is missing.
-- Verification: `node scripts/test-grade-4-6.js`, `node scripts/build-grade-4-6.js`, `node scripts/test-daily-word-bank.js`, JS syntax and `git diff --check` PASS. Browser QA pending. Source/edition/pinyin-default limitations documented in curriculum/renjiao/README.md.
+- Verification: Independent QA passed all-six catalog/navigation checks, local HTTP 200, character counts/scope, nonempty pinyin, vocabulary source checks, generated-data reproduction, Grade 3 daily-bank regression, syntax and diff checks. Live browser handwriting interaction was not tested; textbook edition alignment and source metadata remain documented limitations in curriculum/renjiao/README.md.
+- Local preview: Ready — http://127.0.0.1:4180/welcome.html.
+- Feature delivery: Ready for human review; dev merge not performed; main unchanged; no deployment or push.
+- Human acceptance: Waiting.
 - Source: vipzhicheng/shukong-app commit 68faa378f2211fb1b9152f9df45eb8fa2c4fb2b4, MIT.
-- Next owner: Independent QA on the scoped feature commit; no merge/push.
+- Next owner: Manager / User — review local preview; protected release gates remain in force.
 
 ## 2026-09-19 — Explicit daily word-bank refresh
 
