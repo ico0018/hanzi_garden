@@ -14,6 +14,16 @@
 - Existing sentence exception: Manager approved retaining 三上 噢's original natural sentence and its single-character linked field unchanged. It predates the current two usage phrases and does not contain either; all 2,250 new sentences strictly link one displayed word. This unique preserved legacy case does not waive new-sentence quality or change words/readings.
 - State: All five low-grade books authored: Grade 1 Upper 100 / Lower 200, Grade 2 Upper 250 (246 unique chars) / Lower 250, Grade 3 Lower 250, total 1,050 learning entries / 1,046 unique per-book sentences. QA pre-read all low-grade sentences; requested collocation/sense fixes applied, including 志愿's actual aspiration sense and 分裂's cell-division context. Generator overlay and baseline-comparison test implemented; low-grade regenerated TXT passes existing curriculum/vocabulary/reproduction regressions. Grade 4–6 helper working independently; final full 2,500-entry sentence test waits for those 1,200 examples. No production approval; no dev/main merge or push.
 
+## 2026-10-11 — Grades 4–6 original learning sentences
+
+- Manager-assigned task: Author natural, age-appropriate learning examples for every missing-sentence character in Grade 4, 5 and 6, both terms (250/250/220/180/180/120 = 1200 entries).
+- Developer branch/worktree: feature/sentences-grades-4-6, F:\chinese webapp\.worktrees\sentences-grades-4-6, clean isolated base origin/main 84bff58. Parent's dirty primary and other feature worktrees preserved.
+- Scope: Only six curriculum/sentences/{bookId}.json files plus this isolated delivery record. Shared integration worktree is read-only. Each entry is {groupWord,text}, uses one current displayed word, and clearly states original learning example, not textbook quotation. Existing character/word/pinyin data unchanged.
+- Developer state: All six original sentence files authored (250/250/220/180/180/120 = 1200). Author individually reviewed every written sentence; same natural sentence may be reused for the same existing group word. No generic teaching/metalinguistic filler, no word/pinyin/source changes.
+- Structural verification: Scratch validator independently reads all six final JSON files and all six current learning sources; exact character sets/counts, displayed group-word membership, sentence includes character/group word, provenance, and sentence punctuation PASS. This structural result is not a substitute for language QA.
+- Independent language pre-review: QA read every entry in all six books (1200 total); reported collocation/style corrections have been applied, including six-lower's actual 元宵/遥控 usage and explicit deceased-animal 埋葬 context. Full integration QA and release permission remain separate; no merge or push.
+- Next owner: Manager's integration Developer for scoped commit integration and final tests, then independent QA on the exact integrated commit.
+
 ## 2026-10-10 — Authorized twelve-book production integration
 
 - Human release authorization: User explicitly said “合并到main，发布”. Manager owns final main/dev integration and push; Developer must not push or merge production branches.
