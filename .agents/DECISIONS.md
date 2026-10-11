@@ -1,5 +1,11 @@
 # Decisions Log
 
+## 2026-10-11 — All-book sentence production authorization
+
+- Source: User explicitly said “发布” on 2026-10-11, approving this sentence-only production release. This supersedes the earlier pending-approval state, not the disclosed source/browser limitations.
+- Gate: Independent QA PASS applies to exact implementation `6742502c30e61108b442b7ae81cfdab726b88273`; subsequent release records are documentation-only and do not change app/data assets.
+- Safety: Manager alone performs release. Preserve all other worktrees and old local dev without reset; remote main/dev were both confirmed at 84bff58 and main-local clean. Fast-forward remote dev from feature/all-book-sentences; create `backup/2026-10-11-before-sentence-release` at `84bff5834a1f5eba4f05a8a8f96bb0850d0680cf`, then fast-forward main-local to the same candidate and push main for Vercel automatic deployment.
+
 ## 2026-10-11 — All-book sentence supplements
 
 - Decision: Every Grade 1–6 term character retains exactly two unchanged words and gains one natural sentence containing that character and one displayed word. Original Grade 3 Upper sentences are preserved verbatim; new sentences are authored learning examples, not textbook quotations.
