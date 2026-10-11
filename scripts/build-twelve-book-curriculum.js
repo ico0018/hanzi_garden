@@ -98,13 +98,23 @@ function validWords(character, words) {
 function wordCandidates(character) { return validWords(character.char, character.words.concat(corpus)); }
 function buildBook(bookId, support) {
   const output = ['# 每字两个真实组词；原始教材文件保留；拓展组词不进入教材词语表题库。'];
+  const sentenceFile = `curriculum/sentences/${bookId}.json`;
+  const sentenceSupplement = fs.existsSync(path.join(root,sentenceFile)) ? JSON.parse(read(sentenceFile)) : null;
+  if (sentenceSupplement && sentenceSupplement.bookId !== bookId) throw new Error(`${bookId}: sentence book mismatch`);
   for (const lesson of baseLessons(bookId, support)) {
     output.push(`[${lesson.title}]`);
     for (const character of lesson.chars) {
       const words = validWords(character.char, wordCandidates(character).concat(support.words?.[character.char] || [])).slice(0, 2);
       if (words.length !== 2 || !character.pinyin) throw new Error(`${bookId}/${character.char}: missing sourced words/readings`);
+      // Existing Grade 3 Upper sentences have priority and stay byte-for-byte.
+      // Newly authored examples are book-specific, never textbook quotations.
+      const sentence = character.sentence || sentenceSupplement?.entries[character.char] || null;
+      const preservedOhSentence = bookId === '3-upper' && character.char === '噢' && character.sentence?.groupWord === '噢';
+      if (sentence && ((!preservedOhSentence && !words.some(word => word.word === sentence.groupWord)) || !sentence.text.includes(sentence.groupWord) || !sentence.text.includes(character.char))) {
+        throw new Error(`${bookId}/${character.char}: sentence must use an unchanged displayed word`);
+      }
       let line = `${character.char}|${character.pinyin}|${words.map(word => `${word.word}|${word.pinyin}|${word.meaning}`).join(';')}`;
-      if (character.sentence) line += `||${character.sentence.groupWord}||${character.sentence.text}`;
+      if (sentence) line += `||${sentence.groupWord}||${sentence.text}`;
       output.push(line);
     }
   }

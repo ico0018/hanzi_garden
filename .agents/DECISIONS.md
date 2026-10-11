@@ -1,5 +1,13 @@
 # Decisions Log
 
+## 2026-10-11 — All-book sentence supplements
+
+- Decision: Every Grade 1–6 term character retains exactly two unchanged words and gains one natural sentence containing that character and one displayed word. Original Grade 3 Upper sentences are preserved verbatim; new sentences are authored learning examples, not textbook quotations.
+- Decision: Keep book-specific original sentences in curriculum/sentences/*.json and reproduce learning TXT sentence fields through the existing generator; no UI architecture, word-bank, reading or progress-ID change.
+- Preserved legacy exception: 三上 噢 retains “噢，我知道这道题怎么做了！” and groupWord 噢 exactly. Manager confirmed the user's core requirement is two words plus a sentence, not replacing existing prose to force a newer two-word link. Every newly authored sentence still must strictly use one unchanged displayed word.
+- Count correction: Actual parser total is 2,500 character records / 5,000 displayed words, not the prior arithmetic total 2,600 / 5,200. Historical logs remain intact with this correction rather than being rewritten.
+- Source: User requested checking/completing two words plus one sentence for all twelve books. This new scope has no production-release approval yet.
+
 ## 2026-10-09 — Daily dictation count selection
 
 - Decision: Daily dictation offers 10, 20 or 30 words, defaults to 10, and persists the preference by book in the current browser. This supersedes the former fixed 15-word cap.

@@ -4,6 +4,16 @@
 
 ## Current snapshot
 
+## 2026-10-11 — All-book original learning sentences
+
+- Task: Check Grade 1–6 both terms for exactly two existing words and one linked natural sentence per character; fill missing sentences without changing vocabulary, readings, original Grade 3 Upper sentences, dictation banks/IDs, or UI architecture.
+- Safe plan: New feature/all-book-sentences at F:\chinese webapp\.worktrees\all-book-sentences from origin/main 84bff58. Preserve dirty root and all prior worktrees. Developer integrates only this tree; another Developer authors Grade 4–6 in separate feature/sentences-grades-4-6, transferred by reviewed commit only.
+- Counts corrected by actual runtime parser: 2,500 learning entries (prior 2,600 total was arithmetic error), all exactly two words. Grade 3 Upper has 250 sentences; 2,250 entries need sentences. Low-grade Developer scope: five books / 1,050 entries; Grade 4–6 helper: six books / 1,200 entries.
+- Data format: curriculum/sentences/{bookId}.json with bookId, provenance '原创学习例句，非教材原句', and entries keyed by character to {groupWord,text}. Same-book repeated characters may share a sentence linked to an unchanged displayed word.
+- Acceptance: Deterministic buildBook sentence overlay; actual-parser full coverage/link tests, unchanged word/reading/original sentence/bank assertions, original age-appropriate contexts and language review, independent QA on exact candidate.
+- Existing sentence exception: Manager approved retaining 三上 噢's original natural sentence and its single-character linked field unchanged. It predates the current two usage phrases and does not contain either; all 2,250 new sentences strictly link one displayed word. This unique preserved legacy case does not waive new-sentence quality or change words/readings.
+- State: All five low-grade books authored: Grade 1 Upper 100 / Lower 200, Grade 2 Upper 250 (246 unique chars) / Lower 250, Grade 3 Lower 250, total 1,050 learning entries / 1,046 unique per-book sentences. QA pre-read all low-grade sentences; requested collocation/sense fixes applied, including 志愿's actual aspiration sense and 分裂's cell-division context. Generator overlay and baseline-comparison test implemented; low-grade regenerated TXT passes existing curriculum/vocabulary/reproduction regressions. Grade 4–6 helper working independently; final full 2,500-entry sentence test waits for those 1,200 examples. No production approval; no dev/main merge or push.
+
 ## 2026-10-10 — Authorized twelve-book production integration
 
 - Human release authorization: User explicitly said “合并到main，发布”. Manager owns final main/dev integration and push; Developer must not push or merge production branches.

@@ -1,6 +1,6 @@
 # Local two-word learning curriculum
 
-All twelve catalog entries now load `renjiao/learning-<book>.txt` locally. Original rich/character-only TXT files remain untouched. Counts: 1-upper 100, 1-lower 200, 2-upper 250, 2-lower 250, 3-upper 250, 3-lower 250, 4-upper 250, 4-lower 250, 5-upper 220, 5-lower 180, 6-upper 180, 6-lower 120 (2,600 entries). The existing second-upper file has 250 entries but 246 distinct characters; these original repeated entries are preserved rather than replaced by guessed missing characters.
+All twelve catalog entries now load `renjiao/learning-<book>.txt` locally. Original rich/character-only TXT files remain untouched. Counts: 1-upper 100, 1-lower 200, 2-upper 250, 2-lower 250, 3-upper 250, 3-lower 250, 4-upper 250, 4-lower 250, 5-upper 220, 5-lower 180, 6-upper 180, 6-lower 120 (2,500 entries; the earlier 2,600 total was an arithmetic error). The existing second-upper file has 250 entries but 246 distinct characters; these original repeated entries are preserved rather than replaced by guessed missing characters.
 
 Each learning entry has exactly two distinct multi-character terms containing its character. Original curated words retain priority when valid. Supplementary words come from other available textbook/curated lists, dictionary-listed words, and explicit reviewed natural vocabulary. Limited compound characters can use short natural expressions, marked **用法短语** (for example 姓邓/小邓, 噢，明白了/噢，原来如此). A few genuine geographic or literary examples remain for characters such as 浙/杭/弗/哉; these are not invented textbook vocabulary. The generator never creates generic 学X/写X placeholders. Supplemental learning examples do not enter the daily textbook word-table banks.
 
@@ -22,7 +22,7 @@ readings, all 966 original support records / 1,397 items were reviewed.
 `vocabulary-review.json` records 155 explicit selection replacements, contextual
 pinyin/neutral-tone overrides and book-specific character headings.
 `used-vocabulary-review.json` records 1,399 actual support occurrences (1,348
-distinct words) in the 2,600-entry local runtime curriculum. Reproduce it with
+distinct words) in the 2,500-entry local runtime curriculum. Reproduce it with
 `node scripts/test-vocabulary-review.js --export`; review regression checks use
 the actual app parser and generated book files. Original source artifacts remain
 unchanged. Dictionary provenance labels are not dictionary definitions; authored
