@@ -1,0 +1,124 @@
+{
+  "baseline": "84bff5834a1f5eba4f05a8a8f96bb0850d0680cf",
+  "books": [
+    {
+      "bookId": "1-upper",
+      "entries": 100,
+      "uniqueChars": 100,
+      "addedSentences": 100,
+      "unchangedWords": 200,
+      "baselineWordsReadingsSha256": "235041757555d3669a29de4852e1157c311825069a5b70cfc8ac902bcbaec21c",
+      "currentWordsReadingsSha256": "235041757555d3669a29de4852e1157c311825069a5b70cfc8ac902bcbaec21c"
+    },
+    {
+      "bookId": "1-lower",
+      "entries": 200,
+      "uniqueChars": 200,
+      "addedSentences": 200,
+      "unchangedWords": 400,
+      "baselineWordsReadingsSha256": "55ef63f02ad7ed32b4ad65dda9949dfd749d5baf2a212aedc9c7737536316e08",
+      "currentWordsReadingsSha256": "55ef63f02ad7ed32b4ad65dda9949dfd749d5baf2a212aedc9c7737536316e08"
+    },
+    {
+      "bookId": "2-upper",
+      "entries": 250,
+      "uniqueChars": 246,
+      "addedSentences": 250,
+      "unchangedWords": 500,
+      "baselineWordsReadingsSha256": "ede7a46d81d841b6486b8113b6436fa87d5f5adfc5c162fd1b116ab1404019a5",
+      "currentWordsReadingsSha256": "ede7a46d81d841b6486b8113b6436fa87d5f5adfc5c162fd1b116ab1404019a5"
+    },
+    {
+      "bookId": "2-lower",
+      "entries": 250,
+      "uniqueChars": 250,
+      "addedSentences": 250,
+      "unchangedWords": 500,
+      "baselineWordsReadingsSha256": "5416a9c2826cb14dd103d4ba963ca4794d15fdedd6457c5c0462dae409903ca0",
+      "currentWordsReadingsSha256": "5416a9c2826cb14dd103d4ba963ca4794d15fdedd6457c5c0462dae409903ca0"
+    },
+    {
+      "bookId": "3-upper",
+      "entries": 250,
+      "uniqueChars": 250,
+      "addedSentences": 0,
+      "unchangedWords": 500,
+      "baselineWordsReadingsSha256": "08c8b7f30565a9016eda64ef90bcb2a89673adde14a0ef9e09c06399eb6b324a",
+      "currentWordsReadingsSha256": "08c8b7f30565a9016eda64ef90bcb2a89673adde14a0ef9e09c06399eb6b324a"
+    },
+    {
+      "bookId": "3-lower",
+      "entries": 250,
+      "uniqueChars": 250,
+      "addedSentences": 250,
+      "unchangedWords": 500,
+      "baselineWordsReadingsSha256": "7583aa0a2a4059d722e33649d7a6bdcc1023fe93be73b309e2bc38c847049afe",
+      "currentWordsReadingsSha256": "7583aa0a2a4059d722e33649d7a6bdcc1023fe93be73b309e2bc38c847049afe"
+    },
+    {
+      "bookId": "4-upper",
+      "entries": 250,
+      "uniqueChars": 250,
+      "addedSentences": 250,
+      "unchangedWords": 500,
+      "baselineWordsReadingsSha256": "5abc4447b7d44d433140f4409216c7500d5e4dc0d271cc2f44d5c940232d38b0",
+      "currentWordsReadingsSha256": "5abc4447b7d44d433140f4409216c7500d5e4dc0d271cc2f44d5c940232d38b0"
+    },
+    {
+      "bookId": "4-lower",
+      "entries": 250,
+      "uniqueChars": 250,
+      "addedSentences": 250,
+      "unchangedWords": 500,
+      "baselineWordsReadingsSha256": "9be3ad4e8ef1d74610042496815422ffed450214788e671cfa0793bd10b7d44b",
+      "currentWordsReadingsSha256": "9be3ad4e8ef1d74610042496815422ffed450214788e671cfa0793bd10b7d44b"
+    },
+    {
+      "bookId": "5-upper",
+      "entries": 220,
+      "uniqueChars": 220,
+      "addedSentences": 220,
+      "unchangedWords": 440,
+      "baselineWordsReadingsSha256": "739053e19b8dc25f67c080ae5b30346776119d841a583297c84c06d4b087eeb9",
+      "currentWordsReadingsSha256": "739053e19b8dc25f67c080ae5b30346776119d841a583297c84c06d4b087eeb9"
+    },
+    {
+      "bookId": "5-lower",
+      "entries": 180,
+      "uniqueChars": 180,
+      "addedSentences": 180,
+      "unchangedWords": 360,
+      "baselineWordsReadingsSha256": "6d661b21b756374253031d29584d684da1f39ac89ad52d63854877f0ee77b879",
+      "currentWordsReadingsSha256": "6d661b21b756374253031d29584d684da1f39ac89ad52d63854877f0ee77b879"
+    },
+    {
+      "bookId": "6-upper",
+      "entries": 180,
+      "uniqueChars": 180,
+      "addedSentences": 180,
+      "unchangedWords": 360,
+      "baselineWordsReadingsSha256": "56ba33c342f3456a007208892608ca9cf02725b86839e1dc6af8dd27aa12110b",
+      "currentWordsReadingsSha256": "56ba33c342f3456a007208892608ca9cf02725b86839e1dc6af8dd27aa12110b"
+    },
+    {
+      "bookId": "6-lower",
+      "entries": 120,
+      "uniqueChars": 120,
+      "addedSentences": 120,
+      "unchangedWords": 240,
+      "baselineWordsReadingsSha256": "483be9cbec2f7b264594280e47e0831f3491cb58f832bdb53fddabe65903e6ae",
+      "currentWordsReadingsSha256": "483be9cbec2f7b264594280e47e0831f3491cb58f832bdb53fddabe65903e6ae"
+    }
+  ],
+  "totalEntries": 2500,
+  "totalWords": 5000,
+  "preservedSentences": 250,
+  "addedSentences": 2250,
+  "preservedLegacyLinkExceptions": [
+    {
+      "bookId": "3-upper",
+      "character": "噢",
+      "reason": "原句及单字关联字段原样保留，新增句均严格关联两个现词之一"
+    }
+  ]
+}

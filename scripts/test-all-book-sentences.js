@@ -2,6 +2,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const {execFileSync} = require('node:child_process');
+const {createHash} = require('node:crypto');
 const {root,parse} = require('./curriculum-word-tools.js');
 const {books,buildBook} = require('./build-twelve-book-curriculum.js');
 const baseline = '84bff5834a1f5eba4f05a8a8f96bb0850d0680cf';
@@ -10,7 +11,9 @@ const read = file => fs.readFileSync(path.join(root,file),'utf8');
 const original = file => execFileSync('git',['show',`${baseline}:${file}`],{cwd:root,encoding:'utf8',maxBuffer:4*1024*1024});
 const plain = value => JSON.parse(JSON.stringify(value));
 const skeleton = lessons => plain(lessons).map(l=>({title:l.title,chars:l.chars.map(c=>({char:c.char,pinyin:c.pinyin,words:c.words}))}));
-const report = {baseline,books:[],totalEntries:0,totalWords:0,preservedSentences:0,addedSentences:0};
+const digest = lessons => createHash('sha256').update(JSON.stringify(skeleton(lessons))).digest('hex');
+const report = {baseline,books:[],totalEntries:0,totalWords:0,preservedSentences:0,addedSentences:0,
+  preservedLegacyLinkExceptions:[{bookId:'3-upper',character:'噢',reason:'原句及单字关联字段原样保留，新增句均严格关联两个现词之一'}]};
 for (const bookId of Object.keys(books)) {
   const file = `curriculum/renjiao/learning-${bookId}.txt`;
   const lessons = parse(read(file)), prior = parse(original(file));
@@ -49,7 +52,7 @@ for (const bookId of Object.keys(books)) {
     }
   }
   report.books.push({bookId,entries:chars.length,uniqueChars:new Set(chars.map(c=>c.char)).size,addedSentences:added,
-    unchangedWords:chars.length*2});
+    unchangedWords:chars.length*2,baselineWordsReadingsSha256:digest(prior),currentWordsReadingsSha256:digest(lessons)});
   report.totalEntries+=chars.length;
   report.totalWords+=chars.length*2;
 }
@@ -64,4 +67,4 @@ for (const file of ['app.js','book-catalog.js','daily-word-bank.js','每日词�
   assert.equal(read(file).replace(/\r\n/g,'\n'),original(file).replace(/\r\n/g,'\n'),`${file}: no source/bank/UI/ID change`);
 }
 if(process.argv.includes('--export'))console.log(JSON.stringify(report,null,2));
-else console.log('PASS: 2500 entries each exactly 2 unchanged words + 1 linked sentence; 5000 words/readings and 250 original sentences preserved, 2250 original examples added; banks/UI/IDs unchanged');
+else console.log('PASS: 2500 entries each exactly 2 unchanged words + 1 sentence; all 2250 new examples linked, only preserved legacy 噢 link exception; 5000 words/readings and 250 original sentences preserved; banks/UI/IDs unchanged');
