@@ -4,6 +4,14 @@
 
 ## Current snapshot
 
+## 2026-11-03 — Continued deployment investigation
+
+- User said “继续”; continue diagnosis and review preparation only, not production release. Draft dev -> main PR #6 prepared: https://github.com/ico0018/hanzi_garden/pull/6 . main is unchanged.
+- Rechecked remote dev 2c4a8676efa4bcd9816d3f734c60e9ba71a6f91b: Vercel success; Cloudflare Workers Builds failure f990d8ec-4b63-4063-a92b-7d6b71942f03 persists. GitHub check output has no error text, no annotations; Actions collection has zero runs. The GitHub connector rejects direct check-run/annotation endpoints and does not expose Cloudflare build logs; no Cloudflare tool or plugin-discovery capability is callable in this session.
+- No speculative infrastructure/configuration changes made. No new code change or test rerun was needed: validated feature content is unchanged. Actual source still comment-only 错词.txt.
+- Blocked input: Cloudflare build log (last error section) from https://dash.cloudflare.com/e966a8b149982fffb8abdf4dd660f15d/workers/services/view/hanzi-garden/production/builds/f990d8ec-4b63-4063-a92b-7d6b71942f03 . Need actual words to populate notebook and explicit production approval before release.
+
+
 ## 2026-11-03 — Mistake notebook dev integration and preview
 
 - Manager delivery: PR #5 https://github.com/ico0018/hanzi_garden/pull/5 merged feature/mistake-notebook into dev as 012d749226ac9e56e0f187feb08be5b14f9d943f. main remains d48ae830458e011e7027f3be98de75d59449eef4; no production authorization for this scope.
