@@ -4,6 +4,17 @@
 
 ## Current snapshot
 
+## 2026-11-03 — Mistake notebook dev integration and preview
+
+- Manager delivery: PR #5 https://github.com/ico0018/hanzi_garden/pull/5 merged feature/mistake-notebook into dev as 012d749226ac9e56e0f187feb08be5b14f9d943f. main remains d48ae830458e011e7027f3be98de75d59449eef4; no production authorization for this scope.
+- QA equivalence: Authenticated connector candidate 6765b809a5b154da7ec09976f04ba8a5542cd59e and dev merge have full tree ce92c5ec20f0fb38df0fc25fbeca9028109d1d12, exactly matching independently tested local QA/report HEAD 55fa02469063d9daf2bbad321a1d0b612fc30e88. Independent QA confirmed remote equivalence PASS. Initial local git push failed for missing HTTPS credentials and changed no remote refs; connector publication preserved exact tree contents.
+- Validation: Notebook independent controller and index/app DOM integration PASS; original three daily suites, syntax/diff and static HTTP resources PASS. Actual browser/touch/audio unverified (Chromium download unusable).
+- Preview: Vercel reports successful feature and dev deployments. Feature preview https://hanzi-garden-git-feature-mistake-notebook-ico0018s-projects.vercel.app ; HTTP smoke reaches Vercel sign-in, so authenticated live UI not verified. dev deployment dashboard https://vercel.com/ico0018s-projects/hanzi-garden/5rz39x5y4PhuTFMjPQKuPu2FLxFo .
+- External check: Cloudflare Workers Builds failed on feature candidate (build 5c2e66fa-edc3-4af8-b1b4-861410884f4a); GitHub check provides no error text or annotations. Cause unresolved; do not represent deployment checks as all passing. Vercel preview and GitGuardian passed. No Cloudflare settings changed.
+- Source: 错词.txt is an instruction-only starter; parent must add actual words one per line and deploy the updated file before the child has a populated list.
+- Next owner: User / Manager for preview acceptance, actual word source, real-device handwriting/audio verification, Cloudflare build log inspection and any explicit production-release decision.
+
+
 ## 2026-11-03 — Mistake-word notebook
 
 - Independent QA: PASS on exact implementation `65d77e55131c5c6bee99f5317dcfea2ad7b72c69`; tested HEAD `6c8034ba9a7ff66592a2eb52f6246f631ec0a5e9` differs only in STATUS. Independent notebook VM/DOM and actual index/app LinkeDOM integration checks passed, as did focused notebook tests, all three relevant daily regressions, JS syntax and diff checks. Complete evidence: `.agents/QA-mistake-notebook.md`.
