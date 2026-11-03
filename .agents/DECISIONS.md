@@ -1,5 +1,14 @@
 # Decisions Log
 
+## 2026-11-03 — Automatic rolling 30-word mistake dictation
+
+- Source: User clarified “我是需要一个页面，调用生词每日听写这种类型，做错词本听写，每次循环30个词，错了的词加入记忆法，后面滚动听写”. This replaces selection-first/manual same-day retry as the notebook's primary flow.
+- Decision: Direct validated route index.html?view=mistakes opens shared 错词.txt independently of textbook selection or curriculum/daily-bank failures; learning/daily navigation retains loading/error states and return tabs. Default straight into handwriting/listening, with optional source reading list.
+- Decision: Each round has at most 30 unique eligible words; due reviews first (oldest due then source order), followed by never-reviewed source words. Continue available next rounds same day; do not repeat already-reviewed-today or future-due words to fill the count. Show actual count and next review date when exhausted.
+- Scheduling: Wrong resets streak and returns next local calendar day. Consecutive correct use the existing 2/4/7/15/30/60-day intervals, capped at60. Preserve a full unfinished round and results across reload/tab/day changes; each new result uses the actual local review date. On reentry a fully completed earlier-day round rolls into eligible next work; completing a round still shows its summary first.
+- Persistence: Separate notebook v2 atomic document combines stable word-keyed progress and full active-round IDs/results, with memory-authoritative fallback on storage failure. Migrate v1 known/unknown timestamps by browser-local calendar date; keep v1 source untouched. Source reorder preserves assigned order; removed words are omitted without false results; new words enter a later round. No changes to textbook data or existing daily storage/scheduling.
+- Gate: Every glyph must complete handwriting before child self-assessment; no automatic correctness mark or bypass. Empty/error/source/tool/glyph states remain visible. No production release approval for the corrected scope.
+
 ## 2026-10-11 — All-book sentence production authorization
 
 - Source: User explicitly said “发布” on 2026-10-11, approving this sentence-only production release. This supersedes the earlier pending-approval state, not the disclosed source/browser limitations.
