@@ -16,10 +16,12 @@ switchBookButton?.addEventListener("click", () => {
 });
 
 let lessons = [];
+let bookLoadStatus = "loading";
 let currentLessonIndex = 0;
 let currentCharIndex = 0;
 let writerInstance = null;
-let activeView = "learning";
+const requestedView = new URLSearchParams(window.location.search).get("view");
+let activeView = ["learning", "dictation", "mistakes"].includes(requestedView) ? requestedView : "learning";
 let speechVoices = [];
 let activeAudio = null;
 
@@ -811,6 +813,10 @@ function render() {
     return;
   }
   mistakeNotebook?.leave();
+  if (bookLoadStatus !== "ready") {
+    renderLoadError();
+    return;
+  }
   if (activeView === "dictation") {
     learningView.hidden = true;
     dictationView.hidden = false;
@@ -829,13 +835,12 @@ function render() {
 }
 
 function renderLoadError() {
-  mistakeNotebook?.leave();
-  if (mistakeView) mistakeView.hidden = true;
   learningView.hidden = false;
   dictationView.hidden = true;
-  appTabs.innerHTML = "";
   lessonNav.innerHTML = "";
-  lessonOverview.innerHTML = `<section class="dictation-card"><h2>教材数据加载失败</h2><p>请返回重新选择教材后再试。</p><a class="primary-button" href="welcome.html">返回选择教材</a></section>`;
+  lessonOverview.innerHTML = bookLoadStatus === "loading"
+    ? '<section class="dictation-card" role="status"><h2>正在加载教材…</h2><p>也可以先打开错词本听写。</p></section>'
+    : `<section class="dictation-card"><h2>教材数据加载失败</h2><p>请返回重新选择教材后再试，也可以打开错词本听写。</p><a class="primary-button" href="welcome.html">返回选择教材</a></section>`;
   charList.innerHTML = "";
   charDetail.innerHTML = "";
 }
@@ -843,8 +848,10 @@ function renderLoadError() {
 async function init() {
   loadSpeechVoices();
   if ("speechSynthesis" in window) window.speechSynthesis.onvoiceschanged = loadSpeechVoices;
+  render();
   if (!selectedBook?.available) {
-    renderLoadError();
+    bookLoadStatus = "error";
+    if (activeView !== "mistakes") render();
     return;
   }
 
@@ -852,11 +859,13 @@ async function init() {
     lessons = await loadLessonsFromTxt(selectedBookId);
     migratePracticeProgress();
     await loadDailyDictationWordBank(selectedBookId);
+    bookLoadStatus = "ready";
     document.querySelector(".topbar h1").textContent = `汉字乐园 · ${selectedBook.label}`;
-    render();
+    if (activeView !== "mistakes") render();
   } catch (error) {
     console.error(error);
-    renderLoadError();
+    bookLoadStatus = "error";
+    if (activeView !== "mistakes") render();
   }
 }
 
