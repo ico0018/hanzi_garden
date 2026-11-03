@@ -23,7 +23,7 @@ let speechVoices = [];
 let activeAudio = null;
 
 const BOOK_CATALOG = window.HANZI_BOOK_CATALOG || {};
-const selectedBookId = new URLSearchParams(window.location.search).get("book") || "3-upper";
+const selectedBookId = new URLSearchParams(window.location.search).get("book") || "2026-3-upper";
 const selectedBook = BOOK_CATALOG[selectedBookId];
 const DAILY_DICTATION_SIZE = 15;
 const EBBINGHAUS_INTERVALS = [2, 4, 7, 15, 30, 60];
@@ -214,6 +214,10 @@ async function loadLessonsFromTxt(bookId) {
   if (!book?.available || !book.dataFile) throw new Error(`Unknown or unavailable book: ${bookId}`);
   const response = await fetch(encodeURI(book.dataFile), { cache: "no-store" });
   if (!response.ok) throw new Error(`Failed to load ${book.dataFile}: ${response.status}`);
+  if (book.dataFormat === "writing-json-v1") {
+    if (!window.HANZI_WRITING_TABLES) throw new Error("写字表读取工具未加载");
+    return window.HANZI_WRITING_TABLES.parseWritingTable(await response.json(), bookId, book.characterCount);
+  }
   const parsed = parseLessonsText(await response.text());
   if (!parsed.length) throw new Error(`No valid lessons parsed from ${book.dataFile}`);
   return parsed;
@@ -238,7 +242,8 @@ async function loadDailyDictationWordBank(bookId) {
 
 function stableItemId(lesson, character) {
   const firstWord = character.words[0]?.word || character.char;
-  return encodeURIComponent([selectedBookId, lesson.title, character.char, firstWord].join("|"));
+  const lessonIdentity = lesson.writingTable ? lesson.lessonKey : lesson.title;
+  return encodeURIComponent([selectedBookId, lessonIdentity, character.char, firstWord].join("|"));
 }
 
 function formatDate(date) {
@@ -593,7 +598,7 @@ function getMeaningPinyin(text) {
 function renderDetail() {
   const lesson = lessons[currentLessonIndex];
   const character = lesson.chars[currentCharIndex];
-  cacheHumanAudio(character.char);
+  cacheHumanAudio(character.readingPhrase || character.char);
   character.words.forEach((word) => cacheHumanAudio(word.word));
   if (character.sentence?.groupWord) cacheHumanAudio(character.sentence.groupWord);
 
@@ -603,7 +608,7 @@ function renderDetail() {
         <div class="character-header">
           <div class="big-char">${escapeHtml(character.char)}</div>
           <span class="pinyin-tag">${escapeHtml(character.pinyin)}</span>
-          <button class="speak-character-button" type="button" data-character="${escapeAttr(character.char)}" aria-label="朗读${escapeAttr(character.char)}" title="朗读">🔊</button>
+          <button class="speak-character-button" type="button" data-character="${escapeAttr(character.readingPhrase || character.char)}" aria-label="朗读${escapeAttr(character.readingPhrase || character.char)}" title="朗读">🔊</button>
         </div>
         <div class="stroke-demo" aria-label="笔画演示"><div class="writer-target" id="writer-target"></div></div>
         <div class="character-actions">
@@ -613,8 +618,10 @@ function renderDetail() {
       </div>
       <div class="info-panel">
         <div>
-          <h3 class="words-title">组词</h3>
+          <h3 class="words-title">${lesson.writingTable ? "写字表练习" : "组词"}</h3>
           <div class="word-list">
+            ${lesson.writingTable ? '<p class="writing-table-note">先听读音、观察笔顺，再在田字格里写一写。</p>' : ""}
+            ${character.readingPhrase ? `<p class="writing-table-note">读音提示：${escapeHtml(character.readingPhrase)}。点击喇叭听读。</p>` : ""}
             ${character.words.map((word) => `
               <div class="word-card">
                 <div class="word-heading">
@@ -783,7 +790,7 @@ async function init() {
     lessons = await loadLessonsFromTxt(selectedBookId);
     migratePracticeProgress();
     await loadDailyDictationWordBank(selectedBookId);
-    document.querySelector(".topbar h1").textContent = `汉字乐园 · ${selectedBook.label}`;
+    document.querySelector(".topbar h1").textContent = `汉字乐园 · ${selectedBook.label}${selectedBook.legacy ? "（原有教材）" : "（2026写字表）"}`;
     render();
   } catch (error) {
     console.error(error);

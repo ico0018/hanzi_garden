@@ -12,8 +12,13 @@
       <section class="welcome-card">
         <p class="eyebrow">汉字乐园 v3.2</p>
         <h1>欢迎来到汉字乐园</h1>
-        <p class="welcome-intro">选择年级和册别，开始今天的生字学习与听写。</p>
+        <p class="welcome-intro">按2026年现用人教版写字表，选择年级和册别开始练字。</p>
         <div id="book-selector" class="book-selector" aria-label="选择年级和册别"></div>
+        <details class="legacy-books">
+          <summary>以前的教材和学习记录</summary>
+          <p class="welcome-intro">原有课内组词、造句与学习记录，都在这里继续使用。</p>
+          <div id="legacy-book-selector" class="book-selector" aria-label="以前的教材"></div>
+        </details>
         <p id="book-selection-status" class="book-selection-status" aria-live="polite"></p>
         <button id="start-learning-button" class="start-learning-button" type="button">开始学习</button>
       </section>
@@ -21,7 +26,7 @@
     <script src="cloud-config.js"></script>
     <script src="cloud-sync.js"></script>
     <script src="cloud-ui.js"></script>
-    <script src="book-catalog.js"></script>
-    <script src="welcome.js"></script>
+    <script src="book-catalog.js?v=20261103"></script>
+    <script src="welcome.js?v=20261103"></script>
   </body>
 </html>

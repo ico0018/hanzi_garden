@@ -7,9 +7,11 @@
 ## 2026-11-03 — 2026 写字表补全（Manager intake）
 
 Task: 用户要求汉字乐园补齐对应人教版2026现用语文课本写字表，现只有1—4上册可用。
-Acceptance: 12册可选；新增8册依据已核对的教材末尾写字表，记录版本、课次、字数和来源；不以识字表冒充写字表；原有4册及学习键、词语听写题库、云同步与家长入口保持兼容；新增表格书写可用，缺少组词时不编造释义。2026秋4—6上册使用新版，下册标明已核实的现用版。
+Acceptance: 主书架12册均依据已核对的2026现用教材末尾写字表，使用独立2026-*册次ID，记录版本、课次、字数和来源；不以识字表冒充写字表。原有4册TXT与旧ID学习键保留在折叠书架，词语听写题库、云同步与家长入口保持兼容；新版仅写字表练习，缺少组词时不编造释义。2026秋4—6上册使用新版，下册标明已核实的现用版。
 Safe plan: 当前feature/unified-user-system干净，基线1ba3103；Manager只修改流程记录与研究证据。Developer另建F:/taskHelper/hanzi-writing-2026 worktree，feature/writing-table-2026；QA在独立worktree核验Developer确切提交。无main/dev合并。用户当前请求延续腾讯云网站更新，QA通过后更新该静态子站并保留回退备份。
-Next owner: Developer实现，Manager提供教材原页及写字表研究，QA独立验收。
+Developer state: Done — 主书架12册2026-*本地JSON，共2500教材字位；含版本/原页/课次/拼音。源图逐字核验后纠正牺、莺、倚等混字；Manager最终语境裁决结jiē/教jiāo/倒dào/哩li/晃huàng/禁jìn/哇wa/扎zā/薄báo已纳入。旧4册放入折叠书架，旧TXT、词语题库、cloud与parent文件逐字节不变。新版用lessonKey定位进度，旧ID规则兼容；不生成伪组词或造句。
+Developer checks: 写字表集成7项、独立词语题库1项、云同步11项、家长界面8项共27项通过；app/catalog/writing-tables/welcome语法及diff check通过。Developer浏览器可见12册选择与六上19课组、首课10字加载；后续田字格操作遇浏览器平台browser.user unavailable，不虚报交互PASS。完整三视口与最终语境复核交独立QA。
+Next owner: QA — 在精确候选提交独立验收。禁止Developer部署/main/dev操作。运行部署资源为12个JSON加7个页面/脚本/样式，共19个静态文件。
 
 
 
