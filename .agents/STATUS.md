@@ -4,6 +4,16 @@
 
 ## Current snapshot
 
+## 2026-11-03 — Rolling 30-word notebook dev delivery
+
+- Manager delivery: Corrected user-requested automatic notebook flow merged via PR #7 https://github.com/ico0018/hanzi_garden/pull/7 into dev as d547f5d114a58d845feba7ca0bbabdff9406c93a. Shared-source dedicated entry: https://hanzi-garden-git-dev-ico0018s-projects.vercel.app/index.html?view=mistakes .
+- Exact-content QA: Connector feature 9c1ff3454758a7a2880bcd8c0d6d25a83839eaa3 and dev merge both have tree ec07bf60e6be70c406590df12e7d7479b89281ae, exactly matching tested local QA/report HEAD 7ad4624371544bcb793909a06fdbe0ff564ef232. Independent QA confirmed remote identity PASS. App/source content unchanged by this delivery record.
+- Behavior verified: Automatic due-first/new rounds of 30 (70 -> 30/30/10), wrong -> next local calendar day/reset, correct -> 2/4/7/15/30/60 days, persisted active queue/results across reload/midnight, old completed day rolls into available work, v1 migration, source reorder/removal, unavailable storage memory fallback, handwriting/manual/stale gates, independent direct URL with failed/invalid textbook-safe navigation. Six focused/regression suites, independent controller/scheduler/index DOM tests, Shanghai/New York DST/calendar checks, syntax/diff and all new HTTP assets PASS.
+- Preview: Vercel reports successful feature and dev deployment; dev dashboard https://vercel.com/ico0018s-projects/hanzi-garden/3mJ4tWVR4QuyXVtU8DLVRtxzXCKi . Existing Vercel sign-in protection remains. Actual browser/touch/stroke-data/audio playback remain unverified.
+- External check: Cloudflare Workers Builds still failed on this feature candidate; Vercel and GitGuardian passed. No Cloudflare diagnosis or configuration change is claimed in this feature correction.
+- Source / release: 错词.txt still has only comments, no personal words supplied. Root main remains production and was not changed; draft PR #6 now tracks this corrected automatic-round scope and awaits an explicit production decision. Next owner: User/Manager for actual source words and preview review.
+
+
 ## 2026-11-03 — User-corrected rolling 30-word mistake dictation
 
 - Independent QA: PASS on exact implementation `f22061235ed71f7688bd87bff8113e34ca0bd49d`; tested HEAD `d49edbcce0e85d1dc76281d639703003d4b2a5af` differs only in STATUS. Independent controlled-clock scheduler and LinkeDOM controller/app tests verify 70→30/30/10, due backlog/order, same-day/future exclusion, persistent partial/midnight/source-edited rounds, v1 migration, local calendar/DST edges, intervals/reset, new-day auto-entry, full-word/manual and stale-callback gates, independent direct route despite curriculum errors, and isolated daily records. Six relevant repository suites, three JS syntax checks and diff check PASS. Evidence: `.agents/QA-mistake-rolling-30.md`.
