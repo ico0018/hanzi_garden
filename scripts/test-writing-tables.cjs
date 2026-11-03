@@ -140,7 +140,8 @@ test('checked modern-table glyphs and context readings survive conversion', () =
   assert.equal(reading('3-lower','系'),'jì');
   assert.equal(reading('3-lower','称'),'chèn');
   assert.equal(reading('3-lower','累'),'lěi');
-  assert.equal(reading('4-lower','哩'),'li');
+  assert.equal(reading('4-lower','哩'),'lī');
+  assert.equal(chars('4-lower').find(c=>c.char==='哩').readingPhrase,'呜哩哇啦');
   assert.equal(reading('4-lower','晃'),'huàng');
   assert.equal(reading('4-lower','禁'),'jìn');
   assert.equal(reading('5-upper','哇'),'wa');
