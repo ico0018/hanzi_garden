@@ -1,6 +1,7 @@
 const appTabs = document.getElementById("app-tabs");
 const learningView = document.getElementById("learning-view");
 const dictationView = document.getElementById("dictation-view");
+const mistakeView = document.getElementById("mistake-view");
 const lessonNav = document.getElementById("lesson-nav");
 const lessonOverview = document.getElementById("lesson-overview");
 const charList = document.getElementById("char-list");
@@ -33,6 +34,16 @@ const AUDIO_CACHE_LIMIT = 40;
 const audioCache = new Map();
 let dailyDictationItems = [];
 let dailyDictationBankStatus = "not-configured";
+const mistakeNotebook = window.HANZI_MISTAKE_NOTEBOOK?.create({
+  root: mistakeView,
+  escapeHtml,
+  speak: playHumanChinese,
+  pinyin: getMeaningPinyin,
+  stopSpeech: () => {
+    if (activeAudio) { activeAudio.pause(); activeAudio.currentTime = 0; activeAudio = null; }
+    window.speechSynthesis?.cancel();
+  }
+});
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -451,11 +462,13 @@ function renderAppTabs() {
   appTabs.innerHTML = `
     <button class="app-tab ${activeView === "learning" ? "active" : ""}" type="button" data-view="learning">生字学习</button>
     <button class="app-tab ${activeView === "dictation" ? "active" : ""}" type="button" data-view="dictation">每日听写</button>
+    <button class="app-tab ${activeView === "mistakes" ? "active" : ""}" type="button" data-view="mistakes">错词本</button>
   `;
   appTabs.querySelectorAll(".app-tab").forEach((button) => {
     button.addEventListener("click", () => {
       activeView = button.dataset.view;
       render();
+      appTabs.querySelector(`[data-view="${activeView}"]`)?.focus();
     });
   });
 }
@@ -789,6 +802,15 @@ function animateStrokes() {
 
 function render() {
   renderAppTabs();
+  if (mistakeView) mistakeView.hidden = activeView !== "mistakes";
+  if (activeView === "mistakes") {
+    learningView.hidden = true;
+    dictationView.hidden = true;
+    if (mistakeNotebook) mistakeNotebook.enter();
+    else if (mistakeView) mistakeView.innerHTML = '<section class="mistake-panel"><h2>错词本暂时未能加载</h2><p>请刷新页面后重试。</p></section>';
+    return;
+  }
+  mistakeNotebook?.leave();
   if (activeView === "dictation") {
     learningView.hidden = true;
     dictationView.hidden = false;
@@ -807,6 +829,8 @@ function render() {
 }
 
 function renderLoadError() {
+  mistakeNotebook?.leave();
+  if (mistakeView) mistakeView.hidden = true;
   learningView.hidden = false;
   dictationView.hidden = true;
   appTabs.innerHTML = "";

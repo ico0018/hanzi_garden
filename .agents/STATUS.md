@@ -4,6 +4,22 @@
 
 ## Current snapshot
 
+## 2026-11-03 — Mistake-word notebook
+
+- Independent QA: PASS on exact implementation `65d77e55131c5c6bee99f5317dcfea2ad7b72c69`; tested HEAD `6c8034ba9a7ff66592a2eb52f6246f631ec0a5e9` differs only in STATUS. Independent notebook VM/DOM and actual index/app LinkeDOM integration checks passed, as did focused notebook tests, all three relevant daily regressions, JS syntax and diff checks. Complete evidence: `.agents/QA-mistake-notebook.md`.
+- QA limits: Desktop/tablet/mobile responsive CSS and native keyboard controls reviewed in source; real browser layout, pen strokes, remote glyph data and audible playback were not exercised because Chromium installation returned truncated downloads. Simulated callbacks verify the all-character/manual gate, stale-callback protection, retry and isolated storage. No implementation defect found. QA did not merge/push/deploy; next owner Manager for feature -> dev integration and preview. Production approval remains absent.
+
+- Manager scope: Add an independent 错词本 tab loading root 错词.txt, a review list with pronunciation and word selection, and selected-word dictation reusing existing speech and handwriting/self-assessment behavior. Keep textbook learning and daily scheduling intact.
+- Safe plan: Fresh clone at /workspace/scratch/f53abdb3de03/hanzi_garden is clean at d48ae830458e011e7027f3be98de75d59449eef4. Isolated Developer worktree /workspace/scratch/f53abdb3de03/hanzi_mistake_notebook, branch feature/mistake-notebook; no user-owned local checkout touched. DevSpace has two indistinguishable connections and no selection was supplied, so use the specified GitHub repository and isolated clone.
+- Source state: 错词.txt is absent from current main/dev; add a UTF-8 comment-only starter rather than invented personal mistakes. One word per line; ignore blank/comment lines and deduplicate in source order. Distinguish empty, missing/error, and loading states with retry.
+- Acceptance: List review/individual replay, select all/clear/subset, hidden-answer dictation, repeat/next and completion with retry of unknown words, no assessment before all handwriting targets complete; stable word IDs and separate browser-local notebook results; keyboard and narrow-screen usability; no daily queue/progress changes.
+- Workflow: Developer implementation assigned; independent QA required on exact candidate before feature -> dev. No production release approval for this scope.
+- State: Developer complete — exact implementation commit 65d77e55131c5c6bee99f5317dcfea2ad7b72c69 on feature/mistake-notebook. Independent QA waiting; no merge/push.
+- Implemented: Separate notebook script/view; shared root UTF-8 source with BOM/blank/comment handling, Chinese-only validation and ordered deduplication; native checkbox selection and individual pronunciation; hidden-answer selected-word handwriting, complete-word manual assessment, next word, round totals and unknown-word retry; stable independent results and honest storage warning. Tab/session changes stop notebook playback and cancel/invalidate old writer callbacks. Missing/empty/failing sources and missing tool/glyph data fail visibly with retry; no assessment bypass. Local script failure has a visible refresh message.
+- Developer verification: node --check app.js and mistake-notebook.js, scripts/test-mistake-notebook.js, test-daily-dictation-size.js, test-dictation-count.js, test-daily-word-bank.js and git diff --check PASS. Notebook harness runs actual production module and checks parsing/IDs, subset/all/clear, speech/reveal, all-character gate including synthetic premature clicks, isolated results, unknown retry, stale callbacks, empty/fetch/glyph/tool/storage failures. Textbook data and existing daily queue/progress functions unchanged.
+- Limitation: DOM/event harness only; Chromium binary unavailable in local Playwright installation. Real-browser layout, touch handwriting and external pronunciation/stroke data remain unverified. Starter source is intentionally empty because no actual personal mistakes were provided.
+- Next owner: Independent QA on exact implementation, then Manager. This follow-up changes delivery records only.
+
 ## 2026-10-11 — All-book original learning sentences
 
 - Task: Check Grade 1–6 both terms for exactly two existing words and one linked natural sentence per character; fill missing sentences without changing vocabulary, readings, original Grade 3 Upper sentences, dictation banks/IDs, or UI architecture.
