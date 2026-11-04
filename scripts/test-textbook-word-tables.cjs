@@ -251,3 +251,13 @@ test('catalog tables match every reviewed source sequence, count and local asset
   assert.equal(catalog['3-upper'].wordTableFile, undefined);
   assert.equal(catalog['3-upper'].legacy, true);
 });
+
+test('second-reader source corrections keep the actual Grade 3 lower textbook words', () => {
+  const data = JSON.parse(fs.readFileSync(path.join(root, 'word-tables/2026-3-lower.json'), 'utf8'));
+  const garden = data.lessons.find(lesson => lesson.lessonKey === 'garden-1').words.map(entry => entry.word);
+  assert.deepEqual(garden, ['匕首', '乙方', '冗长', '军犬', '兑换', '争执']);
+  const reading = data.lessons.find(lesson => lesson.lessonKey === 'reading-23').words.map(entry => entry.word);
+  assert.equal(reading.at(-1), '轰隆隆');
+  assert.ok(!reading.includes('毒辣辣'));
+  assert.equal(bank.parseTextbookWordTable(data, data.bookId).total, 271);
+});
