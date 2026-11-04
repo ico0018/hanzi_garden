@@ -155,3 +155,23 @@ hanzi_garden/
 所有学习状态都保存在当前浏览器的 `localStorage` 中，没有登录系统，也不会同步到其他设备。
 
 清除浏览器站点数据后，本机学习记录也会一起清除。
+
+## 笔画资源本地托管（2026-11）
+
+笔顺/描红/听写使用 `Hanzi Writer 2.0.2`，笔画 JSON 使用 `hanzi-writer-data 2.0.1`。
+不再从 jsDelivr 加载 JS 或笔画 JSON，也不依赖外部拼音 CDN。
+
+```bash
+npm install
+npm run build
+```
+
+部署 **`dist/`** 目录（Vercel 由 `vercel.json` 自动运行构建并发布）。
+`scripts/build-static.cjs` 会复制站点原文件，并只为教材数据和页面涉及的汉字
+收集本地 `dist/vendor/hanzi-data/字.json`。新增生字/词语后需重新构建。
+若用 nginx/腾讯云自行部署，请确保发布的是 `dist/` 而不是源码根目录；
+否则 `vendor/` 资源不会存在。部署后可以用
+`/vendor/hanzi-writer.min.js` 和 `/vendor/hanzi-data/永.json` 验证 200 响应。
+
+资源版权：Hanzi Writer MIT；笔画数据遵循 Arphic Public License，
+随构建产物保留 `vendor/ARPHICPL.TXT`。

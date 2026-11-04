@@ -562,7 +562,11 @@ function renderDailyDictation() {
       drawingColor: "#1d1d1d",
       drawingWidth: 5,
       highlightColor: "#f4b942",
-      highlightOnComplete: true
+      highlightOnComplete: true,
+      charDataLoader: window.XuebabangbangStrokeData.charDataLoader,
+      onLoadCharDataError: () => {
+        writingStatus.textContent = "笔画数据加载失败，请刷新页面重试。";
+      }
     });
     writer.quiz({
       leniency: 1.15,
@@ -708,7 +712,17 @@ function renderDetail() {
         characterColor: "#1d1d1d",
         outlineColor: "#1d1d1d",
         mainColor: "#1d1d1d",
-        highlightColor: "#f4b942"
+        highlightColor: "#f4b942",
+        charDataLoader: window.XuebabangbangStrokeData.charDataLoader,
+        onLoadCharDataError: () => {
+          const panel = charDetail.querySelector(".stroke-demo");
+          if (panel && !panel.querySelector(".stroke-load-error")) {
+            const hint = document.createElement("small");
+            hint.className = "stroke-load-error";
+            hint.textContent = "笔画数据暂时加载失败，请刷新重试。";
+            panel.appendChild(hint);
+          }
+        }
       });
     }
   }
@@ -769,7 +783,11 @@ function renderCharacterPractice(character) {
     drawingColor: "#1d1d1d",
     drawingWidth: 5,
     highlightColor: "#f4b942",
-    highlightOnComplete: true
+    highlightOnComplete: true,
+    charDataLoader: window.XuebabangbangStrokeData.charDataLoader,
+    onLoadCharDataError: () => {
+      document.getElementById("practice-status").textContent = "笔画数据加载失败，请刷新页面重试。";
+    }
   });
   practiceWriter.quiz({
     leniency: 1.15,
