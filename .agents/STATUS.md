@@ -358,3 +358,10 @@ BLOCKED public gate: Windows curl and actual Chrome20secTCP443 timeout, no TLS/H
 Documentation: portal/docs/unified-public-ip.md, unified-public-ip-qa.md, evidence/public-ip-*.json. All features saved/Draft unmerged; main/dev/DNS/production unchanged. Next owner: User provides cloud-rule state; Manager/QA complete exterior validation. No production action authorized.
 
 Safe commit plan: preserve Manager STATUS and exact developer feature commits; stage only owned docs/status/evidence. No broad adds, main/dev merge or resets.
+## 2026-11-04 — 教材词语表接入每日听写（Manager intake）
+
+用户要求按人教版教材末尾词语表更新每日听写，延续2026年现用12册。以原页实际有无词语表为准，不从单字或外部教辅拼造；保留课次、词序、词形、来源及稳定新题目ID。旧3-upper词库/ID/复习记录不覆盖，2026-*书册接入对应本地词语表；沿用每日最多15词、真实书写后自评和原复习间隔。无词语表的册次明确显示。
+
+当前feature/writing-table-2026干净，HEAD ef9bbd3，线上业务8158661。Manager新建独立Developer工作树F:/taskHelper/hanzi-word-tables-2026、feature/textbook-word-tables-2026；QA另建精确提交工作树。Manager只处理研究/流程/部署，Developer负责代码/数据接入，QA独立源与功能校验。用户当前请求为已授权腾讯云网站的连续更新，QA通过后备份并仅更新必要静态文件；不合并main/dev，不改DNS、账号、数据库或云配置。
+
+Next owner: Developer / source / Manager，完成原页核对及接入后交QA。
