@@ -4,6 +4,18 @@
 
 ## Current snapshot
 
+## 2026-11-04 — 2026 写字表已部署（Manager final）
+
+业务候选815866193f9f7321be5c19823a91ff975ba237d2已部署到腾讯云汉字子站，仅19个静态文件。12册2500字位，旧四册、原词库和学习记录命名保持兼容。私密备份 /srv/xuebabangbang-unified-preview/deployment-backups/hanzi-before-writing-20261104-101701.tar.gz；8个线上保护文件含cloud-config前后字节摘要相同。数据库、容器、DNS不作调整。
+
+独立QA内容与核心流程PASS：逐课数据/重点读音/保护文件、27项回归；1440书架与六上加载、真实一画完成→自评→刷新保存、375书架无横向溢出。CUA连续超时后停止重试，768、375学习页宽度及旧新三上听写浏览器项未完成，明确不声称全浏览器PASS。相关16个笔画/自评/保存/听写函数与基线逐段一致；Manager接受剩余浏览器覆盖为平台限制。证据ops/hanzi-writing-20261103/qa/final-report.md、browser-results.json、candidate-data-results.json。
+
+部署后公网正式域名19文件逐项SHA256一致，12册字数合计2500；根域/hanzi与IP/hanzi两别名同样200且欢迎页摘要一致，正常校验证书。结果ops/hanzi-writing-20261103/public-verification.json。
+
+功能分支feature/writing-table-2026已推送，草稿PR https://github.com/ico0018/hanzi_garden/pull/8 对feature/unified-user-system，未合并main/dev。Manager在Developer已交回的干净树中仅提交本状态文档；QA独立树的状态记录保留，不重置。后续文档提交不改变已部署业务来源8158661。
+
+Next owner: User — 可直接访问 https://hanzi.xuebabangbang.cn/welcome.html 选择教材。所请求写字表与已授权腾讯云更新完成。
+
 ## 2026-11-03 — 2026 写字表补全（Manager intake）
 
 Task: 用户要求汉字乐园补齐对应人教版2026现用语文课本写字表，现只有1—4上册可用。
