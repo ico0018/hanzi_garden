@@ -35,6 +35,7 @@ const AUDIO_CACHE_LIMIT = 40;
 const audioCache = new Map();
 let dailyDictationItems = [];
 let dailyDictationBankStatus = "not-configured";
+let dailyDictationTable = null;
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -224,10 +225,24 @@ async function loadLessonsFromTxt(bookId) {
 }
 
 async function loadDailyDictationWordBank(bookId) {
+  dailyDictationItems = [];
+  dailyDictationTable = null;
+  dailyDictationBankStatus = "not-configured";
+  const book = BOOK_CATALOG[bookId];
+  if (book?.wordTableFile) {
+    const response = await fetch(encodeURI(book.wordTableFile), { cache: "no-store" });
+    if (!response.ok) throw new Error(`Failed to load ${book.wordTableFile}: ${response.status}`);
+    dailyDictationTable = window.HANZI_DAILY_WORD_BANK.parseTextbookWordTable(await response.json(), bookId);
+    dailyDictationItems = dailyDictationTable.items;
+    dailyDictationBankStatus = "ready";
+    return;
+  }
+  if (book?.wordTableStatus === "not-in-textbook") {
+    dailyDictationBankStatus = "not-in-textbook";
+    return;
+  }
   const bankFile = DAILY_DICTATION_BANK_FILES[bookId];
   if (!bankFile) {
-    dailyDictationItems = [];
-    dailyDictationBankStatus = "not-configured";
     return;
   }
 
@@ -429,10 +444,14 @@ function renderAppTabs() {
 
 function renderDailyDictation() {
   if (dailyDictationBankStatus !== "ready") {
+    const unavailable = dailyDictationBankStatus === "not-in-textbook";
+    const failed = dailyDictationBankStatus === "error";
+    const title = failed ? "教材词语表加载失败" : unavailable ? "本册教材没有独立词语表" : "本册教材词语表正在整理";
+    const note = failed ? "请刷新页面后重试；生字学习仍可使用。" : unavailable ? "暂不提供教材词语听写，可以继续生字学习。" : "整理完成后，就可以按教材词语表进行每日听写。";
     dictationOverview.innerHTML = `
-      <div><h2>每日听写</h2><p>每日词语听写只使用已配置的教材题库。</p></div>
-      <div class="lesson-badge">题库未配置</div>`;
-    dictationDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><h2>本教材暂未配置每日词语听写题库</h2><p class="daily-review-note">请先在题库文件中配置词语后再开始听写。</p></section>`;
+      <div><h2>每日听写</h2><p>按教材词语表听写，写完后自己判断掌握情况。</p></div>
+      <div class="lesson-badge">${failed ? "加载失败" : unavailable ? "无独立词语表" : "整理中"}</div>`;
+    dictationDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><h2>${title}</h2><p class="daily-review-note">${note}</p></section>`;
     return;
   }
   const queue = getDailyQueue();
@@ -442,7 +461,7 @@ function renderDailyDictation() {
   const completedCount = queue.length - pending.length;
 
   dictationOverview.innerHTML = `
-    <div><h2>每日听写</h2><p>每天最多 15 个生词；系统只安排复习，你自己决定会不会写。</p></div>
+    <div><h2>每日听写</h2><p>每天最多 15 个生词；系统只安排复习，你自己决定会不会写。</p>${dailyDictationTable ? `<p class="daily-review-note">${escapeHtml(dailyDictationTable.edition)} · 教材词语表 ${dailyDictationTable.total} 词</p>` : ""}</div>
     <div class="lesson-badge">${completedCount} / ${queue.length} 已标记</div>`;
 
   if (!queue.length) {
@@ -450,7 +469,7 @@ function renderDailyDictation() {
     return;
   }
   if (!pending.length) {
-    dictationDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><div class="daily-finished"><h2>今日 15 词已完成</h2><p>明天会根据你的手动标记安排下一次复习。</p></div></section>`;
+    dictationDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><div class="daily-finished"><h2>今日 ${queue.length} 词已完成</h2><p>明天会根据你的手动标记安排下一次复习。</p></div></section>`;
     return;
   }
 
@@ -789,7 +808,14 @@ async function init() {
   try {
     lessons = await loadLessonsFromTxt(selectedBookId);
     migratePracticeProgress();
-    await loadDailyDictationWordBank(selectedBookId);
+    try {
+      await loadDailyDictationWordBank(selectedBookId);
+    } catch (error) {
+      console.error(error);
+      dailyDictationItems = [];
+      dailyDictationTable = null;
+      dailyDictationBankStatus = "error";
+    }
     document.querySelector(".topbar h1").textContent = `汉字乐园 · ${selectedBook.label}${selectedBook.legacy ? "（原有教材）" : "（2026写字表）"}`;
     render();
   } catch (error) {

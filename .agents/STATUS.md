@@ -4,6 +4,14 @@
 
 ## Current snapshot
 
+## 2026-11-04 — 教材词语表接入每日听写（Developer intake）
+
+Task: 用户要求按人教版教材末尾词语表更新每日听写。Developer 独占 F:/taskHelper/hanzi-word-tables-2026，feature/textbook-word-tables-2026，基线96d090f；Manager/source负责原页转录，QA独立验收精确候选。
+Plan: 新2026-*册次仅接入已核对的本地结构化词语表，保留原课原词序、来源和版本；按bookId+lessonKey+word稳定定位题目。无独立原表、未整理与加载失败分开提示，不从单字生成组词/释义。旧3-upper词库及其ID/进度保持兼容，每日15上限、复习间隔和写完后手动自评保留。写字表2500字位、旧TXT、云同步和家长相关文件不改。
+Developer state: 本地词语表验证/接入、三类空状态和失败隔离已实现；词表出错不阻断写字学习。题目ID不依赖索引或标题；完成页显示实际词数，脚本缓存版本更新。已接入二上239/三上250/五下142/六下162，共793原表词条；原表未标拼音，全部留空，不批量猜填。一上/一下无独立词语表的目录/末尾证据已记录。余六册待扫描原页转录，无猜填词条。
+Developer checks: 新10项通过，含实表完整课词序摘要、词数/来源核验、稳定标识、本地加载/失败隔离、队列15上限/复习间隔、全词写完后手动自评、空状态与短队列完成。原写字表7、旧词库1、云11、家长8回归均通过，共37项；语法/diff检查通过。全册源齐后补齐最终数据核验。
+Next owner: Manager/source提供已核对JSON；Developer集成实表、补数据校验并交精确候选给QA。不部署/push/merge。
+
 ## 2026-11-04 — 2026 写字表已部署（Manager final）
 
 业务候选815866193f9f7321be5c19823a91ff975ba237d2已部署到腾讯云汉字子站，仅19个静态文件。12册2500字位，旧四册、原词库和学习记录命名保持兼容。私密备份 /srv/xuebabangbang-unified-preview/deployment-backups/hanzi-before-writing-20261104-101701.tar.gz；8个线上保护文件含cloud-config前后字节摘要相同。数据库、容器、DNS不作调整。
