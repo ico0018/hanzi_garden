@@ -215,6 +215,17 @@ test('catalog tables match every reviewed source sequence, count and local asset
   vm.runInNewContext(fs.readFileSync(path.join(root, 'book-catalog.js'), 'utf8'), catalogScope);
   const catalog = catalogScope.window.HANZI_BOOK_CATALOG;
   const checks = JSON.parse(fs.readFileSync(path.join(root, 'word-tables/source-checks.json'), 'utf8'));
+  const expected = {
+    '2026-2-upper': 239, '2026-2-lower': 243, '2026-3-upper': 250, '2026-3-lower': 271,
+    '2026-4-upper': 220, '2026-4-lower': 213, '2026-5-upper': 213, '2026-5-lower': 142,
+    '2026-6-upper': 215, '2026-6-lower': 162
+  };
+  assert.equal(checks.books.length, 12);
+  assert.equal(checks.books.filter(book => book.hasWordTable).length, 10);
+  assert.deepEqual(checks.books.filter(book => !book.hasWordTable).map(book => book.bookId).sort(), ['2026-1-lower', '2026-1-upper']);
+  assert.equal(Object.values(expected).reduce((total, count) => total + count, 0), 2168);
+  assert.equal(Object.values(catalog).filter(book => book.wordTableFile).length, 10);
+  assert.equal(checks.books.filter(book => book.hasWordTable).reduce((total, book) => total + book.total, 0), 2168);
   for (const check of checks.books) {
     const book = catalog[check.bookId];
     if (!check.hasWordTable) {
@@ -226,6 +237,7 @@ test('catalog tables match every reviewed source sequence, count and local asset
     assert.equal(book.wordTableFile, 'word-tables/' + book.id + '.json');
     const data = JSON.parse(fs.readFileSync(path.join(root, book.wordTableFile), 'utf8'));
     const result = bank.parseTextbookWordTable(data, book.id);
+    assert.equal(result.total, expected[book.id]);
     assert.equal(result.total, check.total);
     assert.equal(data.lessons.length, check.lessons);
     assert.equal(data.source.url, check.source.url);
@@ -233,6 +245,7 @@ test('catalog tables match every reviewed source sequence, count and local asset
     const rows = data.lessons.map(lesson => [lesson.lessonKey, lesson.words.map(entry => entry.word)]);
     assert.equal(crypto.createHash('sha256').update(JSON.stringify(rows)).digest('hex'), check.sequenceSha256);
     assert.ok(result.items.every(item => item.pinyin === ''), 'the unannotated source table must not gain guessed pinyin');
+    assert.ok(data.lessons.every(lesson => /^(第\d+课|识字\d+|语文园地\d+)$/.test(lesson.title)), 'only source course numbers label these table rows');
   }
   assert.equal(catalog['3-upper'].dataFile, '生字数据.txt');
   assert.equal(catalog['3-upper'].wordTableFile, undefined);

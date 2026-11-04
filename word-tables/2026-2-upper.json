@@ -22,7 +22,7 @@
   "lessons": [
     {
       "lessonKey": "reading-1",
-      "title": "1 小蝌蚪找妈妈",
+      "title": "第1课",
       "words": [
         {
           "word": "妈妈",
@@ -72,7 +72,7 @@
     },
     {
       "lessonKey": "reading-2",
-      "title": "2 我是什么",
+      "title": "第2课",
       "words": [
         {
           "word": "太阳",
@@ -130,7 +130,7 @@
     },
     {
       "lessonKey": "reading-3",
-      "title": "3 植物妈妈有办法",
+      "title": "第3课",
       "words": [
         {
           "word": "如果",
@@ -184,7 +184,7 @@
     },
     {
       "lessonKey": "literacy-1",
-      "title": "识字1 场景歌",
+      "title": "识字1",
       "words": [
         {
           "word": "花园",
@@ -206,7 +206,7 @@
     },
     {
       "lessonKey": "literacy-2",
-      "title": "识字2 树之歌",
+      "title": "识字2",
       "words": [
         {
           "word": "杨树",
@@ -232,7 +232,7 @@
     },
     {
       "lessonKey": "literacy-3",
-      "title": "识字3 拍手歌",
+      "title": "识字3",
       "words": [
         {
           "word": "拍手",
@@ -266,7 +266,7 @@
     },
     {
       "lessonKey": "literacy-4",
-      "title": "识字4 田家四季歌",
+      "title": "识字4",
       "words": [
         {
           "word": "四季",
@@ -304,7 +304,7 @@
     },
     {
       "lessonKey": "reading-4",
-      "title": "4 彩虹",
+      "title": "第4课",
       "words": [
         {
           "word": "天上",
@@ -346,7 +346,7 @@
     },
     {
       "lessonKey": "reading-5",
-      "title": "5 去外婆家",
+      "title": "第5课",
       "words": [
         {
           "word": "宝贝",
@@ -392,7 +392,7 @@
     },
     {
       "lessonKey": "reading-6",
-      "title": "6 数星星的孩子",
+      "title": "第6课",
       "words": [
         {
           "word": "星星",
@@ -446,7 +446,7 @@
     },
     {
       "lessonKey": "reading-8",
-      "title": "8 黄山奇石",
+      "title": "第8课",
       "words": [
         {
           "word": "那些",
@@ -480,7 +480,7 @@
     },
     {
       "lessonKey": "reading-9",
-      "title": "9 日月潭",
+      "title": "第9课",
       "words": [
         {
           "word": "山区",
@@ -522,7 +522,7 @@
     },
     {
       "lessonKey": "reading-10",
-      "title": "10 葡萄沟",
+      "title": "第10课",
       "words": [
         {
           "word": "地方",
@@ -584,7 +584,7 @@
     },
     {
       "lessonKey": "reading-11",
-      "title": "11 坐井观天",
+      "title": "第11课",
       "words": [
         {
           "word": "坐井观天",
@@ -618,7 +618,7 @@
     },
     {
       "lessonKey": "reading-12",
-      "title": "12 寒号鸟",
+      "title": "第12课",
       "words": [
         {
           "word": "当作",
@@ -680,7 +680,7 @@
     },
     {
       "lessonKey": "reading-13",
-      "title": "13 我要的是葫芦",
+      "title": "第13课",
       "words": [
         {
           "word": "从前",
@@ -722,7 +722,7 @@
     },
     {
       "lessonKey": "reading-14",
-      "title": "14 八角楼上",
+      "title": "第14课",
       "words": [
         {
           "word": "年代",
@@ -756,7 +756,7 @@
     },
     {
       "lessonKey": "reading-15",
-      "title": "15 朱德的扁担",
+      "title": "第15课",
       "words": [
         {
           "word": "同志",
@@ -802,7 +802,7 @@
     },
     {
       "lessonKey": "reading-16",
-      "title": "16 难忘的泼水节",
+      "title": "第16课",
       "words": [
         {
           "word": "难忘",
@@ -852,7 +852,7 @@
     },
     {
       "lessonKey": "reading-17",
-      "title": "17 刘胡兰",
+      "title": "第17课",
       "words": [
         {
           "word": "由于",
@@ -886,7 +886,7 @@
     },
     {
       "lessonKey": "reading-19",
-      "title": "19 雾在哪里",
+      "title": "第19课",
       "words": [
         {
           "word": "于是",
@@ -944,7 +944,7 @@
     },
     {
       "lessonKey": "reading-20",
-      "title": "20 雪孩子",
+      "title": "第20课",
       "words": [
         {
           "word": "空地",
@@ -998,7 +998,7 @@
     },
     {
       "lessonKey": "reading-21",
-      "title": "21 称赞",
+      "title": "第21课",
       "words": [
         {
           "word": "果子",
@@ -1044,7 +1044,7 @@
     },
     {
       "lessonKey": "reading-22",
-      "title": "22 纸船和风筝",
+      "title": "第22课",
       "words": [
         {
           "word": "上面",
@@ -1074,7 +1074,7 @@
     },
     {
       "lessonKey": "reading-23",
-      "title": "23 快乐的小河",
+      "title": "第23课",
       "words": [
         {
           "word": "眼泪",

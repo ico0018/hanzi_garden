@@ -20,7 +20,7 @@
   "lessons": [
     {
       "lessonKey": "reading-1",
-      "title": "1 北京的春节",
+      "title": "第1课",
       "words": [
         {
           "word": "热情",
@@ -106,7 +106,7 @@
     },
     {
       "lessonKey": "reading-2",
-      "title": "2 腊八粥",
+      "title": "第2课",
       "words": [
         {
           "word": "腊八粥",
@@ -184,7 +184,7 @@
     },
     {
       "lessonKey": "reading-5",
-      "title": "5 鲁滨逊漂流记（节选）",
+      "title": "第5课",
       "words": [
         {
           "word": "流落",
@@ -282,7 +282,7 @@
     },
     {
       "lessonKey": "reading-8",
-      "title": "8 匆匆",
+      "title": "第8课",
       "words": [
         {
           "word": "确乎",
@@ -332,7 +332,7 @@
     },
     {
       "lessonKey": "reading-9",
-      "title": "9 那个星期天",
+      "title": "第9课",
       "words": [
         {
           "word": "明媚",
@@ -414,7 +414,7 @@
     },
     {
       "lessonKey": "reading-11",
-      "title": "11 十六年前的回忆",
+      "title": "第11课",
       "words": [
         {
           "word": "埋头",
@@ -500,7 +500,7 @@
     },
     {
       "lessonKey": "reading-12",
-      "title": "12 为人民服务",
+      "title": "第12课",
       "words": [
         {
           "word": "革命",
@@ -574,7 +574,7 @@
     },
     {
       "lessonKey": "reading-15",
-      "title": "15 真理诞生于一百个问号之后",
+      "title": "第15课",
       "words": [
         {
           "word": "真理",
@@ -656,7 +656,7 @@
     },
     {
       "lessonKey": "reading-16",
-      "title": "16 表里的生物",
+      "title": "第16课",
       "words": [
         {
           "word": "机器",

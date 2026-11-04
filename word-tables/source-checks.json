@@ -111,6 +111,30 @@
       "sequenceSha256": "b20100513e95b4a40d672d8b7ca65fc78a4e3c48027e8c69752c2b9aded39119"
     },
     {
+      "bookId": "2026-4-upper",
+      "hasWordTable": true,
+      "total": 220,
+      "lessons": 21,
+      "printedTotal": 220,
+      "source": {
+        "publisher": "人民教育出版社",
+        "table": "词语表",
+        "url": "https://p.20190723.xyz/file/r2:r2_1789021641059_gl7p36.pdf",
+        "printedPages": [
+          127,
+          128,
+          129
+        ],
+        "pdfPages": [
+          133,
+          134,
+          135
+        ],
+        "reviewedAt": "2026-11-04"
+      },
+      "sequenceSha256": "95a424444515fa28a3fa5724ee3a3f59884d6f502cf514b78b295be47d910d54"
+    },
+    {
       "bookId": "2026-5-lower",
       "hasWordTable": true,
       "total": 142,
@@ -153,6 +177,121 @@
         "reviewedAt": "2026-11-04"
       },
       "sequenceSha256": "0101c2bbeea197acf35ed12dc20be69511a82c93db33d2a169ac4f35561ca551"
+    },
+    {
+      "bookId": "2026-2-lower",
+      "hasWordTable": true,
+      "total": 243,
+      "lessons": 26,
+      "source": {
+        "publisher": "人民教育出版社",
+        "table": "词语表",
+        "url": "https://static.lejiaoku.com/uploads/resources/1767901680338.pdf",
+        "printedPages": [
+          120,
+          121,
+          122
+        ],
+        "pdfPages": [
+          124,
+          125,
+          126
+        ],
+        "reviewedAt": "2026-11-04"
+      },
+      "sequenceSha256": "2d42d7e4a8f46581e334ab9c2040a99421571ded7e456b64c4a95445c82b8362"
+    },
+    {
+      "bookId": "2026-3-lower",
+      "hasWordTable": true,
+      "total": 271,
+      "lessons": 22,
+      "source": {
+        "publisher": "人民教育出版社",
+        "table": "词语表",
+        "url": "https://static.lejiaoku.com/uploads/resources/1767902236152.pdf",
+        "printedPages": [
+          116,
+          117,
+          118
+        ],
+        "pdfPages": [
+          120,
+          121,
+          122
+        ],
+        "reviewedAt": "2026-11-04"
+      },
+      "sequenceSha256": "576a9b189a0fb880e4f0c44c071b619219ac72d9b998afa16f7237f782feef4b"
+    },
+    {
+      "bookId": "2026-4-lower",
+      "hasWordTable": true,
+      "total": 213,
+      "lessons": 18,
+      "source": {
+        "publisher": "人民教育出版社",
+        "table": "词语表",
+        "url": "https://lywgyxx.szftedu.cn/xkjc/yw/202209/U020220910608291791040.pdf",
+        "printedPages": [
+          142,
+          143,
+          144
+        ],
+        "pdfPages": [
+          148,
+          149,
+          150
+        ],
+        "reviewedAt": "2026-11-04"
+      },
+      "sequenceSha256": "21c9984e4faaf603871a8042bffce8425c4ae988a4957088f2d0d3567ae8a2bd"
+    },
+    {
+      "bookId": "2026-5-upper",
+      "hasWordTable": true,
+      "total": 213,
+      "lessons": 18,
+      "source": {
+        "publisher": "人民教育出版社",
+        "table": "词语表",
+        "url": "https://p.20190723.xyz/file/r2:r2_1789023067188_xczf8z.pdf",
+        "printedPages": [
+          120,
+          121,
+          122
+        ],
+        "pdfPages": [
+          126,
+          127,
+          128
+        ],
+        "reviewedAt": "2026-11-04"
+      },
+      "sequenceSha256": "adbf0ec2744def8158b2de41eae759c278a7b87b0544e0839bb28704fdff55c6"
+    },
+    {
+      "bookId": "2026-6-upper",
+      "hasWordTable": true,
+      "total": 215,
+      "lessons": 15,
+      "source": {
+        "publisher": "人民教育出版社",
+        "table": "词语表",
+        "url": "https://p.20190723.xyz/file/r2:r2_1789023736616_eo78ql.pdf",
+        "printedPages": [
+          128,
+          129,
+          130
+        ],
+        "pdfPages": [
+          134,
+          135,
+          136
+        ],
+        "reviewedAt": "2026-11-04"
+      },
+      "sequenceSha256": "bd8c1fda7198cdc9e05977be53c853029b0542dea1b80df3e2544467d484ed65"
     }
   ]
 }

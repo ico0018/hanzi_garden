@@ -44,7 +44,8 @@ window.HANZI_BOOK_CATALOG = {
     "characterCount": 250,
     "dataFormat": "writing-json-v1",
     "dataFile": "writing-tables/2026-2-lower.json",
-    "available": true
+    "available": true,
+    "wordTableFile": "word-tables/2026-2-lower.json"
   },
   "2026-3-upper": {
     "id": "2026-3-upper",
@@ -67,7 +68,8 @@ window.HANZI_BOOK_CATALOG = {
     "characterCount": 250,
     "dataFormat": "writing-json-v1",
     "dataFile": "writing-tables/2026-3-lower.json",
-    "available": true
+    "available": true,
+    "wordTableFile": "word-tables/2026-3-lower.json"
   },
   "2026-4-upper": {
     "id": "2026-4-upper",
@@ -78,7 +80,8 @@ window.HANZI_BOOK_CATALOG = {
     "characterCount": 250,
     "dataFormat": "writing-json-v1",
     "dataFile": "writing-tables/2026-4-upper.json",
-    "available": true
+    "available": true,
+    "wordTableFile": "word-tables/2026-4-upper.json"
   },
   "2026-4-lower": {
     "id": "2026-4-lower",
@@ -89,7 +92,8 @@ window.HANZI_BOOK_CATALOG = {
     "characterCount": 250,
     "dataFormat": "writing-json-v1",
     "dataFile": "writing-tables/2026-4-lower.json",
-    "available": true
+    "available": true,
+    "wordTableFile": "word-tables/2026-4-lower.json"
   },
   "2026-5-upper": {
     "id": "2026-5-upper",
@@ -100,7 +104,8 @@ window.HANZI_BOOK_CATALOG = {
     "characterCount": 220,
     "dataFormat": "writing-json-v1",
     "dataFile": "writing-tables/2026-5-upper.json",
-    "available": true
+    "available": true,
+    "wordTableFile": "word-tables/2026-5-upper.json"
   },
   "2026-5-lower": {
     "id": "2026-5-lower",
@@ -123,7 +128,8 @@ window.HANZI_BOOK_CATALOG = {
     "characterCount": 180,
     "dataFormat": "writing-json-v1",
     "dataFile": "writing-tables/2026-6-upper.json",
-    "available": true
+    "available": true,
+    "wordTableFile": "word-tables/2026-6-upper.json"
   },
   "2026-6-lower": {
     "id": "2026-6-lower",

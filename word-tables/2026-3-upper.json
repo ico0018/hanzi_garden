@@ -22,7 +22,7 @@
   "lessons": [
     {
       "lessonKey": "reading-1",
-      "title": "1 大青树下的小学",
+      "title": "第1课",
       "words": [
         {
           "word": "山坡",
@@ -72,7 +72,7 @@
     },
     {
       "lessonKey": "reading-2",
-      "title": "2 花的学校",
+      "title": "第2课",
       "words": [
         {
           "word": "轰响",
@@ -118,7 +118,7 @@
     },
     {
       "lessonKey": "reading-5",
-      "title": "5 铺满金色巴掌的水泥道",
+      "title": "第5课",
       "words": [
         {
           "word": "秋风",
@@ -180,7 +180,7 @@
     },
     {
       "lessonKey": "reading-6",
-      "title": "6 秋天的雨",
+      "title": "第6课",
       "words": [
         {
           "word": "秋天",
@@ -242,7 +242,7 @@
     },
     {
       "lessonKey": "reading-8",
-      "title": "8 总也倒不了的老屋",
+      "title": "第8课",
       "words": [
         {
           "word": "门板",
@@ -304,7 +304,7 @@
     },
     {
       "lessonKey": "garden-3",
-      "title": "语文园地三",
+      "title": "语文园地3",
       "words": [
         {
           "word": "恒心",
@@ -342,7 +342,7 @@
     },
     {
       "lessonKey": "reading-11",
-      "title": "11 宝葫芦的秘密（节选）",
+      "title": "第11课",
       "words": [
         {
           "word": "声明",
@@ -404,7 +404,7 @@
     },
     {
       "lessonKey": "reading-12",
-      "title": "12 在牛肚子里旅行",
+      "title": "第12课",
       "words": [
         {
           "word": "旅行",
@@ -474,7 +474,7 @@
     },
     {
       "lessonKey": "garden-4",
-      "title": "语文园地四",
+      "title": "语文园地4",
       "words": [
         {
           "word": "申请",
@@ -500,7 +500,7 @@
     },
     {
       "lessonKey": "reading-14",
-      "title": "14 搭船的鸟",
+      "title": "第14课",
       "words": [
         {
           "word": "母亲",
@@ -538,7 +538,7 @@
     },
     {
       "lessonKey": "reading-15",
-      "title": "15 金色的草地",
+      "title": "第15课",
       "words": [
         {
           "word": "草地",
@@ -588,7 +588,7 @@
     },
     {
       "lessonKey": "reading-16",
-      "title": "16 富饶的西沙群岛",
+      "title": "第16课",
       "words": [
         {
           "word": "风景",
@@ -658,7 +658,7 @@
     },
     {
       "lessonKey": "reading-17",
-      "title": "17 海滨小城",
+      "title": "第17课",
       "words": [
         {
           "word": "海滨",
@@ -732,7 +732,7 @@
     },
     {
       "lessonKey": "reading-18",
-      "title": "18 美丽的小兴安岭",
+      "title": "第18课",
       "words": [
         {
           "word": "东北",
@@ -802,7 +802,7 @@
     },
     {
       "lessonKey": "reading-21",
-      "title": "21 大自然的声音",
+      "title": "第21课",
       "words": [
         {
           "word": "大自然",
@@ -872,7 +872,7 @@
     },
     {
       "lessonKey": "reading-22",
-      "title": "22 读不完的大书",
+      "title": "第22课",
       "words": [
         {
           "word": "昆虫",
@@ -946,7 +946,7 @@
     },
     {
       "lessonKey": "garden-7",
-      "title": "语文园地七",
+      "title": "语文园地7",
       "words": [
         {
           "word": "田螺",
@@ -972,7 +972,7 @@
     },
     {
       "lessonKey": "reading-24",
-      "title": "24 一定要争气",
+      "title": "第24课",
       "words": [
         {
           "word": "生物",
@@ -1050,7 +1050,7 @@
     },
     {
       "lessonKey": "reading-25",
-      "title": "25 手术台就是阵地",
+      "title": "第25课",
       "words": [
         {
           "word": "手术台",
@@ -1116,7 +1116,7 @@
     },
     {
       "lessonKey": "garden-8",
-      "title": "语文园地八",
+      "title": "语文园地8",
       "words": [
         {
           "word": "怒目圆睁",
