@@ -1,0 +1,228 @@
+[
+  {
+    "bookId": "2026-1-upper",
+    "total": 100,
+    "lessonCount": 25,
+    "charactersSha256": "84e8dbe589b5e10abc67bbf4c7cb4d1e82afa43314cd8e0f1598f745bcf55402",
+    "source": {
+      "publisher": "人民教育出版社",
+      "table": "写字表",
+      "url": "https://r2-ndr.ykt.cbern.com.cn/edu_product/esp/assets/1c73b348-e8b6-47d6-84b0-6dbacbe28268.pkg/%E4%B9%89%E5%8A%A1%E6%95%99%E8%82%B2%E6%95%99%E7%A7%91%E4%B9%A6%20%E8%AF%AD%E6%96%87%20%E4%B8%80%E5%B9%B4%E7%BA%A7%20%E4%B8%8A%E5%86%8C_1725097498841.pdf",
+      "printedPages": [
+        108
+      ],
+      "pdfPages": [
+        113
+      ],
+      "reviewedAt": "2026-11-03"
+    }
+  },
+  {
+    "bookId": "2026-1-lower",
+    "total": 200,
+    "lessonCount": 36,
+    "charactersSha256": "3d92ba0ce46ec7a33226e42e69d0f253dc2b4c4edabddea1d94af7d901ca5b81",
+    "source": {
+      "publisher": "人民教育出版社",
+      "table": "写字表",
+      "url": "https://static.lejiaoku.com/uploads/resources/1767902581463.pdf",
+      "printedPages": [
+        117,
+        118,
+        119
+      ],
+      "pdfPages": [
+        122,
+        123,
+        124
+      ],
+      "reviewedAt": "2026-11-03"
+    }
+  },
+  {
+    "bookId": "2026-2-upper",
+    "total": 250,
+    "lessonCount": 35,
+    "charactersSha256": "d204cd383ab232df8db28f4849d4f582067fe1492803c8f2326c2bcf4ddcb522",
+    "source": {
+      "publisher": "人民教育出版社",
+      "table": "写字表",
+      "url": "https://static.lejiaoku.com/uploads/resources/1767901584602.pdf",
+      "printedPages": [
+        113,
+        114,
+        115
+      ],
+      "pdfPages": [
+        118,
+        119,
+        120
+      ],
+      "reviewedAt": "2026-11-03"
+    }
+  },
+  {
+    "bookId": "2026-2-lower",
+    "total": 250,
+    "lessonCount": 36,
+    "charactersSha256": "9d769864d9ab1c26067ca937b9fec8533abbc67384c85f349ccd988473022114",
+    "source": {
+      "publisher": "人民教育出版社",
+      "table": "写字表",
+      "url": "https://static.lejiaoku.com/uploads/resources/1767901680338.pdf",
+      "printedPages": [
+        117,
+        118,
+        119
+      ],
+      "pdfPages": [],
+      "reviewedAt": "2026-11-03"
+    }
+  },
+  {
+    "bookId": "2026-3-upper",
+    "total": 250,
+    "lessonCount": 23,
+    "charactersSha256": "7603cfce1f08c20a6797ac5f4979242ad1bd654885fecc7b0a398346344e829a",
+    "source": {
+      "publisher": "人民教育出版社",
+      "table": "写字表",
+      "url": "https://static.lejiaoku.com/uploads/resources/1767902191946.pdf",
+      "printedPages": [
+        112,
+        113
+      ],
+      "pdfPages": [
+        117,
+        118
+      ],
+      "reviewedAt": "2026-11-03"
+    }
+  },
+  {
+    "bookId": "2026-3-lower",
+    "total": 250,
+    "lessonCount": 25,
+    "charactersSha256": "02fa290c976674da6e640ee915d19338c7824a8de380215fad3b3a674c045c3a",
+    "source": {
+      "publisher": "人民教育出版社",
+      "table": "写字表",
+      "url": "https://static.lejiaoku.com/uploads/resources/1767902236152.pdf",
+      "printedPages": [
+        114,
+        115
+      ],
+      "pdfPages": [],
+      "reviewedAt": "2026-11-03"
+    }
+  },
+  {
+    "bookId": "2026-4-upper",
+    "total": 250,
+    "lessonCount": 25,
+    "charactersSha256": "b722b2d3ff8057a460428ce449d8dac347d4753f0b29cb97e85b6b52979321ae",
+    "source": {
+      "publisher": "人民教育出版社",
+      "table": "写字表",
+      "url": "https://p.20190723.xyz/file/r2:r2_1789021641059_gl7p36.pdf",
+      "printedPages": [
+        125,
+        126
+      ],
+      "pdfPages": [
+        131,
+        132
+      ],
+      "reviewedAt": "2026-11-03"
+    }
+  },
+  {
+    "bookId": "2026-4-lower",
+    "total": 250,
+    "lessonCount": 21,
+    "charactersSha256": "985fc8dfe186ef77462ba562c4c0f5574c935ca2d4cb5c81efe8fc394a52f8d1",
+    "source": {
+      "publisher": "人民教育出版社",
+      "table": "写字表",
+      "url": "https://p.20190723.xyz/file/r2:r2_1789021677598_zbuhif.pdf",
+      "printedPages": [
+        140,
+        141
+      ],
+      "pdfPages": [],
+      "reviewedAt": "2026-11-03"
+    }
+  },
+  {
+    "bookId": "2026-5-upper",
+    "total": 220,
+    "lessonCount": 22,
+    "charactersSha256": "1d348348e44cafad1452d630c504b29177c0ba30b7ab90545098b72e3f413cad",
+    "source": {
+      "publisher": "人民教育出版社",
+      "table": "写字表",
+      "url": "https://p.20190723.xyz/file/r2:r2_1789023067188_xczf8z.pdf",
+      "printedPages": [
+        118,
+        119
+      ],
+      "pdfPages": [],
+      "reviewedAt": "2026-11-03"
+    }
+  },
+  {
+    "bookId": "2026-5-lower",
+    "total": 180,
+    "lessonCount": 16,
+    "charactersSha256": "e872fbeea41546fb62234add8817e48b4a956efc99c615fd92c31f9e20346204",
+    "source": {
+      "publisher": "人民教育出版社",
+      "table": "写字表",
+      "url": "https://static.lejiaoku.com/uploads/resources/1767902455167.pdf",
+      "printedPages": [
+        121,
+        122
+      ],
+      "pdfPages": [
+        126,
+        127
+      ],
+      "reviewedAt": "2026-11-03"
+    }
+  },
+  {
+    "bookId": "2026-6-upper",
+    "total": 180,
+    "lessonCount": 19,
+    "charactersSha256": "ae6bcf59a73cdf262ac3cd0f2b693961dd46debc812a7b6f4de3e24a13ce74b4",
+    "source": {
+      "publisher": "人民教育出版社",
+      "table": "写字表",
+      "url": "https://p.20190723.xyz/file/r2:r2_1789023736616_eo78ql.pdf",
+      "printedPages": [
+        126,
+        127
+      ],
+      "pdfPages": [],
+      "reviewedAt": "2026-11-03"
+    }
+  },
+  {
+    "bookId": "2026-6-lower",
+    "total": 120,
+    "lessonCount": 12,
+    "charactersSha256": "49871adc31cd97a4528997cdb69bd1e7da03525002d1707c4f4e778ce9103e84",
+    "source": {
+      "publisher": "人民教育出版社",
+      "table": "写字表",
+      "url": "https://static.lejiaoku.com/uploads/resources/1767902028422.pdf",
+      "printedPages": [
+        121
+      ],
+      "pdfPages": [
+        126
+      ],
+      "reviewedAt": "2026-11-03"
+    }
+  }
+]

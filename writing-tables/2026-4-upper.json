@@ -1,0 +1,1179 @@
+{
+  "schemaVersion": 1,
+  "bookId": "2026-4-upper",
+  "grade": 4,
+  "term": "upper",
+  "edition": "2026秋修订版",
+  "total": 250,
+  "source": {
+    "publisher": "人民教育出版社",
+    "table": "写字表",
+    "url": "https://p.20190723.xyz/file/r2:r2_1789021641059_gl7p36.pdf",
+    "printedPages": [
+      125,
+      126
+    ],
+    "pdfPages": [
+      131,
+      132
+    ],
+    "reviewedAt": "2026-11-03"
+  },
+  "lessons": [
+    {
+      "lessonKey": "reading-1",
+      "title": "1 观潮",
+      "characters": [
+        {
+          "char": "据",
+          "pinyin": "jù"
+        },
+        {
+          "char": "随",
+          "pinyin": "suí"
+        },
+        {
+          "char": "堤",
+          "pinyin": "dī"
+        },
+        {
+          "char": "顿",
+          "pinyin": "dùn"
+        },
+        {
+          "char": "逐",
+          "pinyin": "zhú"
+        },
+        {
+          "char": "渐",
+          "pinyin": "jiàn"
+        },
+        {
+          "char": "堵",
+          "pinyin": "dǔ"
+        },
+        {
+          "char": "墙",
+          "pinyin": "qiáng"
+        },
+        {
+          "char": "浩",
+          "pinyin": "hào"
+        },
+        {
+          "char": "崩",
+          "pinyin": "bēng"
+        },
+        {
+          "char": "霎",
+          "pinyin": "shà"
+        },
+        {
+          "char": "余",
+          "pinyin": "yú"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-2",
+      "title": "2 繁星",
+      "characters": [
+        {
+          "char": "繁",
+          "pinyin": "fán"
+        },
+        {
+          "char": "怀",
+          "pinyin": "huái"
+        },
+        {
+          "char": "寂",
+          "pinyin": "jì"
+        },
+        {
+          "char": "谈",
+          "pinyin": "tán"
+        },
+        {
+          "char": "熟",
+          "pinyin": "shú"
+        },
+        {
+          "char": "躺",
+          "pinyin": "tǎng"
+        },
+        {
+          "char": "模",
+          "pinyin": "mó"
+        },
+        {
+          "char": "糊",
+          "pinyin": "hú"
+        },
+        {
+          "char": "围",
+          "pinyin": "wéi"
+        },
+        {
+          "char": "舞",
+          "pinyin": "wǔ"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-4",
+      "title": "4 一个豆荚里的五粒豆",
+      "characters": [
+        {
+          "char": "舒",
+          "pinyin": "shū"
+        },
+        {
+          "char": "适",
+          "pinyin": "shì"
+        },
+        {
+          "char": "揭",
+          "pinyin": "jiē"
+        },
+        {
+          "char": "晓",
+          "pinyin": "xiǎo"
+        },
+        {
+          "char": "滚",
+          "pinyin": "gǔn"
+        },
+        {
+          "char": "滑",
+          "pinyin": "huá"
+        },
+        {
+          "char": "擦",
+          "pinyin": "cā"
+        },
+        {
+          "char": "探",
+          "pinyin": "tàn"
+        },
+        {
+          "char": "曾",
+          "pinyin": "céng"
+        },
+        {
+          "char": "沟",
+          "pinyin": "gōu"
+        },
+        {
+          "char": "涨",
+          "pinyin": "zhǎng"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-5",
+      "title": "5 夜间飞行的秘密",
+      "characters": [
+        {
+          "char": "蚊",
+          "pinyin": "wén"
+        },
+        {
+          "char": "即",
+          "pinyin": "jí"
+        },
+        {
+          "char": "题",
+          "pinyin": "tí"
+        },
+        {
+          "char": "绳",
+          "pinyin": "shéng"
+        },
+        {
+          "char": "嘴",
+          "pinyin": "zuǐ"
+        },
+        {
+          "char": "蝇",
+          "pinyin": "yíng"
+        },
+        {
+          "char": "研",
+          "pinyin": "yán"
+        },
+        {
+          "char": "究",
+          "pinyin": "jiū"
+        },
+        {
+          "char": "驾",
+          "pinyin": "jià"
+        },
+        {
+          "char": "驶",
+          "pinyin": "shǐ"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-6",
+      "title": "6 方帽子店",
+      "characters": [
+        {
+          "char": "帽",
+          "pinyin": "mào"
+        },
+        {
+          "char": "脑",
+          "pinyin": "nǎo"
+        },
+        {
+          "char": "袋",
+          "pinyin": "dài"
+        },
+        {
+          "char": "假",
+          "pinyin": "jiǎ"
+        },
+        {
+          "char": "扣",
+          "pinyin": "kòu"
+        },
+        {
+          "char": "懂",
+          "pinyin": "dǒng"
+        },
+        {
+          "char": "溜",
+          "pinyin": "liū"
+        },
+        {
+          "char": "筒",
+          "pinyin": "tǒng"
+        },
+        {
+          "char": "摆",
+          "pinyin": "bǎi"
+        },
+        {
+          "char": "玻",
+          "pinyin": "bō"
+        },
+        {
+          "char": "璃",
+          "pinyin": "lí"
+        }
+      ]
+    },
+    {
+      "lessonKey": "garden-2",
+      "title": "语文园地二",
+      "characters": [
+        {
+          "char": "纲",
+          "pinyin": "gāng"
+        },
+        {
+          "char": "揍",
+          "pinyin": "zòu"
+        },
+        {
+          "char": "锈",
+          "pinyin": "xiù"
+        },
+        {
+          "char": "沫",
+          "pinyin": "mò"
+        },
+        {
+          "char": "综",
+          "pinyin": "zōng"
+        },
+        {
+          "char": "氧",
+          "pinyin": "yǎng"
+        },
+        {
+          "char": "账",
+          "pinyin": "zhàng"
+        },
+        {
+          "char": "矿",
+          "pinyin": "kuàng"
+        },
+        {
+          "char": "俱",
+          "pinyin": "jù"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-8",
+      "title": "8 古诗三首",
+      "characters": [
+        {
+          "char": "残",
+          "pinyin": "cán"
+        },
+        {
+          "char": "铺",
+          "pinyin": "pū",
+          "readingPhrase": "铺开"
+        },
+        {
+          "char": "壁",
+          "pinyin": "bì"
+        },
+        {
+          "char": "横",
+          "pinyin": "héng"
+        },
+        {
+          "char": "侧",
+          "pinyin": "cè"
+        },
+        {
+          "char": "峰",
+          "pinyin": "fēng"
+        },
+        {
+          "char": "庐",
+          "pinyin": "lú"
+        },
+        {
+          "char": "缘",
+          "pinyin": "yuán"
+        },
+        {
+          "char": "降",
+          "pinyin": "xiáng",
+          "readingPhrase": "投降"
+        },
+        {
+          "char": "评",
+          "pinyin": "píng"
+        },
+        {
+          "char": "章",
+          "pinyin": "zhāng"
+        },
+        {
+          "char": "输",
+          "pinyin": "shū"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-9",
+      "title": "9 爬山虎的脚",
+      "characters": [
+        {
+          "char": "虎",
+          "pinyin": "hǔ"
+        },
+        {
+          "char": "脚",
+          "pinyin": "jiǎo"
+        },
+        {
+          "char": "操",
+          "pinyin": "cāo"
+        },
+        {
+          "char": "嫩",
+          "pinyin": "nèn"
+        },
+        {
+          "char": "隙",
+          "pinyin": "xì"
+        },
+        {
+          "char": "柄",
+          "pinyin": "bǐng"
+        },
+        {
+          "char": "触",
+          "pinyin": "chù"
+        },
+        {
+          "char": "痕",
+          "pinyin": "hén"
+        },
+        {
+          "char": "迹",
+          "pinyin": "jì"
+        },
+        {
+          "char": "瞧",
+          "pinyin": "qiáo"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-10",
+      "title": "10 蟋蟀的住宅",
+      "characters": [
+        {
+          "char": "宅",
+          "pinyin": "zhái"
+        },
+        {
+          "char": "毫",
+          "pinyin": "háo"
+        },
+        {
+          "char": "重",
+          "pinyin": "chóng"
+        },
+        {
+          "char": "选",
+          "pinyin": "xuǎn"
+        },
+        {
+          "char": "择",
+          "pinyin": "zé"
+        },
+        {
+          "char": "址",
+          "pinyin": "zhǐ"
+        },
+        {
+          "char": "厅",
+          "pinyin": "tīng"
+        },
+        {
+          "char": "专",
+          "pinyin": "zhuān"
+        },
+        {
+          "char": "修",
+          "pinyin": "xiū"
+        },
+        {
+          "char": "较",
+          "pinyin": "jiào"
+        },
+        {
+          "char": "腿",
+          "pinyin": "tuǐ"
+        },
+        {
+          "char": "增",
+          "pinyin": "zēng"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-11",
+      "title": "11 盘古开天地",
+      "characters": [
+        {
+          "char": "醒",
+          "pinyin": "xǐng"
+        },
+        {
+          "char": "翻",
+          "pinyin": "fān"
+        },
+        {
+          "char": "缓",
+          "pinyin": "huǎn"
+        },
+        {
+          "char": "踏",
+          "pinyin": "tà"
+        },
+        {
+          "char": "丈",
+          "pinyin": "zhàng"
+        },
+        {
+          "char": "撑",
+          "pinyin": "chēng"
+        },
+        {
+          "char": "疲",
+          "pinyin": "pí"
+        },
+        {
+          "char": "竭",
+          "pinyin": "jié"
+        },
+        {
+          "char": "耀",
+          "pinyin": "yào"
+        },
+        {
+          "char": "肢",
+          "pinyin": "zhī"
+        },
+        {
+          "char": "整",
+          "pinyin": "zhěng"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-12",
+      "title": "12 精卫填海",
+      "characters": [
+        {
+          "char": "填",
+          "pinyin": "tián"
+        },
+        {
+          "char": "帝",
+          "pinyin": "dì"
+        },
+        {
+          "char": "曰",
+          "pinyin": "yuē"
+        },
+        {
+          "char": "娃",
+          "pinyin": "wá"
+        },
+        {
+          "char": "衔",
+          "pinyin": "xián"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-13",
+      "title": "13 普罗米修斯",
+      "characters": [
+        {
+          "char": "喷",
+          "pinyin": "pēn"
+        },
+        {
+          "char": "颗",
+          "pinyin": "kē"
+        },
+        {
+          "char": "败",
+          "pinyin": "bài"
+        },
+        {
+          "char": "敬",
+          "pinyin": "jìng"
+        },
+        {
+          "char": "佩",
+          "pinyin": "pèi"
+        },
+        {
+          "char": "忍",
+          "pinyin": "rěn"
+        },
+        {
+          "char": "既",
+          "pinyin": "jì"
+        },
+        {
+          "char": "遭",
+          "pinyin": "zāo"
+        },
+        {
+          "char": "屈",
+          "pinyin": "qū"
+        },
+        {
+          "char": "肝",
+          "pinyin": "gān"
+        },
+        {
+          "char": "脏",
+          "pinyin": "zàng",
+          "readingPhrase": "心脏"
+        },
+        {
+          "char": "获",
+          "pinyin": "huò"
+        }
+      ]
+    },
+    {
+      "lessonKey": "garden-4",
+      "title": "语文园地四",
+      "characters": [
+        {
+          "char": "卉",
+          "pinyin": "huì"
+        },
+        {
+          "char": "玫",
+          "pinyin": "méi"
+        },
+        {
+          "char": "瑰",
+          "pinyin": "guī"
+        },
+        {
+          "char": "牡",
+          "pinyin": "mǔ"
+        },
+        {
+          "char": "丹",
+          "pinyin": "dān"
+        },
+        {
+          "char": "蕾",
+          "pinyin": "lěi"
+        },
+        {
+          "char": "茉",
+          "pinyin": "mò"
+        },
+        {
+          "char": "莉",
+          "pinyin": "lì"
+        },
+        {
+          "char": "棠",
+          "pinyin": "táng"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-15",
+      "title": "15 麻雀",
+      "characters": [
+        {
+          "char": "嗅",
+          "pinyin": "xiù"
+        },
+        {
+          "char": "猛",
+          "pinyin": "měng"
+        },
+        {
+          "char": "烈",
+          "pinyin": "liè"
+        },
+        {
+          "char": "奈",
+          "pinyin": "nài"
+        },
+        {
+          "char": "躯",
+          "pinyin": "qū"
+        },
+        {
+          "char": "掩",
+          "pinyin": "yǎn"
+        },
+        {
+          "char": "浑",
+          "pinyin": "hún"
+        },
+        {
+          "char": "牺",
+          "pinyin": "xī"
+        },
+        {
+          "char": "牲",
+          "pinyin": "shēng"
+        },
+        {
+          "char": "庞",
+          "pinyin": "páng"
+        },
+        {
+          "char": "强",
+          "pinyin": "qiáng"
+        },
+        {
+          "char": "量",
+          "pinyin": "liàng"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-16",
+      "title": "16 爬天都峰",
+      "characters": [
+        {
+          "char": "哩",
+          "pinyin": "li"
+        },
+        {
+          "char": "陡",
+          "pinyin": "dǒu"
+        },
+        {
+          "char": "级",
+          "pinyin": "jí"
+        },
+        {
+          "char": "链",
+          "pinyin": "liàn"
+        },
+        {
+          "char": "颤",
+          "pinyin": "chàn"
+        },
+        {
+          "char": "纪",
+          "pinyin": "jì"
+        },
+        {
+          "char": "攀",
+          "pinyin": "pān"
+        },
+        {
+          "char": "猴",
+          "pinyin": "hóu"
+        },
+        {
+          "char": "呵",
+          "pinyin": "hē"
+        },
+        {
+          "char": "啦",
+          "pinyin": "la"
+        },
+        {
+          "char": "鼓",
+          "pinyin": "gǔ"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-17",
+      "title": "17 长城",
+      "characters": [
+        {
+          "char": "峻",
+          "pinyin": "jùn"
+        },
+        {
+          "char": "旋",
+          "pinyin": "xuán"
+        },
+        {
+          "char": "扩",
+          "pinyin": "kuò"
+        },
+        {
+          "char": "砖",
+          "pinyin": "zhuān"
+        },
+        {
+          "char": "筑",
+          "pinyin": "zhù"
+        },
+        {
+          "char": "隔",
+          "pinyin": "gé"
+        },
+        {
+          "char": "仗",
+          "pinyin": "zhàng"
+        },
+        {
+          "char": "扶",
+          "pinyin": "fú"
+        },
+        {
+          "char": "耗",
+          "pinyin": "hào"
+        },
+        {
+          "char": "智",
+          "pinyin": "zhì"
+        },
+        {
+          "char": "慧",
+          "pinyin": "huì"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-18",
+      "title": "18 颐和园",
+      "characters": [
+        {
+          "char": "绕",
+          "pinyin": "rào"
+        },
+        {
+          "char": "幅",
+          "pinyin": "fú"
+        },
+        {
+          "char": "裁",
+          "pinyin": "cái"
+        },
+        {
+          "char": "竿",
+          "pinyin": "gān"
+        },
+        {
+          "char": "腰",
+          "pinyin": "yāo"
+        },
+        {
+          "char": "煌",
+          "pinyin": "huáng"
+        },
+        {
+          "char": "镜",
+          "pinyin": "jìng"
+        },
+        {
+          "char": "隐",
+          "pinyin": "yǐn"
+        },
+        {
+          "char": "狮",
+          "pinyin": "shī"
+        }
+      ]
+    },
+    {
+      "lessonKey": "garden-6",
+      "title": "语文园地六",
+      "characters": [
+        {
+          "char": "萨",
+          "pinyin": "sà"
+        },
+        {
+          "char": "昭",
+          "pinyin": "zhāo"
+        },
+        {
+          "char": "陵",
+          "pinyin": "líng"
+        },
+        {
+          "char": "寝",
+          "pinyin": "qǐn"
+        },
+        {
+          "char": "堰",
+          "pinyin": "yàn"
+        },
+        {
+          "char": "尼",
+          "pinyin": "ní"
+        },
+        {
+          "char": "绸",
+          "pinyin": "chóu"
+        },
+        {
+          "char": "廊",
+          "pinyin": "láng"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-20",
+      "title": "20 牛和鹅",
+      "characters": [
+        {
+          "char": "鹅",
+          "pinyin": "é"
+        },
+        {
+          "char": "骑",
+          "pinyin": "qí"
+        },
+        {
+          "char": "拳",
+          "pinyin": "quán"
+        },
+        {
+          "char": "竖",
+          "pinyin": "shù"
+        },
+        {
+          "char": "竟",
+          "pinyin": "jìng"
+        },
+        {
+          "char": "胸",
+          "pinyin": "xiōng"
+        },
+        {
+          "char": "鞋",
+          "pinyin": "xié"
+        },
+        {
+          "char": "拖",
+          "pinyin": "tuō"
+        },
+        {
+          "char": "胳",
+          "pinyin": "gē"
+        },
+        {
+          "char": "膊",
+          "pinyin": "bó"
+        },
+        {
+          "char": "握",
+          "pinyin": "wò"
+        },
+        {
+          "char": "摔",
+          "pinyin": "shuāi"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-21",
+      "title": "21 一只窝囊的大老虎",
+      "characters": [
+        {
+          "char": "表",
+          "pinyin": "biǎo"
+        },
+        {
+          "char": "演",
+          "pinyin": "yǎn"
+        },
+        {
+          "char": "俩",
+          "pinyin": "liǎ"
+        },
+        {
+          "char": "练",
+          "pinyin": "liàn"
+        },
+        {
+          "char": "捧",
+          "pinyin": "pěng"
+        },
+        {
+          "char": "示",
+          "pinyin": "shì"
+        },
+        {
+          "char": "技",
+          "pinyin": "jì"
+        },
+        {
+          "char": "撤",
+          "pinyin": "chè"
+        },
+        {
+          "char": "推",
+          "pinyin": "tuī"
+        },
+        {
+          "char": "哄",
+          "pinyin": "hōng"
+        },
+        {
+          "char": "堂",
+          "pinyin": "táng"
+        },
+        {
+          "char": "摘",
+          "pinyin": "zhāi"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-23",
+      "title": "23 王戎不取道旁李",
+      "characters": [
+        {
+          "char": "戎",
+          "pinyin": "róng"
+        },
+        {
+          "char": "诸",
+          "pinyin": "zhū"
+        },
+        {
+          "char": "竞",
+          "pinyin": "jìng"
+        },
+        {
+          "char": "唯",
+          "pinyin": "wéi"
+        }
+      ]
+    },
+    {
+      "lessonKey": "garden-7",
+      "title": "语文园地七",
+      "characters": [
+        {
+          "char": "韭",
+          "pinyin": "jiǔ"
+        },
+        {
+          "char": "芹",
+          "pinyin": "qín"
+        },
+        {
+          "char": "椒",
+          "pinyin": "jiāo"
+        },
+        {
+          "char": "蒜",
+          "pinyin": "suàn"
+        },
+        {
+          "char": "薯",
+          "pinyin": "shǔ"
+        },
+        {
+          "char": "藕",
+          "pinyin": "ǒu"
+        },
+        {
+          "char": "芋",
+          "pinyin": "yù"
+        },
+        {
+          "char": "姜",
+          "pinyin": "jiāng"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-24",
+      "title": "24 我将无我，不负人民",
+      "characters": [
+        {
+          "char": "席",
+          "pinyin": "xí"
+        },
+        {
+          "char": "抛",
+          "pinyin": "pāo"
+        },
+        {
+          "char": "激",
+          "pinyin": "jī"
+        },
+        {
+          "char": "奉",
+          "pinyin": "fèng"
+        },
+        {
+          "char": "训",
+          "pinyin": "xùn"
+        },
+        {
+          "char": "亿",
+          "pinyin": "yì"
+        },
+        {
+          "char": "勤",
+          "pinyin": "qín"
+        },
+        {
+          "char": "邀",
+          "pinyin": "yāo"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-25",
+      "title": "25 为中华之崛起而读书",
+      "characters": [
+        {
+          "char": "崛",
+          "pinyin": "jué"
+        },
+        {
+          "char": "肃",
+          "pinyin": "sù"
+        },
+        {
+          "char": "脆",
+          "pinyin": "cuì"
+        },
+        {
+          "char": "默",
+          "pinyin": "mò"
+        },
+        {
+          "char": "晰",
+          "pinyin": "xī"
+        },
+        {
+          "char": "离",
+          "pinyin": "lí"
+        },
+        {
+          "char": "凡",
+          "pinyin": "fán"
+        },
+        {
+          "char": "惩",
+          "pinyin": "chéng"
+        },
+        {
+          "char": "斥",
+          "pinyin": "chì"
+        },
+        {
+          "char": "燃",
+          "pinyin": "rán"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-27",
+      "title": "27 古诗三首",
+      "characters": [
+        {
+          "char": "词",
+          "pinyin": "cí"
+        },
+        {
+          "char": "葡",
+          "pinyin": "pú"
+        },
+        {
+          "char": "萄",
+          "pinyin": "táo"
+        },
+        {
+          "char": "杯",
+          "pinyin": "bēi"
+        },
+        {
+          "char": "塞",
+          "pinyin": "sài",
+          "readingPhrase": "出塞"
+        },
+        {
+          "char": "秦",
+          "pinyin": "qín"
+        },
+        {
+          "char": "将",
+          "pinyin": "jiàng",
+          "readingPhrase": "飞将"
+        },
+        {
+          "char": "杰",
+          "pinyin": "jié"
+        },
+        {
+          "char": "鬼",
+          "pinyin": "guǐ"
+        },
+        {
+          "char": "雄",
+          "pinyin": "xióng"
+        },
+        {
+          "char": "项",
+          "pinyin": "xiàng"
+        }
+      ]
+    }
+  ]
+}

@@ -4,6 +4,30 @@
 
 ## Current snapshot
 
+## 2026-11-04 — 2026 写字表已部署（Manager final）
+
+业务候选815866193f9f7321be5c19823a91ff975ba237d2已部署到腾讯云汉字子站，仅19个静态文件。12册2500字位，旧四册、原词库和学习记录命名保持兼容。私密备份 /srv/xuebabangbang-unified-preview/deployment-backups/hanzi-before-writing-20261104-101701.tar.gz；8个线上保护文件含cloud-config前后字节摘要相同。数据库、容器、DNS不作调整。
+
+独立QA内容与核心流程PASS：逐课数据/重点读音/保护文件、27项回归；1440书架与六上加载、真实一画完成→自评→刷新保存、375书架无横向溢出。CUA连续超时后停止重试，768、375学习页宽度及旧新三上听写浏览器项未完成，明确不声称全浏览器PASS。相关16个笔画/自评/保存/听写函数与基线逐段一致；Manager接受剩余浏览器覆盖为平台限制。证据ops/hanzi-writing-20261103/qa/final-report.md、browser-results.json、candidate-data-results.json。
+
+部署后公网正式域名19文件逐项SHA256一致，12册字数合计2500；根域/hanzi与IP/hanzi两别名同样200且欢迎页摘要一致，正常校验证书。结果ops/hanzi-writing-20261103/public-verification.json。
+
+功能分支feature/writing-table-2026已推送，草稿PR https://github.com/ico0018/hanzi_garden/pull/8 对feature/unified-user-system，未合并main/dev。Manager在Developer已交回的干净树中仅提交本状态文档；QA独立树的状态记录保留，不重置。后续文档提交不改变已部署业务来源8158661。
+
+Next owner: User — 可直接访问 https://hanzi.xuebabangbang.cn/welcome.html 选择教材。所请求写字表与已授权腾讯云更新完成。
+
+## 2026-11-03 — 2026 写字表补全（Manager intake）
+
+Task: 用户要求汉字乐园补齐对应人教版2026现用语文课本写字表，现只有1—4上册可用。
+Acceptance: 主书架12册均依据已核对的2026现用教材末尾写字表，使用独立2026-*册次ID，记录版本、课次、字数和来源；不以识字表冒充写字表。原有4册TXT与旧ID学习键保留在折叠书架，词语听写题库、云同步与家长入口保持兼容；新版仅写字表练习，缺少组词时不编造释义。2026秋4—6上册使用新版，下册标明已核实的现用版。
+Safe plan: 当前feature/unified-user-system干净，基线1ba3103；Manager只修改流程记录与研究证据。Developer另建F:/taskHelper/hanzi-writing-2026 worktree，feature/writing-table-2026；QA在独立worktree核验Developer确切提交。无main/dev合并。用户当前请求延续腾讯云网站更新，QA通过后更新该静态子站并保留回退备份。
+Developer state: Done — 主书架12册2026-*本地JSON，共2500教材字位；含版本/原页/课次/拼音。源图逐字核验后纠正牺、莺、倚等混字；Manager最终语境裁决结jiē/教jiāo/倒dào/哩lī（呜哩哇啦）/晃huàng/禁jìn/哇wa/扎zā/薄báo已纳入。旧4册放入折叠书架，旧TXT、词语题库、cloud与parent文件逐字节不变。新版用lessonKey定位进度，旧ID规则兼容；不生成伪组词或造句。
+Developer checks: 写字表集成7项、独立词语题库1项、云同步11项、家长界面8项共27项通过；app/catalog/writing-tables/welcome语法及diff check通过。Developer浏览器可见12册选择与六上19课组、首课10字加载；后续田字格操作遇浏览器平台browser.user unavailable，不虚报交互PASS。完整三视口与最终语境复核交独立QA。
+Developer follow-up: 69e2aa8保存后收到Manager最终原页裁决，哩由li定向纠正为lī并加原课文读音提示“呜哩哇啦”；不重写已保存提交。7项内容/集成测试重新通过，其余业务代码与旧19项云/家长检查对应代码未再修改。
+Next owner: QA — 在精确候选提交独立验收。禁止Developer部署/main/dev操作。运行部署资源为12个JSON加7个页面/脚本/样式，共19个静态文件。
+
+
+
 ## 2026-10-07 — Project README refresh
 
 ```text

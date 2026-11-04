@@ -1,0 +1,581 @@
+{
+  "schemaVersion": 1,
+  "bookId": "2026-6-lower",
+  "grade": 6,
+  "term": "lower",
+  "edition": "2026年现用原版下册",
+  "total": 120,
+  "source": {
+    "publisher": "人民教育出版社",
+    "table": "写字表",
+    "url": "https://static.lejiaoku.com/uploads/resources/1767902028422.pdf",
+    "printedPages": [
+      121
+    ],
+    "pdfPages": [
+      126
+    ],
+    "reviewedAt": "2026-11-03"
+  },
+  "lessons": [
+    {
+      "lessonKey": "reading-1",
+      "title": "1 北京的春节",
+      "characters": [
+        {
+          "char": "醋",
+          "pinyin": "cù"
+        },
+        {
+          "char": "饺",
+          "pinyin": "jiǎo"
+        },
+        {
+          "char": "摊",
+          "pinyin": "tān"
+        },
+        {
+          "char": "拌",
+          "pinyin": "bàn"
+        },
+        {
+          "char": "筝",
+          "pinyin": "zhēng"
+        },
+        {
+          "char": "眨",
+          "pinyin": "zhǎ"
+        },
+        {
+          "char": "宵",
+          "pinyin": "xiāo"
+        },
+        {
+          "char": "燃",
+          "pinyin": "rán"
+        },
+        {
+          "char": "戚",
+          "pinyin": "qī"
+        },
+        {
+          "char": "贩",
+          "pinyin": "fàn"
+        },
+        {
+          "char": "彼",
+          "pinyin": "bǐ"
+        },
+        {
+          "char": "贺",
+          "pinyin": "hè"
+        },
+        {
+          "char": "轿",
+          "pinyin": "jiào"
+        },
+        {
+          "char": "骆",
+          "pinyin": "luò"
+        },
+        {
+          "char": "驼",
+          "pinyin": "tuó"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-2",
+      "title": "2 腊八粥",
+      "characters": [
+        {
+          "char": "腊",
+          "pinyin": "là"
+        },
+        {
+          "char": "粥",
+          "pinyin": "zhōu"
+        },
+        {
+          "char": "枣",
+          "pinyin": "zǎo"
+        },
+        {
+          "char": "咽",
+          "pinyin": "yàn",
+          "readingPhrase": "吞咽"
+        },
+        {
+          "char": "匙",
+          "pinyin": "chí",
+          "readingPhrase": "汤匙"
+        },
+        {
+          "char": "搅",
+          "pinyin": "jiǎo"
+        },
+        {
+          "char": "肿",
+          "pinyin": "zhǒng"
+        },
+        {
+          "char": "熬",
+          "pinyin": "áo"
+        },
+        {
+          "char": "褐",
+          "pinyin": "hè"
+        },
+        {
+          "char": "缸",
+          "pinyin": "gāng"
+        },
+        {
+          "char": "脏",
+          "pinyin": "zāng",
+          "readingPhrase": "肮脏"
+        },
+        {
+          "char": "筷",
+          "pinyin": "kuài"
+        },
+        {
+          "char": "陈",
+          "pinyin": "chén"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-3",
+      "title": "3 古诗三首",
+      "characters": [
+        {
+          "char": "御",
+          "pinyin": "yù"
+        },
+        {
+          "char": "侯",
+          "pinyin": "hóu"
+        },
+        {
+          "char": "皎",
+          "pinyin": "jiǎo"
+        },
+        {
+          "char": "章",
+          "pinyin": "zhāng"
+        },
+        {
+          "char": "泣",
+          "pinyin": "qì"
+        },
+        {
+          "char": "盈",
+          "pinyin": "yíng"
+        },
+        {
+          "char": "脉",
+          "pinyin": "mò",
+          "readingPhrase": "脉脉"
+        },
+        {
+          "char": "栖",
+          "pinyin": "qī"
+        },
+        {
+          "char": "鸦",
+          "pinyin": "yā"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-5",
+      "title": "5 鲁滨逊漂流记（节选）",
+      "characters": [
+        {
+          "char": "惧",
+          "pinyin": "jù"
+        },
+        {
+          "char": "凄",
+          "pinyin": "qī"
+        },
+        {
+          "char": "寞",
+          "pinyin": "mò"
+        },
+        {
+          "char": "宴",
+          "pinyin": "yàn"
+        },
+        {
+          "char": "霉",
+          "pinyin": "méi"
+        },
+        {
+          "char": "籍",
+          "pinyin": "jí"
+        },
+        {
+          "char": "聊",
+          "pinyin": "liáo"
+        },
+        {
+          "char": "乏",
+          "pinyin": "fá"
+        },
+        {
+          "char": "控",
+          "pinyin": "kòng"
+        },
+        {
+          "char": "贷",
+          "pinyin": "dài"
+        },
+        {
+          "char": "剔",
+          "pinyin": "tī",
+          "readingPhrase": "剔除"
+        },
+        {
+          "char": "毙",
+          "pinyin": "bì"
+        },
+        {
+          "char": "抵",
+          "pinyin": "dǐ"
+        },
+        {
+          "char": "袭",
+          "pinyin": "xí"
+        },
+        {
+          "char": "覆",
+          "pinyin": "fù"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-8",
+      "title": "8 匆匆",
+      "characters": [
+        {
+          "char": "藏",
+          "pinyin": "cáng",
+          "readingPhrase": "藏起来"
+        },
+        {
+          "char": "挪",
+          "pinyin": "nuó"
+        },
+        {
+          "char": "徘",
+          "pinyin": "pái"
+        },
+        {
+          "char": "徊",
+          "pinyin": "huái"
+        },
+        {
+          "char": "蒸",
+          "pinyin": "zhēng"
+        },
+        {
+          "char": "裸",
+          "pinyin": "luǒ"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-9",
+      "title": "9 那个星期天",
+      "characters": [
+        {
+          "char": "媚",
+          "pinyin": "mèi"
+        },
+        {
+          "char": "砖",
+          "pinyin": "zhuān"
+        },
+        {
+          "char": "叨",
+          "pinyin": "dāo"
+        },
+        {
+          "char": "绊",
+          "pinyin": "bàn"
+        },
+        {
+          "char": "绞",
+          "pinyin": "jiǎo"
+        },
+        {
+          "char": "耽",
+          "pinyin": "dān"
+        },
+        {
+          "char": "揉",
+          "pinyin": "róu"
+        },
+        {
+          "char": "绽",
+          "pinyin": "zhàn"
+        },
+        {
+          "char": "沫",
+          "pinyin": "mò"
+        },
+        {
+          "char": "搓",
+          "pinyin": "cuō"
+        },
+        {
+          "char": "惶",
+          "pinyin": "huáng"
+        },
+        {
+          "char": "吻",
+          "pinyin": "wěn"
+        },
+        {
+          "char": "偎",
+          "pinyin": "wēi"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-10",
+      "title": "10 古诗三首",
+      "characters": [
+        {
+          "char": "络",
+          "pinyin": "luò"
+        },
+        {
+          "char": "锤",
+          "pinyin": "chuí"
+        },
+        {
+          "char": "凿",
+          "pinyin": "záo"
+        },
+        {
+          "char": "焚",
+          "pinyin": "fén"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-11",
+      "title": "11 十六年前的回忆",
+      "characters": [
+        {
+          "char": "稚",
+          "pinyin": "zhì"
+        },
+        {
+          "char": "避",
+          "pinyin": "bì"
+        },
+        {
+          "char": "峻",
+          "pinyin": "jùn"
+        },
+        {
+          "char": "啪",
+          "pinyin": "pā"
+        },
+        {
+          "char": "僻",
+          "pinyin": "pì"
+        },
+        {
+          "char": "瞅",
+          "pinyin": "chǒu"
+        },
+        {
+          "char": "靴",
+          "pinyin": "xuē"
+        },
+        {
+          "char": "魔",
+          "pinyin": "mó"
+        },
+        {
+          "char": "刑",
+          "pinyin": "xíng"
+        },
+        {
+          "char": "哼",
+          "pinyin": "hng"
+        },
+        {
+          "char": "绑",
+          "pinyin": "bǎng"
+        },
+        {
+          "char": "啃",
+          "pinyin": "kěn"
+        },
+        {
+          "char": "袍",
+          "pinyin": "páo"
+        },
+        {
+          "char": "押",
+          "pinyin": "yā"
+        },
+        {
+          "char": "执",
+          "pinyin": "zhí"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-12",
+      "title": "12 为人民服务",
+      "characters": [
+        {
+          "char": "彻",
+          "pinyin": "chè"
+        },
+        {
+          "char": "迁",
+          "pinyin": "qiān"
+        },
+        {
+          "char": "泰",
+          "pinyin": "tài"
+        },
+        {
+          "char": "迫",
+          "pinyin": "pò"
+        },
+        {
+          "char": "批",
+          "pinyin": "pī"
+        },
+        {
+          "char": "标",
+          "pinyin": "biāo"
+        },
+        {
+          "char": "牺",
+          "pinyin": "xī"
+        },
+        {
+          "char": "炊",
+          "pinyin": "chuī"
+        },
+        {
+          "char": "葬",
+          "pinyin": "zàng"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-14",
+      "title": "14 文言文二则",
+      "characters": [
+        {
+          "char": "援",
+          "pinyin": "yuán"
+        },
+        {
+          "char": "俱",
+          "pinyin": "jù"
+        },
+        {
+          "char": "弗",
+          "pinyin": "fú"
+        },
+        {
+          "char": "辩",
+          "pinyin": "biàn"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-15",
+      "title": "15 真理诞生于一百个问号之后",
+      "characters": [
+        {
+          "char": "域",
+          "pinyin": "yù"
+        },
+        {
+          "char": "惯",
+          "pinyin": "guàn"
+        },
+        {
+          "char": "圃",
+          "pinyin": "pǔ"
+        },
+        {
+          "char": "盐",
+          "pinyin": "yán"
+        },
+        {
+          "char": "溅",
+          "pinyin": "jiàn"
+        },
+        {
+          "char": "蕊",
+          "pinyin": "ruǐ"
+        },
+        {
+          "char": "搜",
+          "pinyin": "sōu"
+        },
+        {
+          "char": "蚯",
+          "pinyin": "qiū"
+        },
+        {
+          "char": "蚓",
+          "pinyin": "yǐn"
+        },
+        {
+          "char": "版",
+          "pinyin": "bǎn"
+        },
+        {
+          "char": "阶",
+          "pinyin": "jiē"
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-16",
+      "title": "16 表里的生物",
+      "characters": [
+        {
+          "char": "吠",
+          "pinyin": "fèi"
+        },
+        {
+          "char": "脆",
+          "pinyin": "cuì"
+        },
+        {
+          "char": "拦",
+          "pinyin": "lán"
+        },
+        {
+          "char": "恶",
+          "pinyin": "è",
+          "readingPhrase": "凶恶"
+        },
+        {
+          "char": "蟋",
+          "pinyin": "xī"
+        },
+        {
+          "char": "蟀",
+          "pinyin": "shuài"
+        }
+      ]
+    }
+  ]
+}

@@ -56,6 +56,26 @@ body {
   color: var(--muted);
 }
 
+.legacy-books {
+  text-align: left;
+  border-top: 1px solid var(--line);
+  padding-top: 16px;
+}
+
+.legacy-books summary {
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.legacy-books .book-selector {
+  margin: 14px 0;
+}
+
+.writing-table-note {
+  color: var(--muted);
+  line-height: 1.8;
+}
+
 .book-selector {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
