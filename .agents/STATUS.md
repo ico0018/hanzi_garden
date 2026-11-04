@@ -4,6 +4,18 @@
 
 ## Current snapshot
 
+## 2026-11-04 — 教材词语表已接入每日听写并部署（Manager final）
+
+业务来源67f46b131648d287125d62475c9ed296155f7f39，二至六上下10册2168词；一年级上下经原书确认无独立词语表，页面明确说明。按原课序词序与园地收录，新book/lesson/word稳定ID，旧三上词库/ID/记录与2500写字表保留。原表无注音不生成猜测拼音或释义。每日最多15词、原复习间隔与逐字写完再自评继续沿用。
+
+独立QA PASS：源逐词校读、10册2168/2无表、24个保护资源、18个旧核心函数及gate尾段、39回归与语法/diff通过；真实浏览器二上15词/239词题源/隐藏→显示妈妈，一上无词表，旧三上15词/原题源/早晨均通过。未重复未变的实际笔画、音频、手机平板或认证测试，不声称扩大覆盖。证据ops/hanzi-word-tables-20261104/qa/final-report.md及对应三份JSON。
+
+腾讯云仅更新15静态文件，29个基线文件预检一致，25个线上保护文件含云配置前后字节一致。完整备份 /srv/xuebabangbang-unified-preview/deployment-backups/hanzi-before-word-tables-20261104-120229.tar.gz（600）。公网15文件全部200且SHA256与精确发布包一致，10词表合2168，根域/hanzi与IP/hanzi别名欢迎页同样200且摘要一致，正常校验证书。不改数据库、容器、DNS。
+
+feature/textbook-word-tables-2026已推送，草稿PR https://github.com/ico0018/hanzi_garden/pull/9 对feature/writing-table-2026，已附加；未合并main/dev。Developer已交回干净树，Manager此后只提交本状态记录，QA独立树文档改动保留；后续文档提交不改变已部署业务来源67f46b1。
+
+Next owner: User — https://hanzi.xuebabangbang.cn/welcome.html 选择二至六对应教材后进入每日听写。所请求教材词语表与腾讯云更新完成。
+
 ## 2026-11-04 — 教材词语表接入每日听写（Developer intake）
 
 Task: 用户要求按人教版教材末尾词语表更新每日听写。Developer 独占 F:/taskHelper/hanzi-word-tables-2026，feature/textbook-word-tables-2026，基线96d090f；Manager/source负责原页转录，QA独立验收精确候选。
