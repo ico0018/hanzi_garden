@@ -261,3 +261,11 @@ test('second-reader source corrections keep the actual Grade 3 lower textbook wo
   assert.ok(!reading.includes('毒辣辣'));
   assert.equal(bank.parseTextbookWordTable(data, data.bookId).total, 271);
 });
+
+test('Grade 5 upper lesson 5 retains the checked word 推辞 in its original position', () => {
+  const data = JSON.parse(fs.readFileSync(path.join(root, 'word-tables/2026-5-upper.json'), 'utf8'));
+  const words = data.lessons.find(lesson => lesson.lessonKey === 'reading-5').words.map(entry => entry.word);
+  assert.equal(words[13], '推辞');
+  assert.ok(!words.includes('推荐'));
+  assert.equal(bank.parseTextbookWordTable(data, data.bookId).total, 213);
+});

@@ -13,6 +13,7 @@ Developer behavior: 本地词语表验证/接入、三类空状态和失败隔�
 Developer checks: 新10项通过，含全部10册/2无表与2168词断言、完整课词序摘要、来源核验、稳定标识、本地加载/失败隔离、队列15上限/复习间隔、全词写完后手动自评、空状态与短队列完成。原写字表7、旧词库1在最终数据上再次通过；云11和家长8在相同业务代码阶段已通过，共37项。app/daily-word-bank/catalog语法及diff检查通过。
 QA gate: Manager手转扫描原表仍待QA独立逐页对照，本记录不宣称源内容QA PASS。若有局部词形修正，另提交定向修正，不重写已保存提交。尚未进行Developer浏览器实测。
 Developer correction: 完整候选8c7e757保存后，第二人逐词核原图纠正三下两处转录：garden-1“乞讨”改“乙方”，reading-23末“毒辣辣”改“轰隆隆”；三下仍271词、总2168词。仅重生成该册及源序摘要，新增两处回归样例并保留四下确认词“登陆/践行/劈面”。词语表11项（含新增样例）与diff检查通过。不修改应用逻辑或旧记录，不重写8c7e757；其他扫描册继续待独立QA。
+Developer final source correction: Manager随后通知扫描原表独立逐词校对全部完成，最后一处五上reading-5第14词依据原PDF126由“推荐”改“推辞”；六上215和四下213全表确认，无更多待定。本次仅更新五上该词、序列摘要、回归例及本记录；五上仍213、总2168。词语表12项及diff检查通过，不重跑未改动的旧27项；保留f11f4bb及之前提交历史。源校对完成不等同于应用最终QA或部署完成，精确候选交QA验收。
 Next owner: QA — 使用精确候选核源/核心流程；Manager记录验收与后续部署。公开运行变更共15文件（10册词语JSON+app/daily-word-bank/catalog/index/welcome），source-checks与README为维护资料。Developer不部署/push/merge。
 
 ## 2026-11-04 — 2026 写字表已部署（Manager final）
