@@ -55,7 +55,7 @@
 
 ## 使用方式
 
-这个项目没有 Node 构建步骤，也不需要安装依赖。
+本地预览无需安装依赖；生产部署必须通过 Node 构建生成本地笔画和拼音静态资源（见下方部署说明）。
 
 因为页面会通过 `fetch` 读取本地教材数据，不建议直接双击 `index.html`。在项目目录启动一个静态服务器即可：
 
@@ -79,7 +79,7 @@ index.html?book=3-upper
 
 ## 部署
 
-项目是纯 HTML / CSS / JavaScript 静态站点，可以直接部署到 Vercel 或其他静态托管服务。
+项目运行时是纯 HTML / CSS / JavaScript 静态站点，但生产构建需要 Node。Vercel 会按照 `vercel.json` 自动构建并发布 `dist/`；手动部署也必须上传 `dist/`。
 
 仓库中的 `vercel.json` 会把根路径 `/` 临时重定向到 `/welcome.html`，因此在 Vercel 上不需要额外构建配置。
 
@@ -143,12 +143,12 @@ hanzi_garden/
 
 ## 前端依赖
 
-页面通过 CDN 直接加载：
+页面从本站自身的 `vendor/` 静态资源目录加载（构建时生成）：
 
 - [Hanzi Writer](https://hanziwriter.org/)：笔顺动画与书写检测
 - [pinyin-pro](https://github.com/zh-lx/pinyin-pro)：中文文本拼音转换
 
-项目本身没有 `package.json`，也没有 npm 安装或打包流程。
+项目已添加 `package.json` 和构建脚本：请先运行 `npm install && npm run build`，然后发布 `dist/`。
 
 ## 关于学习记录
 

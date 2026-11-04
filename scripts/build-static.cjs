@@ -5,7 +5,7 @@ const path = require("node:path");
 
 const root = path.resolve(__dirname, "..");
 const out = path.join(root, "dist");
-const ignoredDirs = new Set([".git", ".github", ".vercel", "node_modules", "dist", "scripts", "tests", ".next"]);
+const ignoredDirs = new Set([".git", ".github", ".vercel", "node_modules", "dist", "scripts", "tests", ".next", "vendor"]);
 const ignoredFiles = new Set(["package.json", "package-lock.json", "vercel.json", ".gitignore"]);
 
 function copySite(from, to) {
@@ -62,9 +62,16 @@ const missing = [];
 for (const character of characters) {
   const filename = character + ".json";
   const source = path.join(dataRoot, filename);
-  if (!fs.existsSync(source)) { missing.push(character); continue; }
-  fs.copyFileSync(source, path.join(dataOut, filename));
-  copied++;
+  if (fs.existsSync(source)) {
+    fs.copyFileSync(source, path.join(dataOut, filename));
+    copied++;
+  } else if (fs.existsSync(path.join(root, "vendor", "hanzi-data", filename))) {
+    // Preserve vetted, separately sourced glyphs already present in the source's vendor assets.
+    fs.copyFileSync(path.join(root, "vendor", "hanzi-data", filename), path.join(dataOut, filename));
+    copied++;
+  } else {
+    missing.push(character);
+  }
 }
 if (copied < 100) throw new Error("笔画文件太少，打包可能不完整: " + copied);
 fs.writeFileSync(path.join(dataOut, "manifest.json"), JSON.stringify({ copied, missing }, null, 2));
