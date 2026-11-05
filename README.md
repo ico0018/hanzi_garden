@@ -62,12 +62,12 @@
 
 ## 使用方式
 
-这个项目没有 Node 构建步骤，也不需要安装依赖。
-
-因为页面会通过 `fetch` 读取本地教材数据，不建议直接双击 `index.html`。在项目目录启动一个静态服务器即可：
+先安装锁定版本的依赖并生成静态文件；Hanzi Writer、拼音库和笔画数据会一起打包到本站。页面通过 `fetch` 读取数据，不建议直接双击 HTML：
 
 ```bash
-python -m http.server 8000
+npm ci
+npm run build
+python -m http.server 8000 --directory dist
 ```
 
 然后打开：
@@ -79,16 +79,16 @@ http://localhost:8000/welcome.html
 首页选择教材后，会进入类似：
 
 ```text
-index.html?book=3-upper
+index.html?book=2026-3-upper
 ```
 
 的学习页面。
 
 ## 部署
 
-项目是纯 HTML / CSS / JavaScript 静态站点，可以直接部署到 Vercel 或其他静态托管服务。
+部署 `dist/` 的内容。构建明确列出公开页面、运行脚本和教材文件，并包含固定版本的 Hanzi Writer 2.0.2、笔画数据2.0.1、pinyin-pro 3.18.2 及各自许可证。构建按实际教材解析所需汉字，任何必需字缺失、笔画数据损坏或教材格式错误都会失败；不发布 `.git`、`.agents`、环境变量文件或内部脚本。生成的 `dist/`、`vendor/` 和 `node_modules/` 不提交。
 
-仓库中的 `vercel.json` 会把根路径 `/` 临时重定向到 `/welcome.html`，因此在 Vercel 上不需要额外构建配置。
+`vercel.json` 已指定构建命令和 `dist` 输出目录，并保留根路径到欢迎页的跳转及家长页嵌入限制。腾讯云更新时须保留服务器已定制的 `cloud-config.js`，不要用仓库默认前端配置覆盖，并核对更新前后的文件摘要；其他云脚本和家长页面继续保留。
 
 ## 教材数据
 
@@ -140,6 +140,9 @@ hanzi_garden/
 ├── welcome.js                # 教材选择逻辑
 ├── index.html                # 主学习页
 ├── app.js                    # 生字学习、书写、朗读、每日听写
+├── stroke-resources.js       # 本站笔画数据加载、校验与失败重试
+├── scripts/build-static.cjs  # 公开资源白名单与必需字覆盖检查
+├── package-lock.json         # 固定依赖版本和下载校验摘要
 ├── styles.css                # 页面样式与响应式布局
 ├── book-catalog.js           # 教材目录与开放状态
 ├── daily-word-bank.js        # 教材词语表验证与旧每日题库解析
@@ -154,12 +157,13 @@ hanzi_garden/
 
 ## 前端依赖
 
-页面通过 CDN 直接加载：
+页面从本站 `vendor/` 读取固定版本依赖：
 
-- [Hanzi Writer](https://hanziwriter.org/)：笔顺动画与书写检测
-- [pinyin-pro](https://github.com/zh-lx/pinyin-pro)：中文文本拼音转换
+- [Hanzi Writer](https://hanziwriter.org/) 2.0.2：笔顺动画与书写检测
+- hanzi-writer-data 2.0.1：本站笔画数据
+- [pinyin-pro](https://github.com/zh-lx/pinyin-pro) 3.18.2：中文文本拼音转换
 
-项目本身没有 `package.json`，也没有 npm 安装或打包流程。
+`npm ci` 按锁文件安装，`npm run build` 生成部署目录，`npm test` 运行现有回归和笔画资源检查。构建覆盖当前教材2405个独特汉字；包含原有教材组词和旧听写题库后共2480个，均须具备有效笔画数据。
 
 ## 关于学习记录
 

@@ -4,6 +4,15 @@
 
 ## Current snapshot
 
+## 2026-11-05 — 本地笔画资源选择性移植（Developer intake）
+
+Task: 用户授权处理main本地笔画资源修复，Manager指派Developer在独占F:/taskHelper/hanzi-local-strokes-2026、feature/local-stroke-assets-2026，基底d69fe8e上选择性移植，不覆盖当前教材/业务。
+Plan: 固定writer2.0.2、data2.0.1、pinyin3.18.2，本地loader接现有3个书写入口；构建只发布白名单资源，以实际12写字表/10词表和旧4教材/旧3词库解析结果收集必需字，缺字或坏数据阻断。保留2500写字位、2168词、旧ID/进度、每日15和全词写完再自评；不引入main其他课程/句子/10-20-30或自动push工作流。
+Developer state: 完成选择性移植。3个HanziWriter入口显式使用本站loader，失败可重试，实践状态节点按本次页面捕获，离开后失败不访问新DOM。index仅将writer/pinyin换为本站vendor并先加载loader；云脚本/教材加载顺序保留。Vercel指定npm run build及dist，原跳转/家长页限制保留。无main课程/句子/10-20-30/自动push工作流移植。
+Build: 固定依赖及lock下载完整性已通过实际npm ci（指定ops npm-cache）；实际解析12写字表2500字位、10词表2168词、旧4教材及旧三上题库，当前独特字2405、旧源字1408、并集2480，所需数据全有且有效。旧四上TXT解析实际250条，只读取不修改。build在验证完整数据后才替换固定dist；必需字缺失/损坏或教材错误均失败，先前完整dist保留。发布明确白名单，包括运行页面/云脚本/22册JSON/5旧TXT、固定库及4许可证说明；不枚举发布.git（含worktree文件型）、.agents、.env、内部脚本/维护摘要。
+Developer checks: npm run build通过，2480/2480笔画有效且缺0；npm test共44项通过（原39+新5）。新检查覆盖各域名前缀/并发共享、网络HTTP/JSON/格式失败重试、真实writer2.0.2回调契约、切离练字页面的失败回调不误写新DOM/不提前自评、实际全字覆盖与构建排私密/缺字损坏阻断。app/loader/build语法及diff检查通过。写字表/词语表/TXT/目录/每日词库/云/parent文件均未改。
+Handoff: README说明仅部署dist及保留线上定制cloud-config.js并校对摘要；生成资源不提交。尚未进行Developer实际浏览器书写验证；交QA独立验证精确候选及构建产物。Developer不push/deploy/mainmerge。
+
 ## 2026-11-04 — 教材词语表已接入每日听写并部署（Manager final）
 
 业务来源67f46b131648d287125d62475c9ed296155f7f39，二至六上下10册2168词；一年级上下经原书确认无独立词语表，页面明确说明。按原课序词序与园地收录，新book/lesson/word稳定ID，旧三上词库/ID/记录与2500写字表保留。原表无注音不生成猜测拼音或释义。每日最多15词、原复习间隔与逐字写完再自评继续沿用。

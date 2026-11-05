@@ -1,0 +1,14 @@
+{
+  "name": "xuebabangbang-hanzi-garden",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node scripts/build-static.cjs",
+    "test": "node --test scripts/test-*.cjs && node scripts/test-daily-word-bank.js"
+  },
+  "dependencies": {
+    "hanzi-writer": "2.0.2",
+    "hanzi-writer-data": "2.0.1",
+    "pinyin-pro": "3.18.2"
+  }
+}
