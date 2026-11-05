@@ -4,6 +4,18 @@
 
 ## Current snapshot
 
+## 2026-11-05 — 本地笔画资源已合并并部署（Manager final）
+
+用户确认处理本次合并：选择性整合main06beda9的本地笔画/拼音资源修复，当前课程和账号线为基底。独立QA精确候选fca13ef6399202136aa235a176215526de099747 PASS；PR https://github.com/ico0018/hanzi_garden/pull/10 已合入feature/textbook-word-tables-2026，merge baccb73b5910e0ab04b3d266278535ce61bb44ee与QA候选文件树完全一致。旧远程头1b6cf25已存backup/2026-11-05-before-local-strokes。main/dev未改；本地原干净d69fe8e已--ff-only同步此merge，不动其他工作树。
+
+44检查、独立2416实际练习字覆盖、2480份本地JSON结构/固定数据字节、39保护文件/18核心函数、构建私密文件排除均通过。真实Chrome一画→自评→刷新保留、新二上15词/妈妈双格及/hanzi/样例丸/乙/湘SVG均通过；不声称扩大认证/移动端测试。独立部署对照2489文件字节一致、helper仅CRLF/LF且Git规范内容一致，报告明确记录。证据ops/hanzi-local-strokes-20261105/qa/final-report.md。
+
+已部署腾讯云2490资源（vendor与helper/app/index），39基线预检无差异，38个线上保护文件含实际cloud-config前后字节一致。12册2500写字位、10册2168词、旧教材/ID/记录、每日15与云/家长原样保留。完整备份 /srv/xuebabangbang-unified-preview/deployment-backups/hanzi-before-local-strokes-20261105-115201.tar.gz（600）。数据库、容器、Nginx、DNS无调整。
+
+公网44个代表运行/许可证/字形资源全部200且SHA256与发布包一致，包含全部31个原漏字；根域/hanzi及IP/hanzi的index与乙.json四次别名请求也通过，TLS正常校验。全部2490资源在服务器逐项校验，非声称公网逐项GET2490。结果ops/hanzi-local-strokes-20261105/public-verification.json。
+
+Manager仅追加本状态文档并保存到已合并的线上功能分支；不改QA业务候选或重置QA/main-review树的有意文档修改。Next owner: User — https://hanzi.xuebabangbang.cn/welcome.html 刷新后使用。所授权合并和网站更新完成。
+
 ## 2026-11-05 — 本地笔画资源选择性移植（Developer intake）
 
 Task: 用户授权处理main本地笔画资源修复，Manager指派Developer在独占F:/taskHelper/hanzi-local-strokes-2026、feature/local-stroke-assets-2026，基底d69fe8e上选择性移植，不覆盖当前教材/业务。
