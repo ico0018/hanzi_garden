@@ -166,7 +166,7 @@ function renderScope(status = 'ready') {
   const scope = vm.createContext({
     dailyDictationBankStatus: status, dailyDictationTable: { edition: '测试版', total: 3 },
     dictationOverview: { innerHTML: '' }, dictationDetail: { innerHTML: '', querySelector: node },
-    window: { HanziWriter: true }, document: { getElementById: node },
+    window: { HanziWriter: true, XuebabangbangStrokeData: { charDataLoader() {} } }, document: { getElementById: node },
     HanziWriter: { create: () => ({ quiz: options => callbacks.push(options.onComplete) }) },
     getDailyQueue: () => [{ id: 'checked-word', word: '早晨', lessonTitle: '测试第一课', pinyin: 'zǎo chén' }],
     getTodayQueueState: () => ({ results: {} }), cacheHumanAudio() {}, escapeHtml: value => value,

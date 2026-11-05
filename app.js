@@ -522,7 +522,7 @@ function renderDailyDictation() {
     revealButton.textContent = isHidden ? "隐藏提示和答案" : "需要提示或答案";
   });
 
-  if (!window.HanziWriter || !wordCharacters.length) {
+  if (!window.HanziWriter || !window.XuebabangbangStrokeData || !wordCharacters.length) {
     writingStatus.textContent = "书写工具加载失败，请刷新页面后重试。";
     return;
   }
@@ -532,6 +532,8 @@ function renderDailyDictation() {
     target.addEventListener("touchmove", (event) => event.preventDefault(), { passive: false });
     const size = target.clientWidth;
     const writer = HanziWriter.create(target, character, {
+      charDataLoader: window.XuebabangbangStrokeData.charDataLoader,
+      onLoadCharDataError: () => { writingStatus.textContent = "笔画暂时无法加载，请刷新后重试。"; },
       width: size,
       height: size,
       padding: 12,
@@ -673,10 +675,12 @@ function renderDetail() {
     button.addEventListener("click", () => playHumanChinese(button.dataset.word));
   });
 
-  if (window.HanziWriter) {
+  if (window.HanziWriter && window.XuebabangbangStrokeData) {
     const target = document.getElementById("writer-target");
     if (target) {
       writerInstance = HanziWriter.create(target, character.char, {
+        charDataLoader: window.XuebabangbangStrokeData.charDataLoader,
+        onLoadCharDataError: () => { target.textContent = "笔画暂时无法加载，请重新选择此字。"; },
         width: 160,
         height: 160,
         padding: 0,
@@ -707,6 +711,7 @@ function renderCharacterPractice(character) {
       <div class="dictation-actions"><button class="secondary-button retry-practice" type="button">重新书写</button><button class="primary-button return-learning" type="button">返回学习</button></div>
     </section>`;
 
+  const practiceStatus = document.getElementById("practice-status");
   const completePractice = () => {
     openSelfAssessmentModal({
       title: "写完啦，自己来判断",
@@ -716,12 +721,12 @@ function renderCharacterPractice(character) {
       onKnown: () => {
         savePracticeProgress(practiceLessonIndex, practiceCharIndex, "learned");
         renderCharList();
-        document.getElementById("practice-status").textContent = "已标记为学会，生字列表有绿色对勾。";
+        practiceStatus.textContent = "已标记为学会，生字列表有绿色对勾。";
       },
       onUnknown: () => {
         savePracticeProgress(practiceLessonIndex, practiceCharIndex, "review");
         renderCharList();
-        document.getElementById("practice-status").textContent = "已标记为还要复习，生字列表有红色提示。";
+        practiceStatus.textContent = "已标记为还要复习，生字列表有红色提示。";
       }
     });
   };
@@ -734,13 +739,15 @@ function renderCharacterPractice(character) {
     renderDetail();
   });
 
-  if (!window.HanziWriter) {
-    document.getElementById("practice-status").textContent = "书写工具未加载，请刷新页面后重试。";
+  if (!window.HanziWriter || !window.XuebabangbangStrokeData) {
+    practiceStatus.textContent = "书写工具未加载，请刷新页面后重试。";
     return;
   }
 
   const size = target.clientWidth;
   const practiceWriter = HanziWriter.create(target, character.char, {
+    charDataLoader: window.XuebabangbangStrokeData.charDataLoader,
+    onLoadCharDataError: () => { practiceStatus.textContent = "笔画暂时无法加载，请点“重新书写”重试。"; },
     width: size,
     height: size,
     padding: 12,
@@ -755,7 +762,7 @@ function renderCharacterPractice(character) {
     leniency: 1.15,
     showHintAfterMisses: 2,
     onMistake: () => {
-      document.getElementById("practice-status").textContent = "这笔不太对，再试一次。";
+      practiceStatus.textContent = "这笔不太对，再试一次。";
     },
     onComplete: completePractice
   });
