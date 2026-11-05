@@ -389,3 +389,10 @@ Safe commit plan: preserve Manager STATUS and exact developer feature commits; s
 当前feature/writing-table-2026干净，HEAD ef9bbd3，线上业务8158661。Manager新建独立Developer工作树F:/taskHelper/hanzi-word-tables-2026、feature/textbook-word-tables-2026；QA另建精确提交工作树。Manager只处理研究/流程/部署，Developer负责代码/数据接入，QA独立源与功能校验。用户当前请求为已授权腾讯云网站的连续更新，QA通过后备份并仅更新必要静态文件；不合并main/dev，不改DNS、账号、数据库或云配置。
 
 Next owner: Developer / source / Manager，完成原页核对及接入后交QA。
+## 2026-11-05 — 合入本地笔画/拼音资源（Manager intake）
+
+用户确认按上次检查建议处理合并：以已上线feature/textbook-word-tables-2026（HEAD1b6cf25/业务67f46b1）为基底，选择性整合main06beda9的本地笔画/拼音库与构建思路。保留已核2026写字表2500字位、10册2168词、旧教材ID/进度、每日15规则、账号/cloud/parent；不整站覆盖main旧目录或旧词库，不合入10/20/30变化。该确认延续腾讯云网站维护授权，独立QA通过后备份并部署必要静态更新，无main/dev合并。
+
+Safe plan: 当前基底干净，新Developer独占F:/taskHelper/hanzi-local-strokes-2026，feature/local-stroke-assets-2026。main审查树有Manager状态文档和自建node_modules/dist，保持不动。Developer只做本地依赖/loader/3处HanziWriter接入及构建，修文件型.git被发布与缺字不阻断问题。实际练字字符集须从当前12份写字表、10份词语表及旧可选教材/旧题库收集完整验证（当前新表独特字2405；main现vendor缺其中31，全在固定npm包存在），不复用旧main3115包作为完整包。构建输出仅公开运行资源，排除内部说明/私密配置，线上cloud-config运行值必须保留。
+
+Manager负责流程与部署；Developer实现/测试/提交；QA在独立精确候选树检查资源全覆盖、无CDN笔画请求、真实笔画、自评和既有记录/题库兼容，不重校教材文本。操作证据ops/hanzi-local-strokes-20261105。Next owner: Developer / QA。
