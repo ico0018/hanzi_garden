@@ -1,0 +1,57 @@
+{
+  "baseline": "ba589dc",
+  "totalTextbookPositions": 2500,
+  "completedBooks": [
+    {
+      "book": "2026-1-lower",
+      "positions": 200,
+      "usageCharacters": [
+        "她",
+        "它",
+        "的",
+        "着",
+        "还",
+        "都"
+      ]
+    },
+    {
+      "book": "2026-1-upper",
+      "positions": 100,
+      "usageCharacters": [
+        "了",
+        "又"
+      ]
+    },
+    {
+      "book": "2026-2-upper",
+      "positions": 250,
+      "usageCharacters": [
+        "吗",
+        "吧",
+        "呀",
+        "呢",
+        "啊",
+        "得",
+        "您",
+        "棵",
+        "谁",
+        "钉"
+      ]
+    },
+    {
+      "book": "2026-3-upper",
+      "positions": 250,
+      "usageCharacters": [
+        "哦",
+        "螃"
+      ]
+    }
+  ],
+  "checks": [
+    "all original textbook fields, orders and sources identical to baseline",
+    "completed books have exactly 2 unique words and linked natural sentence",
+    "ordinary words contain target character and matching textbook reading",
+    "usage exceptions explicit, bounded and not passed off as ordinary words",
+    "2500 total textbook positions retained"
+  ]
+}

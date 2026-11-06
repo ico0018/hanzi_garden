@@ -4,6 +4,12 @@
 
 ## Current snapshot
 
+## 2026-11-06 — 已提交内容2000字阶段整合（Developer recovery）
+
+Manager明确授权Developer接管已停止高作者的脏树，先备份8项待存成果及原STATUS/哈希/diff到ops/hanzi-dictation-study-20261106/higher-handoff-backup；低原树3个未跟踪候选另备份，既不重置也不导入教学内容。高成果保存bdd389e后，按Manager最终裁决让牺牲/牺牲品恢复普通组词，定向保存高源c0b583c9c058da3e7c162e3c87c5a9f4f421410c，高树clean。原作者high/low各intake与接手记录保留在本文件；来源角色/作者/SHA/文件列表见content-review/integration-sources.json。
+Import: 仅从确定Git提交选择性导入高6册1200字及TSV/验证证据、低1c23f78四册800字及已提交内容证据；未导入任何未审候选或未提交数据。不合并其他业务源文件，业务仍为6c9cb35。低二下/三下500字由独立content_finish树负责，未修改或覆盖。
+Checks: 独立高1200内容结构/原教材字段检查、低800词音/句关联检查通过（低验证器在集成树明确只检查低册词音，不把高册允许留空的注音当错误）；其全12册原字段检查仍保留。55业务回归和build通过；当前补充词内笔画使当前独特字2518/总2553，缺0。此阶段不宣称全部2500内容完成或最终内容QA通过，也未部署。下一步遵Manager新裁决定向修旧known兼容，再等finish500与最终QA。
+
 ## 2026-11-06 — 生字组词造句与预习听写（Developer intake）
 
 Task: 用户要求新版生字2组词1句、移除旧教材书架、每日先词表预习并可学习后按10/20/30听写、错词需连续两日正确解除强化。Developer独占F:/taskHelper/hanzi-dictation-study-20261106，feature/dictation-study-20261106，基底ba589dc；source只JSON/内容证据，待Manager明确通知才整合。
@@ -14,6 +20,24 @@ Compatibility: writingTable第四段固定char，新增组词前后ID相同；�
 Developer checks: npm test 54 Node项+原独立词库1，共55通过；含10项新功能检查、额外跨tab/重渲染自评保护、旧ID前后断言，以及原云/家长/笔画/教材回归按新数量语义更新。npm run build在当前未补内容数据上通过，2405当前字/2480总字缺0；build白名单加入调度模块并收集words汉字，新组词缺笔画会阻断。app/parser/scheduler语法及diff检查通过。源JSON、词语表、旧TXT、目录/原词库、cloud/parent对ba589dc无差异；未整合source。
 Handoff: 此提交仅业务阶段，不能宣称全部2500生字补充内容已齐或实际浏览器验收完成。Manager待内容分工完成后通知整合，再重build/QA精确完整候选。README/缓存版本同步本次业务行为；Developer不push/deploy/main/dev。
 Next owner: QA — 先独立验业务候选调度与界面；sources继续内容，最终整合由Manager指令。
+
+## 2026-11-06 — 写字表组词例句（Source content intake）
+
+Manager指派内容开发：独占 F:/taskHelper/hanzi-writing-examples-20261106，feature/writing-examples-20261106，基线ba589dc。仅12册writing JSON与内容证据/验证文件及本STATUS；不碰app/parser/build，不push/deploy/main/dev。保留原教材2500字位、顺序、拼音、来源；教学补充明确自编。统计2336独特字、2342字音键；旧四册可匹配822键组词候选、244键句候选，均须复核。其余至少1520键需补词、2098键需补句；main-review补充词汇仅作候选，不直接信任或套句。按册分批人工编写、内容映射覆盖，不伪造教材原文。语气词/单一词素不能假造两独立词，例外用法待Manager裁决并明示。第一批一上100字、三上250字完成：两词与一句，旧三上适宜句经全文校读并修正多音/不自然搭配。一上了/又、三上哦/螃明示用法示例。check-content.py核所有2500原教材字段完全不变、完成册词句关联/普通词目标音匹配。第二批一下200字完成，累计550字；词中照片piàn、北斗/烟斗dǒu更正库草稿误读，用法例外另记录。第三批二上250字完成，累计800字；经Manager确认，词中正常轻声保留真实读音，单字本调不改，审计单列。其余2个低年级册继续；高年级6册由另一独立树接手。Next owner: QA首批内容审核 / Source继续低册。
+
+
+
+## 2026-11-06 — 高年级内容接手保存（Developer handoff recovery）
+
+Manager明确授权/root/writing_developer接管本树；实时agent清单确认原higher作者已停止且不再写入，低册剩余500由独立content_finish树负责，不在此树修改。接手前保留HEAD187dece，8项未提交/未跟踪成果及原STATUS均已逐字节备份到ops/hanzi-dictation-study-20261106/higher-handoff-backup，含before.diff与文件SHA256清单；原低树3个未跟踪候选另行备份保留、不采信发布。无reset/stash/清理/覆盖其他树。
+Review plan: 原提交高四册900字+未保存六上180/六下120已经全部填入JSON，五下咧liě第二词已由大大咧咧修为龇牙咧嘴。先对原字段/严格parser/特殊usage短语逐项校读并运行独立内容检查，保存单独提交；随后Manager授权业务树选择性整合已提交高1200+低800及来源证据，不合低未审候选。保留原作者各intake与历史，下次handoff写明新SHA；不push/deploy/main/dev。
+Recovery checks: 高6册1200字全部通过独立内容check与业务严格parser，剥离补充字段后原教材对象与ba589dc逐项相同。哼hng用带标点语气短句，娜nà用安娜/桑娜，蟋蟀/蚯蚓/猬等标用法示例，咧liě用咧嘴/龇牙咧嘴。修复apply遗留label而遗漏kind的牺，补usage一致标记并在重生成前清旧补充字段；降xiáng第二词由易混读“降服”换为明确“归降”，句子仍用投降。离线整词读音审计仅辅助人工发现歧义，不把库读音自动当教材；保留原教材pinyin不变。最终源校对仍交独立QA，不把结构检查当全内容验收。
+Manager follow-up: bdd389e保存后，Manager明确牺的牺牲/牺牲品是两个真词，应按普通组词显示。按新裁决移除牺SPECIAL，用已修复的清旧字段步骤重生成，四上/六下均不保留examplesLabel或kind；增加明确回归断言。前保存点不重写，其他哼/娜/蟋蟀/蚯蚓/猬等usage维持。此行取代上一行临时牺usage处理。
+
+## 2026-11-06 — 四至六年级组词例句（Content Developer intake）
+
+独占F:/taskHelper/hanzi-writing-examples-higher-20261106，feature/writing-examples-higher-20261106，基底ba589dc。Manager授权仅高年级6册补充，每字2组词1自编句，不改原字序/读音/来源。低年级sources独立处理。词义/词音未核时留空；语气词与单一词素只给真实自然用法并显式标用法示例。候选词仅参考现有教材词表/TXT，不盲信自动列表，不套句。先人工编四上，逐册覆盖并记录多音例外。不得push/merge/deploy/main/dev。
+
 
 ## 2026-11-05 — 本地笔画资源已合并并部署（Manager final）
 

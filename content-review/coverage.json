@@ -1,0 +1,4337 @@
+{
+  "normalNeutralReadings": [
+    {
+      "book": "2026-1-lower",
+      "key": "贝|bèi",
+      "word": "宝贝",
+      "pinyin": "bǎo bei"
+    },
+    {
+      "book": "2026-2-upper",
+      "key": "友|yǒu",
+      "word": "朋友",
+      "pinyin": "péng you"
+    },
+    {
+      "book": "2026-2-upper",
+      "key": "事|shì",
+      "word": "故事",
+      "pinyin": "gù shi"
+    },
+    {
+      "book": "2026-2-upper",
+      "key": "诉|sù",
+      "word": "告诉",
+      "pinyin": "gào su"
+    },
+    {
+      "book": "2026-2-upper",
+      "key": "爷|yé",
+      "word": "大爷",
+      "pinyin": "dà ye"
+    },
+    {
+      "book": "2026-3-upper",
+      "key": "睛|jīng",
+      "word": "眼睛",
+      "pinyin": "yǎn jing"
+    }
+  ],
+  "schemaVersion": 1,
+  "authorship": "教学补充：人工自编词语选择和例句；非教材原文。旧三上句仅经逐项校读后借鉴。",
+  "completed": [
+    {
+      "book": "2026-1-lower",
+      "total": 200
+    },
+    {
+      "book": "2026-1-upper",
+      "total": 100
+    },
+    {
+      "book": "2026-2-upper",
+      "total": 250
+    },
+    {
+      "book": "2026-3-upper",
+      "total": 250
+    }
+  ],
+  "pending": [
+    {
+      "book": "2026-2-lower",
+      "missing": [
+        {
+          "key": "诗|shī",
+          "title": "第1课",
+          "candidates": [
+            "诗句",
+            "诗词",
+            "诗篇",
+            "诗情画意"
+          ]
+        },
+        {
+          "key": "碧|bì",
+          "title": "第1课",
+          "candidates": [
+            "碧波荡漾",
+            "碧空如洗",
+            "碧绿",
+            "金碧辉煌"
+          ]
+        },
+        {
+          "key": "妆|zhuāng",
+          "title": "第1课",
+          "candidates": [
+            "粉妆玉砌"
+          ]
+        },
+        {
+          "key": "绿|lǜ",
+          "title": "第1课",
+          "candidates": [
+            "翠绿",
+            "绿叶",
+            "嫩绿",
+            "绿豆"
+          ]
+        },
+        {
+          "key": "丝|sī",
+          "title": "第1课",
+          "candidates": [
+            "葫芦丝",
+            "螺丝",
+            "螺丝刀",
+            "丝毫"
+          ]
+        },
+        {
+          "key": "剪|jiǎn",
+          "title": "第1课",
+          "candidates": [
+            "裁剪",
+            "剪刀"
+          ]
+        },
+        {
+          "key": "童|tóng",
+          "title": "第1课",
+          "candidates": [
+            "童话",
+            "童年"
+          ]
+        },
+        {
+          "key": "归|guī",
+          "title": "第1课",
+          "candidates": [
+            "归拢"
+          ]
+        },
+        {
+          "key": "冲|chōng",
+          "title": "第2课",
+          "candidates": [
+            "冲击",
+            "冲刷",
+            "俯冲"
+          ]
+        },
+        {
+          "key": "寻|xún",
+          "title": "第2课",
+          "candidates": [
+            "搜寻",
+            "寻找",
+            "寻常"
+          ]
+        },
+        {
+          "key": "眉|méi",
+          "title": "第2课",
+          "candidates": [
+            "眉梢",
+            "皱眉",
+            "眉毛",
+            "眉头"
+          ]
+        },
+        {
+          "key": "吐|tǔ",
+          "title": "第2课",
+          "candidates": [
+            "吞吐"
+          ]
+        },
+        {
+          "key": "闻|wén",
+          "title": "第2课",
+          "candidates": [
+            "耳闻目睹",
+            "嗅闻",
+            "闻名",
+            "举世闻名"
+          ]
+        },
+        {
+          "key": "柳|liǔ",
+          "title": "第2课",
+          "candidates": [
+            "杨柳",
+            "柳枝",
+            "垂柳",
+            "柳树"
+          ]
+        },
+        {
+          "key": "荡|dàng",
+          "title": "第2课",
+          "candidates": [
+            "浩荡",
+            "闯荡",
+            "碧波荡漾",
+            "扫荡"
+          ]
+        },
+        {
+          "key": "桃|táo",
+          "title": "第2课",
+          "candidates": [
+            "桃花",
+            "杨桃",
+            "樱桃"
+          ]
+        },
+        {
+          "key": "鲜|xiān",
+          "title": "第3课",
+          "candidates": [
+            "鲜嫩",
+            "鲜花",
+            "鲜美",
+            "新鲜"
+          ]
+        },
+        {
+          "key": "原|yuán",
+          "title": "第3课",
+          "candidates": [
+            "原则",
+            "原因",
+            "原来",
+            "平原"
+          ]
+        },
+        {
+          "key": "叔|shū",
+          "title": "第3课",
+          "candidates": [
+            "大叔",
+            "叔叔"
+          ]
+        },
+        {
+          "key": "通|tōng",
+          "title": "第3课",
+          "candidates": [
+            "普通",
+            "沟通",
+            "扑通",
+            "通常"
+          ]
+        },
+        {
+          "key": "巧|qiǎo",
+          "title": "第3课",
+          "candidates": [
+            "巧妙",
+            "技巧",
+            "凑巧",
+            "小巧玲珑"
+          ]
+        },
+        {
+          "key": "惊|jīng",
+          "title": "第3课",
+          "candidates": [
+            "惊吓",
+            "惊讶",
+            "惊涛骇浪",
+            "惊惧"
+          ]
+        },
+        {
+          "key": "礼|lǐ",
+          "title": "第3课",
+          "candidates": [
+            "敬礼",
+            "礼堂",
+            "婚礼",
+            "葬礼"
+          ]
+        },
+        {
+          "key": "邓|dèng",
+          "title": "第4课",
+          "candidates": []
+        },
+        {
+          "key": "植|zhí",
+          "title": "第4课",
+          "candidates": [
+            "植株",
+            "苔藓植物",
+            "植树",
+            "培植"
+          ]
+        },
+        {
+          "key": "格|gé",
+          "title": "第4课",
+          "candidates": [
+            "及格",
+            "严格",
+            "格外",
+            "价格"
+          ]
+        },
+        {
+          "key": "引|yǐn",
+          "title": "第4课",
+          "candidates": [
+            "引人注目",
+            "吸引",
+            "招引",
+            "引荐"
+          ]
+        },
+        {
+          "key": "注|zhù",
+          "title": "第4课",
+          "candidates": [
+            "引人注目",
+            "注意",
+            "注视",
+            "全神贯注"
+          ]
+        },
+        {
+          "key": "满|mǎn",
+          "title": "第4课",
+          "candidates": [
+            "挤满",
+            "充满",
+            "丰满",
+            "填满"
+          ]
+        },
+        {
+          "key": "剧|jù",
+          "title": "语文园地一",
+          "candidates": [
+            "戏剧",
+            "京剧",
+            "沪剧",
+            "滇剧"
+          ]
+        },
+        {
+          "key": "场|chǎng",
+          "title": "语文园地一",
+          "candidates": [
+            "市场",
+            "操场",
+            "捧场",
+            "绿茵场"
+          ]
+        },
+        {
+          "key": "雷|léi",
+          "title": "第5课",
+          "candidates": [
+            "迅雷",
+            "雷锋",
+            "雷雨",
+            "雷声"
+          ]
+        },
+        {
+          "key": "锋|fēng",
+          "title": "第5课",
+          "candidates": [
+            "雷锋",
+            "锋利"
+          ]
+        },
+        {
+          "key": "昨|zuó",
+          "title": "第5课",
+          "candidates": [
+            "昨天"
+          ]
+        },
+        {
+          "key": "背|bēi",
+          "title": "第5课",
+          "candidates": [
+            "背包"
+          ]
+        },
+        {
+          "key": "洒|sǎ",
+          "title": "第5课",
+          "candidates": [
+            "潇洒",
+            "洒落",
+            "洒脱"
+          ]
+        },
+        {
+          "key": "汗|hàn",
+          "title": "第5课",
+          "candidates": [
+            "擦汗",
+            "淌汗"
+          ]
+        },
+        {
+          "key": "温|wēn",
+          "title": "第5课",
+          "candidates": [
+            "温度",
+            "温暖",
+            "温和",
+            "温柔"
+          ]
+        },
+        {
+          "key": "暖|nuǎn",
+          "title": "第5课",
+          "candidates": [
+            "温暖",
+            "暖洋洋",
+            "暖和"
+          ]
+        },
+        {
+          "key": "桌|zhuō",
+          "title": "第6课",
+          "candidates": [
+            "桌子",
+            "讲桌"
+          ]
+        },
+        {
+          "key": "尝|cháng",
+          "title": "第6课",
+          "candidates": [
+            "尝试",
+            "品尝",
+            "何尝"
+          ]
+        },
+        {
+          "key": "买|mǎi",
+          "title": "第6课",
+          "candidates": [
+            "购买",
+            "买卖"
+          ]
+        },
+        {
+          "key": "具|jù",
+          "title": "第6课",
+          "candidates": [
+            "玩具",
+            "寝具",
+            "炊具",
+            "农具"
+          ]
+        },
+        {
+          "key": "甘|gān",
+          "title": "第6课",
+          "candidates": [
+            "甘心"
+          ]
+        },
+        {
+          "key": "汁|zhī",
+          "title": "第6课",
+          "candidates": [
+            "葡萄汁",
+            "绞尽脑汁"
+          ]
+        },
+        {
+          "key": "甜|tián",
+          "title": "第6课",
+          "candidates": [
+            "甜菜",
+            "香甜",
+            "甜蜜",
+            "甜丝丝"
+          ]
+        },
+        {
+          "key": "菜|cài",
+          "title": "第6课",
+          "candidates": [
+            "菜单",
+            "菜刀",
+            "炒菜",
+            "韭菜"
+          ]
+        },
+        {
+          "key": "劳|láo",
+          "title": "第6课",
+          "candidates": [
+            "功劳",
+            "辛劳",
+            "疲劳",
+            "勤劳"
+          ]
+        },
+        {
+          "key": "应|yīng",
+          "title": "第6课",
+          "candidates": [
+            "应该"
+          ]
+        },
+        {
+          "key": "弱|ruò",
+          "title": "第7课",
+          "candidates": [
+            "软弱",
+            "柔弱",
+            "懦弱",
+            "弱小"
+          ]
+        },
+        {
+          "key": "周|zhōu",
+          "title": "第7课",
+          "candidates": [
+            "周岁",
+            "周围",
+            "周末",
+            "周游"
+          ]
+        },
+        {
+          "key": "末|mò",
+          "title": "第7课",
+          "candidates": [
+            "周末",
+            "末期"
+          ]
+        },
+        {
+          "key": "母|mǔ",
+          "title": "第7课",
+          "candidates": [
+            "母亲",
+            "父母",
+            "字母",
+            "母鸡"
+          ]
+        },
+        {
+          "key": "吸|xī",
+          "title": "第7课",
+          "candidates": [
+            "呼吸",
+            "吸引",
+            "吸收"
+          ]
+        },
+        {
+          "key": "芬|fēn",
+          "title": "第7课",
+          "candidates": [
+            "芬芳"
+          ]
+        },
+        {
+          "key": "芳|fāng",
+          "title": "第7课",
+          "candidates": [
+            "芬芳",
+            "芬芳扑鼻"
+          ]
+        },
+        {
+          "key": "递|dì",
+          "title": "第7课",
+          "candidates": []
+        },
+        {
+          "key": "勇|yǒng",
+          "title": "第7课",
+          "candidates": [
+            "勇敢",
+            "勇猛",
+            "勇气"
+          ]
+        },
+        {
+          "key": "敢|gǎn",
+          "title": "第7课",
+          "candidates": [
+            "勇敢"
+          ]
+        },
+        {
+          "key": "程|chéng",
+          "title": "语文园地二",
+          "candidates": [
+            "工程"
+          ]
+        },
+        {
+          "key": "术|shù",
+          "title": "语文园地二",
+          "candidates": [
+            "技术",
+            "剑术",
+            "手术台"
+          ]
+        },
+        {
+          "key": "服|fú",
+          "title": "语文园地二",
+          "candidates": [
+            "降服",
+            "佩服",
+            "屈服",
+            "服务"
+          ]
+        },
+        {
+          "key": "务|wù",
+          "title": "语文园地二",
+          "candidates": [
+            "财务",
+            "服务"
+          ]
+        },
+        {
+          "key": "神|shén",
+          "title": "识字1",
+          "candidates": [
+            "神圣",
+            "神秘",
+            "神仙",
+            "神奇"
+          ]
+        },
+        {
+          "key": "州|zhōu",
+          "title": "识字1",
+          "candidates": [
+            "杭州",
+            "杭州市",
+            "神州"
+          ]
+        },
+        {
+          "key": "华|huá",
+          "title": "识字1",
+          "candidates": [
+            "华丽",
+            "中华",
+            "精华"
+          ]
+        },
+        {
+          "key": "各|gè",
+          "title": "识字1",
+          "candidates": [
+            "各种",
+            "各种各样",
+            "各式各样"
+          ]
+        },
+        {
+          "key": "族|zú",
+          "title": "识字1",
+          "candidates": [
+            "民族"
+          ]
+        },
+        {
+          "key": "情|qíng",
+          "title": "识字1",
+          "candidates": [
+            "情感",
+            "友情",
+            "尽情",
+            "情绪"
+          ]
+        },
+        {
+          "key": "谊|yì",
+          "title": "识字1",
+          "candidates": [
+            "情谊"
+          ]
+        },
+        {
+          "key": "齐|qí",
+          "title": "识字1",
+          "candidates": [
+            "整齐",
+            "齐头并进"
+          ]
+        },
+        {
+          "key": "传|chuán",
+          "title": "识字2",
+          "candidates": [
+            "传统",
+            "传说",
+            "流传"
+          ]
+        },
+        {
+          "key": "统|tǒng",
+          "title": "识字2",
+          "candidates": [
+            "传统",
+            "系统"
+          ]
+        },
+        {
+          "key": "贴|tiē",
+          "title": "识字2",
+          "candidates": [
+            "粘贴"
+          ]
+        },
+        {
+          "key": "街|jiē",
+          "title": "识字2",
+          "candidates": [
+            "逛街",
+            "街道",
+            "街心"
+          ]
+        },
+        {
+          "key": "扫|sǎo",
+          "title": "识字2",
+          "candidates": [
+            "大扫除",
+            "打扫",
+            "扫荡",
+            "扫视"
+          ]
+        },
+        {
+          "key": "龙|lóng",
+          "title": "识字2",
+          "candidates": [
+            "龙虾",
+            "鲤鱼跳龙门",
+            "龙舟",
+            "尼龙"
+          ]
+        },
+        {
+          "key": "艾|ài",
+          "title": "识字2",
+          "candidates": []
+        },
+        {
+          "key": "全|quán",
+          "title": "识字2",
+          "candidates": [
+            "俱全",
+            "一应俱全",
+            "完全",
+            "全神贯注"
+          ]
+        },
+        {
+          "key": "团|tuán",
+          "title": "识字2",
+          "candidates": [
+            "团圆",
+            "团结"
+          ]
+        },
+        {
+          "key": "真|zhēn",
+          "title": "识字2",
+          "candidates": [
+            "真棒",
+            "真诚",
+            "真假",
+            "认真"
+          ]
+        },
+        {
+          "key": "甲|jiǎ",
+          "title": "识字3",
+          "candidates": [
+            "甲骨文",
+            "指甲"
+          ]
+        },
+        {
+          "key": "骨|gǔ",
+          "title": "识字3",
+          "candidates": [
+            "颅骨",
+            "啃骨头",
+            "甲骨文",
+            "粉身碎骨"
+          ]
+        },
+        {
+          "key": "觉|jué",
+          "title": "识字3",
+          "candidates": [
+            "错觉",
+            "嗅觉",
+            "觉得",
+            "知觉"
+          ]
+        },
+        {
+          "key": "品|pǐn",
+          "title": "识字3",
+          "candidates": [
+            "作品",
+            "品德",
+            "贡品",
+            "食品"
+          ]
+        },
+        {
+          "key": "钱|qián",
+          "title": "识字3",
+          "candidates": [
+            "掏钱",
+            "榆钱",
+            "钱币",
+            "钱财"
+          ]
+        },
+        {
+          "key": "币|bì",
+          "title": "识字3",
+          "candidates": [
+            "钱币"
+          ]
+        },
+        {
+          "key": "与|yǔ",
+          "title": "识字3",
+          "candidates": [
+            "无与伦比"
+          ]
+        },
+        {
+          "key": "财|cái",
+          "title": "识字3",
+          "candidates": [
+            "钱财"
+          ]
+        },
+        {
+          "key": "食|shí",
+          "title": "识字4",
+          "candidates": [
+            "捕食",
+            "食堂",
+            "喂食",
+            "舔食"
+          ]
+        },
+        {
+          "key": "茄|qié",
+          "title": "识字4",
+          "candidates": [
+            "番茄",
+            "茄子"
+          ]
+        },
+        {
+          "key": "烤|kǎo",
+          "title": "识字4",
+          "candidates": [
+            "烤鸭"
+          ]
+        },
+        {
+          "key": "鸭|yā",
+          "title": "识字4",
+          "candidates": [
+            "鸭梨",
+            "烤鸭",
+            "野鸭"
+          ]
+        },
+        {
+          "key": "煮|zhǔ",
+          "title": "识字4",
+          "candidates": [
+            "水煮鱼"
+          ]
+        },
+        {
+          "key": "鸡|jī",
+          "title": "识字4",
+          "candidates": [
+            "公鸡",
+            "鸡爪",
+            "仔鸡",
+            "鸡皮疙瘩"
+          ]
+        },
+        {
+          "key": "蛋|dàn",
+          "title": "识字4",
+          "candidates": [
+            "蛋壳",
+            "蛋炒饭"
+          ]
+        },
+        {
+          "key": "饭|fàn",
+          "title": "识字4",
+          "candidates": [
+            "晚饭",
+            "饭勺",
+            "做饭",
+            "炒饭"
+          ]
+        },
+        {
+          "key": "辣|là",
+          "title": "语文园地三",
+          "candidates": [
+            "辣椒",
+            "热辣辣"
+          ]
+        },
+        {
+          "key": "乎|hū",
+          "title": "语文园地三",
+          "candidates": [
+            "似乎",
+            "黑乎乎",
+            "确乎",
+            "忘乎所以"
+          ]
+        },
+        {
+          "key": "梦|mèng",
+          "title": "第8课",
+          "candidates": [
+            "做梦",
+            "梦乡",
+            "梦幻"
+          ]
+        },
+        {
+          "key": "硬|yìng",
+          "title": "第8课",
+          "candidates": [
+            "坚硬",
+            "僵硬"
+          ]
+        },
+        {
+          "key": "铅|qiān",
+          "title": "第8课",
+          "candidates": [
+            "铅笔盒",
+            "铅笔"
+          ]
+        },
+        {
+          "key": "盒|hé",
+          "title": "第8课",
+          "candidates": [
+            "铅笔盒"
+          ]
+        },
+        {
+          "key": "森|sēn",
+          "title": "第8课",
+          "candidates": [
+            "森林"
+          ]
+        },
+        {
+          "key": "结|jiē",
+          "title": "第8课",
+          "candidates": [
+            "结实"
+          ]
+        },
+        {
+          "key": "苹|píng",
+          "title": "第8课",
+          "candidates": [
+            "苹果"
+          ]
+        },
+        {
+          "key": "精|jīng",
+          "title": "第8课",
+          "candidates": [
+            "精英",
+            "精彩",
+            "精辟",
+            "妖精"
+          ]
+        },
+        {
+          "key": "灵|líng",
+          "title": "第8课",
+          "candidates": [
+            "灵魂",
+            "精灵",
+            "灵巧",
+            "机灵"
+          ]
+        },
+        {
+          "key": "流|liú",
+          "title": "第8课",
+          "candidates": [
+            "漂流",
+            "洋流",
+            "川流",
+            "流传"
+          ]
+        },
+        {
+          "key": "匹|pǐ",
+          "title": "第9课",
+          "candidates": [
+            "布匹"
+          ]
+        },
+        {
+          "key": "妹|mèi",
+          "title": "第9课",
+          "candidates": [
+            "妹妹"
+          ]
+        },
+        {
+          "key": "波|bō",
+          "title": "第9课",
+          "candidates": [
+            "碧波荡漾",
+            "波纹",
+            "奔波",
+            "波涛"
+          ]
+        },
+        {
+          "key": "纹|wén",
+          "title": "第9课",
+          "candidates": [
+            "皱纹",
+            "波纹",
+            "花纹",
+            "条纹"
+          ]
+        },
+        {
+          "key": "恋|liàn",
+          "title": "第9课",
+          "candidates": [
+            "恋恋不舍",
+            "眷恋"
+          ]
+        },
+        {
+          "key": "舍|shě",
+          "title": "第9课",
+          "candidates": [
+            "恋恋不舍"
+          ]
+        },
+        {
+          "key": "求|qiú",
+          "title": "第9课",
+          "candidates": [
+            "求知欲",
+            "需求",
+            "哀求",
+            "请求"
+          ]
+        },
+        {
+          "key": "奔|bēn",
+          "title": "第9课",
+          "candidates": [
+            "骏马奔驰",
+            "奔驰",
+            "奔波",
+            "奔流不息"
+          ]
+        },
+        {
+          "key": "旁|páng",
+          "title": "第10课",
+          "candidates": [
+            "旁边"
+          ]
+        },
+        {
+          "key": "阿|ā",
+          "title": "第10课",
+          "candidates": [
+            "阿姨"
+          ]
+        },
+        {
+          "key": "姨|yí",
+          "title": "第10课",
+          "candidates": [
+            "阿姨"
+          ]
+        },
+        {
+          "key": "弟|dì",
+          "title": "第10课",
+          "candidates": [
+            "弟兄",
+            "弟弟",
+            "兄友弟恭"
+          ]
+        },
+        {
+          "key": "便|biàn",
+          "title": "第10课",
+          "candidates": [
+            "随便",
+            "方便",
+            "便利"
+          ]
+        },
+        {
+          "key": "教|jiāo",
+          "title": "第10课",
+          "candidates": []
+        },
+        {
+          "key": "拼|pīn",
+          "title": "第10课",
+          "candidates": [
+            "拼音"
+          ]
+        },
+        {
+          "key": "音|yīn",
+          "title": "第10课",
+          "candidates": [
+            "声音",
+            "谐音",
+            "噪音",
+            "嗓音"
+          ]
+        },
+        {
+          "key": "坦|tǎn",
+          "title": "语文园地四",
+          "candidates": [
+            "平坦"
+          ]
+        },
+        {
+          "key": "克|kè",
+          "title": "语文园地四",
+          "candidates": [
+            "巧克力"
+          ]
+        },
+        {
+          "key": "亡|wáng",
+          "title": "第11课",
+          "candidates": [
+            "灭亡",
+            "死亡",
+            "亡羊补牢",
+            "兴亡盛衰"
+          ]
+        },
+        {
+          "key": "补|bǔ",
+          "title": "第11课",
+          "candidates": [
+            "补缀",
+            "亡羊补牢",
+            "补充"
+          ]
+        },
+        {
+          "key": "牢|láo",
+          "title": "第11课",
+          "candidates": [
+            "亡羊补牢",
+            "牢固"
+          ]
+        },
+        {
+          "key": "劝|quàn",
+          "title": "第11课",
+          "candidates": [
+            "劝告"
+          ]
+        },
+        {
+          "key": "丢|diū",
+          "title": "第11课",
+          "candidates": [
+            "丢失"
+          ]
+        },
+        {
+          "key": "助|zhù",
+          "title": "第11课",
+          "candidates": [
+            "互助",
+            "援助",
+            "帮助",
+            "助威"
+          ]
+        },
+        {
+          "key": "坏|huài",
+          "title": "第11课",
+          "candidates": [
+            "气急败坏",
+            "毁坏"
+          ]
+        },
+        {
+          "key": "死|sǐ",
+          "title": "第11课",
+          "candidates": [
+            "死得其所"
+          ]
+        },
+        {
+          "key": "室|shì",
+          "title": "第12课",
+          "candidates": [
+            "寝室",
+            "浴室",
+            "教室"
+          ]
+        },
+        {
+          "key": "排|pái",
+          "title": "第12课",
+          "candidates": [
+            "排列",
+            "排队",
+            "排斥",
+            "排练"
+          ]
+        },
+        {
+          "key": "而|ér",
+          "title": "第12课",
+          "candidates": [
+            "而且",
+            "反而",
+            "幸而"
+          ]
+        },
+        {
+          "key": "实|shí",
+          "title": "第12课",
+          "candidates": [
+            "果实",
+            "诚实",
+            "切实",
+            "朴实"
+          ]
+        },
+        {
+          "key": "候|hòu",
+          "title": "第12课",
+          "candidates": [
+            "时候",
+            "侍候",
+            "等候"
+          ]
+        },
+        {
+          "key": "班|bān",
+          "title": "第12课",
+          "candidates": [
+            "班级",
+            "值班"
+          ]
+        },
+        {
+          "key": "哈|hā",
+          "title": "第12课",
+          "candidates": [
+            "哈哈大笑"
+          ]
+        },
+        {
+          "key": "举|jǔ",
+          "title": "第12课",
+          "candidates": [
+            "枚举",
+            "不胜枚举",
+            "选举",
+            "创举"
+          ]
+        },
+        {
+          "key": "愿|yuàn",
+          "title": "第13课",
+          "candidates": [
+            "志愿",
+            "但愿",
+            "愿意"
+          ]
+        },
+        {
+          "key": "意|yì",
+          "title": "第13课",
+          "candidates": [
+            "介意",
+            "意旨",
+            "旨意",
+            "示意"
+          ]
+        },
+        {
+          "key": "麦|mài",
+          "title": "第13课",
+          "candidates": [
+            "麦穗"
+          ]
+        },
+        {
+          "key": "伯|bó",
+          "title": "第13课",
+          "candidates": [
+            "伯伯"
+          ]
+        },
+        {
+          "key": "刻|kè",
+          "title": "第13课",
+          "candidates": [
+            "立刻",
+            "刻苦",
+            "深刻"
+          ]
+        },
+        {
+          "key": "突|tū",
+          "title": "第13课",
+          "candidates": [
+            "突破",
+            "突然",
+            "突击"
+          ]
+        },
+        {
+          "key": "然|rán",
+          "title": "第13课",
+          "candidates": [
+            "亦然",
+            "反之亦然",
+            "果然",
+            "依然"
+          ]
+        },
+        {
+          "key": "掉|diào",
+          "title": "第13课",
+          "candidates": [
+            "忘掉",
+            "脱掉",
+            "丢掉"
+          ]
+        },
+        {
+          "key": "商|shāng",
+          "title": "语文园地五",
+          "candidates": [
+            "商贾",
+            "富商大贾",
+            "商贩",
+            "商店"
+          ]
+        },
+        {
+          "key": "厦|shà",
+          "title": "语文园地五",
+          "candidates": []
+        },
+        {
+          "key": "洞|dòng",
+          "title": "语文园地五",
+          "candidates": [
+            "挖洞",
+            "钻洞",
+            "岩洞",
+            "漏洞"
+          ]
+        },
+        {
+          "key": "穴|xué",
+          "title": "语文园地五",
+          "candidates": []
+        },
+        {
+          "key": "窗|chuāng",
+          "title": "第14课",
+          "candidates": [
+            "玻璃窗",
+            "窗框",
+            "窗户"
+          ]
+        },
+        {
+          "key": "含|hán",
+          "title": "第14课",
+          "candidates": [
+            "含糊"
+          ]
+        },
+        {
+          "key": "岭|lǐng",
+          "title": "第14课",
+          "candidates": [
+            "峻岭",
+            "秦岭",
+            "崇山峻岭"
+          ]
+        },
+        {
+          "key": "泊|pō",
+          "title": "第14课",
+          "candidates": []
+        },
+        {
+          "key": "吴|wú",
+          "title": "第14课",
+          "candidates": []
+        },
+        {
+          "key": "净|jìng",
+          "title": "第14课",
+          "candidates": [
+            "干净"
+          ]
+        },
+        {
+          "key": "莲|lián",
+          "title": "第14课",
+          "candidates": [
+            "莲藕",
+            "莲蓉",
+            "莲蓬"
+          ]
+        },
+        {
+          "key": "映|yìng",
+          "title": "第14课",
+          "candidates": [
+            "倒映"
+          ]
+        },
+        {
+          "key": "乌|wū",
+          "title": "第15课",
+          "candidates": [
+            "乌云",
+            "乌鸦",
+            "乌黑"
+          ]
+        },
+        {
+          "key": "黑|hēi",
+          "title": "第15课",
+          "candidates": [
+            "黑板",
+            "抹黑",
+            "漆黑",
+            "黑沉沉"
+          ]
+        },
+        {
+          "key": "沉|chén",
+          "title": "第15课",
+          "candidates": [
+            "沉寂",
+            "沉默",
+            "沉闷",
+            "黑沉沉"
+          ]
+        },
+        {
+          "key": "压|yā",
+          "title": "第15课",
+          "candidates": [
+            "挤压",
+            "压抑",
+            "压迫"
+          ]
+        },
+        {
+          "key": "响|xiǎng",
+          "title": "第15课",
+          "candidates": [
+            "轰响",
+            "打响",
+            "响动",
+            "响亮"
+          ]
+        },
+        {
+          "key": "新|xīn",
+          "title": "第15课",
+          "candidates": [
+            "新年",
+            "新郎",
+            "新衣裳",
+            "清新"
+          ]
+        },
+        {
+          "key": "迎|yíng",
+          "title": "第15课",
+          "candidates": [
+            "迎面"
+          ]
+        },
+        {
+          "key": "扑|pū",
+          "title": "第15课",
+          "candidates": [
+            "芬芳扑鼻"
+          ]
+        },
+        {
+          "key": "指|zhǐ",
+          "title": "第16课",
+          "candidates": [
+            "指令",
+            "指甲",
+            "指挥",
+            "大拇指"
+          ]
+        },
+        {
+          "key": "南|nán",
+          "title": "第16课",
+          "candidates": [
+            "南宋",
+            "南端",
+            "指南针",
+            "走南闯北"
+          ]
+        },
+        {
+          "key": "针|zhēn",
+          "title": "第16课",
+          "candidates": [
+            "指南针",
+            "一针见血"
+          ]
+        },
+        {
+          "key": "帮|bāng",
+          "title": "第16课",
+          "candidates": [
+            "帮忙",
+            "腮帮子",
+            "帮助"
+          ]
+        },
+        {
+          "key": "忠|zhōng",
+          "title": "第16课",
+          "candidates": [
+            "忠实",
+            "忠诚",
+            "忠厚",
+            "忠于职守"
+          ]
+        },
+        {
+          "key": "导|dǎo",
+          "title": "第16课",
+          "candidates": [
+            "诱导",
+            "向导"
+          ]
+        },
+        {
+          "key": "永|yǒng",
+          "title": "第16课",
+          "candidates": [
+            "永恒",
+            "永远"
+          ]
+        },
+        {
+          "key": "夜|yè",
+          "title": "第16课",
+          "candidates": [
+            "深夜",
+            "夜晚",
+            "夜莺",
+            "熬夜"
+          ]
+        },
+        {
+          "key": "特|tè",
+          "title": "第16课",
+          "candidates": [
+            "特别",
+            "独特",
+            "特殊"
+          ]
+        },
+        {
+          "key": "积|jī",
+          "title": "第16课",
+          "candidates": [
+            "堆积",
+            "积雪",
+            "积累"
+          ]
+        },
+        {
+          "key": "航|háng",
+          "title": "第17课",
+          "candidates": [
+            "返航",
+            "航天员",
+            "巡航",
+            "航行"
+          ]
+        },
+        {
+          "key": "宇|yǔ",
+          "title": "第17课",
+          "candidates": [
+            "宇宙",
+            "宇宙飞船"
+          ]
+        },
+        {
+          "key": "宙|zhòu",
+          "title": "第17课",
+          "candidates": [
+            "宇宙",
+            "宇宙飞船"
+          ]
+        },
+        {
+          "key": "或|huò",
+          "title": "第17课",
+          "candidates": [
+            "或者"
+          ]
+        },
+        {
+          "key": "浴|yù",
+          "title": "第17课",
+          "candidates": [
+            "浴桶"
+          ]
+        },
+        {
+          "key": "桶|tǒng",
+          "title": "第17课",
+          "candidates": [
+            "浴桶"
+          ]
+        },
+        {
+          "key": "馆|guǎn",
+          "title": "语文园地六",
+          "candidates": [
+            "饭馆"
+          ]
+        },
+        {
+          "key": "所|suǒ",
+          "title": "语文园地六",
+          "candidates": [
+            "不知所措",
+            "所谓",
+            "匪夷所思",
+            "所以"
+          ]
+        },
+        {
+          "key": "扇|shàn",
+          "title": "第18课",
+          "candidates": [
+            "蒲扇",
+            "扇子"
+          ]
+        },
+        {
+          "key": "慢|màn",
+          "title": "第18课",
+          "candidates": [
+            "缓慢",
+            "慢慢"
+          ]
+        },
+        {
+          "key": "遇|yù",
+          "title": "第18课",
+          "candidates": [
+            "遭遇",
+            "遇到",
+            "机遇"
+          ]
+        },
+        {
+          "key": "定|dìng",
+          "title": "第18课",
+          "candidates": [
+            "规定",
+            "厘定",
+            "肯定",
+            "断定"
+          ]
+        },
+        {
+          "key": "病|bìng",
+          "title": "第18课",
+          "candidates": [
+            "毛病",
+            "养病",
+            "疾病",
+            "病灶"
+          ]
+        },
+        {
+          "key": "睡|shuì",
+          "title": "第18课",
+          "candidates": [
+            "睡眠",
+            "嗜睡",
+            "睡觉",
+            "沉睡"
+          ]
+        },
+        {
+          "key": "根|gēn",
+          "title": "第18课",
+          "candidates": [
+            "根据",
+            "根本"
+          ]
+        },
+        {
+          "key": "痛|tòng",
+          "title": "第18课",
+          "candidates": [
+            "疼痛",
+            "喉咙痛",
+            "头痛",
+            "痛苦"
+          ]
+        },
+        {
+          "key": "店|diàn",
+          "title": "第19课",
+          "candidates": [
+            "商店",
+            "旅店"
+          ]
+        },
+        {
+          "key": "决|jué",
+          "title": "第19课",
+          "candidates": [
+            "决定",
+            "决心"
+          ]
+        },
+        {
+          "key": "需|xū",
+          "title": "第19课",
+          "candidates": [
+            "需要"
+          ]
+        },
+        {
+          "key": "付|fù",
+          "title": "第19课",
+          "candidates": [
+            "交付"
+          ]
+        },
+        {
+          "key": "夫|fū",
+          "title": "第19课",
+          "candidates": [
+            "纤夫",
+            "夫妻",
+            "工夫",
+            "船夫"
+          ]
+        },
+        {
+          "key": "终|zhōng",
+          "title": "第19课",
+          "candidates": [
+            "终于",
+            "始终"
+          ]
+        },
+        {
+          "key": "期|qī",
+          "title": "第19课",
+          "candidates": [
+            "花蕾期",
+            "星期",
+            "学期",
+            "末期"
+          ]
+        },
+        {
+          "key": "蛙|wā",
+          "title": "第20课",
+          "candidates": [
+            "青蛙"
+          ]
+        },
+        {
+          "key": "卖|mài",
+          "title": "第20课",
+          "candidates": [
+            "卖萌",
+            "买卖"
+          ]
+        },
+        {
+          "key": "搬|bān",
+          "title": "第20课",
+          "candidates": [
+            "搬迁",
+            "搬运",
+            "搬家"
+          ]
+        },
+        {
+          "key": "倒|dào",
+          "title": "第20课",
+          "candidates": []
+        },
+        {
+          "key": "泉|quán",
+          "title": "第20课",
+          "candidates": [
+            "喷泉",
+            "泉水"
+          ]
+        },
+        {
+          "key": "破|pò",
+          "title": "第20课",
+          "candidates": [
+            "破烂",
+            "破绽",
+            "破裂",
+            "突破"
+          ]
+        },
+        {
+          "key": "泳|yǒng",
+          "title": "第20课",
+          "candidates": [
+            "游泳",
+            "蛙泳"
+          ]
+        },
+        {
+          "key": "仿|fǎng",
+          "title": "第21课",
+          "candidates": [
+            "仿佛",
+            "仿照"
+          ]
+        },
+        {
+          "key": "佛|fú",
+          "title": "第21课",
+          "candidates": [
+            "仿佛"
+          ]
+        },
+        {
+          "key": "并|bìng",
+          "title": "第21课",
+          "candidates": [
+            "齐头并进",
+            "相提并论"
+          ]
+        },
+        {
+          "key": "任|rèn",
+          "title": "第21课",
+          "candidates": [
+            "任务",
+            "任何",
+            "责任"
+          ]
+        },
+        {
+          "key": "何|hé",
+          "title": "第21课",
+          "candidates": [
+            "何曾",
+            "奈何",
+            "任何",
+            "无可奈何"
+          ]
+        },
+        {
+          "key": "纺|fǎng",
+          "title": "第21课",
+          "candidates": [
+            "纺织"
+          ]
+        },
+        {
+          "key": "织|zhī",
+          "title": "第21课",
+          "candidates": [
+            "组织",
+            "纺织"
+          ]
+        },
+        {
+          "key": "迟|chí",
+          "title": "第21课",
+          "candidates": [
+            "迟到",
+            "迟钝",
+            "迟延"
+          ]
+        },
+        {
+          "key": "校|xiào",
+          "title": "语文园地七",
+          "candidates": [
+            "校园",
+            "该校",
+            "学校"
+          ]
+        },
+        {
+          "key": "内|nèi",
+          "title": "语文园地七",
+          "candidates": [
+            "之内",
+            "内脏",
+            "内容",
+            "省内"
+          ]
+        },
+        {
+          "key": "射|shè",
+          "title": "第22课",
+          "candidates": [
+            "射箭",
+            "照射",
+            "射击",
+            "喷射"
+          ]
+        },
+        {
+          "key": "最|zuì",
+          "title": "第22课",
+          "candidates": [
+            "最初",
+            "最后",
+            "最好"
+          ]
+        },
+        {
+          "key": "始|shǐ",
+          "title": "第22课",
+          "candidates": [
+            "开始",
+            "始终"
+          ]
+        },
+        {
+          "key": "换|huàn",
+          "title": "第22课",
+          "candidates": [
+            "兑换",
+            "撤换"
+          ]
+        },
+        {
+          "key": "值|zhí",
+          "title": "第22课",
+          "candidates": [
+            "充值",
+            "值日",
+            "值班"
+          ]
+        },
+        {
+          "key": "弓|gōng",
+          "title": "第22课",
+          "candidates": []
+        },
+        {
+          "key": "炎|yán",
+          "title": "第22课",
+          "candidates": [
+            "炎热"
+          ]
+        },
+        {
+          "key": "此|cǐ",
+          "title": "第22课",
+          "candidates": [
+            "因此",
+            "从此",
+            "彼此"
+          ]
+        },
+        {
+          "key": "忽|hū",
+          "title": "第23课",
+          "candidates": [
+            "忽然"
+          ]
+        },
+        {
+          "key": "件|jiàn",
+          "title": "第23课",
+          "candidates": [
+            "条件",
+            "文件夹"
+          ]
+        },
+        {
+          "key": "启|qǐ",
+          "title": "第23课",
+          "candidates": [
+            "启迪智慧",
+            "启发",
+            "启迪"
+          ]
+        },
+        {
+          "key": "召|zhào",
+          "title": "第23课",
+          "candidates": [
+            "号召",
+            "召集"
+          ]
+        },
+        {
+          "key": "众|zhòng",
+          "title": "第23课",
+          "candidates": [
+            "群众",
+            "民众",
+            "众星拱月"
+          ]
+        },
+        {
+          "key": "完|wán",
+          "title": "第23课",
+          "candidates": [
+            "完成",
+            "完整",
+            "完全",
+            "完毕"
+          ]
+        },
+        {
+          "key": "却|què",
+          "title": "第23课",
+          "candidates": [
+            "忘却"
+          ]
+        },
+        {
+          "key": "供|gōng",
+          "title": "第23课",
+          "candidates": [
+            "提供",
+            "供应"
+          ]
+        },
+        {
+          "key": "洪|hóng",
+          "title": "第24课",
+          "candidates": [
+            "洪水",
+            "洪亮"
+          ]
+        },
+        {
+          "key": "姓|xìng",
+          "title": "第24课",
+          "candidates": [
+            "姓名",
+            "姓邓",
+            "姓吴",
+            "姓赵"
+          ]
+        },
+        {
+          "key": "带|dài",
+          "title": "第24课",
+          "candidates": [
+            "亚热带",
+            "带领",
+            "腰带",
+            "鞋带"
+          ]
+        },
+        {
+          "key": "灾|zāi",
+          "title": "第24课",
+          "candidates": [
+            "灾难"
+          ]
+        },
+        {
+          "key": "必|bì",
+          "title": "第24课",
+          "candidates": [
+            "未必",
+            "必须"
+          ]
+        },
+        {
+          "key": "须|xū",
+          "title": "第24课",
+          "candidates": [
+            "必须"
+          ]
+        },
+        {
+          "key": "仍|réng",
+          "title": "第24课",
+          "candidates": [
+            "仍然",
+            "仍旧"
+          ]
+        },
+        {
+          "key": "继|jì",
+          "title": "第24课",
+          "candidates": [
+            "继续"
+          ]
+        },
+        {
+          "key": "续|xù",
+          "title": "第24课",
+          "candidates": [
+            "连续",
+            "继续",
+            "陆续",
+            "持续"
+          ]
+        },
+        {
+          "key": "业|yè",
+          "title": "第24课",
+          "candidates": [
+            "渔业",
+            "作业",
+            "就业",
+            "业余"
+          ]
+        },
+        {
+          "key": "灿|càn",
+          "title": "语文园地八",
+          "candidates": [
+            "金灿灿",
+            "灿烂"
+          ]
+        },
+        {
+          "key": "烂|làn",
+          "title": "语文园地八",
+          "candidates": [
+            "灿烂夺目",
+            "腐烂",
+            "灿烂"
+          ]
+        }
+      ]
+    },
+    {
+      "book": "2026-3-lower",
+      "missing": [
+        {
+          "key": "融|róng",
+          "title": "第1课",
+          "candidates": [
+            "融化"
+          ]
+        },
+        {
+          "key": "燕|yàn",
+          "title": "第1课",
+          "candidates": [
+            "燕子"
+          ]
+        },
+        {
+          "key": "鸳|yuān",
+          "title": "第1课",
+          "candidates": [
+            "鸳鸯",
+            "鸳鸯戏水"
+          ]
+        },
+        {
+          "key": "鸯|yāng",
+          "title": "第1课",
+          "candidates": [
+            "鸳鸯",
+            "鸳鸯戏水"
+          ]
+        },
+        {
+          "key": "惠|huì",
+          "title": "第1课",
+          "candidates": [
+            "恩惠"
+          ]
+        },
+        {
+          "key": "崇|chóng",
+          "title": "第1课",
+          "candidates": [
+            "崇山峻岭"
+          ]
+        },
+        {
+          "key": "芽|yá",
+          "title": "第1课",
+          "candidates": [
+            "萌芽",
+            "嫩芽"
+          ]
+        },
+        {
+          "key": "梅|méi",
+          "title": "第1课",
+          "candidates": [
+            "梅花鹿",
+            "梅花"
+          ]
+        },
+        {
+          "key": "泛|fàn",
+          "title": "第1课",
+          "candidates": [
+            "泛滥"
+          ]
+        },
+        {
+          "key": "减|jiǎn",
+          "title": "第1课",
+          "candidates": [
+            "减速",
+            "减少",
+            "减轻"
+          ]
+        },
+        {
+          "key": "凑|còu",
+          "title": "第2课",
+          "candidates": []
+        },
+        {
+          "key": "泼|pō",
+          "title": "第2课",
+          "candidates": [
+            "活泼"
+          ]
+        },
+        {
+          "key": "集|jí",
+          "title": "第2课",
+          "candidates": [
+            "密集",
+            "赶集",
+            "集中",
+            "聚集"
+          ]
+        },
+        {
+          "key": "偶|ǒu",
+          "title": "第2课",
+          "candidates": [
+            "偶尔",
+            "偶然"
+          ]
+        },
+        {
+          "key": "尔|ěr",
+          "title": "第2课",
+          "candidates": [
+            "偶尔"
+          ]
+        },
+        {
+          "key": "沾|zhān",
+          "title": "第2课",
+          "candidates": []
+        },
+        {
+          "key": "闲|xián",
+          "title": "第2课",
+          "candidates": [
+            "闲暇",
+            "闲逛",
+            "闲聊",
+            "闲散"
+          ]
+        },
+        {
+          "key": "纤|xiān",
+          "title": "第2课",
+          "candidates": [
+            "纤细"
+          ]
+        },
+        {
+          "key": "杆|gān",
+          "title": "第2课",
+          "candidates": [
+            "栏杆",
+            "桅杆"
+          ]
+        },
+        {
+          "key": "荷|hé",
+          "title": "第3课",
+          "candidates": [
+            "荷塘",
+            "荷花",
+            "荷叶"
+          ]
+        },
+        {
+          "key": "紧|jǐn",
+          "title": "第3课",
+          "candidates": [
+            "紧急",
+            "紧密",
+            "紧张",
+            "抓紧"
+          ]
+        },
+        {
+          "key": "挨|āi",
+          "title": "第3课",
+          "candidates": []
+        },
+        {
+          "key": "莲|lián",
+          "title": "第3课",
+          "candidates": [
+            "莲藕",
+            "莲蓉",
+            "莲蓬"
+          ]
+        },
+        {
+          "key": "胀|zhàng",
+          "title": "第3课",
+          "candidates": [
+            "膨胀",
+            "肿胀"
+          ]
+        },
+        {
+          "key": "裂|liè",
+          "title": "第3课",
+          "candidates": [
+            "撕裂",
+            "裂缝",
+            "破裂",
+            "分裂"
+          ]
+        },
+        {
+          "key": "势|shì",
+          "title": "第3课",
+          "candidates": [
+            "姿势",
+            "气势",
+            "势不可当",
+            "局势"
+          ]
+        },
+        {
+          "key": "微|wēi",
+          "title": "第3课",
+          "candidates": [
+            "微风",
+            "微笑",
+            "轻微",
+            "见微知著"
+          ]
+        },
+        {
+          "key": "记|jì",
+          "title": "第3课",
+          "candidates": [
+            "忘记",
+            "记账",
+            "记号",
+            "记录"
+          ]
+        },
+        {
+          "key": "匕|bǐ",
+          "title": "语文园地一",
+          "candidates": [
+            "匕首"
+          ]
+        },
+        {
+          "key": "忆|yì",
+          "title": "语文园地一",
+          "candidates": []
+        },
+        {
+          "key": "艺|yì",
+          "title": "语文园地一",
+          "candidates": [
+            "综艺",
+            "手艺",
+            "文艺",
+            "武艺"
+          ]
+        },
+        {
+          "key": "乞|qǐ",
+          "title": "语文园地一",
+          "candidates": []
+        },
+        {
+          "key": "冗|rǒng",
+          "title": "语文园地一",
+          "candidates": [
+            "冗长"
+          ]
+        },
+        {
+          "key": "犬|quǎn",
+          "title": "语文园地一",
+          "candidates": [
+            "军犬"
+          ]
+        },
+        {
+          "key": "税|shuì",
+          "title": "语文园地一",
+          "candidates": []
+        },
+        {
+          "key": "兑|duì",
+          "title": "语文园地一",
+          "candidates": [
+            "兑换"
+          ]
+        },
+        {
+          "key": "执|zhí",
+          "title": "语文园地一",
+          "candidates": [
+            "争执",
+            "执行"
+          ]
+        },
+        {
+          "key": "守|shǒu",
+          "title": "第5课",
+          "candidates": [
+            "留守",
+            "魂不守舍",
+            "忠于职守"
+          ]
+        },
+        {
+          "key": "株|zhū",
+          "title": "第5课",
+          "candidates": []
+        },
+        {
+          "key": "待|dài",
+          "title": "第5课",
+          "candidates": [
+            "等待",
+            "坐以待毙"
+          ]
+        },
+        {
+          "key": "宋|sòng",
+          "title": "第5课",
+          "candidates": []
+        },
+        {
+          "key": "耕|gēng",
+          "title": "第5课",
+          "candidates": [
+            "耕耘",
+            "辛勤耕耘"
+          ]
+        },
+        {
+          "key": "折|zhé",
+          "title": "第5课",
+          "candidates": []
+        },
+        {
+          "key": "颈|jǐng",
+          "title": "第5课",
+          "candidates": []
+        },
+        {
+          "key": "释|shì",
+          "title": "第5课",
+          "candidates": [
+            "解释"
+          ]
+        },
+        {
+          "key": "其|qí",
+          "title": "第5课",
+          "candidates": [
+            "与其",
+            "郑重其事",
+            "尤其",
+            "其中"
+          ]
+        },
+        {
+          "key": "复|fù",
+          "title": "第5课",
+          "candidates": [
+            "复苏",
+            "康复",
+            "复杂",
+            "恢复"
+          ]
+        },
+        {
+          "key": "装|zhuāng",
+          "title": "第6课",
+          "candidates": [
+            "假装",
+            "戎装",
+            "武装",
+            "装傻"
+          ]
+        },
+        {
+          "key": "驯|xùn",
+          "title": "第6课",
+          "candidates": [
+            "驯良"
+          ]
+        },
+        {
+          "key": "良|liáng",
+          "title": "第6课",
+          "candidates": [
+            "优良",
+            "驯良",
+            "善良"
+          ]
+        },
+        {
+          "key": "善|shàn",
+          "title": "第6课",
+          "candidates": [
+            "妥善",
+            "善哉",
+            "善良"
+          ]
+        },
+        {
+          "key": "伸|shēn",
+          "title": "第6课",
+          "candidates": [
+            "延伸"
+          ]
+        },
+        {
+          "key": "谢|xiè",
+          "title": "第6课",
+          "candidates": [
+            "鸣谢",
+            "答谢",
+            "酬谢"
+          ]
+        },
+        {
+          "key": "尘|chén",
+          "title": "第6课",
+          "candidates": [
+            "灰尘",
+            "尘土"
+          ]
+        },
+        {
+          "key": "凶|xiōng",
+          "title": "第6课",
+          "candidates": [
+            "凶恶",
+            "凶狠"
+          ]
+        },
+        {
+          "key": "恶|è",
+          "title": "第6课",
+          "candidates": [
+            "凶恶",
+            "恶狠狠",
+            "丑恶"
+          ]
+        },
+        {
+          "key": "狠|hěn",
+          "title": "第6课",
+          "candidates": [
+            "恶狠狠",
+            "凶狠"
+          ]
+        },
+        {
+          "key": "猎|liè",
+          "title": "第6课",
+          "candidates": [
+            "猎人"
+          ]
+        },
+        {
+          "key": "拾|shí",
+          "title": "第6课",
+          "candidates": [
+            "捡拾",
+            "收拾"
+          ]
+        },
+        {
+          "key": "渴|kě",
+          "title": "第7课",
+          "candidates": []
+        },
+        {
+          "key": "喝|hē",
+          "title": "第7课",
+          "candidates": []
+        },
+        {
+          "key": "匀|yún",
+          "title": "第7课",
+          "candidates": [
+            "均匀",
+            "拌匀",
+            "匀称"
+          ]
+        },
+        {
+          "key": "称|chèn",
+          "title": "第7课",
+          "candidates": [
+            "匀称"
+          ]
+        },
+        {
+          "key": "致|zhì",
+          "title": "第7课",
+          "candidates": [
+            "别致",
+            "兴致勃勃",
+            "精致"
+          ]
+        },
+        {
+          "key": "束|shù",
+          "title": "第7课",
+          "candidates": [
+            "束缚",
+            "拘束"
+          ]
+        },
+        {
+          "key": "配|pèi",
+          "title": "第7课",
+          "candidates": [
+            "配合"
+          ]
+        },
+        {
+          "key": "甩|shuǎi",
+          "title": "第7课",
+          "candidates": []
+        },
+        {
+          "key": "丧|sàng",
+          "title": "第7课",
+          "candidates": [
+            "感到沮丧",
+            "灰心丧气",
+            "垂头丧气"
+          ]
+        },
+        {
+          "key": "追|zhuī",
+          "title": "第7课",
+          "candidates": [
+            "追逐",
+            "追究",
+            "追忆"
+          ]
+        },
+        {
+          "key": "扯|chě",
+          "title": "第7课",
+          "candidates": []
+        },
+        {
+          "key": "叹|tàn",
+          "title": "第7课",
+          "candidates": [
+            "唉声叹气",
+            "叹气",
+            "感叹",
+            "叹为观止"
+          ]
+        },
+        {
+          "key": "逃|táo",
+          "title": "第7课",
+          "candidates": [
+            "逃窜",
+            "逃生",
+            "逃命",
+            "逃跑"
+          ]
+        },
+        {
+          "key": "官|guān",
+          "title": "第9课",
+          "candidates": [
+            "器官"
+          ]
+        },
+        {
+          "key": "否|fǒu",
+          "title": "第9课",
+          "candidates": [
+            "是否"
+          ]
+        },
+        {
+          "key": "窃|qiè",
+          "title": "第9课",
+          "candidates": [
+            "窃窃私语"
+          ]
+        },
+        {
+          "key": "私|sī",
+          "title": "第9课",
+          "candidates": [
+            "窃窃私语",
+            "自私",
+            "私自",
+            "无私"
+          ]
+        },
+        {
+          "key": "汪|wāng",
+          "title": "第9课",
+          "candidates": []
+        },
+        {
+          "key": "危|wēi",
+          "title": "第9课",
+          "candidates": [
+            "危险"
+          ]
+        },
+        {
+          "key": "险|xiǎn",
+          "title": "第9课",
+          "candidates": [
+            "冒险",
+            "探险",
+            "险峻",
+            "危险"
+          ]
+        },
+        {
+          "key": "肌|jī",
+          "title": "第9课",
+          "candidates": [
+            "肌肉"
+          ]
+        },
+        {
+          "key": "攻|gōng",
+          "title": "第9课",
+          "candidates": [
+            "攻击"
+          ]
+        },
+        {
+          "key": "免|miǎn",
+          "title": "第9课",
+          "candidates": [
+            "罢免",
+            "免费",
+            "避免"
+          ]
+        },
+        {
+          "key": "费|fèi",
+          "title": "第9课",
+          "candidates": [
+            "耗费",
+            "免费"
+          ]
+        },
+        {
+          "key": "异|yì",
+          "title": "第9课",
+          "candidates": [
+            "讶异",
+            "差异",
+            "奇异",
+            "奇珍异宝"
+          ]
+        },
+        {
+          "key": "达|dá",
+          "title": "第9课",
+          "candidates": [
+            "欲速则不达",
+            "通情达理"
+          ]
+        },
+        {
+          "key": "验|yàn",
+          "title": "第10课",
+          "candidates": [
+            "实验",
+            "验证",
+            "经验"
+          ]
+        },
+        {
+          "key": "证|zhèng",
+          "title": "第10课",
+          "candidates": [
+            "验证",
+            "证明",
+            "罪证",
+            "证据"
+          ]
+        },
+        {
+          "key": "阻|zǔ",
+          "title": "第10课",
+          "candidates": [
+            "阻挡",
+            "阻挠",
+            "阻拦",
+            "阻力"
+          ]
+        },
+        {
+          "key": "约|yuē",
+          "title": "第10课",
+          "candidates": [
+            "隐约",
+            "邀约",
+            "大约",
+            "隐隐约约"
+          ]
+        },
+        {
+          "key": "括|kuò",
+          "title": "第10课",
+          "candidates": [
+            "包括"
+          ]
+        },
+        {
+          "key": "检|jiǎn",
+          "title": "第10课",
+          "candidates": [
+            "检查",
+            "检阅"
+          ]
+        },
+        {
+          "key": "查|chá",
+          "title": "第10课",
+          "candidates": [
+            "普查",
+            "考查",
+            "检查"
+          ]
+        },
+        {
+          "key": "述|shù",
+          "title": "第10课",
+          "candidates": [
+            "综述",
+            "描述",
+            "述说"
+          ]
+        },
+        {
+          "key": "误|wù",
+          "title": "第10课",
+          "candidates": [
+            "错误",
+            "耽误",
+            "无误"
+          ]
+        },
+        {
+          "key": "逆|nì",
+          "title": "第10课",
+          "candidates": [
+            "逆风"
+          ]
+        },
+        {
+          "key": "陌|mò",
+          "title": "第10课",
+          "candidates": [
+            "陌生"
+          ]
+        },
+        {
+          "key": "旧|jiù",
+          "title": "第12课",
+          "candidates": [
+            "旧址",
+            "仍旧"
+          ]
+        },
+        {
+          "key": "符|fú",
+          "title": "第12课",
+          "candidates": []
+        },
+        {
+          "key": "牧|mù",
+          "title": "第12课",
+          "candidates": [
+            "畜牧"
+          ]
+        },
+        {
+          "key": "纷|fēn",
+          "title": "第12课",
+          "candidates": [
+            "纷纷"
+          ]
+        },
+        {
+          "key": "魂|hún",
+          "title": "第12课",
+          "candidates": []
+        },
+        {
+          "key": "借|jiè",
+          "title": "第12课",
+          "candidates": [
+            "借贷"
+          ]
+        },
+        {
+          "key": "酒|jiǔ",
+          "title": "第12课",
+          "candidates": []
+        },
+        {
+          "key": "遥|yáo",
+          "title": "第12课",
+          "candidates": [
+            "遥控"
+          ]
+        },
+        {
+          "key": "兄|xiōng",
+          "title": "第12课",
+          "candidates": [
+            "兄友弟恭"
+          ]
+        },
+        {
+          "key": "逢|féng",
+          "title": "第12课",
+          "candidates": [
+            "萍水相逢"
+          ]
+        },
+        {
+          "key": "佳|jiā",
+          "title": "第12课",
+          "candidates": []
+        },
+        {
+          "key": "倍|bèi",
+          "title": "第12课",
+          "candidates": []
+        },
+        {
+          "key": "伟|wěi",
+          "title": "第13课",
+          "candidates": [
+            "雄伟",
+            "伟大",
+            "宏伟"
+          ]
+        },
+        {
+          "key": "贡|gòng",
+          "title": "第13课",
+          "candidates": [
+            "贡献"
+          ]
+        },
+        {
+          "key": "献|xiàn",
+          "title": "第13课",
+          "candidates": [
+            "献血",
+            "奉献",
+            "贡献",
+            "文献"
+          ]
+        },
+        {
+          "key": "创|chuàng",
+          "title": "第13课",
+          "candidates": [
+            "创造",
+            "创举"
+          ]
+        },
+        {
+          "key": "尤|yóu",
+          "title": "第13课",
+          "candidates": [
+            "尤其"
+          ]
+        },
+        {
+          "key": "存|cún",
+          "title": "第13课",
+          "candidates": [
+            "保存"
+          ]
+        },
+        {
+          "key": "累|lěi",
+          "title": "第13课",
+          "candidates": [
+            "积累"
+          ]
+        },
+        {
+          "key": "改|gǎi",
+          "title": "第13课",
+          "candidates": [
+            "改变",
+            "修改",
+            "改进"
+          ]
+        },
+        {
+          "key": "价|jià",
+          "title": "第13课",
+          "candidates": [
+            "跌价",
+            "价格",
+            "价钱",
+            "无价之宝"
+          ]
+        },
+        {
+          "key": "促|cù",
+          "title": "第13课",
+          "candidates": [
+            "督促",
+            "促进",
+            "局促",
+            "催促"
+          ]
+        },
+        {
+          "key": "社|shè",
+          "title": "第13课",
+          "candidates": [
+            "社会"
+          ]
+        },
+        {
+          "key": "赵|zhào",
+          "title": "第14课",
+          "candidates": []
+        },
+        {
+          "key": "桥|qiáo",
+          "title": "第14课",
+          "candidates": [
+            "搭桥",
+            "吊桥",
+            "桥梁",
+            "鹊桥"
+          ]
+        },
+        {
+          "key": "拱|gǒng",
+          "title": "第14课",
+          "candidates": [
+            "众星拱月"
+          ]
+        },
+        {
+          "key": "济|jì",
+          "title": "第14课",
+          "candidates": []
+        },
+        {
+          "key": "设|shè",
+          "title": "第14课",
+          "candidates": [
+            "铺设",
+            "设计",
+            "设法",
+            "建设"
+          ]
+        },
+        {
+          "key": "计|jì",
+          "title": "第14课",
+          "candidates": [
+            "估计",
+            "设计",
+            "预计",
+            "不计其数"
+          ]
+        },
+        {
+          "key": "史|shǐ",
+          "title": "第14课",
+          "candidates": [
+            "历史"
+          ]
+        },
+        {
+          "key": "坚|jiān",
+          "title": "第14课",
+          "candidates": [
+            "坚刚",
+            "坚持",
+            "坚强",
+            "坚固"
+          ]
+        },
+        {
+          "key": "固|gù",
+          "title": "第14课",
+          "candidates": [
+            "坚固",
+            "牢固"
+          ]
+        },
+        {
+          "key": "且|qiě",
+          "title": "第14课",
+          "candidates": [
+            "尚且",
+            "而且"
+          ]
+        },
+        {
+          "key": "栏|lán",
+          "title": "第14课",
+          "candidates": [
+            "栏杆"
+          ]
+        },
+        {
+          "key": "贵|guì",
+          "title": "第14课",
+          "candidates": [
+            "宝贵",
+            "可贵"
+          ]
+        },
+        {
+          "key": "历|lì",
+          "title": "第14课",
+          "candidates": [
+            "履历",
+            "历史"
+          ]
+        },
+        {
+          "key": "援|yuán",
+          "title": "语文园地四",
+          "candidates": [
+            "援助"
+          ]
+        },
+        {
+          "key": "掷|zhì",
+          "title": "语文园地四",
+          "candidates": [
+            "投掷"
+          ]
+        },
+        {
+          "key": "投|tóu",
+          "title": "语文园地四",
+          "candidates": [
+            "投降",
+            "投篮",
+            "投掷"
+          ]
+        },
+        {
+          "key": "捞|lāo",
+          "title": "语文园地四",
+          "candidates": [
+            "捕捞",
+            "打捞"
+          ]
+        },
+        {
+          "key": "拆|chāi",
+          "title": "语文园地四",
+          "candidates": [
+            "拆分",
+            "拆除"
+          ]
+        },
+        {
+          "key": "搅|jiǎo",
+          "title": "语文园地四",
+          "candidates": [
+            "搅拌",
+            "搅动",
+            "搅和"
+          ]
+        },
+        {
+          "key": "拓|tuò",
+          "title": "语文园地四",
+          "candidates": [
+            "拓展"
+          ]
+        },
+        {
+          "key": "萝|luó",
+          "title": "第16课",
+          "candidates": [
+            "萝卜",
+            "胡萝卜",
+            "藤萝"
+          ]
+        },
+        {
+          "key": "卜|bǔ",
+          "title": "第16课",
+          "candidates": [
+            "占卜"
+          ]
+        },
+        {
+          "key": "愁|chóu",
+          "title": "第16课",
+          "candidates": [
+            "发愁"
+          ]
+        },
+        {
+          "key": "浓|nóng",
+          "title": "第16课",
+          "candidates": [
+            "浓郁",
+            "浓密",
+            "浓重"
+          ]
+        },
+        {
+          "key": "够|gòu",
+          "title": "第16课",
+          "candidates": [
+            "能够",
+            "足够"
+          ]
+        },
+        {
+          "key": "确|què",
+          "title": "第16课",
+          "candidates": [
+            "准确",
+            "确凿",
+            "确定",
+            "确实"
+          ]
+        },
+        {
+          "key": "段|duàn",
+          "title": "第16课",
+          "candidates": [
+            "身段"
+          ]
+        },
+        {
+          "key": "系|jì",
+          "title": "第16课",
+          "candidates": []
+        },
+        {
+          "key": "姐|jiě",
+          "title": "第16课",
+          "candidates": []
+        },
+        {
+          "key": "希|xī",
+          "title": "第17课",
+          "candidates": [
+            "希望"
+          ]
+        },
+        {
+          "key": "担|dān",
+          "title": "第17课",
+          "candidates": [
+            "担心"
+          ]
+        },
+        {
+          "key": "容|róng",
+          "title": "第17课",
+          "candidates": [
+            "容易",
+            "容量"
+          ]
+        },
+        {
+          "key": "易|yì",
+          "title": "第17课",
+          "candidates": [
+            "容易",
+            "轻易"
+          ]
+        },
+        {
+          "key": "震|zhèn",
+          "title": "第17课",
+          "candidates": [
+            "震荡",
+            "震天动地"
+          ]
+        },
+        {
+          "key": "零|líng",
+          "title": "第17课",
+          "candidates": [
+            "孤零零",
+            "丁零"
+          ]
+        },
+        {
+          "key": "肠|cháng",
+          "title": "第17课",
+          "candidates": [
+            "肠胃",
+            "香肠"
+          ]
+        },
+        {
+          "key": "麻|má",
+          "title": "第17课",
+          "candidates": [
+            "芝麻油",
+            "麻烦",
+            "密密麻麻",
+            "麻雀"
+          ]
+        },
+        {
+          "key": "烦|fán",
+          "title": "第17课",
+          "candidates": [
+            "麻烦",
+            "厌烦"
+          ]
+        },
+        {
+          "key": "垂|chuí",
+          "title": "第18课",
+          "candidates": [
+            "垂钓",
+            "垂柳",
+            "垂头丧气"
+          ]
+        },
+        {
+          "key": "染|rǎn",
+          "title": "第18课",
+          "candidates": [
+            "沾染",
+            "浸染",
+            "染缸"
+          ]
+        },
+        {
+          "key": "碎|suì",
+          "title": "第18课",
+          "candidates": [
+            "摔碎",
+            "琐碎",
+            "粉碎",
+            "粉身碎骨"
+          ]
+        },
+        {
+          "key": "翅|chì",
+          "title": "第18课",
+          "candidates": [
+            "翅膀"
+          ]
+        },
+        {
+          "key": "膀|páng",
+          "title": "第18课",
+          "candidates": [
+            "翅膀"
+          ]
+        },
+        {
+          "key": "拔|bá",
+          "title": "第18课",
+          "candidates": []
+        },
+        {
+          "key": "浪|làng",
+          "title": "第18课",
+          "candidates": [
+            "惊涛骇浪",
+            "浪花",
+            "风平浪静",
+            "浪漫"
+          ]
+        },
+        {
+          "key": "抖|dǒu",
+          "title": "第18课",
+          "candidates": [
+            "颤抖",
+            "抖动",
+            "发抖"
+          ]
+        },
+        {
+          "key": "皂|zào",
+          "title": "第19课",
+          "candidates": [
+            "肥皂泡"
+          ]
+        },
+        {
+          "key": "泡|pào",
+          "title": "第19课",
+          "candidates": [
+            "泡沫",
+            "肥皂泡"
+          ]
+        },
+        {
+          "key": "类|lèi",
+          "title": "第19课",
+          "candidates": [
+            "另类",
+            "种类",
+            "类似"
+          ]
+        },
+        {
+          "key": "弄|nòng",
+          "title": "第19课",
+          "candidates": [
+            "拨弄",
+            "弄巧成拙"
+          ]
+        },
+        {
+          "key": "溶|róng",
+          "title": "第19课",
+          "candidates": [
+            "溶剂",
+            "溶化"
+          ]
+        },
+        {
+          "key": "套|tào",
+          "title": "第19课",
+          "candidates": [
+            "枕套",
+            "一副手套"
+          ]
+        },
+        {
+          "key": "悠|yōu",
+          "title": "第19课",
+          "candidates": [
+            "悠然"
+          ]
+        },
+        {
+          "key": "若|ruò",
+          "title": "第19课",
+          "candidates": [
+            "恍若",
+            "倘若",
+            "若有所思"
+          ]
+        },
+        {
+          "key": "骄|jiāo",
+          "title": "第19课",
+          "candidates": [
+            "骄傲"
+          ]
+        },
+        {
+          "key": "傲|ào",
+          "title": "第19课",
+          "candidates": [
+            "骄傲",
+            "高傲"
+          ]
+        },
+        {
+          "key": "雀|què",
+          "title": "第20课",
+          "candidates": [
+            "孔雀",
+            "鸦雀无声",
+            "麻雀"
+          ]
+        },
+        {
+          "key": "养|yǎng",
+          "title": "第20课",
+          "candidates": [
+            "培养",
+            "养病",
+            "喂养",
+            "养殖"
+          ]
+        },
+        {
+          "key": "粉|fěn",
+          "title": "第20课",
+          "candidates": [
+            "藕粉",
+            "粉红",
+            "粉刷",
+            "粉碎"
+          ]
+        },
+        {
+          "key": "惹|rě",
+          "title": "第20课",
+          "candidates": []
+        },
+        {
+          "key": "仰|yǎng",
+          "title": "第20课",
+          "candidates": [
+            "仰望"
+          ]
+        },
+        {
+          "key": "粒|lì",
+          "title": "第20课",
+          "candidates": [
+            "颗粒"
+          ]
+        },
+        {
+          "key": "遍|biàn",
+          "title": "第20课",
+          "candidates": []
+        },
+        {
+          "key": "者|zhě",
+          "title": "第20课",
+          "candidates": [
+            "读者",
+            "或者"
+          ]
+        },
+        {
+          "key": "惜|xī",
+          "title": "第20课",
+          "candidates": [
+            "可惜",
+            "不惜"
+          ]
+        },
+        {
+          "key": "旭|xù",
+          "title": "语文园地六",
+          "candidates": [
+            "旭日"
+          ]
+        },
+        {
+          "key": "屿|yǔ",
+          "title": "语文园地六",
+          "candidates": [
+            "岛屿"
+          ]
+        },
+        {
+          "key": "舰|jiàn",
+          "title": "语文园地六",
+          "candidates": [
+            "军舰"
+          ]
+        },
+        {
+          "key": "锚|máo",
+          "title": "语文园地六",
+          "candidates": [
+            "铁锚"
+          ]
+        },
+        {
+          "key": "瞭|liào",
+          "title": "语文园地六",
+          "candidates": [
+            "瞭望"
+          ]
+        },
+        {
+          "key": "巡|xún",
+          "title": "语文园地六",
+          "candidates": [
+            "巡航"
+          ]
+        },
+        {
+          "key": "烧|shāo",
+          "title": "第22课",
+          "candidates": [
+            "燃烧",
+            "焚烧",
+            "火烧云"
+          ]
+        },
+        {
+          "key": "盈|yíng",
+          "title": "第22课",
+          "candidates": [
+            "热泪盈眶",
+            "笑盈盈"
+          ]
+        },
+        {
+          "key": "乘|chéng",
+          "title": "第22课",
+          "candidates": [
+            "乘客",
+            "乘凉"
+          ]
+        },
+        {
+          "key": "寿|shòu",
+          "title": "第22课",
+          "candidates": [
+            "高寿"
+          ]
+        },
+        {
+          "key": "彤|tóng",
+          "title": "第22课",
+          "candidates": []
+        },
+        {
+          "key": "颜|yán",
+          "title": "第22课",
+          "candidates": [
+            "颜色"
+          ]
+        },
+        {
+          "key": "钟|zhōng",
+          "title": "第22课",
+          "candidates": [
+            "闹钟",
+            "石钟乳",
+            "钟楼"
+          ]
+        },
+        {
+          "key": "武|wǔ",
+          "title": "第22课",
+          "candidates": [
+            "威武",
+            "武艺",
+            "武装",
+            "武器"
+          ]
+        },
+        {
+          "key": "镇|zhèn",
+          "title": "第22课",
+          "candidates": [
+            "镇静",
+            "镇定"
+          ]
+        },
+        {
+          "key": "偏|piān",
+          "title": "第22课",
+          "candidates": [
+            "偏差",
+            "偏颇",
+            "偏僻",
+            "偏偏"
+          ]
+        },
+        {
+          "key": "临|lín",
+          "title": "第23课",
+          "candidates": [
+            "来临",
+            "居高临下"
+          ]
+        },
+        {
+          "key": "越|yuè",
+          "title": "第23课",
+          "candidates": []
+        },
+        {
+          "key": "闷|mèn",
+          "title": "第23课",
+          "candidates": [
+            "沉闷",
+            "解闷",
+            "闷雷"
+          ]
+        },
+        {
+          "key": "昏|hūn",
+          "title": "第23课",
+          "candidates": [
+            "昏暗",
+            "昏沉"
+          ]
+        },
+        {
+          "key": "暗|àn",
+          "title": "第23课",
+          "candidates": [
+            "昏暗"
+          ]
+        },
+        {
+          "key": "沉|chén",
+          "title": "第23课",
+          "candidates": [
+            "沉寂",
+            "沉默",
+            "沉闷",
+            "黑沉沉"
+          ]
+        },
+        {
+          "key": "报|bào",
+          "title": "第23课",
+          "candidates": [
+            "板报",
+            "申报",
+            "汇报",
+            "报告"
+          ]
+        },
+        {
+          "key": "稍|shāo",
+          "title": "第23课",
+          "candidates": []
+        },
+        {
+          "key": "隆|lóng",
+          "title": "第23课",
+          "candidates": [
+            "轰隆隆",
+            "隆重"
+          ]
+        },
+        {
+          "key": "呈|chéng",
+          "title": "第24课",
+          "candidates": [
+            "呈现"
+          ]
+        },
+        {
+          "key": "幻|huàn",
+          "title": "第24课",
+          "candidates": [
+            "变幻",
+            "奇幻",
+            "梦幻"
+          ]
+        },
+        {
+          "key": "李|lǐ",
+          "title": "第24课",
+          "candidates": [
+            "李子"
+          ]
+        },
+        {
+          "key": "夏|xià",
+          "title": "第24课",
+          "candidates": [
+            "夏日"
+          ]
+        },
+        {
+          "key": "辉|huī",
+          "title": "第24课",
+          "candidates": [
+            "辉煌",
+            "灯火辉煌",
+            "光辉",
+            "金碧辉煌"
+          ]
+        },
+        {
+          "key": "芒|máng",
+          "title": "第24课",
+          "candidates": [
+            "光芒"
+          ]
+        },
+        {
+          "key": "建|jiàn",
+          "title": "第24课",
+          "candidates": [
+            "搭建",
+            "修建",
+            "扩建",
+            "建筑"
+          ]
+        },
+        {
+          "key": "柱|zhù",
+          "title": "第24课",
+          "candidates": [
+            "冰柱",
+            "柱子"
+          ]
+        },
+        {
+          "key": "剑|jiàn",
+          "title": "第24课",
+          "candidates": [
+            "刀剑"
+          ]
+        },
+        {
+          "key": "性|xìng",
+          "title": "第25课",
+          "candidates": [
+            "惰性",
+            "酸性",
+            "磁性",
+            "性子"
+          ]
+        },
+        {
+          "key": "顾|gù",
+          "title": "第25课",
+          "candidates": [
+            "不屑一顾",
+            "兼顾",
+            "眷顾",
+            "顾客"
+          ]
+        },
+        {
+          "key": "夸|kuā",
+          "title": "第25课",
+          "candidates": [
+            "夸奖"
+          ]
+        },
+        {
+          "key": "奖|jiǎng",
+          "title": "第25课",
+          "candidates": [
+            "奖状",
+            "获奖",
+            "奖杯",
+            "夸奖"
+          ]
+        },
+        {
+          "key": "承|chéng",
+          "title": "第25课",
+          "candidates": [
+            "承认",
+            "承诺"
+          ]
+        },
+        {
+          "key": "袖|xiù",
+          "title": "第25课",
+          "candidates": [
+            "袖子"
+          ]
+        },
+        {
+          "key": "衬|chèn",
+          "title": "第25课",
+          "candidates": [
+            "衬衫"
+          ]
+        },
+        {
+          "key": "衫|shān",
+          "title": "第25课",
+          "candidates": [
+            "衬衫"
+          ]
+        },
+        {
+          "key": "负|fù",
+          "title": "第25课",
+          "candidates": [
+            "负伤",
+            "负责",
+            "欺负"
+          ]
+        },
+        {
+          "key": "责|zé",
+          "title": "第25课",
+          "candidates": [
+            "斥责",
+            "责骂",
+            "负责",
+            "责任"
+          ]
+        },
+        {
+          "key": "泄|xiè",
+          "title": "第25课",
+          "candidates": [
+            "泄漏",
+            "泄气"
+          ]
+        },
+        {
+          "key": "恼|nǎo",
+          "title": "第25课",
+          "candidates": [
+            "恼怒"
+          ]
+        },
+        {
+          "key": "漏|lòu",
+          "title": "第26课",
+          "candidates": [
+            "渗漏"
+          ]
+        },
+        {
+          "key": "胖|pàng",
+          "title": "第26课",
+          "candidates": [
+            "肥胖"
+          ]
+        },
+        {
+          "key": "驴|lǘ",
+          "title": "第26课",
+          "candidates": []
+        },
+        {
+          "key": "爪|zhuǎ",
+          "title": "第26课",
+          "candidates": [
+            "爪子",
+            "鸡爪",
+            "爪印"
+          ]
+        },
+        {
+          "key": "莫|mò",
+          "title": "第26课",
+          "candidates": [
+            "莫非"
+          ]
+        },
+        {
+          "key": "厉|lì",
+          "title": "第26课",
+          "candidates": [
+            "严厉",
+            "厉害"
+          ]
+        },
+        {
+          "key": "害|hài",
+          "title": "第26课",
+          "candidates": [
+            "伤害",
+            "损害",
+            "害羞",
+            "厉害"
+          ]
+        },
+        {
+          "key": "闯|chuǎng",
+          "title": "第26课",
+          "candidates": [
+            "走南闯北"
+          ]
+        },
+        {
+          "key": "摸|mō",
+          "title": "第26课",
+          "candidates": [
+            "触摸"
+          ]
+        },
+        {
+          "key": "歪|wāi",
+          "title": "第26课",
+          "candidates": [
+            "歪斜"
+          ]
+        },
+        {
+          "key": "胶|jiāo",
+          "title": "第26课",
+          "candidates": [
+            "胶卷",
+            "橡胶"
+          ]
+        },
+        {
+          "key": "纵|zòng",
+          "title": "第26课",
+          "candidates": [
+            "纵贯",
+            "纵横",
+            "操纵"
+          ]
+        },
+        {
+          "key": "咳|ké",
+          "title": "语文园地八",
+          "candidates": [
+            "咳嗽"
+          ]
+        },
+        {
+          "key": "嗽|sòu",
+          "title": "语文园地八",
+          "candidates": []
+        },
+        {
+          "key": "唠|láo",
+          "title": "语文园地八",
+          "candidates": [
+            "唠叨"
+          ]
+        },
+        {
+          "key": "叨|dāo",
+          "title": "语文园地八",
+          "candidates": [
+            "念念叨叨"
+          ]
+        },
+        {
+          "key": "吆|yāo",
+          "title": "语文园地八",
+          "candidates": [
+            "吆喝"
+          ]
+        },
+        {
+          "key": "讽|fěng",
+          "title": "语文园地八",
+          "candidates": [
+            "讽刺"
+          ]
+        },
+        {
+          "key": "诫|jiè",
+          "title": "语文园地八",
+          "candidates": [
+            "告诫"
+          ]
+        },
+        {
+          "key": "辩|biàn",
+          "title": "语文园地八",
+          "candidates": [
+            "辩论"
+          ]
+        }
+      ]
+    }
+  ],
+  "pinyinReview": [],
+  "exceptions": [
+    {
+      "book": "2026-1-lower",
+      "char": "的",
+      "pinyin": "de",
+      "reason": "结构助词，以常见领属短语展示。",
+      "words": [
+        "我的",
+        "你的"
+      ]
+    },
+    {
+      "book": "2026-1-lower",
+      "char": "它",
+      "pinyin": "tā",
+      "reason": "代词的常见搭配，不假称两独立实词。",
+      "words": [
+        "它们",
+        "它的"
+      ]
+    },
+    {
+      "book": "2026-1-lower",
+      "char": "都",
+      "pinyin": "dōu",
+      "reason": "副词的常见搭配，保留dōu而不用都市dū。",
+      "words": [
+        "全都",
+        "都是"
+      ]
+    },
+    {
+      "book": "2026-1-lower",
+      "char": "着",
+      "pinyin": "zhe",
+      "reason": "助词的常见搭配，保留zhe。",
+      "words": [
+        "看着",
+        "听着"
+      ]
+    },
+    {
+      "book": "2026-1-lower",
+      "char": "她",
+      "pinyin": "tā",
+      "reason": "代词的常见搭配，不假称两独立实词。",
+      "words": [
+        "她们",
+        "她的"
+      ]
+    },
+    {
+      "book": "2026-1-lower",
+      "char": "还",
+      "pinyin": "hái",
+      "reason": "副词的常见搭配，保留hái而不用归还huán。",
+      "words": [
+        "还有",
+        "还是"
+      ]
+    },
+    {
+      "book": "2026-1-upper",
+      "char": "了",
+      "pinyin": "le",
+      "reason": "动态助词，常用用法不能冒充独立实词。",
+      "words": [
+        "好了",
+        "来了"
+      ]
+    },
+    {
+      "book": "2026-1-upper",
+      "char": "又",
+      "pinyin": "yòu",
+      "reason": "副词，常用搭配作为用法短语展示。",
+      "words": [
+        "又来",
+        "又是"
+      ]
+    },
+    {
+      "book": "2026-2-upper",
+      "char": "吗",
+      "pinyin": "ma",
+      "reason": "语气助词，展示自然问句片段。",
+      "words": [
+        "好吗",
+        "是吗"
+      ]
+    },
+    {
+      "book": "2026-2-upper",
+      "char": "啊",
+      "pinyin": "a",
+      "reason": "语气助词，展示自然话语片段。",
+      "words": [
+        "好啊",
+        "来啊"
+      ]
+    },
+    {
+      "book": "2026-2-upper",
+      "char": "您",
+      "pinyin": "nín",
+      "reason": "尊称代词，展示礼貌问候。",
+      "words": [
+        "您好",
+        "您早"
+      ]
+    },
+    {
+      "book": "2026-2-upper",
+      "char": "钉",
+      "pinyin": "dìng",
+      "reason": "教材为动词dìng，用真实动补短语示范，不用名词dīng。",
+      "words": [
+        "钉住",
+        "钉牢"
+      ]
+    },
+    {
+      "book": "2026-2-upper",
+      "char": "呀",
+      "pinyin": "ya",
+      "reason": "语气助词，展示自然话语片段。",
+      "words": [
+        "好呀",
+        "来呀"
+      ]
+    },
+    {
+      "book": "2026-2-upper",
+      "char": "棵",
+      "pinyin": "kē",
+      "reason": "量词，通常与数词构成数量短语。",
+      "words": [
+        "一棵",
+        "两棵"
+      ]
+    },
+    {
+      "book": "2026-2-upper",
+      "char": "吧",
+      "pinyin": "ba",
+      "reason": "语气助词，展示自然话语片段。",
+      "words": [
+        "好吧",
+        "来吧"
+      ]
+    },
+    {
+      "book": "2026-2-upper",
+      "char": "得",
+      "pinyin": "de",
+      "reason": "补语助词de，以自然动词短语展示。",
+      "words": [
+        "跑得快",
+        "做得好"
+      ]
+    },
+    {
+      "book": "2026-2-upper",
+      "char": "谁",
+      "pinyin": "shuí",
+      "reason": "疑问代词，展示常见搭配而不凑生僻词。",
+      "words": [
+        "谁的",
+        "谁家"
+      ]
+    },
+    {
+      "book": "2026-2-upper",
+      "char": "呢",
+      "pinyin": "ne",
+      "reason": "语气助词，展示自然问句片段。",
+      "words": [
+        "你呢",
+        "好着呢"
+      ]
+    },
+    {
+      "book": "2026-3-upper",
+      "char": "哦",
+      "pinyin": "ò",
+      "reason": "叹词ò表示领会，保留本册读音，以自然话语示例展示。",
+      "words": [
+        "哦，原来如此",
+        "哦，我明白了"
+      ]
+    },
+    {
+      "book": "2026-3-upper",
+      "char": "螃",
+      "pinyin": "páng",
+      "reason": "通常仅构成螃蟹，第二项为真实的结构短语，明示用法示例。",
+      "words": [
+        "螃蟹",
+        "螃蟹壳"
+      ]
+    }
+  ]
+}

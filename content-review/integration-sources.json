@@ -1,0 +1,36 @@
+{
+  "baseline": "ba589dc",
+  "business": "6c9cb35eb2d92586b92c01c76e461ddbcad234c8",
+  "stage": "2000 of 2500; grade two lower and grade three lower await independent content_finish",
+  "sources": [
+    {
+      "role": "writing_sources lower author",
+      "author": "Codex <codex@openai.com>",
+      "commit": "1c23f78dbcfc67c14697c2d350d2bb3680e6e612",
+      "files": [
+        "writing-tables/2026-1-upper.json",
+        "writing-tables/2026-1-lower.json",
+        "writing-tables/2026-2-upper.json",
+        "writing-tables/2026-3-upper.json"
+      ],
+      "slots": 800
+    },
+    {
+      "role": "writing_examples_higher original author, writing_developer recovery",
+      "author": "Codex <codex@openai.com>",
+      "commit": "c0b583c9c058da3e7c162e3c87c5a9f4f421410c",
+      "files": [
+        "writing-tables/2026-4-upper.json",
+        "writing-tables/2026-4-lower.json",
+        "writing-tables/2026-5-upper.json",
+        "writing-tables/2026-5-lower.json",
+        "writing-tables/2026-6-upper.json",
+        "writing-tables/2026-6-lower.json"
+      ],
+      "slots": 1200
+    }
+  ],
+  "excluded": [
+    "untracked candidate indexes and builders from original lower tree"
+  ]
+}
