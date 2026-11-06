@@ -4,6 +4,12 @@
 
 ## Current snapshot
 
+## 2026-11-06 — 旧known记录兼容定向修正（Manager revised decision）
+
+在fd977eb已提交2000字阶段整合之后，遵Manager新裁决：没有wrongReview字段的旧lastResult known不能证明曾错，全部保留正常间隔，不凭successCount=1自动加红标或提前拉回次日。此前6c9与本文件历史中的“旧known1保守强化”裁决由本段明确取代；不删除原历史，也不修改任何已有记录。
+Implementation: 仅去掉scheduler中的known1推断分支，旧unknown仍强化0起，新版本明确wrongReview.active继续按两个相邻日历日正确；缺日期不能凭correctDays解除。README与测试同步，新增旧从未错known1不标红、不提前调度及原正常到期仍按4天间隔的回归，其他业务/UI代码不变。当前低册500仍独立编写、2000字不是最终内容完成。
+Checks: npm test 55个Node项+独立旧词库1，共56通过；调度日期矩阵包含旧known正常保留、旧unknown与明确错词连续两日、重复/跳日/倒退、锁定数量及正常复习。scheduler语法/diff检查通过；此前三视口与学习窗的业务代码没有改动，实际书写gate与最终内容仍待QA确切候选。
+
 ## 2026-11-06 — 已提交内容2000字阶段整合（Developer recovery）
 
 Manager明确授权Developer接管已停止高作者的脏树，先备份8项待存成果及原STATUS/哈希/diff到ops/hanzi-dictation-study-20261106/higher-handoff-backup；低原树3个未跟踪候选另备份，既不重置也不导入教学内容。高成果保存bdd389e后，按Manager最终裁决让牺牲/牺牲品恢复普通组词，定向保存高源c0b583c9c058da3e7c162e3c87c5a9f4f421410c，高树clean。原作者high/low各intake与接手记录保留在本文件；来源角色/作者/SHA/文件列表见content-review/integration-sources.json。

@@ -62,18 +62,30 @@ test('missing a day restarts consecutive correctness; another error resets reinf
   assert.throws(() => scheduler.applyResult(progress, true, '2026-02-30'), /日期/);
 });
 
-test('old unknown and one-success records retain reinforcement until dates prove two correct days', () => {
+test('old unknown and explicit wrong-review records need dates proving two correct days', () => {
   const unknown = { lastResult: 'unknown', successCount: 0, lastReviewed: '2026-11-05' };
   assert.equal(scheduler.wrongState(unknown).active, true);
   let first = scheduler.applyResult(unknown, true, '2026-11-06');
   assert.equal(first.wrongReview.correctDays, 1); assert.equal(first.wrongReview.active, true);
-  const oldOne = { lastResult: 'known', successCount: 1, lastReviewed: '2026-11-05' };
-  assert.equal(scheduler.applyResult(oldOne, true, '2026-11-06').wrongReview.active, false);
-  const noDate = { lastResult: 'known', successCount: 1 };
+  assert.equal(scheduler.applyResult(first, true, '2026-11-07').wrongReview.active, false);
+  const explicitOne = { lastResult: 'known', successCount: 1, lastReviewed: '2026-11-05', wrongReview: { active: true, correctDays: 1, lastCorrectDate: '2026-11-05', lastWrongDate: '2026-11-04' } };
+  assert.equal(scheduler.applyResult(explicitOne, true, '2026-11-06').wrongReview.active, false);
+  const noDate = { lastResult: 'known', successCount: 1, wrongReview: { active: true, correctDays: 2 } };
   first = scheduler.applyResult(noDate, true, '2026-11-06');
   assert.equal(first.wrongReview.active, true); assert.equal(first.wrongReview.correctDays, 1);
-  const skipped = scheduler.applyResult(oldOne, true, '2026-11-07');
+  const skipped = scheduler.applyResult(explicitOne, true, '2026-11-07');
   assert.equal(skipped.wrongReview.active, true); assert.equal(skipped.wrongReview.correctDays, 1);
+});
+
+test('a legacy first success without error evidence is not red-marked or pulled into next-day reinforcement', () => {
+  const oldOne = { lastResult: 'known', successCount: 1, lastReviewed: '2026-11-05', dueDate: '2026-11-07' };
+  const original = structuredClone(oldOne);
+  assert.equal(scheduler.wrongState(oldOne).active, false);
+  const queue = scheduler.planQueue({ items, progress: { 'word-0': oldOne }, date: '2026-11-06', requestedSize: 10 });
+  assert.ok(!queue.ids.includes('word-0'));
+  assert.deepEqual(oldOne, original, 'reading legacy progress must not rewrite it');
+  const next = scheduler.applyResult(oldOne, true, '2026-11-07');
+  assert.equal(next.wrongReview.active, false); assert.equal(next.successCount, 2); assert.equal(next.dueDate, '2026-11-11');
 });
 
 test('normal successful words keep the existing 2/4/7/15/30/60 calendar-day intervals', () => {

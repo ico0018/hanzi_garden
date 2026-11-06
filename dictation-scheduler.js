@@ -15,11 +15,7 @@
       return { ...state, correctDays: isDate(state.lastCorrectDate) && Number.isInteger(state.correctDays) ? Math.max(0, Math.min(2, state.correctDays)) : 0 };
     }
     if (progress.lastResult === "unknown") return { active: true, correctDays: 0, lastCorrectDate: null, lastWrongDate: isDate(progress.lastReviewed) ? progress.lastReviewed : null };
-    // The old format cannot prove that one success after a mistake completed two days.
-    if (progress.lastResult === "known" && progress.successCount === 1) return {
-      active: true, correctDays: isDate(progress.lastReviewed) ? 1 : 0,
-      lastCorrectDate: isDate(progress.lastReviewed) ? progress.lastReviewed : null, lastWrongDate: null
-    };
+    // A legacy success count does not prove a previous error. Preserve its normal schedule.
     return { active: false, correctDays: 0, lastCorrectDate: null, lastWrongDate: null };
   }
   function applyResult(previous = {}, known, date) {
