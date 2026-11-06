@@ -20,7 +20,23 @@
         if (item.readingPhrase && (!/^[\u3400-\u9fff]{2,8}$/.test(item.readingPhrase) || !item.readingPhrase.includes(item.char))) {
           throw new Error("写字表读音提示不完整");
         }
-        return { char: item.char, pinyin: item.pinyin, readingPhrase: item.readingPhrase || "", words: [], sentence: null };
+        let words = [];
+        let sentence = null;
+        if (data.learningSupportVersion === 1 || item.words !== undefined || item.sentence !== undefined) {
+          if ((item.examplesLabel !== undefined && item.examplesLabel !== "用法示例") ||
+              !Array.isArray(item.words) || item.words.length !== 2 || new Set(item.words.map(word => word?.word)).size !== 2 ||
+              !item.words.every(word => typeof word?.word === "string" &&
+                (word.kind === "usage" ? Array.from(word.word.trim()).length >= 2 && Array.from(word.word).length <= 20 && !/[\u0000-\u001f<>]/.test(word.word) : /^[\u3400-\u9fff]{2,8}$/.test(word.word)) && word.word.includes(item.char) &&
+                typeof word.pinyin === "string" && typeof word.meaning === "string" &&
+                (word.kind === undefined || word.kind === "usage") && (word.kind !== "usage" || item.examplesLabel === "用法示例")) ||
+              !item.sentence || !item.words.some(word => word.word === item.sentence.groupWord) ||
+              typeof item.sentence.text !== "string" || !item.sentence.text.includes(item.sentence.groupWord)) {
+            throw new Error("组词造句内容不完整");
+          }
+          words = item.words.map(word => ({ word: word.word, pinyin: word.pinyin, meaning: word.meaning, ...(word.kind ? { kind: word.kind } : {}) }));
+          sentence = { groupWord: item.sentence.groupWord, text: item.sentence.text };
+        }
+        return { char: item.char, pinyin: item.pinyin, readingPhrase: item.readingPhrase || "", words, sentence, ...(item.examplesLabel ? { examplesLabel: item.examplesLabel } : {}) };
       });
       return {
         id: index + 1,

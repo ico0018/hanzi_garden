@@ -7,7 +7,7 @@ const VERSIONS = { 'hanzi-writer': '2.0.2', 'hanzi-writer-data': '2.0.1', 'pinyi
 const SITE_FILES = [
   'index.html', 'welcome.html', 'parent.html', 'styles.css', 'cloud-ui.css',
   'app.js', 'welcome.js', 'book-catalog.js', 'writing-tables.js', 'daily-word-bank.js',
-  'stroke-resources.js', 'cloud-config.js', 'cloud-sync.js', 'cloud-ui.js'
+  'stroke-resources.js', 'dictation-scheduler.js', 'cloud-config.js', 'cloud-sync.js', 'cloud-ui.js'
 ];
 const LEGACY_FILES = {
   '1-upper': ['生字数据_一年级上册.txt', 100], '2-upper': ['生字数据_二年级上册.txt', 250],
@@ -50,7 +50,10 @@ function collectCurriculum(root) {
       files.add(file);
       const writingCount = lessons.reduce((total, lesson) => total + lesson.chars.length, 0);
       writingTotal += writingCount;
-      lessons.forEach(lesson => lesson.chars.forEach(item => add(current, item.char)));
+      lessons.forEach(lesson => lesson.chars.forEach(item => {
+        add(current, item.char);
+        item.words.forEach(word => add(current, word.word));
+      }));
       let wordCount = 0;
       if (grade === 1) {
         if (book.wordTableFile || book.wordTableStatus !== 'not-in-textbook') throw new Error('一年级无独立词语表状态不匹配');

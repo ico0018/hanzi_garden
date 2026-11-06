@@ -4,6 +4,17 @@
 
 ## Current snapshot
 
+## 2026-11-06 — 生字组词造句与预习听写（Developer intake）
+
+Task: 用户要求新版生字2组词1句、移除旧教材书架、每日先词表预习并可学习后按10/20/30听写、错词需连续两日正确解除强化。Developer独占F:/taskHelper/hanzi-dictation-study-20261106，feature/dictation-study-20261106，基底ba589dc；source只JSON/内容证据，待Manager明确通知才整合。
+Plan: 预习数量仅未开始当天可变，开始/有旧结果后锁定，旧15题结果保留。v4原存储键兼容，追加队列/强化字段，旧unknown和仅一次known保守保留强化；日期而非点击次数决定连续正确。原人工自评门槛与正常间隔保留，异步回调按页面会话失效。写字表进度ID第四段固定char保持原部署ID，旧TXT不改；欢迎页只删入口不删旧数据/记录。
+Content API: 写字JSON可加learningSupportVersion:1，每字words恰好2个{word,pinyin,meaning}及sentence:{groupWord,text}；词与句非空，拼音/释义按Manager允许可空不编造。教材现有char/pinyin/readingPhrase与课次不动。Developer实现验证/展示/build笔画覆盖；sources独立填内容。
+Developer state: 业务阶段完成，尚未整合sources内容。新增纯调度模块与预习/词语学习dialog，10/20/30在当日开始后持久锁定；兼容原有已答15词，保留ID/结果。强化按两相邻日历日正确解除，跳日重计、错清零、同日/刷新/倒退日期不能刷日数；旧unknown及有日期known1保守强化。红色三角内白!加屏幕阅读文字；错词优先普通复习，再到新词。学习窗有整词朗读、逐字本地笔顺/练字，不保存听写成绩。
+Compatibility: writingTable第四段固定char，新增组词前后ID相同；旧TXT仍原首词ID。书架仅删旧入口，原教材/词库/全部记录键保留。viewEpoch+phase+日期/结果与dialog session使旧异步quiz、关闭/切词/切tab自评失效；真实写完整词后才可人工评分。支持2词1句严格验证与可空注音释义、用法示例标点，原char/pinyin/readingPhrase不改。
+Developer checks: npm test 54 Node项+原独立词库1，共55通过；含10项新功能检查、额外跨tab/重渲染自评保护、旧ID前后断言，以及原云/家长/笔画/教材回归按新数量语义更新。npm run build在当前未补内容数据上通过，2405当前字/2480总字缺0；build白名单加入调度模块并收集words汉字，新组词缺笔画会阻断。app/parser/scheduler语法及diff检查通过。源JSON、词语表、旧TXT、目录/原词库、cloud/parent对ba589dc无差异；未整合source。
+Handoff: 此提交仅业务阶段，不能宣称全部2500生字补充内容已齐或实际浏览器验收完成。Manager待内容分工完成后通知整合，再重build/QA精确完整候选。README/缓存版本同步本次业务行为；Developer不push/deploy/main/dev。
+Next owner: QA — 先独立验业务候选调度与界面；sources继续内容，最终整合由Manager指令。
+
 ## 2026-11-05 — 本地笔画资源已合并并部署（Manager final）
 
 用户确认处理本次合并：选择性整合main06beda9的本地笔画/拼音资源修复，当前课程和账号线为基底。独立QA精确候选fca13ef6399202136aa235a176215526de099747 PASS；PR https://github.com/ico0018/hanzi_garden/pull/10 已合入feature/textbook-word-tables-2026，merge baccb73b5910e0ab04b3d266278535ce61bb44ee与QA候选文件树完全一致。旧远程头1b6cf25已存backup/2026-11-05-before-local-strokes。main/dev未改；本地原干净d69fe8e已--ff-only同步此merge，不动其他工作树。
