@@ -66,7 +66,7 @@ test('practice failure after leaving the view updates only its captured status a
   let quiz;
   const nodes = { 'practice-status': oldStatus, 'practice-target': { clientWidth: 160, addEventListener() {} } };
   const scope = vm.createContext({
-    currentLessonIndex: 0, currentCharIndex: 0, charDetail: { innerHTML: '', querySelector: () => ({ addEventListener() {} }) },
+    currentLessonIndex: 0, currentCharIndex: 0, viewEpoch:0, activeView:'learning', invalidateStudyView:()=>++scope.viewEpoch, charDetail: { innerHTML: '', querySelector: () => ({ addEventListener() {} }) },
     document: { getElementById: id => nodes[id] }, window: { HanziWriter: true, XuebabangbangStrokeData: { charDataLoader() {} } },
     HanziWriter: { create: (target, char, settings) => { options = settings; return { quiz: settings => { quiz = settings; } }; } },
     escapeHtml: s => s, escapeAttr: s => s, openSelfAssessmentModal: () => { modalCount++; },
@@ -79,14 +79,15 @@ test('practice failure after leaving the view updates only its captured status a
   assert.doesNotThrow(() => options.onLoadCharDataError(new Error('offline')));
   assert.match(oldStatus.textContent, /重新书写/);
   assert.equal(modalCount, 0);
+  scope.viewEpoch++;
   quiz.onComplete();
-  assert.equal(modalCount, 1);
+  assert.equal(modalCount, 0,'a stale quiz cannot open self assessment after leaving its view');
 });
 
 test('build covers the exact current and legacy sources, publishes only runtime files, and blocks missing or broken data', async t => {
   const curriculum = collectCurriculum(root);
-  assert.equal(curriculum.current.length, 2405);
-  assert.equal(curriculum.characters.length, 2480);
+  assert.ok(curriculum.current.length >= 2405);
+  assert.ok(curriculum.characters.length >= 2480);
   const parent = path.resolve(root, '../ops/hanzi-local-strokes-20261105/developer-tests');
   fs.mkdirSync(parent, { recursive: true });
   const fixture = fs.mkdtempSync(path.join(parent, 'case-'));
@@ -110,7 +111,7 @@ test('build covers the exact current and legacy sources, publishes only runtime 
     const target = path.join(fixture, relative); fs.mkdirSync(path.dirname(target), { recursive: true }); fs.writeFileSync(target, 'private-test-marker');
   }
   const built = buildStatic({ root: fixture });
-  assert.equal(built.currentRequired, 2405); assert.equal(built.copied, 2480); assert.deepEqual(built.missing, []);
+  assert.equal(built.currentRequired, curriculum.current.length); assert.equal(built.copied, curriculum.characters.length); assert.deepEqual(built.missing, []);
   const out = path.join(fixture, 'dist');
   const listed = fs.readdirSync(out, { recursive: true }).filter(file => fs.statSync(path.join(out, file)).isFile()).map(file => file.replaceAll('\\', '/'));
   const expected = [...curriculum.files, 'vendor/hanzi-writer.min.js', 'vendor/pinyin-pro.js', 'vendor/HANZI-WRITER-LICENSE.txt', 'vendor/HANZI-WRITER-COPYING.md', 'vendor/ARPHICPL.TXT', 'vendor/PINYIN-PRO-LICENSE.txt', 'vendor/hanzi-data/manifest.json', ...curriculum.characters.map(char => `vendor/hanzi-data/${char}.json`)];
@@ -125,6 +126,19 @@ test('build covers the exact current and legacy sources, publishes only runtime 
   fs.writeFileSync(glyph, JSON.stringify({ strokes: ['M 0 0'], medians: [] }));
   assert.throws(() => buildStatic({ root: fixture }), /缺失或损坏的必需笔画: 乏/);
   fs.writeFileSync(glyph, original);
+  // A newly supplied study word must also have local stroke data; UI/source text alone is not a source.
+  const extra = fs.readdirSync(path.join(root, 'node_modules/hanzi-writer-data')).filter(file => /^[\u3400-\u9fff]\.json$/.test(file)).map(file => file.slice(0, -5)).find(char => !curriculum.characters.includes(char));
+  const writingFile = path.join(fixture, 'writing-tables/2026-1-upper.json');
+  const originalWriting = fs.readFileSync(writingFile);
+  const writing = JSON.parse(originalWriting);
+  const entry = writing.lessons[0].characters[0];
+  delete entry.examplesLabel;
+  entry.words = [{ word: entry.char + extra, pinyin: '', meaning: '' }, { word: entry.char + '人', pinyin: '', meaning: '' }];
+  entry.sentence = { groupWord: entry.words[0].word, text: entry.words[0].word + '。' };
+  fs.writeFileSync(writingFile, JSON.stringify(writing));
+  assert.ok(collectCurriculum(fixture).current.includes(extra));
+  assert.throws(() => buildStatic({ root: fixture }), new RegExp('缺失或损坏的必需笔画: ' + extra));
+  fs.writeFileSync(writingFile, originalWriting);
   fs.writeFileSync(path.join(fixture, 'word-tables/2026-2-upper.json'), '{broken');
   assert.throws(() => buildStatic({ root: fixture }), SyntaxError);
   assert.deepEqual(fs.readFileSync(path.join(out, 'vendor/hanzi-data/manifest.json')), before);

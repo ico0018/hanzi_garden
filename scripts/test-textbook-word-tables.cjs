@@ -9,6 +9,7 @@ const app = fs.readFileSync(path.join(root, 'app.js'), 'utf8');
 const context = { window: {} };
 vm.runInNewContext(fs.readFileSync(path.join(root, 'daily-word-bank.js'), 'utf8'), context);
 const bank = context.window.HANZI_DAILY_WORD_BANK;
+const scheduler = require('../dictation-scheduler.js');
 // Test-only words do not claim to be a transcribed textbook table.
 const fixture = () => ({
   schemaVersion: 1, bookId: '2026-3-upper', edition: '测试版', total: 3,
@@ -126,12 +127,12 @@ test('a failed word table leaves the writing curriculum available and shows a re
   assert.match(heading.textContent, /三年级上册/);
 });
 
-test('daily selection stays capped at 15, due words precede new words, saved queue and review intervals remain compatible', () => {
+test('daily preview selects ten by default, due words precede new words, and existing daily records stay compatible', () => {
   const store = new Map();
   const items = Array.from({ length: 20 }, (_, order) => ({ id: 'item-' + order, order }));
   const scope = vm.createContext({
     selectedBookId: '2026-3-upper', dailyDictationItems: items, DAILY_DICTATION_SIZE: 15,
-    EBBINGHAUS_INTERVALS: [2, 4, 7, 15, 30, 60], window: {},
+    EBBINGHAUS_INTERVALS: [2, 4, 7, 15, 30, 60], window: {HANZI_DICTATION:scheduler},
     localStorage: { getItem: key => store.get(key) || null, setItem: (key, value) => store.set(key, value) },
     todayKey: () => '2026-11-04', addDays: (date, days) => 'after-' + days
   });
@@ -140,17 +141,16 @@ test('daily selection stays capped at 15, due words precede new words, saved que
   assert.equal(scope.dailyDictationQueueKey(), 'hanzi-daily-dictation-queue-v4-2026-3-upper');
   scope.saveDailyDictationProgress({ 'item-18': { dueDate: '2026-11-03' }, 'item-19': { dueDate: '2026-11-10' } });
   const queue = scope.getDailyQueue();
-  assert.equal(queue.length, 15);
-  assert.deepEqual(plain(queue.map(item => item.id)), ['item-18', ...items.slice(0, 14).map(item => item.id)]);
+  assert.equal(queue.length, 10);
+  assert.deepEqual(plain(queue.map(item => item.id)), ['item-18', ...items.slice(0, 9).map(item => item.id)]);
   scope.dailyDictationItems.reverse();
   assert.deepEqual(plain(scope.getDailyQueue().map(item => item.id)), plain(queue.map(item => item.id)));
-  for (const interval of [2, 4, 7, 15, 30, 60, 60]) {
-    scope.saveManualDictationResult(items[0], true);
-    assert.equal(scope.getDailyDictationProgress()[items[0].id].dueDate, 'after-' + interval);
-  }
-  scope.saveManualDictationResult(items[0], false);
-  assert.equal(scope.getDailyDictationProgress()[items[0].id].dueDate, 'after-1');
-  assert.equal(scope.getDailyDictationProgress()[items[0].id].successCount, 0);
+  const state=scope.getTodayQueueState();state.started=true;
+  store.set(scope.dailyDictationQueueKey(),JSON.stringify(state));
+  scope.saveManualDictationResult(queue[1], true);
+  assert.equal(scope.getDailyDictationProgress()[queue[1].id].dueDate, '2026-11-06');
+  scope.saveManualDictationResult(queue[1], false);
+  assert.equal(scope.getDailyDictationProgress()[queue[1].id].lastResult, 'known','today\'s answered word cannot be regraded by a repeated callback');
   assert.ok(!store.has('hanzi-daily-dictation-progress-v4-3-upper'));
 });
 
@@ -165,11 +165,12 @@ function renderScope(status = 'ready') {
   let modal;
   const scope = vm.createContext({
     dailyDictationBankStatus: status, dailyDictationTable: { edition: '测试版', total: 3 },
-    dictationOverview: { innerHTML: '' }, dictationDetail: { innerHTML: '', querySelector: node },
-    window: { HanziWriter: true, XuebabangbangStrokeData: { charDataLoader() {} } }, document: { getElementById: node },
+    viewEpoch:0,activeView:'dictation',dictationPhase:'test',invalidateStudyView:()=>++scope.viewEpoch,todayKey:()=> '2026-11-06',
+    dictationOverview: { innerHTML: '',appendChild(){} }, dictationDetail: { innerHTML: '', querySelector: node },
+    window: { HanziWriter: true, XuebabangbangStrokeData: { charDataLoader() {} } }, document: { getElementById: node,createElement:()=>node('back-to-preview') },
     HanziWriter: { create: () => ({ quiz: options => callbacks.push(options.onComplete) }) },
     getDailyQueue: () => [{ id: 'checked-word', word: '早晨', lessonTitle: '测试第一课', pinyin: 'zǎo chén' }],
-    getTodayQueueState: () => ({ results: {} }), cacheHumanAudio() {}, escapeHtml: value => value,
+    getTodayQueueState: () => ({ started:true, results: {} }), cacheHumanAudio() {}, escapeHtml: value => value,
     playHumanChinese() {}, openSelfAssessmentModal: options => { modal = options; },
     saveManualDictationResult: (item, known) => marks.push([item.id, known])
   });
@@ -192,6 +193,20 @@ test('dictation requires every character to be written, then changes progress on
   assert.deepEqual(marks, [['checked-word', true]]);
 });
 
+test('old dictation quizzes and self-assessment callbacks cannot grade after switching tabs or replacing the word view', () => {
+  const { scope, callbacks, marks, getModal } = renderScope();
+  scope.renderDailyDictation();
+  const old = callbacks.slice();
+  scope.activeView = 'learning'; old.forEach(complete => complete());
+  assert.equal(getModal(), undefined); assert.equal(marks.length, 0);
+  scope.activeView = 'dictation'; scope.renderDailyDictation();
+  old.forEach(complete => complete()); assert.equal(getModal(), undefined);
+  callbacks.slice(2).forEach(complete => complete());
+  const modal = getModal(); assert.ok(modal);
+  scope.viewEpoch++; modal.onKnown(); modal.onUnknown();
+  assert.equal(marks.length, 0);
+});
+
 test('no-table, not-yet-transcribed and load-error views are distinct and do not start a queue', () => {
   for (const [status, text] of [['not-in-textbook', '本册教材没有独立词语表'], ['not-configured', '本册教材词语表正在整理'], ['error', '教材词语表加载失败']]) {
     const { scope, callbacks } = renderScope(status);
@@ -205,7 +220,7 @@ test('no-table, not-yet-transcribed and load-error views are distinct and do not
 
 test('completion reports the actual short queue rather than an assumed fifteen words', () => {
   const { scope } = renderScope();
-  scope.getTodayQueueState = () => ({ results: { 'checked-word': 'known' } });
+  scope.getTodayQueueState = () => ({ started:true, results: { 'checked-word': 'known' } });
   scope.renderDailyDictation();
   assert.match(scope.dictationDetail.innerHTML, /今日 1 词已完成/);
 });

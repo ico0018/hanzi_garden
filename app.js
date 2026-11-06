@@ -11,6 +11,7 @@ const dictationDetail = document.getElementById("dictation-detail");
 const switchBookButton = document.getElementById("switch-book-button");
 
 switchBookButton?.addEventListener("click", () => {
+  invalidateStudyView();
   window.location.href = "welcome.html";
 });
 
@@ -25,8 +26,6 @@ let activeAudio = null;
 const BOOK_CATALOG = window.HANZI_BOOK_CATALOG || {};
 const selectedBookId = new URLSearchParams(window.location.search).get("book") || "2026-3-upper";
 const selectedBook = BOOK_CATALOG[selectedBookId];
-const DAILY_DICTATION_SIZE = 15;
-const EBBINGHAUS_INTERVALS = [2, 4, 7, 15, 30, 60];
 const DAILY_DICTATION_BANK_FILES = {
   "3-upper": "每日词语听写题库.txt"
 };
@@ -36,6 +35,16 @@ const audioCache = new Map();
 let dailyDictationItems = [];
 let dailyDictationBankStatus = "not-configured";
 let dailyDictationTable = null;
+let dictationPhase = "preview";
+let viewEpoch = 0;
+let studySession = null;
+
+function invalidateStudyView() {
+  viewEpoch++;
+  studySession?.close();
+  document.querySelectorAll?.(".self-assessment-modal").forEach(modal => modal.remove());
+  return viewEpoch;
+}
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -256,7 +265,7 @@ async function loadDailyDictationWordBank(bookId) {
 }
 
 function stableItemId(lesson, character) {
-  const firstWord = character.words[0]?.word || character.char;
+  const firstWord = lesson.writingTable ? character.char : character.words[0]?.word || character.char;
   const lessonIdentity = lesson.writingTable ? lesson.lessonKey : lesson.title;
   return encodeURIComponent([selectedBookId, lessonIdentity, character.char, firstWord].join("|"));
 }
@@ -349,10 +358,9 @@ function saveDailyDictationProgress(progress) {
   (window.XbbStorage || localStorage).setItem(dailyDictationProgressKey(), JSON.stringify(progress));
 }
 
-function getDailyQueue() {
+function getDailyQueue(requestedSize) {
   const date = todayKey();
   const items = getDictationItems();
-  const itemById = new Map(items.map((item) => [item.id, item]));
   const progress = getDailyDictationProgress();
   let savedQueue = null;
   try {
@@ -361,21 +369,12 @@ function getDailyQueue() {
     savedQueue = null;
   }
 
-  if (savedQueue?.date === date && Array.isArray(savedQueue.ids)) {
-    return savedQueue.ids.map((id) => itemById.get(id)).filter(Boolean).slice(0, DAILY_DICTATION_SIZE);
+  const state = window.HANZI_DICTATION.planQueue({ items, progress, saved: savedQueue, date, requestedSize });
+  if (JSON.stringify(state) !== JSON.stringify(savedQueue)) {
+    (window.XbbStorage || localStorage).setItem(dailyDictationQueueKey(), JSON.stringify(state));
   }
-
-  const dueItems = items
-    .filter((item) => progress[item.id]?.dueDate && progress[item.id].dueDate <= date)
-    .sort((a, b) => {
-      const dueCompare = progress[a.id].dueDate.localeCompare(progress[b.id].dueDate);
-      return dueCompare || a.order - b.order;
-    });
-  const dueIds = new Set(dueItems.map((item) => item.id));
-  const newItems = items.filter((item) => !progress[item.id] && !dueIds.has(item.id));
-  const queue = [...dueItems, ...newItems].slice(0, DAILY_DICTATION_SIZE);
-  (window.XbbStorage || localStorage).setItem(dailyDictationQueueKey(), JSON.stringify({ date, ids: queue.map((item) => item.id), results: {} }));
-  return queue;
+  const itemById = new Map(items.map(item => [item.id, item]));
+  return state.ids.map(id => itemById.get(id)).filter(Boolean);
 }
 
 function getTodayQueueState() {
@@ -388,21 +387,14 @@ function getTodayQueueState() {
 
 function saveManualDictationResult(item, known) {
   const date = todayKey();
+  const state = getTodayQueueState();
+  if (state.date !== date || !state.started || !state.ids?.includes(item.id) || state.results?.[item.id]) return;
   const progress = getDailyDictationProgress();
   const previous = progress[item.id] || { successCount: 0 };
-  const successCount = known ? Math.min((previous.successCount || 0) + 1, EBBINGHAUS_INTERVALS.length) : 0;
-  const interval = known ? EBBINGHAUS_INTERVALS[successCount - 1] : 1;
-  progress[item.id] = {
-    successCount,
-    dueDate: addDays(date, interval),
-    lastResult: known ? "known" : "unknown",
-    lastReviewed: date
-  };
+  progress[item.id] = window.HANZI_DICTATION.applyResult(previous, known, date);
   saveDailyDictationProgress(progress);
-
-  const state = getTodayQueueState();
   if (state.date === date) {
-    state.results = { ...(state.results || {}), [item.id]: known ? "known" : "unknown" };
+    state.results = { ...(state.results || {}), [item.id]: progress[item.id].lastResult };
     (window.XbbStorage || localStorage).setItem(dailyDictationQueueKey(), JSON.stringify(state));
   }
 }
@@ -437,12 +429,104 @@ function renderAppTabs() {
   appTabs.querySelectorAll(".app-tab").forEach((button) => {
     button.addEventListener("click", () => {
       activeView = button.dataset.view;
+      dictationPhase = "preview";
       render();
     });
   });
 }
 
+function openWordStudy(item, opener) {
+  studySession?.close();
+  const dialog = document.createElement("dialog");
+  dialog.className = "word-study-dialog";
+  dialog.setAttribute("aria-labelledby", "word-study-title");
+  const characters = Array.from(item.word).filter(char => /[\u3400-\u9fff]/.test(char));
+  const support = lessons.flatMap(lesson => lesson.chars).flatMap(char => char.words).find(word => word.word === item.word);
+  dialog.innerHTML = `
+    <div class="study-heading"><div><p>${escapeHtml(item.lessonTitle)}</p><h2 id="word-study-title">${escapeHtml(item.word)}</h2></div><button class="close-study secondary-button" type="button">关闭学习</button></div>
+    ${item.pinyin || support?.pinyin ? `<p class="word-pinyin">${escapeHtml(item.pinyin || support.pinyin)}</p>` : ""}
+    ${support?.meaning ? `<p>${escapeHtml(support.meaning)}</p>` : ""}
+    <button class="study-listen listen-button" type="button">🔊 朗读整个词</button>
+    <p class="daily-review-note">先观察每个字的笔顺，再点“练一练”书写。这里的练习不计听写成绩。</p>
+    <div class="study-characters">${characters.map((char, index) => `
+      <section class="study-character"><h3>${escapeHtml(char)}</h3><div class="tianzi-grid study-grid"><div class="study-target" id="study-character-${index}" aria-label="${escapeAttr(char)}笔顺与书写区"></div></div>
+      <div class="study-actions"><button type="button" class="secondary-button" data-study-demo="${index}">看笔顺</button><button type="button" class="primary-button" data-study-practice="${index}">练一练</button></div><p class="daily-review-note" data-study-status="${index}" aria-live="polite">看笔顺，再自己写一写。</p></section>`).join("")}</div>`;
+  const session = {
+    live: true,
+    close() {
+      if (!session.live) return;
+      session.live = false;
+      dialog.close(); dialog.remove();
+      if (studySession === session) studySession = null;
+      if (opener?.isConnected) opener.focus();
+    }
+  };
+  studySession = session;
+  dialog.querySelector(".close-study").addEventListener("click", session.close);
+  dialog.addEventListener("close", session.close);
+  dialog.querySelector(".study-listen").addEventListener("click", () => playHumanChinese(item.word));
+  document.body.appendChild(dialog);
+  dialog.showModal();
+  characters.forEach((char, index) => {
+    const target = dialog.querySelector(`#study-character-${index}`);
+    const status = dialog.querySelector(`[data-study-status="${index}"]`);
+    let generation = 0;
+    const createWriter = practice => {
+      const token = ++generation;
+      const live = () => session.live && token === generation;
+      target.replaceChildren();
+      if (!window.HanziWriter || !window.XuebabangbangStrokeData) {
+        status.textContent = "书写工具未加载，请刷新后重试。"; return;
+      }
+      status.textContent = practice ? "按笔顺写完这个字。" : "观察笔顺，也可以点“练一练”。";
+      const writer = HanziWriter.create(target, char, {
+        width: target.clientWidth || 160, height: target.clientWidth || 160, padding: 12,
+        charDataLoader: window.XuebabangbangStrokeData.charDataLoader,
+        showCharacter: !practice, showOutline: !practice,
+        onLoadCharDataError: () => { if (live()) status.textContent = "笔画未加载，请再点一次重试。"; }
+      });
+      if (practice) writer.quiz({ leniency: 1.15, showHintAfterMisses: 2, onComplete: () => { if (live()) status.textContent = "这个字写完了！继续学习下一个字吧。"; } });
+      else writer.animateCharacter();
+    };
+    target.addEventListener("touchmove", event => event.preventDefault(), { passive: false });
+    dialog.querySelector(`[data-study-demo="${index}"]`).addEventListener("click", () => createWriter(false));
+    dialog.querySelector(`[data-study-practice="${index}"]`).addEventListener("click", () => createWriter(true));
+    createWriter(false);
+  });
+}
+
+function renderDictationPreview(queue, state) {
+  const progress = getDailyDictationProgress();
+  const reviewIds = new Set(state.reviewIds || []);
+  const completed = queue.filter(item => state.results?.[item.id]).length;
+  const list = (items, heading) => `<section class="preview-list"><h3>${heading} <small>${items.length}词</small></h3>${items.length ? `<ul>${items.map(item => {
+    const wrong = window.HANZI_DICTATION.wrongState(progress[item.id]).active;
+    const result = state.results?.[item.id];
+    return `<li><button type="button" class="preview-word" data-study-word="${escapeAttr(item.id)}">${wrong ? '<span class="wrong-marker"><svg aria-hidden="true" width="20" height="19" viewBox="0 0 20 19"><path fill="#b42318" d="M10 1 20 18H0Z"/><text x="10" y="15" text-anchor="middle" fill="white" font-size="13" font-weight="bold">!</text></svg><span class="visually-hidden">错词强化复习：</span></span>' : ""}<span>${escapeHtml(item.word)}</span><small>${escapeHtml(item.lessonTitle)}${result ? (result === "known" ? " · 已会写" : " · 需复习") : ""}</small></button></li>`;
+  }).join("")}</ul>` : '<p class="daily-review-note">今天没有这类词。</p>'}</section>`;
+  dictationDetail.innerHTML = `<section class="dictation-card dictation-preview">
+    <h2>先学一学，再听写</h2><label class="dictation-size-label">今日数量 <select id="dictation-size" ${state.started ? "disabled" : ""}>
+      ${[10, 20, 30].includes(state.size) ? "" : `<option selected value="${escapeAttr(state.size)}">${escapeHtml(state.size)}词（今日原有）</option>`}${[10, 20, 30].map(size => `<option value="${size}" ${size === state.size ? "selected" : ""}>${size}词</option>`).join("")}</select></label>
+    <p class="daily-review-note">${state.started ? `今日已开始${queue.length}词，明日可更改数量。已答结果会保留。` : "开始前可以调整数量，开始后今天的词表固定。"} 今天实际安排${queue.length}词，先复习再学新词；其余到期词会在以后安排。</p>
+    <p class="daily-review-note">点击词语可以听读音、看笔顺、练字。红色三角感叹号表示错词强化复习，连续两个日历日正确后解除。</p>
+    <div class="preview-columns">${list(queue.filter(item => reviewIds.has(item.id)), "复习词")}${list(queue.filter(item => !reviewIds.has(item.id)), "待学词")}</div>
+    <button class="primary-button begin-dictation" type="button" ${!queue.length || completed >= queue.length ? "disabled" : ""}>${completed >= queue.length && queue.length ? "今日听写已完成，可继续学习词语" : state.started ? "准备好了，继续听写" : "准备好了，开始听写"}</button></section>`;
+  dictationDetail.querySelector("#dictation-size").addEventListener("change", event => { getDailyQueue(Number(event.target.value)); renderDailyDictation(); });
+  dictationDetail.querySelectorAll("[data-study-word]").forEach(button => button.addEventListener("click", () => {
+    const item = queue.find(item => item.id === button.dataset.studyWord);
+    if (item) openWordStudy(item, button);
+  }));
+  dictationDetail.querySelector(".begin-dictation").addEventListener("click", () => {
+    const current = getTodayQueueState();
+    if (current.date !== todayKey() || !queue.length) { renderDailyDictation(); return; }
+    current.started = true;
+    (window.XbbStorage || localStorage).setItem(dailyDictationQueueKey(), JSON.stringify(current));
+    dictationPhase = "test"; renderDailyDictation();
+  });
+}
+
 function renderDailyDictation() {
+  const token = invalidateStudyView();
   if (dailyDictationBankStatus !== "ready") {
     const unavailable = dailyDictationBankStatus === "not-in-textbook";
     const failed = dailyDictationBankStatus === "error";
@@ -461,8 +545,19 @@ function renderDailyDictation() {
   const completedCount = queue.length - pending.length;
 
   dictationOverview.innerHTML = `
-    <div><h2>每日听写</h2><p>每天最多 15 个生词；系统只安排复习，你自己决定会不会写。</p>${dailyDictationTable ? `<p class="daily-review-note">${escapeHtml(dailyDictationTable.edition)} · 教材词语表 ${dailyDictationTable.total} 词</p>` : ""}</div>
+    <div><h2>每日听写</h2><p>先预习，再听写。今天可选10、20或30词；写完后自己判断会不会写。</p>${dailyDictationTable ? `<p class="daily-review-note">${escapeHtml(dailyDictationTable.edition)} · 教材词语表 ${dailyDictationTable.total} 词</p>` : ""}</div>
     <div class="lesson-badge">${completedCount} / ${queue.length} 已标记</div>`;
+
+  if (dictationPhase !== "test" || !state.started) {
+    renderDictationPreview(queue, state);
+    return;
+  }
+  const returnToPreview = document.createElement("button");
+  returnToPreview.className = "secondary-button";
+  returnToPreview.type = "button";
+  returnToPreview.textContent = "返回词表学习";
+  returnToPreview.addEventListener("click", () => { dictationPhase = "preview"; renderDailyDictation(); });
+  dictationOverview.appendChild(returnToPreview);
 
   if (!queue.length) {
     dictationDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><h2>今天还没有可听写的生词</h2><p class="daily-review-note">已学词汇会在复习日期自动回到这里。</p></section>`;
@@ -474,6 +569,9 @@ function renderDailyDictation() {
   }
 
   const item = pending[0];
+  const dateAtRender = todayKey();
+  const isCurrent = () => token === viewEpoch && activeView === "dictation" && dictationPhase === "test" && todayKey() === dateAtRender &&
+    !getTodayQueueState().results?.[item.id];
   cacheHumanAudio(item.word);
   const wordCharacters = Array.from(item.word).filter((character) => /[\u3400-\u9fff]/.test(character));
   dictationDetail.innerHTML = `
@@ -498,7 +596,7 @@ function renderDailyDictation() {
   const completedCharacters = new Set();
   let assessmentOpened = false;
   const openAssessmentAfterWriting = () => {
-    if (assessmentOpened || completedCharacters.size !== wordCharacters.length) return;
+    if (!isCurrent() || assessmentOpened || completedCharacters.size !== wordCharacters.length) return;
     assessmentOpened = true;
     writingStatus.textContent = "全词已写完。请你自己选择会不会写；系统不会自动替你标记。";
     dictationDetail.querySelector(".writing-complete-note")?.classList.add("is-visible");
@@ -507,8 +605,8 @@ function renderDailyDictation() {
       message: "这次听写，你会写吗？",
       knownLabel: "我会写",
       unknownLabel: "我不会写",
-      onKnown: () => { saveManualDictationResult(item, true); renderDailyDictation(); },
-      onUnknown: () => { saveManualDictationResult(item, false); renderDailyDictation(); }
+      onKnown: () => { if (isCurrent()) { saveManualDictationResult(item, true); renderDailyDictation(); } },
+      onUnknown: () => { if (isCurrent()) { saveManualDictationResult(item, false); renderDailyDictation(); } }
     });
   };
 
@@ -551,6 +649,7 @@ function renderDailyDictation() {
         writingStatus.textContent = "这笔不太对，再试一次；完成全词后再由你手动标记。";
       },
       onComplete: () => {
+        if (!isCurrent()) return;
         completedCharacters.add(index);
         target.parentElement.classList.add("is-complete");
         if (completedCharacters.size === wordCharacters.length) {
@@ -617,6 +716,7 @@ function getMeaningPinyin(text) {
 }
 
 function renderDetail() {
+  invalidateStudyView();
   const lesson = lessons[currentLessonIndex];
   const character = lesson.chars[currentCharIndex];
   cacheHumanAudio(character.readingPhrase || character.char);
@@ -639,9 +739,9 @@ function renderDetail() {
       </div>
       <div class="info-panel">
         <div>
-          <h3 class="words-title">${lesson.writingTable ? "写字表练习" : "组词"}</h3>
+          <h3 class="words-title">${escapeHtml(character.examplesLabel || (character.words.length ? "组词" : "写字表练习"))}</h3>
           <div class="word-list">
-            ${lesson.writingTable ? '<p class="writing-table-note">先听读音、观察笔顺，再在田字格里写一写。</p>' : ""}
+            ${lesson.writingTable && !character.words.length ? '<p class="writing-table-note">先听读音、观察笔顺，再在田字格里写一写。</p>' : ""}
             ${character.readingPhrase ? `<p class="writing-table-note">读音提示：${escapeHtml(character.readingPhrase)}。点击喇叭听读。</p>` : ""}
             ${character.words.map((word) => `
               <div class="word-card">
@@ -649,9 +749,8 @@ function renderDetail() {
                   <h4>${escapeHtml(word.word)}</h4>
                   <button class="speak-word-button" type="button" data-word="${escapeAttr(word.word)}" aria-label="朗读${escapeAttr(word.word)}" title="朗读">🔊</button>
                 </div>
-                <span class="word-pinyin">${escapeHtml(word.pinyin)}</span>
-                <span class="meaning-pinyin">${escapeHtml(getMeaningPinyin(word.meaning))}</span>
-                <p>${escapeHtml(word.meaning)}</p>
+                ${word.pinyin ? `<span class="word-pinyin">${escapeHtml(word.pinyin)}</span>` : ""}
+                ${word.meaning ? `<span class="meaning-pinyin">${escapeHtml(getMeaningPinyin(word.meaning))}</span><p>${escapeHtml(word.meaning)}</p>` : ""}
               </div>`).join("")}
           </div>
         </div>
@@ -700,6 +799,7 @@ function renderDetail() {
 }
 
 function renderCharacterPractice(character) {
+  const token = invalidateStudyView();
   const practiceLessonIndex = currentLessonIndex;
   const practiceCharIndex = currentCharIndex;
   charDetail.innerHTML = `
@@ -713,17 +813,20 @@ function renderCharacterPractice(character) {
 
   const practiceStatus = document.getElementById("practice-status");
   const completePractice = () => {
+    if (token !== viewEpoch || activeView !== "learning") return;
     openSelfAssessmentModal({
       title: "写完啦，自己来判断",
       message: `“${character.char}”这次学会了吗？`,
       knownLabel: "已学会",
       unknownLabel: "还要复习",
       onKnown: () => {
+        if (token !== viewEpoch || activeView !== "learning") return;
         savePracticeProgress(practiceLessonIndex, practiceCharIndex, "learned");
         renderCharList();
         practiceStatus.textContent = "已标记为学会，生字列表有绿色对勾。";
       },
       onUnknown: () => {
+        if (token !== viewEpoch || activeView !== "learning") return;
         savePracticeProgress(practiceLessonIndex, practiceCharIndex, "review");
         renderCharList();
         practiceStatus.textContent = "已标记为还要复习，生字列表有红色提示。";
@@ -775,6 +878,7 @@ function animateStrokes() {
 }
 
 function render() {
+  invalidateStudyView();
   renderAppTabs();
   if (activeView === "dictation") {
     learningView.hidden = true;

@@ -4,6 +4,68 @@
 
 ## Current snapshot
 
+## 2026-11-06 — 已存听写数量边界修正（Developer targeted fix）
+
+Manager在3b4afd7候选发现已存locked queue的size未校型且被预习option拼接，要求仅定向修这一数据边界。现locked size仅保留1–30正整数（正常10/20/30与旧15不变），否则回退到当前题源内有效队列长度数字，保留原ids/results；预习所有state.size文本/属性均显式转义。新增真实started=true与HTML size fixture，验证数量回退、原队列结果不丢、正常档位保留及renderer自身转义，不改调度日期规则或2500内容。
+Checks: 恢复后核对仅STATUS/app/scheduler/test四文件差异，无重置或重复扩展。npm test 56个Node项+原独立词库1，共57通过；npm run build当前2536字/全源2571字缺0；app/scheduler/test语法与diff检查通过。所有2500内容与源证据对3b4afd7无差异，交新精确SHA给QA复核边界修正后由root发布；Developer仍未push/deploy/main/dev。
+
+## 2026-11-06 — 2500字完整内容整合（Developer final candidate）
+
+Manager授权只从finish最终提交e523f8ecc123dddf11b7470fdd75edbc2dac3aad导入二下/三下2JSON及5份已提交finish-*证据，并合并保留其两个finish intake/follow-up；2000阶段内容、源作者/证据和既有业务代码不覆盖。integration-sources.json追加content_finish作者/SHA/500位与精确纠错路径，所有12册共2500字位、5000条词或用法、2500句已齐，55位明确用法示例。
+Source exceptions: Manager与QA明确允许仅三下lessonKey18 index4膀páng→bǎng且新增readingPhrase翅膀，lessonKey16 index1卜bǔ→bo且新增readingPhrase萝卜，共4字段；四下卜bǔ不动。只读check-integrated逐项建立此四字段预期对象再比较全12册原字段，不泛化忽略pinyin；其他2498位全部原字段一致。全部2500生字ID、2168新词ID、850旧教材字ID及28旧三上词ID与ba589dc完全一致。低检查器保留原字段全表比较，并允许未核新词音空字符串，不将无音词误列usage。
+Developer checks: 完整只读内容/ID审计PASS，低1300和高1200内容验证PASS；最终数据上的npm test共56项（55Node+原独立词库1）通过。npm run build当前所需2536独特汉字/连旧源总2571全部有效、缺0；明确白名单不发布content-review、ops、.agents、.git/env/内部脚本。原2168教材词表、旧TXT、目录、原词库与云/家长资源不改；旧known兼容保留5b0a87e新裁决。
+Gate: 尚不宣称最终QA PASS或已部署。交确切新SHA给QA做源文件精确比较、原字段四路径白名单、独立7调度矩阵和补充内容UI烟测。root将采用最终QA独立构建字节打包，Developer dist只作检查留存，不push/deploy/main/dev。
+
+## 2026-11-06 — 旧known记录兼容定向修正（Manager revised decision）
+
+在fd977eb已提交2000字阶段整合之后，遵Manager新裁决：没有wrongReview字段的旧lastResult known不能证明曾错，全部保留正常间隔，不凭successCount=1自动加红标或提前拉回次日。此前6c9与本文件历史中的“旧known1保守强化”裁决由本段明确取代；不删除原历史，也不修改任何已有记录。
+Implementation: 仅去掉scheduler中的known1推断分支，旧unknown仍强化0起，新版本明确wrongReview.active继续按两个相邻日历日正确；缺日期不能凭correctDays解除。README与测试同步，新增旧从未错known1不标红、不提前调度及原正常到期仍按4天间隔的回归，其他业务/UI代码不变。当前低册500仍独立编写、2000字不是最终内容完成。
+Checks: npm test 55个Node项+独立旧词库1，共56通过；调度日期矩阵包含旧known正常保留、旧unknown与明确错词连续两日、重复/跳日/倒退、锁定数量及正常复习。scheduler语法/diff检查通过；此前三视口与学习窗的业务代码没有改动，实际书写gate与最终内容仍待QA确切候选。
+
+## 2026-11-06 — 已提交内容2000字阶段整合（Developer recovery）
+
+Manager明确授权Developer接管已停止高作者的脏树，先备份8项待存成果及原STATUS/哈希/diff到ops/hanzi-dictation-study-20261106/higher-handoff-backup；低原树3个未跟踪候选另备份，既不重置也不导入教学内容。高成果保存bdd389e后，按Manager最终裁决让牺牲/牺牲品恢复普通组词，定向保存高源c0b583c9c058da3e7c162e3c87c5a9f4f421410c，高树clean。原作者high/low各intake与接手记录保留在本文件；来源角色/作者/SHA/文件列表见content-review/integration-sources.json。
+Import: 仅从确定Git提交选择性导入高6册1200字及TSV/验证证据、低1c23f78四册800字及已提交内容证据；未导入任何未审候选或未提交数据。不合并其他业务源文件，业务仍为6c9cb35。低二下/三下500字由独立content_finish树负责，未修改或覆盖。
+Checks: 独立高1200内容结构/原教材字段检查、低800词音/句关联检查通过（低验证器在集成树明确只检查低册词音，不把高册允许留空的注音当错误）；其全12册原字段检查仍保留。55业务回归和build通过；当前补充词内笔画使当前独特字2518/总2553，缺0。此阶段不宣称全部2500内容完成或最终内容QA通过，也未部署。下一步遵Manager新裁决定向修旧known兼容，再等finish500与最终QA。
+
+## 2026-11-06 — 生字组词造句与预习听写（Developer intake）
+
+Task: 用户要求新版生字2组词1句、移除旧教材书架、每日先词表预习并可学习后按10/20/30听写、错词需连续两日正确解除强化。Developer独占F:/taskHelper/hanzi-dictation-study-20261106，feature/dictation-study-20261106，基底ba589dc；source只JSON/内容证据，待Manager明确通知才整合。
+Plan: 预习数量仅未开始当天可变，开始/有旧结果后锁定，旧15题结果保留。v4原存储键兼容，追加队列/强化字段，旧unknown和仅一次known保守保留强化；日期而非点击次数决定连续正确。原人工自评门槛与正常间隔保留，异步回调按页面会话失效。写字表进度ID第四段固定char保持原部署ID，旧TXT不改；欢迎页只删入口不删旧数据/记录。
+Content API: 写字JSON可加learningSupportVersion:1，每字words恰好2个{word,pinyin,meaning}及sentence:{groupWord,text}；词与句非空，拼音/释义按Manager允许可空不编造。教材现有char/pinyin/readingPhrase与课次不动。Developer实现验证/展示/build笔画覆盖；sources独立填内容。
+Developer state: 业务阶段完成，尚未整合sources内容。新增纯调度模块与预习/词语学习dialog，10/20/30在当日开始后持久锁定；兼容原有已答15词，保留ID/结果。强化按两相邻日历日正确解除，跳日重计、错清零、同日/刷新/倒退日期不能刷日数；旧unknown及有日期known1保守强化。红色三角内白!加屏幕阅读文字；错词优先普通复习，再到新词。学习窗有整词朗读、逐字本地笔顺/练字，不保存听写成绩。
+Compatibility: writingTable第四段固定char，新增组词前后ID相同；旧TXT仍原首词ID。书架仅删旧入口，原教材/词库/全部记录键保留。viewEpoch+phase+日期/结果与dialog session使旧异步quiz、关闭/切词/切tab自评失效；真实写完整词后才可人工评分。支持2词1句严格验证与可空注音释义、用法示例标点，原char/pinyin/readingPhrase不改。
+Developer checks: npm test 54 Node项+原独立词库1，共55通过；含10项新功能检查、额外跨tab/重渲染自评保护、旧ID前后断言，以及原云/家长/笔画/教材回归按新数量语义更新。npm run build在当前未补内容数据上通过，2405当前字/2480总字缺0；build白名单加入调度模块并收集words汉字，新组词缺笔画会阻断。app/parser/scheduler语法及diff检查通过。源JSON、词语表、旧TXT、目录/原词库、cloud/parent对ba589dc无差异；未整合source。
+Handoff: 此提交仅业务阶段，不能宣称全部2500生字补充内容已齐或实际浏览器验收完成。Manager待内容分工完成后通知整合，再重build/QA精确完整候选。README/缓存版本同步本次业务行为；Developer不push/deploy/main/dev。
+Next owner: QA — 先独立验业务候选调度与界面；sources继续内容，最终整合由Manager指令。
+
+## 2026-11-06 — 写字表组词例句（Source content intake）
+
+Manager指派内容开发：独占 F:/taskHelper/hanzi-writing-examples-20261106，feature/writing-examples-20261106，基线ba589dc。仅12册writing JSON与内容证据/验证文件及本STATUS；不碰app/parser/build，不push/deploy/main/dev。保留原教材2500字位、顺序、拼音、来源；教学补充明确自编。统计2336独特字、2342字音键；旧四册可匹配822键组词候选、244键句候选，均须复核。其余至少1520键需补词、2098键需补句；main-review补充词汇仅作候选，不直接信任或套句。按册分批人工编写、内容映射覆盖，不伪造教材原文。语气词/单一词素不能假造两独立词，例外用法待Manager裁决并明示。第一批一上100字、三上250字完成：两词与一句，旧三上适宜句经全文校读并修正多音/不自然搭配。一上了/又、三上哦/螃明示用法示例。check-content.py核所有2500原教材字段完全不变、完成册词句关联/普通词目标音匹配。第二批一下200字完成，累计550字；词中照片piàn、北斗/烟斗dǒu更正库草稿误读，用法例外另记录。第三批二上250字完成，累计800字；经Manager确认，词中正常轻声保留真实读音，单字本调不改，审计单列。其余2个低年级册继续；高年级6册由另一独立树接手。Next owner: QA首批内容审核 / Source继续低册。
+
+
+
+## 2026-11-06 — 高年级内容接手保存（Developer handoff recovery）
+
+Manager明确授权/root/writing_developer接管本树；实时agent清单确认原higher作者已停止且不再写入，低册剩余500由独立content_finish树负责，不在此树修改。接手前保留HEAD187dece，8项未提交/未跟踪成果及原STATUS均已逐字节备份到ops/hanzi-dictation-study-20261106/higher-handoff-backup，含before.diff与文件SHA256清单；原低树3个未跟踪候选另行备份保留、不采信发布。无reset/stash/清理/覆盖其他树。
+Review plan: 原提交高四册900字+未保存六上180/六下120已经全部填入JSON，五下咧liě第二词已由大大咧咧修为龇牙咧嘴。先对原字段/严格parser/特殊usage短语逐项校读并运行独立内容检查，保存单独提交；随后Manager授权业务树选择性整合已提交高1200+低800及来源证据，不合低未审候选。保留原作者各intake与历史，下次handoff写明新SHA；不push/deploy/main/dev。
+Recovery checks: 高6册1200字全部通过独立内容check与业务严格parser，剥离补充字段后原教材对象与ba589dc逐项相同。哼hng用带标点语气短句，娜nà用安娜/桑娜，蟋蟀/蚯蚓/猬等标用法示例，咧liě用咧嘴/龇牙咧嘴。修复apply遗留label而遗漏kind的牺，补usage一致标记并在重生成前清旧补充字段；降xiáng第二词由易混读“降服”换为明确“归降”，句子仍用投降。离线整词读音审计仅辅助人工发现歧义，不把库读音自动当教材；保留原教材pinyin不变。最终源校对仍交独立QA，不把结构检查当全内容验收。
+Manager follow-up: bdd389e保存后，Manager明确牺的牺牲/牺牲品是两个真词，应按普通组词显示。按新裁决移除牺SPECIAL，用已修复的清旧字段步骤重生成，四上/六下均不保留examplesLabel或kind；增加明确回归断言。前保存点不重写，其他哼/娜/蟋蟀/蚯蚓/猬等usage维持。此行取代上一行临时牺usage处理。
+
+## 2026-11-06 — 四至六年级组词例句（Content Developer intake）
+
+独占F:/taskHelper/hanzi-writing-examples-higher-20261106，feature/writing-examples-higher-20261106，基底ba589dc。Manager授权仅高年级6册补充，每字2组词1自编句，不改原字序/读音/来源。低年级sources独立处理。词义/词音未核时留空；语气词与单一词素只给真实自然用法并显式标用法示例。候选词仅参考现有教材词表/TXT，不盲信自动列表，不套句。先人工编四上，逐册覆盖并记录多音例外。不得push/merge/deploy/main/dev。
+
+
+## 2026-11-06 — 三下卜字定向纠错（Finish Developer follow-up）
+
+Manager转交QA完整500条通读后的同类旧注音修正：原词表第16组第1词胡萝卜及植物智萝卜luó bo已核，授权仅三下lesson16第2字卜bǔ→bo，新增readingPhrase萝卜，补充词萝卜/胡萝卜和具体洗菜句。0240ecd保留，新增定向提交；四下卜bǔ不动。finish检查器严格白名单三下膀/卜各pinyin+readingPhrase共4字段，12册2500字位置键全不变，其余2498字位原字段完全一致，500位/1000条/500句结构与git diff --check通过。QA已认可纠错，精确新提交待复核。不push/merge/deploy/main/dev。Next owner: QA / Manager。
+
+## 2026-11-06 — 低册内容收尾（Finish Developer intake）
+
+独占 F:/taskHelper/hanzi-writing-examples-finish-20261106、feature/writing-examples-finish-20261106，基线1c23f78。仅补二下/三下500教材字位的两个组词与一个自编例句，原单字/读音/课序/来源不改；其他10册只读。完成：二下250/三下250，1000条词或用法、500自编句，词拼音/释义未核全留空。受限词素10位（邓/芬/吴/佛、鸳/鸯/匕/系/屿/嗽）显式用法示例。检查通过：每字恰两不同条目含目标字、句含groupWord且groupWord属于两条、原教材字/课序/字序/总数/来源全保留。唯一Manager与QA核原词表及教育部辞典授权纠错：三下lesson18第5字膀páng→bǎng并新增readingPhrase翅膀，组词翅膀/肩膀；其余所有原读音与readingPhrase全等，校验器仅定点allowlist这两字段。证据ops/hanzi-writing-examples-20261106/finish-*，git diff --check通过；待独立QA全文验收，不声称QA PASS。不push/merge/deploy/main/dev。Next owner: QA精确候选 / Manager集成。
+
+
 ## 2026-11-05 — 本地笔画资源已合并并部署（Manager final）
 
 用户确认处理本次合并：选择性整合main06beda9的本地笔画/拼音资源修复，当前课程和账号线为基底。独立QA精确候选fca13ef6399202136aa235a176215526de099747 PASS；PR https://github.com/ico0018/hanzi_garden/pull/10 已合入feature/textbook-word-tables-2026，merge baccb73b5910e0ab04b3d266278535ce61bb44ee与QA候选文件树完全一致。旧远程头1b6cf25已存backup/2026-11-05-before-local-strokes。main/dev未改；本地原干净d69fe8e已--ff-only同步此merge，不动其他工作树。

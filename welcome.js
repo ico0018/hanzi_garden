@@ -1,5 +1,4 @@
 const bookSelector = document.getElementById("book-selector");
-const legacyBookSelector = document.getElementById("legacy-book-selector");
 const bookSelectionStatus = document.getElementById("book-selection-status");
 const startLearningButton = document.getElementById("start-learning-button");
 const bookCatalog = Object.values(window.HANZI_BOOK_CATALOG || {});
@@ -25,7 +24,6 @@ function renderBookOptions(target, books) {
 
 function renderBookSelector() {
   renderBookOptions(bookSelector, bookCatalog.filter((book) => !book.legacy));
-  renderBookOptions(legacyBookSelector, bookCatalog.filter((book) => book.legacy && book.available));
   const selectedBook = bookCatalog.find((book) => book.id === selectedBookId);
   bookSelectionStatus.textContent = selectedBook
     ? `当前选择：${selectedBook.label}${selectedBook.edition ? ` · ${selectedBook.edition}` : ""}`

@@ -1,0 +1,81 @@
+{
+  "baseline": "ba589dc",
+  "business": "6c9cb35eb2d92586b92c01c76e461ddbcad234c8",
+  "stage": "2500 of 2500 completed; all twelve books",
+  "sources": [
+    {
+      "role": "writing_sources lower author",
+      "author": "Codex <codex@openai.com>",
+      "commit": "1c23f78dbcfc67c14697c2d350d2bb3680e6e612",
+      "files": [
+        "writing-tables/2026-1-upper.json",
+        "writing-tables/2026-1-lower.json",
+        "writing-tables/2026-2-upper.json",
+        "writing-tables/2026-3-upper.json"
+      ],
+      "slots": 800
+    },
+    {
+      "role": "writing_examples_higher original author, writing_developer recovery",
+      "author": "Codex <codex@openai.com>",
+      "commit": "c0b583c9c058da3e7c162e3c87c5a9f4f421410c",
+      "files": [
+        "writing-tables/2026-4-upper.json",
+        "writing-tables/2026-4-lower.json",
+        "writing-tables/2026-5-upper.json",
+        "writing-tables/2026-5-lower.json",
+        "writing-tables/2026-6-upper.json",
+        "writing-tables/2026-6-lower.json"
+      ],
+      "slots": 1200
+    },
+    {
+      "role": "content_finish lower-book author",
+      "author": "Codex <codex@openai.com>",
+      "commit": "e523f8ecc123dddf11b7470fdd75edbc2dac3aad",
+      "slots": 500,
+      "files": [
+        "writing-tables/2026-2-lower.json",
+        "writing-tables/2026-3-lower.json",
+        "ops/hanzi-writing-examples-20261106/finish-apply-check.py",
+        "ops/hanzi-writing-examples-20261106/finish-check-results.json",
+        "ops/hanzi-writing-examples-20261106/finish-review.md",
+        "ops/hanzi-writing-examples-20261106/finish-three-lower.tsv",
+        "ops/hanzi-writing-examples-20261106/finish-two-lower.tsv"
+      ]
+    }
+  ],
+  "excluded": [
+    "untracked candidate indexes and builders from original lower tree"
+  ],
+  "authorizedSourceCorrections": [
+    {
+      "bookId": "2026-3-lower",
+      "lessonKey": "18",
+      "characterIndex": 4,
+      "char": "膀",
+      "pinyin": {
+        "before": "páng",
+        "after": "bǎng"
+      },
+      "readingPhrase": {
+        "before": null,
+        "after": "翅膀"
+      }
+    },
+    {
+      "bookId": "2026-3-lower",
+      "lessonKey": "16",
+      "characterIndex": 1,
+      "char": "卜",
+      "pinyin": {
+        "before": "bǔ",
+        "after": "bo"
+      },
+      "readingPhrase": {
+        "before": null,
+        "after": "萝卜"
+      }
+    }
+  ]
+}
