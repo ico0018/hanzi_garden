@@ -506,7 +506,7 @@ function renderDictationPreview(queue, state) {
   }).join("")}</ul>` : '<p class="daily-review-note">今天没有这类词。</p>'}</section>`;
   dictationDetail.innerHTML = `<section class="dictation-card dictation-preview">
     <h2>先学一学，再听写</h2><label class="dictation-size-label">今日数量 <select id="dictation-size" ${state.started ? "disabled" : ""}>
-      ${[10, 20, 30].includes(state.size) ? "" : `<option selected value="${state.size}">${state.size}词（今日原有）</option>`}${[10, 20, 30].map(size => `<option value="${size}" ${size === state.size ? "selected" : ""}>${size}词</option>`).join("")}</select></label>
+      ${[10, 20, 30].includes(state.size) ? "" : `<option selected value="${escapeAttr(state.size)}">${escapeHtml(state.size)}词（今日原有）</option>`}${[10, 20, 30].map(size => `<option value="${size}" ${size === state.size ? "selected" : ""}>${size}词</option>`).join("")}</select></label>
     <p class="daily-review-note">${state.started ? `今日已开始${queue.length}词，明日可更改数量。已答结果会保留。` : "开始前可以调整数量，开始后今天的词表固定。"} 今天实际安排${queue.length}词，先复习再学新词；其余到期词会在以后安排。</p>
     <p class="daily-review-note">点击词语可以听读音、看笔顺、练字。红色三角感叹号表示错词强化复习，连续两个日历日正确后解除。</p>
     <div class="preview-columns">${list(queue.filter(item => reviewIds.has(item.id)), "复习词")}${list(queue.filter(item => !reviewIds.has(item.id)), "待学词")}</div>

@@ -41,8 +41,9 @@
     const existing = saved?.date === date && Array.isArray(saved.ids) ? saved : null;
     const results = existing?.results && typeof existing.results === "object" && !Array.isArray(existing.results) ? existing.results : {};
     const locked = !!existing && (!!existing.started || Object.keys(results).length > 0);
-    const size = locked ? (existing.size || existing.ids.length) : SIZES.includes(requestedSize) ? requestedSize : SIZES.includes(existing?.size) ? existing.size : 10;
     const byId = new Map(items.map(item => [item.id, item]));
+    const lockedSize = Number.isInteger(existing?.size) && existing.size > 0 && existing.size <= 30 ? existing.size : existing?.ids.filter(id => byId.has(id)).length;
+    const size = locked ? lockedSize : SIZES.includes(requestedSize) ? requestedSize : SIZES.includes(existing?.size) ? existing.size : 10;
     if (locked) return { ...existing, size, started: true, results, reviewIds: existing.reviewIds || existing.ids.filter(id => !!progress[id]) };
     const due = items.filter(item => {
       const entry = progress[item.id];

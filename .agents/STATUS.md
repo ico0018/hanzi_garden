@@ -4,6 +4,11 @@
 
 ## Current snapshot
 
+## 2026-11-06 — 已存听写数量边界修正（Developer targeted fix）
+
+Manager在3b4afd7候选发现已存locked queue的size未校型且被预习option拼接，要求仅定向修这一数据边界。现locked size仅保留1–30正整数（正常10/20/30与旧15不变），否则回退到当前题源内有效队列长度数字，保留原ids/results；预习所有state.size文本/属性均显式转义。新增真实started=true与HTML size fixture，验证数量回退、原队列结果不丢、正常档位保留及renderer自身转义，不改调度日期规则或2500内容。
+Checks: 恢复后核对仅STATUS/app/scheduler/test四文件差异，无重置或重复扩展。npm test 56个Node项+原独立词库1，共57通过；npm run build当前2536字/全源2571字缺0；app/scheduler/test语法与diff检查通过。所有2500内容与源证据对3b4afd7无差异，交新精确SHA给QA复核边界修正后由root发布；Developer仍未push/deploy/main/dev。
+
 ## 2026-11-06 — 2500字完整内容整合（Developer final candidate）
 
 Manager授权只从finish最终提交e523f8ecc123dddf11b7470fdd75edbc2dac3aad导入二下/三下2JSON及5份已提交finish-*证据，并合并保留其两个finish intake/follow-up；2000阶段内容、源作者/证据和既有业务代码不覆盖。integration-sources.json追加content_finish作者/SHA/500位与精确纠错路径，所有12册共2500字位、5000条词或用法、2500句已齐，55位明确用法示例。

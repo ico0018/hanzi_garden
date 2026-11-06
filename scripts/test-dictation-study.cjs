@@ -182,3 +182,31 @@ test('preview exposes an accessible triangle warning, separates review/new words
   assert.deepEqual(saved.results, state.results); assert.deepEqual(saved.ids, state.ids);
   assert.equal(scope.dictationPhase, 'test'); assert.equal(rendered, 1);
 });
+
+test('a locked imported queue normalizes an HTML size to its valid item count and preview escapes stored size defensively', () => {
+  const queue = [{ id: 'review', word: '春风', lessonTitle: '第一课' }, { id: 'new', word: '春天', lessonTitle: '第二课' }];
+  const payload = '\"><img src=x onerror="bad()">';
+  const saved = { date: '2026-11-06', started: true, size: payload, ids: ['review', 'new', 'removed'], results: { review: 'known' } };
+  const normalized = scheduler.planQueue({ items: queue, progress: {}, saved, date: saved.date });
+  assert.equal(normalized.size, 2);
+  assert.deepEqual(normalized.ids, saved.ids); assert.deepEqual(normalized.results, saved.results);
+  for (const size of [10, 15, 20, 30]) {
+    assert.equal(scheduler.planQueue({ items: queue, progress: {}, saved: { ...saved, size }, date: saved.date }).size, size);
+  }
+  for (const size of [null, '15', 0, -1, 1.5, 31, NaN]) {
+    assert.equal(scheduler.planQueue({ items: queue, progress: {}, saved: { ...saved, size }, date: saved.date }).size, 2);
+  }
+  const scope = vm.createContext({
+    dictationDetail: { innerHTML: '', querySelector: () => ({ addEventListener() {} }), querySelectorAll: () => [] },
+    window: { HANZI_DICTATION: scheduler }, getDailyDictationProgress: () => ({})
+  });
+  vm.runInContext(app.slice(app.indexOf('function escapeHtml('), app.indexOf('function loadSpeechVoices(')), scope);
+  vm.runInContext(app.slice(app.indexOf('function renderDictationPreview('), app.indexOf('function renderDailyDictation(')), scope);
+  scope.renderDictationPreview(queue, normalized);
+  assert.match(scope.dictationDetail.innerHTML, /value="2">2词（今日原有）/);
+  assert.doesNotMatch(scope.dictationDetail.innerHTML, /<img|onerror/);
+  // The renderer remains safe even if a future caller bypasses the scheduler boundary.
+  scope.renderDictationPreview(queue, saved);
+  assert.doesNotMatch(scope.dictationDetail.innerHTML, /<img/);
+  assert.match(scope.dictationDetail.innerHTML, /&lt;img/);
+});
