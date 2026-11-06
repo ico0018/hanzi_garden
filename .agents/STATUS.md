@@ -3,6 +3,19 @@
 > Read before work. Every Agent updates this dashboard at start, block, and handoff.
 
 ## Current snapshot
+## 2026-11-06 — 生字配套与听写预习已部署（Manager final）
+
+用户三项更新完成：12册2500写字位共5000组词/用法、2500自编句，55受限字明示用法；欢迎页移除旧教材区块而保留旧数据/ID/记录。每日预习10/20/30、逐词学习窗/本地笔顺与练字、准备好再逐词听写，仍全词写完后人工自评；开始后当天锁数、刷新留结果、旧15已答队列兼容。错词次日红三角，连续两个相邻日正确后解除每日强化，同日/漏日/再错规则与旧known不误判兼容均完成。
+
+业务88ff104517eed9fa2823b9d7d3fff4ee83116aae；PR11 https://github.com/ico0018/hanzi_garden/pull/11 已合入feature/textbook-word-tables-2026，merge b81660cfbd0cafe4a96dc608dbcb55b46fd1d6d0与候选零文件差异，旧头ba589dc已存backup/2026-11-06-before-dictation-study。干净canonical安全快进；main/dev未改。来源作者SHA及交接备份/原树未跟踪候选全部保留，QA有意STATUS修改不重置。
+
+独立QA exact PASS：57回归+7日期/真实storage矩阵+11异常持久数量及HTML边界；全2500人工逐行读并核对12册冻结JSON、2168原词/全部2500新字850旧字28旧词库ID不变。仅三下18膀páng→bǎng+翅膀、16卜bǔ→bo+萝卜四字段按原词表和权威词条精确纠错，其他2498原字段全同，四下卜bǔ保留。2571字笔画与固定npm字节均有效，2620公开白名单构建。三视口学习窗/四字词/红标/真实上升全词gate与自评刷新，以及最终内容和旧区块移除实测通过；未重做认证/线上孩子云同步，不宣称零扩展console诊断。
+
+直接用QA原始dist（清单SHA7bf3d4c4af91b20bdb2f662c4935839ed731f70385ea9dba8ba37791f6142cbc）发布，排除实际cloud-config。为避免重复上传已有相同vendor，实际更新133文件，全部2619运行资源服务器前后逐项哈希通过，2487保护文件含真实cloud-config字节不变。完整备份 /srv/xuebabangbang-unified-preview/deployment-backups/hanzi-before-dictation-study-20261106-222739.tar.gz（600）。DB/容器/Nginx/DNS无操作。
+
+公网50个运行/教材/代表字形资源200/SHA全同，主域/hanzi和IP/hanzi共6别名请求亦通过且TLS正常校验；全部2619是服务器核验，不冒称公网逐项GET。证据ops/hanzi-dictation-study-20261106/qa/qa-report.md、public-verification.json、server-report.json、release-report.md。
+
+Next owner: User — https://hanzi.xuebabangbang.cn/welcome.html 刷新即可使用。Manager仅提交本私有流程状态，不改变已部署业务来源。
 
 ## 2026-11-06 — 已存听写数量边界修正（Developer targeted fix）
 
