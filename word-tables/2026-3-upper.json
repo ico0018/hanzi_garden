@@ -1,0 +1,1144 @@
+{
+  "schemaVersion": 1,
+  "bookId": "2026-3-upper",
+  "edition": "2026年现用修订版",
+  "total": 250,
+  "source": {
+    "publisher": "人民教育出版社",
+    "table": "词语表",
+    "url": "https://static.lejiaoku.com/uploads/resources/1767902191946.pdf",
+    "printedPages": [
+      114,
+      115,
+      116
+    ],
+    "pdfPages": [
+      119,
+      120,
+      121
+    ],
+    "reviewedAt": "2026-11-04"
+  },
+  "lessons": [
+    {
+      "lessonKey": "reading-1",
+      "title": "第1课",
+      "words": [
+        {
+          "word": "山坡",
+          "pinyin": ""
+        },
+        {
+          "word": "学校",
+          "pinyin": ""
+        },
+        {
+          "word": "飘扬",
+          "pinyin": ""
+        },
+        {
+          "word": "课文",
+          "pinyin": ""
+        },
+        {
+          "word": "声音",
+          "pinyin": ""
+        },
+        {
+          "word": "招引",
+          "pinyin": ""
+        },
+        {
+          "word": "热闹",
+          "pinyin": ""
+        },
+        {
+          "word": "古老",
+          "pinyin": ""
+        },
+        {
+          "word": "粗壮",
+          "pinyin": ""
+        },
+        {
+          "word": "枝干",
+          "pinyin": ""
+        },
+        {
+          "word": "洁白",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-2",
+      "title": "第2课",
+      "words": [
+        {
+          "word": "轰响",
+          "pinyin": ""
+        },
+        {
+          "word": "阵雨",
+          "pinyin": ""
+        },
+        {
+          "word": "湿润",
+          "pinyin": ""
+        },
+        {
+          "word": "风笛",
+          "pinyin": ""
+        },
+        {
+          "word": "狂欢",
+          "pinyin": ""
+        },
+        {
+          "word": "觉得",
+          "pinyin": ""
+        },
+        {
+          "word": "功课",
+          "pinyin": ""
+        },
+        {
+          "word": "放学",
+          "pinyin": ""
+        },
+        {
+          "word": "老师",
+          "pinyin": ""
+        },
+        {
+          "word": "急急忙忙",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-5",
+      "title": "第5课",
+      "words": [
+        {
+          "word": "秋风",
+          "pinyin": ""
+        },
+        {
+          "word": "放晴",
+          "pinyin": ""
+        },
+        {
+          "word": "明朗",
+          "pinyin": ""
+        },
+        {
+          "word": "地面",
+          "pinyin": ""
+        },
+        {
+          "word": "亮晶晶",
+          "pinyin": ""
+        },
+        {
+          "word": "落叶",
+          "pinyin": ""
+        },
+        {
+          "word": "图案",
+          "pinyin": ""
+        },
+        {
+          "word": "闪闪发光",
+          "pinyin": ""
+        },
+        {
+          "word": "尽头",
+          "pinyin": ""
+        },
+        {
+          "word": "排列",
+          "pinyin": ""
+        },
+        {
+          "word": "规则",
+          "pinyin": ""
+        },
+        {
+          "word": "凌乱",
+          "pinyin": ""
+        },
+        {
+          "word": "歌唱",
+          "pinyin": ""
+        },
+        {
+          "word": "迟到",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-6",
+      "title": "第6课",
+      "words": [
+        {
+          "word": "秋天",
+          "pinyin": ""
+        },
+        {
+          "word": "清凉",
+          "pinyin": ""
+        },
+        {
+          "word": "炎热",
+          "pinyin": ""
+        },
+        {
+          "word": "枫树",
+          "pinyin": ""
+        },
+        {
+          "word": "邮票",
+          "pinyin": ""
+        },
+        {
+          "word": "凉爽",
+          "pinyin": ""
+        },
+        {
+          "word": "果树",
+          "pinyin": ""
+        },
+        {
+          "word": "菊花",
+          "pinyin": ""
+        },
+        {
+          "word": "仙子",
+          "pinyin": ""
+        },
+        {
+          "word": "频频",
+          "pinyin": ""
+        },
+        {
+          "word": "气味",
+          "pinyin": ""
+        },
+        {
+          "word": "香甜",
+          "pinyin": ""
+        },
+        {
+          "word": "松果",
+          "pinyin": ""
+        },
+        {
+          "word": "丰收",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-8",
+      "title": "第8课",
+      "words": [
+        {
+          "word": "门板",
+          "pinyin": ""
+        },
+        {
+          "word": "准备",
+          "pinyin": ""
+        },
+        {
+          "word": "旁边",
+          "pinyin": ""
+        },
+        {
+          "word": "暴风雨",
+          "pinyin": ""
+        },
+        {
+          "word": "安心",
+          "pinyin": ""
+        },
+        {
+          "word": "低头",
+          "pinyin": ""
+        },
+        {
+          "word": "吃力",
+          "pinyin": ""
+        },
+        {
+          "word": "再见",
+          "pinyin": ""
+        },
+        {
+          "word": "母鸡",
+          "pinyin": ""
+        },
+        {
+          "word": "注意",
+          "pinyin": ""
+        },
+        {
+          "word": "屋子",
+          "pinyin": ""
+        },
+        {
+          "word": "漂亮",
+          "pinyin": ""
+        },
+        {
+          "word": "意思",
+          "pinyin": ""
+        },
+        {
+          "word": "因此",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "garden-3",
+      "title": "语文园地3",
+      "words": [
+        {
+          "word": "恒心",
+          "pinyin": ""
+        },
+        {
+          "word": "神圣",
+          "pinyin": ""
+        },
+        {
+          "word": "萌发",
+          "pinyin": ""
+        },
+        {
+          "word": "妥当",
+          "pinyin": ""
+        },
+        {
+          "word": "车轴",
+          "pinyin": ""
+        },
+        {
+          "word": "阁楼",
+          "pinyin": ""
+        },
+        {
+          "word": "培植",
+          "pinyin": ""
+        },
+        {
+          "word": "厘米",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-11",
+      "title": "第11课",
+      "words": [
+        {
+          "word": "声明",
+          "pinyin": ""
+        },
+        {
+          "word": "神仙",
+          "pinyin": ""
+        },
+        {
+          "word": "普通",
+          "pinyin": ""
+        },
+        {
+          "word": "让步",
+          "pinyin": ""
+        },
+        {
+          "word": "条件",
+          "pinyin": ""
+        },
+        {
+          "word": "指甲",
+          "pinyin": ""
+        },
+        {
+          "word": "得到",
+          "pinyin": ""
+        },
+        {
+          "word": "衣服",
+          "pinyin": ""
+        },
+        {
+          "word": "所以",
+          "pinyin": ""
+        },
+        {
+          "word": "要是",
+          "pinyin": ""
+        },
+        {
+          "word": "同学",
+          "pinyin": ""
+        },
+        {
+          "word": "可怜",
+          "pinyin": ""
+        },
+        {
+          "word": "最好",
+          "pinyin": ""
+        },
+        {
+          "word": "科学",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-12",
+      "title": "第12课",
+      "words": [
+        {
+          "word": "旅行",
+          "pinyin": ""
+        },
+        {
+          "word": "要好",
+          "pinyin": ""
+        },
+        {
+          "word": "答应",
+          "pinyin": ""
+        },
+        {
+          "word": "做梦",
+          "pinyin": ""
+        },
+        {
+          "word": "来得及",
+          "pinyin": ""
+        },
+        {
+          "word": "救命",
+          "pinyin": ""
+        },
+        {
+          "word": "大吃一惊",
+          "pinyin": ""
+        },
+        {
+          "word": "尾巴",
+          "pinyin": ""
+        },
+        {
+          "word": "牙齿",
+          "pinyin": ""
+        },
+        {
+          "word": "肚皮",
+          "pinyin": ""
+        },
+        {
+          "word": "食物",
+          "pinyin": ""
+        },
+        {
+          "word": "消化",
+          "pinyin": ""
+        },
+        {
+          "word": "当然",
+          "pinyin": ""
+        },
+        {
+          "word": "刚才",
+          "pinyin": ""
+        },
+        {
+          "word": "知觉",
+          "pinyin": ""
+        },
+        {
+          "word": "光亮",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "garden-4",
+      "title": "语文园地4",
+      "words": [
+        {
+          "word": "申请",
+          "pinyin": ""
+        },
+        {
+          "word": "介绍",
+          "pinyin": ""
+        },
+        {
+          "word": "主旨",
+          "pinyin": ""
+        },
+        {
+          "word": "占领",
+          "pinyin": ""
+        },
+        {
+          "word": "乏力",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-14",
+      "title": "第14课",
+      "words": [
+        {
+          "word": "母亲",
+          "pinyin": ""
+        },
+        {
+          "word": "外祖父",
+          "pinyin": ""
+        },
+        {
+          "word": "船夫",
+          "pinyin": ""
+        },
+        {
+          "word": "羽毛",
+          "pinyin": ""
+        },
+        {
+          "word": "翠绿",
+          "pinyin": ""
+        },
+        {
+          "word": "静悄悄",
+          "pinyin": ""
+        },
+        {
+          "word": "翠鸟",
+          "pinyin": ""
+        },
+        {
+          "word": "捕鱼",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-15",
+      "title": "第15课",
+      "words": [
+        {
+          "word": "草地",
+          "pinyin": ""
+        },
+        {
+          "word": "蒲公英",
+          "pinyin": ""
+        },
+        {
+          "word": "盛开",
+          "pinyin": ""
+        },
+        {
+          "word": "玩耍",
+          "pinyin": ""
+        },
+        {
+          "word": "一本正经",
+          "pinyin": ""
+        },
+        {
+          "word": "使劲",
+          "pinyin": ""
+        },
+        {
+          "word": "钓鱼",
+          "pinyin": ""
+        },
+        {
+          "word": "观察",
+          "pinyin": ""
+        },
+        {
+          "word": "合拢",
+          "pinyin": ""
+        },
+        {
+          "word": "张开",
+          "pinyin": ""
+        },
+        {
+          "word": "喜爱",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-16",
+      "title": "第16课",
+      "words": [
+        {
+          "word": "风景",
+          "pinyin": ""
+        },
+        {
+          "word": "优美",
+          "pinyin": ""
+        },
+        {
+          "word": "物产",
+          "pinyin": ""
+        },
+        {
+          "word": "交错",
+          "pinyin": ""
+        },
+        {
+          "word": "岩石",
+          "pinyin": ""
+        },
+        {
+          "word": "鹿角",
+          "pinyin": ""
+        },
+        {
+          "word": "成群结队",
+          "pinyin": ""
+        },
+        {
+          "word": "布满",
+          "pinyin": ""
+        },
+        {
+          "word": "条纹",
+          "pinyin": ""
+        },
+        {
+          "word": "周身",
+          "pinyin": ""
+        },
+        {
+          "word": "皮球",
+          "pinyin": ""
+        },
+        {
+          "word": "茂密",
+          "pinyin": ""
+        },
+        {
+          "word": "肥料",
+          "pinyin": ""
+        },
+        {
+          "word": "祖国",
+          "pinyin": ""
+        },
+        {
+          "word": "事业",
+          "pinyin": ""
+        },
+        {
+          "word": "发展",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-17",
+      "title": "第17课",
+      "words": [
+        {
+          "word": "海滨",
+          "pinyin": ""
+        },
+        {
+          "word": "街道",
+          "pinyin": ""
+        },
+        {
+          "word": "交界",
+          "pinyin": ""
+        },
+        {
+          "word": "水平线",
+          "pinyin": ""
+        },
+        {
+          "word": "机帆船",
+          "pinyin": ""
+        },
+        {
+          "word": "来来往往",
+          "pinyin": ""
+        },
+        {
+          "word": "朝阳",
+          "pinyin": ""
+        },
+        {
+          "word": "渔民",
+          "pinyin": ""
+        },
+        {
+          "word": "贝壳",
+          "pinyin": ""
+        },
+        {
+          "word": "汽笛",
+          "pinyin": ""
+        },
+        {
+          "word": "出海",
+          "pinyin": ""
+        },
+        {
+          "word": "银光闪闪",
+          "pinyin": ""
+        },
+        {
+          "word": "庭院",
+          "pinyin": ""
+        },
+        {
+          "word": "亚热带",
+          "pinyin": ""
+        },
+        {
+          "word": "散发",
+          "pinyin": ""
+        },
+        {
+          "word": "打扫",
+          "pinyin": ""
+        },
+        {
+          "word": "干净",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-18",
+      "title": "第18课",
+      "words": [
+        {
+          "word": "东北",
+          "pinyin": ""
+        },
+        {
+          "word": "密密层层",
+          "pinyin": ""
+        },
+        {
+          "word": "严严实实",
+          "pinyin": ""
+        },
+        {
+          "word": "视线",
+          "pinyin": ""
+        },
+        {
+          "word": "山谷",
+          "pinyin": ""
+        },
+        {
+          "word": "起来",
+          "pinyin": ""
+        },
+        {
+          "word": "照射",
+          "pinyin": ""
+        },
+        {
+          "word": "各种各样",
+          "pinyin": ""
+        },
+        {
+          "word": "花坛",
+          "pinyin": ""
+        },
+        {
+          "word": "显得",
+          "pinyin": ""
+        },
+        {
+          "word": "苍翠",
+          "pinyin": ""
+        },
+        {
+          "word": "药材",
+          "pinyin": ""
+        },
+        {
+          "word": "捕捉",
+          "pinyin": ""
+        },
+        {
+          "word": "野兔",
+          "pinyin": ""
+        },
+        {
+          "word": "景色",
+          "pinyin": ""
+        },
+        {
+          "word": "宝库",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-21",
+      "title": "第21课",
+      "words": [
+        {
+          "word": "大自然",
+          "pinyin": ""
+        },
+        {
+          "word": "美妙",
+          "pinyin": ""
+        },
+        {
+          "word": "音乐家",
+          "pinyin": ""
+        },
+        {
+          "word": "手风琴",
+          "pinyin": ""
+        },
+        {
+          "word": "歌手",
+          "pinyin": ""
+        },
+        {
+          "word": "感受",
+          "pinyin": ""
+        },
+        {
+          "word": "温柔",
+          "pinyin": ""
+        },
+        {
+          "word": "合奏",
+          "pinyin": ""
+        },
+        {
+          "word": "充满",
+          "pinyin": ""
+        },
+        {
+          "word": "威力",
+          "pinyin": ""
+        },
+        {
+          "word": "乐器",
+          "pinyin": ""
+        },
+        {
+          "word": "屋顶",
+          "pinyin": ""
+        },
+        {
+          "word": "河流",
+          "pinyin": ""
+        },
+        {
+          "word": "轻快",
+          "pinyin": ""
+        },
+        {
+          "word": "合唱",
+          "pinyin": ""
+        },
+        {
+          "word": "水塘",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-22",
+      "title": "第22课",
+      "words": [
+        {
+          "word": "昆虫",
+          "pinyin": ""
+        },
+        {
+          "word": "万物",
+          "pinyin": ""
+        },
+        {
+          "word": "沉思",
+          "pinyin": ""
+        },
+        {
+          "word": "搬家",
+          "pinyin": ""
+        },
+        {
+          "word": "井然有序",
+          "pinyin": ""
+        },
+        {
+          "word": "精神",
+          "pinyin": ""
+        },
+        {
+          "word": "植物",
+          "pinyin": ""
+        },
+        {
+          "word": "千姿百态",
+          "pinyin": ""
+        },
+        {
+          "word": "鲜美",
+          "pinyin": ""
+        },
+        {
+          "word": "池塘",
+          "pinyin": ""
+        },
+        {
+          "word": "秋高气爽",
+          "pinyin": ""
+        },
+        {
+          "word": "倒映",
+          "pinyin": ""
+        },
+        {
+          "word": "游玩",
+          "pinyin": ""
+        },
+        {
+          "word": "画册",
+          "pinyin": ""
+        },
+        {
+          "word": "无穷",
+          "pinyin": ""
+        },
+        {
+          "word": "奥秘",
+          "pinyin": ""
+        },
+        {
+          "word": "无尽",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "garden-7",
+      "title": "语文园地7",
+      "words": [
+        {
+          "word": "田螺",
+          "pinyin": ""
+        },
+        {
+          "word": "螃蟹",
+          "pinyin": ""
+        },
+        {
+          "word": "鲤鱼",
+          "pinyin": ""
+        },
+        {
+          "word": "鲫鱼",
+          "pinyin": ""
+        },
+        {
+          "word": "鲨鱼",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-24",
+      "title": "第24课",
+      "words": [
+        {
+          "word": "生物",
+          "pinyin": ""
+        },
+        {
+          "word": "从事",
+          "pinyin": ""
+        },
+        {
+          "word": "成就",
+          "pinyin": ""
+        },
+        {
+          "word": "学期",
+          "pinyin": ""
+        },
+        {
+          "word": "考试",
+          "pinyin": ""
+        },
+        {
+          "word": "再三",
+          "pinyin": ""
+        },
+        {
+          "word": "同意",
+          "pinyin": ""
+        },
+        {
+          "word": "难得",
+          "pinyin": ""
+        },
+        {
+          "word": "值班",
+          "pinyin": ""
+        },
+        {
+          "word": "努力",
+          "pinyin": ""
+        },
+        {
+          "word": "留学",
+          "pinyin": ""
+        },
+        {
+          "word": "国家",
+          "pinyin": ""
+        },
+        {
+          "word": "落后",
+          "pinyin": ""
+        },
+        {
+          "word": "地位",
+          "pinyin": ""
+        },
+        {
+          "word": "环节",
+          "pinyin": ""
+        },
+        {
+          "word": "难度",
+          "pinyin": ""
+        },
+        {
+          "word": "刻苦",
+          "pinyin": ""
+        },
+        {
+          "word": "兴奋",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "reading-25",
+      "title": "第25课",
+      "words": [
+        {
+          "word": "手术台",
+          "pinyin": ""
+        },
+        {
+          "word": "阵地",
+          "pinyin": ""
+        },
+        {
+          "word": "战斗",
+          "pinyin": ""
+        },
+        {
+          "word": "打响",
+          "pinyin": ""
+        },
+        {
+          "word": "消灭",
+          "pinyin": ""
+        },
+        {
+          "word": "伤员",
+          "pinyin": ""
+        },
+        {
+          "word": "陆续",
+          "pinyin": ""
+        },
+        {
+          "word": "血丝",
+          "pinyin": ""
+        },
+        {
+          "word": "匆匆",
+          "pinyin": ""
+        },
+        {
+          "word": "医生",
+          "pinyin": ""
+        },
+        {
+          "word": "转告",
+          "pinyin": ""
+        },
+        {
+          "word": "赶忙",
+          "pinyin": ""
+        },
+        {
+          "word": "迅速",
+          "pinyin": ""
+        },
+        {
+          "word": "争分夺秒",
+          "pinyin": ""
+        },
+        {
+          "word": "连续",
+          "pinyin": ""
+        }
+      ]
+    },
+    {
+      "lessonKey": "garden-8",
+      "title": "语文园地8",
+      "words": [
+        {
+          "word": "怒目圆睁",
+          "pinyin": ""
+        },
+        {
+          "word": "眨眼",
+          "pinyin": ""
+        },
+        {
+          "word": "眼眶",
+          "pinyin": ""
+        },
+        {
+          "word": "目瞪口呆",
+          "pinyin": ""
+        },
+        {
+          "word": "耳闻目睹",
+          "pinyin": ""
+        }
+      ]
+    }
+  ]
+}

@@ -23,39 +23,183 @@
       "characters": [
         {
           "char": "欣",
-          "pinyin": "xīn"
+          "pinyin": "xīn",
+          "words": [
+            {
+              "word": "欣赏",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "欣喜",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "欣赏",
+            "text": "我们站在山顶，欣赏日出的美景。"
+          }
         },
         {
           "char": "兰",
-          "pinyin": "lán"
+          "pinyin": "lán",
+          "words": [
+            {
+              "word": "兰花",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "玉兰",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "兰花",
+            "text": "窗台上的兰花开了，香气十分清淡。"
+          }
         },
         {
           "char": "笨",
-          "pinyin": "bèn"
+          "pinyin": "bèn",
+          "words": [
+            {
+              "word": "笨重",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "笨拙",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "笨重",
+            "text": "这口旧木箱太笨重，一个人搬不动。"
+          }
         },
         {
           "char": "靠",
-          "pinyin": "kào"
+          "pinyin": "kào",
+          "words": [
+            {
+              "word": "依靠",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "靠近",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "依靠",
+            "text": "小树苗依靠支架，慢慢长得挺拔起来。"
+          }
         },
         {
           "char": "婆",
-          "pinyin": "pó"
+          "pinyin": "pó",
+          "words": [
+            {
+              "word": "外婆",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "婆婆",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "外婆",
+            "text": "外婆给我织了一条温暖的围巾。"
+          }
         },
         {
           "char": "糕",
-          "pinyin": "gāo"
+          "pinyin": "gāo",
+          "words": [
+            {
+              "word": "蛋糕",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "年糕",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "蛋糕",
+            "text": "生日那天，妈妈给我做了一个水果蛋糕。"
+          }
         },
         {
           "char": "饼",
-          "pinyin": "bǐng"
+          "pinyin": "bǐng",
+          "words": [
+            {
+              "word": "饼干",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "月饼",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "饼干",
+            "text": "我把饼干分给一起参加郊游的朋友。"
+          }
         },
         {
           "char": "浸",
-          "pinyin": "jìn"
+          "pinyin": "jìn",
+          "words": [
+            {
+              "word": "浸泡",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "浸湿",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "浸泡",
+            "text": "洗衣服前，妈妈先把衣服浸泡在水里。"
+          }
         },
         {
           "char": "茶",
-          "pinyin": "chá"
+          "pinyin": "chá",
+          "words": [
+            {
+              "word": "茶叶",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "喝茶",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "茶叶",
+            "text": "爷爷把新买的茶叶装进密封的罐子里。"
+          }
         }
       ]
     },
@@ -65,39 +209,186 @@
       "characters": [
         {
           "char": "亩",
-          "pinyin": "mǔ"
+          "pinyin": "mǔ",
+          "words": [
+            {
+              "word": "亩产",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "公亩",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "亩产",
+            "text": "农技人员正在测算这片稻田的亩产。"
+          }
         },
         {
           "char": "荒",
-          "pinyin": "huāng"
+          "pinyin": "huāng",
+          "words": [
+            {
+              "word": "荒地",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "荒凉",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "荒地",
+            "text": "原来长满杂草的荒地，如今变成了小花园。"
+          }
         },
         {
           "char": "播",
-          "pinyin": "bō"
+          "pinyin": "bō",
+          "words": [
+            {
+              "word": "播放",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "播种",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "播放",
+            "text": "广播里正在播放同学们喜欢的歌曲。"
+          }
         },
         {
           "char": "洗",
-          "pinyin": "xǐ"
+          "pinyin": "xǐ",
+          "words": [
+            {
+              "word": "洗手",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "洗澡",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "洗手",
+            "text": "吃饭前，我们要用流动的水认真洗手。"
+          }
         },
         {
           "char": "吩",
-          "pinyin": "fēn"
+          "pinyin": "fēn",
+          "words": [
+            {
+              "word": "吩咐",
+              "pinyin": "",
+              "meaning": "",
+              "kind": "usage"
+            },
+            {
+              "word": "再三吩咐",
+              "pinyin": "",
+              "meaning": "",
+              "kind": "usage"
+            }
+          ],
+          "sentence": {
+            "groupWord": "吩咐",
+            "text": "出门前，妈妈吩咐我记得关好门窗。"
+          },
+          "examplesLabel": "用法示例"
         },
         {
           "char": "咐",
-          "pinyin": "fù"
+          "pinyin": "fù",
+          "words": [
+            {
+              "word": "吩咐",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "嘱咐",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "嘱咐",
+            "text": "奶奶嘱咐我，天凉了要及时加衣服。"
+          }
         },
         {
           "char": "茅",
-          "pinyin": "máo"
+          "pinyin": "máo",
+          "words": [
+            {
+              "word": "茅屋",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "茅草",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "茅屋",
+            "text": "山脚下有一间小小的茅屋。"
+          }
         },
         {
           "char": "亭",
-          "pinyin": "tíng"
+          "pinyin": "tíng",
+          "words": [
+            {
+              "word": "凉亭",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "亭子",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "凉亭",
+            "text": "走累了，我们坐在湖边的凉亭里休息。"
+          }
         },
         {
           "char": "矮",
-          "pinyin": "ǎi"
+          "pinyin": "ǎi",
+          "words": [
+            {
+              "word": "矮小",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "高矮",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "矮小",
+            "text": "这棵矮小的树上也结出了香甜的果子。"
+          }
         }
       ]
     },
@@ -107,63 +398,303 @@
       "characters": [
         {
           "char": "锁",
-          "pinyin": "suǒ"
+          "pinyin": "suǒ",
+          "words": [
+            {
+              "word": "锁头",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "门锁",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "锁头",
+            "text": "爷爷给旧箱子换了一把结实的锁头。"
+          }
         },
         {
           "char": "简",
-          "pinyin": "jiǎn"
+          "pinyin": "jiǎn",
+          "words": [
+            {
+              "word": "简单",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "简洁",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "简单",
+            "text": "姐姐用简单的材料做出了漂亮的风车。"
+          }
         },
         {
           "char": "阔",
-          "pinyin": "kuò"
+          "pinyin": "kuò",
+          "words": [
+            {
+              "word": "宽阔",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "广阔",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "宽阔",
+            "text": "宽阔的马路两旁种满了高大的梧桐树。"
+          }
         },
         {
           "char": "丘",
-          "pinyin": "qiū"
+          "pinyin": "qiū",
+          "words": [
+            {
+              "word": "山丘",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "丘陵",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "山丘",
+            "text": "一座绿色的山丘挡住了远处的村庄。"
+          }
         },
         {
           "char": "妨",
-          "pinyin": "fáng"
+          "pinyin": "fáng",
+          "words": [
+            {
+              "word": "妨碍",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "不妨",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "妨碍",
+            "text": "把自行车停在路中央，会妨碍大家通行。"
+          }
         },
         {
           "char": "碍",
-          "pinyin": "ài"
+          "pinyin": "ài",
+          "words": [
+            {
+              "word": "障碍",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "妨碍",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "障碍",
+            "text": "运动员轻轻一跃，跨过了前方的障碍。"
+          }
         },
         {
           "char": "距",
-          "pinyin": "jù"
+          "pinyin": "jù",
+          "words": [
+            {
+              "word": "距离",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "间距",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "距离",
+            "text": "从学校到我家，大约有两公里的距离。"
+          }
         },
         {
           "char": "厕",
-          "pinyin": "cè"
+          "pinyin": "cè",
+          "words": [
+            {
+              "word": "厕所",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "公厕",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "厕所",
+            "text": "公园里的厕所每天都有人打扫。"
+          }
         },
         {
           "char": "陷",
-          "pinyin": "xiàn"
+          "pinyin": "xiàn",
+          "words": [
+            {
+              "word": "陷入",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "塌陷",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "陷入",
+            "text": "小车陷入泥地里，大家一起帮忙推车。"
+          }
         },
         {
           "char": "坑",
-          "pinyin": "kēng"
+          "pinyin": "kēng",
+          "words": [
+            {
+              "word": "水坑",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "坑洼",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "水坑",
+            "text": "雨停后，弟弟穿着雨靴绕过路上的水坑。"
+          }
         },
         {
           "char": "兵",
-          "pinyin": "bīng"
+          "pinyin": "bīng",
+          "words": [
+            {
+              "word": "士兵",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "兵器",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "士兵",
+            "text": "士兵们冒着风雪守卫边疆。"
+          }
         },
         {
           "char": "拐",
-          "pinyin": "guǎi"
+          "pinyin": "guǎi",
+          "words": [
+            {
+              "word": "拐弯",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "拐杖",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "拐弯",
+            "text": "前方道路要拐弯，司机慢慢减速。"
+          }
         },
         {
           "char": "铜",
-          "pinyin": "tóng"
+          "pinyin": "tóng",
+          "words": [
+            {
+              "word": "铜钱",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "青铜",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "铜钱",
+            "text": "博物馆里展出了一枚古老的铜钱。"
+          }
         },
         {
           "char": "铃",
-          "pinyin": "líng"
+          "pinyin": "líng",
+          "words": [
+            {
+              "word": "铃声",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "铃铛",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "铃声",
+            "text": "下课铃声一响，同学们就收好课本。"
+          }
         },
         {
           "char": "抗",
-          "pinyin": "kàng"
+          "pinyin": "kàng",
+          "words": [
+            {
+              "word": "抵抗",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "抗议",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "抵抗",
+            "text": "厚厚的皮毛帮助北极熊抵抗严寒。"
+          }
         }
       ]
     },
@@ -173,59 +704,283 @@
       "characters": [
         {
           "char": "臣",
-          "pinyin": "chén"
+          "pinyin": "chén",
+          "words": [
+            {
+              "word": "大臣",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "功臣",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "大臣",
+            "text": "历史故事中的大臣向国王提出了建议。"
+          }
         },
         {
           "char": "议",
-          "pinyin": "yì"
+          "pinyin": "yì",
+          "words": [
+            {
+              "word": "商议",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "会议",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "商议",
+            "text": "大家正在商议班级春游的活动安排。"
+          }
         },
         {
           "char": "罢",
-          "pinyin": "bà"
+          "pinyin": "bà",
+          "words": [
+            {
+              "word": "罢工",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "罢休",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "罢休",
+            "text": "弟弟一定要拼好模型才肯罢休。"
+          }
         },
         {
           "char": "亏",
-          "pinyin": "kuī"
+          "pinyin": "kuī",
+          "words": [
+            {
+              "word": "吃亏",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "幸亏",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "幸亏",
+            "text": "幸亏带了雨衣，我们才没有被大雨淋湿。"
+          }
         },
         {
           "char": "允",
-          "pinyin": "yǔn"
+          "pinyin": "yǔn",
+          "words": [
+            {
+              "word": "允许",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "允诺",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "允许",
+            "text": "没有得到允许，不要随意拿别人的东西。"
+          }
         },
         {
           "char": "诺",
-          "pinyin": "nuò"
+          "pinyin": "nuò",
+          "words": [
+            {
+              "word": "承诺",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "诺言",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "承诺",
+            "text": "答应别人的事情要做到，不能轻易违背承诺。"
+          }
         },
         {
           "char": "典",
-          "pinyin": "diǎn"
+          "pinyin": "diǎn",
+          "words": [
+            {
+              "word": "字典",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "典礼",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "字典",
+            "text": "遇到不认识的字，我就打开字典查一查。"
+          }
         },
         {
           "char": "君",
-          "pinyin": "jūn"
+          "pinyin": "jūn",
+          "words": [
+            {
+              "word": "君子",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "君王",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "君子",
+            "text": "古人常用君子来称赞品德高尚的人。"
+          }
         },
         {
           "char": "托",
-          "pinyin": "tuō"
+          "pinyin": "tuō",
+          "words": [
+            {
+              "word": "委托",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "托起",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "委托",
+            "text": "妈妈委托邻居帮忙照看阳台上的花。"
+          }
         },
         {
           "char": "杀",
-          "pinyin": "shā"
+          "pinyin": "shā",
+          "words": [
+            {
+              "word": "杀菌",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "杀虫",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "杀菌",
+            "text": "高温可以杀菌，但使用电器时要注意安全。"
+          }
         },
         {
           "char": "辞",
-          "pinyin": "cí"
+          "pinyin": "cí",
+          "words": [
+            {
+              "word": "告辞",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "辞别",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "告辞",
+            "text": "天快黑了，我们向主人告辞，准备回家。"
+          }
         },
         {
           "char": "录",
-          "pinyin": "lù"
+          "pinyin": "lù",
+          "words": [
+            {
+              "word": "记录",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "录音",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "记录",
+            "text": "我用观察日记记录种子的生长过程。"
+          }
         },
         {
           "char": "拒",
-          "pinyin": "jù"
+          "pinyin": "jù",
+          "words": [
+            {
+              "word": "拒绝",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "抗拒",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "拒绝",
+            "text": "陌生人给的食物，我们要礼貌地拒绝。"
+          }
         },
         {
           "char": "敲",
-          "pinyin": "qiāo"
+          "pinyin": "qiāo",
+          "words": [
+            {
+              "word": "敲门",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "敲打",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "敲门",
+            "text": "来到别人家门前，要先轻轻敲门。"
+          }
         }
       ]
     },
@@ -235,28 +990,124 @@
       "characters": [
         {
           "char": "赛",
-          "pinyin": "sài"
+          "pinyin": "sài",
+          "words": [
+            {
+              "word": "比赛",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "赛跑",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "比赛",
+            "text": "运动会上，我们参加了一场精彩的接力比赛。"
+          }
         },
         {
           "char": "冠",
           "pinyin": "guàn",
-          "readingPhrase": "冠军"
+          "readingPhrase": "冠军",
+          "words": [
+            {
+              "word": "冠军",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "夺冠",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "冠军",
+            "text": "经过努力，我们班获得了合唱比赛的冠军。"
+          }
         },
         {
           "char": "俯",
-          "pinyin": "fǔ"
+          "pinyin": "fǔ",
+          "words": [
+            {
+              "word": "俯视",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "俯身",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "俯视",
+            "text": "站在塔顶俯视，整座小城尽收眼底。"
+          }
         },
         {
           "char": "超",
-          "pinyin": "chāo"
+          "pinyin": "chāo",
+          "words": [
+            {
+              "word": "超过",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "超市",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "超过",
+            "text": "他的跳远成绩超过了自己上次的记录。"
+          }
         },
         {
           "char": "箭",
-          "pinyin": "jiàn"
+          "pinyin": "jiàn",
+          "words": [
+            {
+              "word": "弓箭",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "箭头",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "箭头",
+            "text": "我按照路牌上的箭头，找到了公园出口。"
+          }
         },
         {
           "char": "赤",
-          "pinyin": "chì"
+          "pinyin": "chì",
+          "words": [
+            {
+              "word": "赤红",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "赤脚",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "赤红",
+            "text": "夕阳把西边的云彩映成了赤红色。"
+          }
         }
       ]
     },
@@ -266,59 +1117,283 @@
       "characters": [
         {
           "char": "例",
-          "pinyin": "lì"
+          "pinyin": "lì",
+          "words": [
+            {
+              "word": "例子",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "例如",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "例子",
+            "text": "老师举了一个生活中的例子，帮助我们理解题意。"
+          }
         },
         {
           "char": "弥",
-          "pinyin": "mí"
+          "pinyin": "mí",
+          "words": [
+            {
+              "word": "弥漫",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "弥补",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "弥漫",
+            "text": "清晨，淡淡的雾气弥漫在湖面上。"
+          }
         },
         {
           "char": "峡",
-          "pinyin": "xiá"
+          "pinyin": "xiá",
+          "words": [
+            {
+              "word": "峡谷",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "海峡",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "峡谷",
+            "text": "清澈的小河从幽深的峡谷中流过。"
+          }
         },
         {
           "char": "晨",
-          "pinyin": "chén"
+          "pinyin": "chén",
+          "words": [
+            {
+              "word": "清晨",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "晨光",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "清晨",
+            "text": "清晨，鸟儿的歌声把我从睡梦中唤醒。"
+          }
         },
         {
           "char": "剖",
-          "pinyin": "pōu"
+          "pinyin": "pōu",
+          "words": [
+            {
+              "word": "解剖",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "剖面",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "解剖",
+            "text": "这幅解剖图清楚地显示了鱼的身体结构。"
+          }
         },
         {
           "char": "混",
-          "pinyin": "hùn"
+          "pinyin": "hùn",
+          "words": [
+            {
+              "word": "混合",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "混乱",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "混合",
+            "text": "把蓝色和黄色的颜料混合，就能调出绿色。"
+          }
         },
         {
           "char": "哗",
-          "pinyin": "huá"
+          "pinyin": "huá",
+          "words": [
+            {
+              "word": "喧哗",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "哗然",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "喧哗",
+            "text": "在图书馆看书时，不要大声喧哗。"
+          }
         },
         {
           "char": "喘",
-          "pinyin": "chuǎn"
+          "pinyin": "chuǎn",
+          "words": [
+            {
+              "word": "喘气",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "喘息",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "喘气",
+            "text": "爬上山坡后，大家停下来喘气、喝水。"
+          }
         },
         {
           "char": "违",
-          "pinyin": "wéi"
+          "pinyin": "wéi",
+          "words": [
+            {
+              "word": "违反",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "违背",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "违反",
+            "text": "过马路不能闯红灯，更不能违反交通规则。"
+          }
         },
         {
           "char": "悲",
-          "pinyin": "bēi"
+          "pinyin": "bēi",
+          "words": [
+            {
+              "word": "悲伤",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "悲痛",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "悲伤",
+            "text": "朋友的安慰使她慢慢走出了悲伤。"
+          }
         },
         {
           "char": "岗",
-          "pinyin": "gǎng"
+          "pinyin": "gǎng",
+          "words": [
+            {
+              "word": "岗位",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "站岗",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "岗位",
+            "text": "门卫叔叔始终坚守在自己的岗位上。"
+          }
         },
         {
           "char": "宰",
-          "pinyin": "zǎi"
+          "pinyin": "zǎi",
+          "words": [
+            {
+              "word": "宰相",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "主宰",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "宰相",
+            "text": "这则古代故事讲述了一位宰相的机智。"
+          }
         },
         {
           "char": "措",
-          "pinyin": "cuò"
+          "pinyin": "cuò",
+          "words": [
+            {
+              "word": "措施",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "措辞",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "措施",
+            "text": "学校采取了多种措施，保障同学们的安全。"
+          }
         },
         {
           "char": "犹",
-          "pinyin": "yóu"
+          "pinyin": "yóu",
+          "words": [
+            {
+              "word": "犹如",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "犹豫",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "犹如",
+            "text": "月光洒在湖面上，犹如铺了一层银纱。"
+          }
         }
       ]
     },
@@ -328,51 +1403,243 @@
       "characters": [
         {
           "char": "酬",
-          "pinyin": "chóu"
+          "pinyin": "chóu",
+          "words": [
+            {
+              "word": "报酬",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "酬谢",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "酬谢",
+            "text": "叔叔婉言谢绝了失主送来的酬谢。"
+          }
         },
         {
           "char": "叮",
-          "pinyin": "dīng"
+          "pinyin": "dīng",
+          "words": [
+            {
+              "word": "叮嘱",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "叮咬",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "叮嘱",
+            "text": "老师再三叮嘱我们，春游时不要擅自离队。"
+          }
         },
         {
           "char": "嘱",
-          "pinyin": "zhǔ"
+          "pinyin": "zhǔ",
+          "words": [
+            {
+              "word": "嘱咐",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "叮嘱",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "嘱咐",
+            "text": "出发前，爸爸嘱咐我路上注意安全。"
+          }
         },
         {
           "char": "禽",
-          "pinyin": "qín"
+          "pinyin": "qín",
+          "words": [
+            {
+              "word": "家禽",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "飞禽",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "家禽",
+            "text": "鸡、鸭、鹅是常见的家禽。"
+          }
         },
         {
           "char": "焦",
-          "pinyin": "jiāo"
+          "pinyin": "jiāo",
+          "words": [
+            {
+              "word": "焦急",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "烧焦",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "焦急",
+            "text": "妈妈焦急地等着晚归的哥哥。"
+          }
         },
         {
           "char": "催",
-          "pinyin": "cuī"
+          "pinyin": "cuī",
+          "words": [
+            {
+              "word": "催促",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "催眠",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "催促",
+            "text": "不用妈妈催促，我就收拾好了书包。"
+          }
         },
         {
           "char": "延",
-          "pinyin": "yán"
+          "pinyin": "yán",
+          "words": [
+            {
+              "word": "延长",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "延伸",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "延长",
+            "text": "为了方便同学阅读，图书馆延长了开放时间。"
+          }
         },
         {
           "char": "灾",
-          "pinyin": "zāi"
+          "pinyin": "zāi",
+          "words": [
+            {
+              "word": "灾害",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "火灾",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "灾害",
+            "text": "台风是一种可能造成严重损失的自然灾害。"
+          }
         },
         {
           "char": "避",
-          "pinyin": "bì"
+          "pinyin": "bì",
+          "words": [
+            {
+              "word": "躲避",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "避免",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "躲避",
+            "text": "小鹿迅速跑进树林，躲避突来的危险。"
+          }
         },
         {
           "char": "悔",
-          "pinyin": "huǐ"
+          "pinyin": "huǐ",
+          "words": [
+            {
+              "word": "后悔",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "悔改",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "后悔",
+            "text": "我很后悔刚才说了伤害朋友的话。"
+          }
         },
         {
           "char": "倾",
-          "pinyin": "qīng"
+          "pinyin": "qīng",
+          "words": [
+            {
+              "word": "倾听",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "倾斜",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "倾听",
+            "text": "当别人讲话时，我们要认真倾听。"
+          }
         },
         {
           "char": "涌",
-          "pinyin": "yǒng"
+          "pinyin": "yǒng",
+          "words": [
+            {
+              "word": "涌出",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "汹涌",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "涌出",
+            "text": "泉水从岩缝里涌出，汇成一条小溪。"
+          }
         }
       ]
     },
@@ -382,59 +1649,283 @@
       "characters": [
         {
           "char": "郎",
-          "pinyin": "láng"
+          "pinyin": "láng",
+          "words": [
+            {
+              "word": "新郎",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "郎中",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "新郎",
+            "text": "婚礼上，新郎和新娘向亲友们表达感谢。"
+          }
         },
         {
           "char": "嫂",
-          "pinyin": "sǎo"
+          "pinyin": "sǎo",
+          "words": [
+            {
+              "word": "嫂子",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "大嫂",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "嫂子",
+            "text": "嫂子提着菜篮子，笑着走进了院子。"
+          }
         },
         {
           "char": "棚",
-          "pinyin": "péng"
+          "pinyin": "péng",
+          "words": [
+            {
+              "word": "凉棚",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "棚子",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "凉棚",
+            "text": "爷爷在院子里搭了一个遮阳的凉棚。"
+          }
         },
         {
           "char": "挺",
-          "pinyin": "tǐng"
+          "pinyin": "tǐng",
+          "words": [
+            {
+              "word": "挺拔",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "挺立",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "挺拔",
+            "text": "操场边的白杨树长得十分挺拔。"
+          }
         },
         {
           "char": "罕",
-          "pinyin": "hǎn"
+          "pinyin": "hǎn",
+          "words": [
+            {
+              "word": "稀罕",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "罕见",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "罕见",
+            "text": "这种颜色的蝴蝶很罕见，大家都仔细观察。"
+          }
         },
         {
           "char": "幸",
-          "pinyin": "xìng"
+          "pinyin": "xìng",
+          "words": [
+            {
+              "word": "幸运",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "幸福",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "幸运",
+            "text": "我很幸运，坐在前排看完了整场演出。"
+          }
         },
         {
           "char": "柴",
-          "pinyin": "chái"
+          "pinyin": "chái",
+          "words": [
+            {
+              "word": "木柴",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "柴火",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "木柴",
+            "text": "爷爷把晒干的木柴整齐地堆在屋后。"
+          }
         },
         {
           "char": "惯",
-          "pinyin": "guàn"
+          "pinyin": "guàn",
+          "words": [
+            {
+              "word": "习惯",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "惯例",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "习惯",
+            "text": "每天睡前阅读已经成了我的好习惯。"
+          }
         },
         {
           "char": "纱",
-          "pinyin": "shā"
+          "pinyin": "shā",
+          "words": [
+            {
+              "word": "纱窗",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "纱布",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "纱窗",
+            "text": "夏天，纱窗能挡住大部分飞进屋里的蚊虫。"
+          }
         },
         {
           "char": "哎",
-          "pinyin": "āi"
+          "pinyin": "āi",
+          "words": [
+            {
+              "word": "哎呀",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "哎哟",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "哎呀",
+            "text": "看到打翻的水杯，妹妹叫道：“哎呀，桌子湿了！”"
+          }
         },
         {
           "char": "姑",
-          "pinyin": "gū"
+          "pinyin": "gū",
+          "words": [
+            {
+              "word": "姑姑",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "姑娘",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "姑姑",
+            "text": "姑姑带着我去公园看荷花。"
+          }
         },
         {
           "char": "娘",
-          "pinyin": "niáng"
+          "pinyin": "niáng",
+          "words": [
+            {
+              "word": "姑娘",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "新娘",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "姑娘",
+            "text": "那位穿红裙子的姑娘正在给游客指路。"
+          }
         },
         {
           "char": "婚",
-          "pinyin": "hūn"
+          "pinyin": "hūn",
+          "words": [
+            {
+              "word": "结婚",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "婚礼",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "婚礼",
+            "text": "亲友们来到花园里，参加表姐的婚礼。"
+          }
         },
         {
           "char": "辈",
-          "pinyin": "bèi"
+          "pinyin": "bèi",
+          "words": [
+            {
+              "word": "长辈",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "晚辈",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "长辈",
+            "text": "过节时，我给家里的长辈送上祝福。"
+          }
         }
       ]
     },
@@ -444,27 +1935,123 @@
       "characters": [
         {
           "char": "祭",
-          "pinyin": "jì"
+          "pinyin": "jì",
+          "words": [
+            {
+              "word": "祭扫",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "祭祀",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "祭扫",
+            "text": "清明节，大家到烈士陵园祭扫，寄托哀思。"
+          }
         },
         {
           "char": "乃",
-          "pinyin": "nǎi"
+          "pinyin": "nǎi",
+          "words": [
+            {
+              "word": "乃至",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "乃是",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "乃至",
+            "text": "这项发现影响了全国，乃至更广的地区。"
+          }
         },
         {
           "char": "翁",
-          "pinyin": "wēng"
+          "pinyin": "wēng",
+          "words": [
+            {
+              "word": "渔翁",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "老翁",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "渔翁",
+            "text": "一位渔翁撑着小船，慢慢驶向湖心。"
+          }
         },
         {
           "char": "杭",
-          "pinyin": "háng"
+          "pinyin": "háng",
+          "words": [
+            {
+              "word": "杭州",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "苏杭",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "杭州",
+            "text": "杭州的西湖边有许多美丽的景点。"
+          }
         },
         {
           "char": "珍",
-          "pinyin": "zhēn"
+          "pinyin": "zhēn",
+          "words": [
+            {
+              "word": "珍惜",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "珍贵",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "珍惜",
+            "text": "我们要珍惜和家人、朋友相处的时光。"
+          }
         },
         {
           "char": "哀",
-          "pinyin": "āi"
+          "pinyin": "āi",
+          "words": [
+            {
+              "word": "悲哀",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "哀伤",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "悲哀",
+            "text": "听到老树被砍倒的消息，他感到十分悲哀。"
+          }
         }
       ]
     },
@@ -474,39 +2061,186 @@
       "characters": [
         {
           "char": "欧",
-          "pinyin": "ōu"
+          "pinyin": "ōu",
+          "words": [
+            {
+              "word": "欧洲",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "欧元",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "欧洲",
+            "text": "地图上标出了欧洲许多国家的位置。"
+          }
         },
         {
           "char": "洲",
-          "pinyin": "zhōu"
+          "pinyin": "zhōu",
+          "words": [
+            {
+              "word": "亚洲",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "绿洲",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "亚洲",
+            "text": "亚洲有许多人口众多的国家。"
+          }
         },
         {
           "char": "冯",
-          "pinyin": "féng"
+          "pinyin": "féng",
+          "words": [
+            {
+              "word": "姓冯",
+              "pinyin": "",
+              "meaning": "",
+              "kind": "usage"
+            },
+            {
+              "word": "冯老师",
+              "pinyin": "",
+              "meaning": "",
+              "kind": "usage"
+            }
+          ],
+          "sentence": {
+            "groupWord": "姓冯",
+            "text": "班里新来的同学姓冯，笑起来很腼腆。"
+          },
+          "examplesLabel": "用法示例"
         },
         {
           "char": "潜",
-          "pinyin": "qián"
+          "pinyin": "qián",
+          "words": [
+            {
+              "word": "潜水",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "潜力",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "潜水",
+            "text": "叔叔穿上专业装备，准备进行潜水训练。"
+          }
         },
         {
           "char": "腾",
-          "pinyin": "téng"
+          "pinyin": "téng",
+          "words": [
+            {
+              "word": "奔腾",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "腾飞",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "奔腾",
+            "text": "骏马在草原上奔腾，扬起一阵尘土。"
+          }
         },
         {
           "char": "兽",
-          "pinyin": "shòu"
+          "pinyin": "shòu",
+          "words": [
+            {
+              "word": "野兽",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "兽医",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "野兽",
+            "text": "这本图画书介绍了森林里的各种野兽。"
+          }
         },
         {
           "char": "胎",
-          "pinyin": "tāi"
+          "pinyin": "tāi",
+          "words": [
+            {
+              "word": "轮胎",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "胎儿",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "轮胎",
+            "text": "出发前，爸爸仔细检查了汽车轮胎。"
+          }
         },
         {
           "char": "皇",
-          "pinyin": "huáng"
+          "pinyin": "huáng",
+          "words": [
+            {
+              "word": "皇宫",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "皇帝",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "皇宫",
+            "text": "这座昔日的皇宫，如今已经成为博物馆。"
+          }
         },
         {
           "char": "途",
-          "pinyin": "tú"
+          "pinyin": "tú",
+          "words": [
+            {
+              "word": "途中",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "路途",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "途中",
+            "text": "去海边的途中，我们经过了一片向日葵田。"
+          }
         }
       ]
     },
@@ -516,55 +2250,263 @@
       "characters": [
         {
           "char": "估",
-          "pinyin": "gū"
+          "pinyin": "gū",
+          "words": [
+            {
+              "word": "估计",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "估算",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "估计",
+            "text": "我估计再走十分钟就能到达山顶。"
+          }
         },
         {
           "char": "损",
-          "pinyin": "sǔn"
+          "pinyin": "sǔn",
+          "words": [
+            {
+              "word": "损坏",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "损失",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "损坏",
+            "text": "借来的图书不能乱折，更不能损坏。"
+          }
         },
         {
           "char": "组",
-          "pinyin": "zǔ"
+          "pinyin": "zǔ",
+          "words": [
+            {
+              "word": "小组",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "组成",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "小组",
+            "text": "我们小组分工合作，很快完成了海报。"
+          }
         },
         {
           "char": "殿",
-          "pinyin": "diàn"
+          "pinyin": "diàn",
+          "words": [
+            {
+              "word": "宫殿",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "大殿",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "宫殿",
+            "text": "山脚下的宫殿保存着古老的壁画。"
+          }
         },
         {
           "char": "征",
-          "pinyin": "zhēng"
+          "pinyin": "zhēng",
+          "words": [
+            {
+              "word": "长征",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "征求",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "征求",
+            "text": "老师征求大家的意见，再决定班会主题。"
+          }
         },
         {
           "char": "览",
-          "pinyin": "lǎn"
+          "pinyin": "lǎn",
+          "words": [
+            {
+              "word": "浏览",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "展览",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "浏览",
+            "text": "我先浏览目录，再选择感兴趣的章节。"
+          }
         },
         {
           "char": "境",
-          "pinyin": "jìng"
+          "pinyin": "jìng",
+          "words": [
+            {
+              "word": "环境",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "边境",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "环境",
+            "text": "大家一起捡起垃圾，保护优美的环境。"
+          }
         },
         {
           "char": "宏",
-          "pinyin": "hóng"
+          "pinyin": "hóng",
+          "words": [
+            {
+              "word": "宏大",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "宏伟",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "宏伟",
+            "text": "这座宏伟的大桥连接了两岸的城市。"
+          }
         },
         {
           "char": "唐",
-          "pinyin": "táng"
+          "pinyin": "táng",
+          "words": [
+            {
+              "word": "唐朝",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "唐诗",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "唐诗",
+            "text": "语文课上，我们学了几首描写春天的唐诗。"
+          }
         },
         {
           "char": "侵",
-          "pinyin": "qīn"
+          "pinyin": "qīn",
+          "words": [
+            {
+              "word": "侵入",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "侵害",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "侵入",
+            "text": "关好纱窗，可以减少蚊虫侵入室内。"
+          }
         },
         {
           "char": "销",
-          "pinyin": "xiāo"
+          "pinyin": "xiāo",
+          "words": [
+            {
+              "word": "销售",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "销毁",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "销售",
+            "text": "果农在网上销售自己种植的苹果。"
+          }
         },
         {
           "char": "罪",
-          "pinyin": "zuì"
+          "pinyin": "zuì",
+          "words": [
+            {
+              "word": "犯罪",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "罪行",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "犯罪",
+            "text": "我们要学习法律知识，远离违法犯罪。"
+          }
         },
         {
           "char": "略",
-          "pinyin": "lüè"
+          "pinyin": "lüè",
+          "words": [
+            {
+              "word": "略微",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "省略",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "略微",
+            "text": "这个纸盒略微大了一点，可以装下全部零件。"
+          }
         }
       ]
     },
@@ -574,55 +2516,263 @@
       "characters": [
         {
           "char": "际",
-          "pinyin": "jì"
+          "pinyin": "jì",
+          "words": [
+            {
+              "word": "国际",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "边际",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "国际",
+            "text": "国际航班把来自不同国家的旅客送往各地。"
+          }
         },
         {
           "char": "抵",
-          "pinyin": "dǐ"
+          "pinyin": "dǐ",
+          "words": [
+            {
+              "word": "抵达",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "抵抗",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "抵达",
+            "text": "经过三个小时的车程，我们终于抵达目的地。"
+          }
         },
         {
           "char": "摄",
-          "pinyin": "shè"
+          "pinyin": "shè",
+          "words": [
+            {
+              "word": "摄影",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "拍摄",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "摄影",
+            "text": "爸爸喜欢摄影，常用相机记录家乡的变化。"
+          }
         },
         {
           "char": "氏",
-          "pinyin": "shì"
+          "pinyin": "shì",
+          "words": [
+            {
+              "word": "姓氏",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "氏族",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "姓氏",
+            "text": "老师让我们调查自己姓氏的来历。"
+          }
         },
         {
           "char": "殖",
-          "pinyin": "zhí"
+          "pinyin": "zhí",
+          "words": [
+            {
+              "word": "繁殖",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "养殖",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "繁殖",
+            "text": "春天，许多动物开始繁殖后代。"
+          }
         },
         {
           "char": "粮",
-          "pinyin": "liáng"
+          "pinyin": "liáng",
+          "words": [
+            {
+              "word": "粮食",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "干粮",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "粮食",
+            "text": "爱惜粮食，就是尊重农民的劳动。"
+          }
         },
         {
           "char": "棉",
-          "pinyin": "mián"
+          "pinyin": "mián",
+          "words": [
+            {
+              "word": "棉花",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "棉被",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "棉花",
+            "text": "秋天，棉花像一团团白云挂在枝头。"
+          }
         },
         {
           "char": "煤",
-          "pinyin": "méi"
+          "pinyin": "méi",
+          "words": [
+            {
+              "word": "煤炭",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "煤矿",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "煤炭",
+            "text": "煤炭是一种重要的能源。"
+          }
         },
         {
           "char": "炭",
-          "pinyin": "tàn"
+          "pinyin": "tàn",
+          "words": [
+            {
+              "word": "木炭",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "煤炭",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "木炭",
+            "text": "这支画笔的笔芯是用木炭制成的。"
+          }
         },
         {
           "char": "蒸",
-          "pinyin": "zhēng"
+          "pinyin": "zhēng",
+          "words": [
+            {
+              "word": "蒸汽",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "蒸发",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "蒸发",
+            "text": "太阳出来后，地面的积水逐渐蒸发了。"
+          }
         },
         {
           "char": "滴",
-          "pinyin": "dī"
+          "pinyin": "dī",
+          "words": [
+            {
+              "word": "水滴",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "点滴",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "水滴",
+            "text": "一颗水滴顺着叶尖落进了池塘。"
+          }
         },
         {
           "char": "菌",
-          "pinyin": "jūn"
+          "pinyin": "jūn",
+          "words": [
+            {
+              "word": "细菌",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "真菌",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "细菌",
+            "text": "饭前洗手，可以减少手上的细菌。"
+          }
         },
         {
           "char": "疗",
-          "pinyin": "liáo"
+          "pinyin": "liáo",
+          "words": [
+            {
+              "word": "治疗",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "疗养",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "治疗",
+            "text": "受伤的小狗正在动物医院接受治疗。"
+          }
         }
       ]
     },
@@ -632,31 +2782,143 @@
       "characters": [
         {
           "char": "塔",
-          "pinyin": "tǎ"
+          "pinyin": "tǎ",
+          "words": [
+            {
+              "word": "宝塔",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "灯塔",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "灯塔",
+            "text": "海边的灯塔为夜航的船只指引方向。"
+          }
         },
         {
           "char": "埃",
-          "pinyin": "āi"
+          "pinyin": "āi",
+          "words": [
+            {
+              "word": "尘埃",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "埃及",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "尘埃",
+            "text": "一束阳光照进来，能看到空气中飘浮的尘埃。"
+          }
         },
         {
           "char": "墓",
-          "pinyin": "mù"
+          "pinyin": "mù",
+          "words": [
+            {
+              "word": "墓地",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "墓碑",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "墓地",
+            "text": "清明节，家人一起打扫先人的墓地。"
+          }
         },
         {
           "char": "堆",
-          "pinyin": "duī"
+          "pinyin": "duī",
+          "words": [
+            {
+              "word": "土堆",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "堆积",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "土堆",
+            "text": "孩子们在沙坑里堆起了一个小土堆。"
+          }
         },
         {
           "char": "基",
-          "pinyin": "jī"
+          "pinyin": "jī",
+          "words": [
+            {
+              "word": "基础",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "基地",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "基础",
+            "text": "打好基础，才能学会更难的知识。"
+          }
         },
         {
           "char": "砌",
-          "pinyin": "qì"
+          "pinyin": "qì",
+          "words": [
+            {
+              "word": "砌墙",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "堆砌",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "砌墙",
+            "text": "工人用砖块和水泥认真砌墙。"
+          }
         },
         {
           "char": "狭",
-          "pinyin": "xiá"
+          "pinyin": "xiá",
+          "words": [
+            {
+              "word": "狭窄",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "狭小",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "狭窄",
+            "text": "这段山路十分狭窄，两人很难并排走。"
+          }
         }
       ]
     },
@@ -666,60 +2928,287 @@
       "characters": [
         {
           "char": "慈",
-          "pinyin": "cí"
+          "pinyin": "cí",
+          "words": [
+            {
+              "word": "慈爱",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "慈祥",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "慈爱",
+            "text": "妈妈用慈爱的目光看着熟睡的弟弟。"
+          }
         },
         {
           "char": "篇",
-          "pinyin": "piān"
+          "pinyin": "piān",
+          "words": [
+            {
+              "word": "篇章",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "篇幅",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "篇章",
+            "text": "这本书用一个个生动的篇章讲述海洋的秘密。"
+          }
         },
         {
           "char": "然",
-          "pinyin": "rán"
+          "pinyin": "rán",
+          "words": [
+            {
+              "word": "自然",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "果然",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "自然",
+            "text": "我们走进自然，观察花草和昆虫。"
+          }
         },
         {
           "char": "愚",
-          "pinyin": "yú"
+          "pinyin": "yú",
+          "words": [
+            {
+              "word": "愚蠢",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "愚昧",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "愚蠢",
+            "text": "只凭外表判断一个人，是很愚蠢的做法。"
+          }
         },
         {
           "char": "抑",
-          "pinyin": "yì"
+          "pinyin": "yì",
+          "words": [
+            {
+              "word": "抑制",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "压抑",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "抑制",
+            "text": "看到姐姐归来，我抑制不住心中的喜悦。"
+          }
         },
         {
           "char": "碌",
-          "pinyin": "lù"
+          "pinyin": "lù",
+          "words": [
+            {
+              "word": "忙碌",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "碌碌无为",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "忙碌",
+            "text": "为了准备晚餐，妈妈在厨房里忙碌着。"
+          }
         },
         {
           "char": "酷",
-          "pinyin": "kù"
+          "pinyin": "kù",
+          "words": [
+            {
+              "word": "酷暑",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "残酷",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "酷暑",
+            "text": "酷暑里，环卫工人仍在认真清扫街道。"
+          }
         },
         {
           "char": "暑",
-          "pinyin": "shǔ"
+          "pinyin": "shǔ",
+          "words": [
+            {
+              "word": "暑假",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "中暑",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "暑假",
+            "text": "暑假里，我读了三本喜欢的课外书。"
+          }
         },
         {
           "char": "噪",
-          "pinyin": "zào"
+          "pinyin": "zào",
+          "words": [
+            {
+              "word": "噪音",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "噪声",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "噪音",
+            "text": "施工的噪音太大，窗外的小鸟都飞走了。"
+          }
         },
         {
           "char": "掏",
-          "pinyin": "tāo"
+          "pinyin": "tāo",
+          "words": [
+            {
+              "word": "掏出",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "掏空",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "掏出",
+            "text": "我从书包里掏出雨衣，递给没有带伞的同学。"
+          }
         },
         {
           "char": "缴",
-          "pinyin": "jiǎo"
+          "pinyin": "jiǎo",
+          "words": [
+            {
+              "word": "缴费",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "缴纳",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "缴费",
+            "text": "妈妈通过手机完成了本月的水电缴费。"
+          }
         },
         {
           "char": "哇",
           "pinyin": "wa",
-          "readingPhrase": "容易哇"
+          "readingPhrase": "容易哇",
+          "words": [
+            {
+              "word": "好哇",
+              "pinyin": "",
+              "meaning": "",
+              "kind": "usage"
+            },
+            {
+              "word": "快走哇",
+              "pinyin": "",
+              "meaning": "",
+              "kind": "usage"
+            }
+          ],
+          "sentence": {
+            "groupWord": "好哇",
+            "text": "听到一起去郊游的提议，我高兴地说：“好哇！”"
+          },
+          "examplesLabel": "用法示例"
         },
         {
           "char": "械",
-          "pinyin": "xiè"
+          "pinyin": "xiè",
+          "words": [
+            {
+              "word": "机械",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "器械",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "机械",
+            "text": "工厂里的机械正在有条不紊地运转。"
+          }
         },
         {
           "char": "权",
-          "pinyin": "quán"
+          "pinyin": "quán",
+          "words": [
+            {
+              "word": "权利",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "权力",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "权利",
+            "text": "每个孩子都有接受教育的权利。"
+          }
         }
       ]
     },
@@ -729,57 +3218,268 @@
       "characters": [
         {
           "char": "蚕",
-          "pinyin": "cán"
+          "pinyin": "cán",
+          "words": [
+            {
+              "word": "蚕丝",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "蚕茧",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "蚕茧",
+            "text": "奶奶拿起一只洁白的蚕茧，给我介绍蚕的生长过程。"
+          }
         },
         {
           "char": "省",
-          "pinyin": "shěng"
+          "pinyin": "shěng",
+          "words": [
+            {
+              "word": "节省",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "省份",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "节省",
+            "text": "我把本子两面都用完，尽量节省纸张。"
+          }
         },
         {
           "char": "挣",
           "pinyin": "zhèng",
-          "readingPhrase": "挣钱"
+          "readingPhrase": "挣钱",
+          "words": [
+            {
+              "word": "挣钱",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "挣得",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "挣钱",
+            "text": "叔叔靠修理自行车挣钱，工作十分认真。"
+          }
         },
         {
           "char": "糖",
-          "pinyin": "táng"
+          "pinyin": "táng",
+          "words": [
+            {
+              "word": "糖果",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "白糖",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "糖果",
+            "text": "过生日时，我把糖果分给好朋友。"
+          }
         },
         {
           "char": "委",
-          "pinyin": "wěi"
+          "pinyin": "wěi",
+          "words": [
+            {
+              "word": "委员",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "委托",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "委员",
+            "text": "班会上，大家选出了新的劳动委员。"
+          }
         },
         {
           "char": "迪",
-          "pinyin": "dí"
+          "pinyin": "dí",
+          "words": [
+            {
+              "word": "启迪",
+              "pinyin": "",
+              "meaning": "",
+              "kind": "usage"
+            },
+            {
+              "word": "启迪智慧",
+              "pinyin": "",
+              "meaning": "",
+              "kind": "usage"
+            }
+          ],
+          "sentence": {
+            "groupWord": "启迪",
+            "text": "这本科学故事书能启迪我们的思考。"
+          },
+          "examplesLabel": "用法示例"
         },
         {
           "char": "缺",
-          "pinyin": "quē"
+          "pinyin": "quē",
+          "words": [
+            {
+              "word": "缺少",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "缺点",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "缺少",
+            "text": "这棵小苗因为缺少水分，叶子有些发蔫。"
+          }
         },
         {
           "char": "扎",
           "pinyin": "zā",
-          "readingPhrase": "扎紧"
+          "readingPhrase": "扎紧",
+          "words": [
+            {
+              "word": "包扎",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "扎紧",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "包扎",
+            "text": "医生用纱布为伤者包扎伤口。"
+          }
         },
         {
           "char": "嫁",
-          "pinyin": "jià"
+          "pinyin": "jià",
+          "words": [
+            {
+              "word": "出嫁",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "嫁接",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "嫁接",
+            "text": "园艺师把一根健壮的枝条嫁接到树上。"
+          }
         },
         {
           "char": "陪",
-          "pinyin": "péi"
+          "pinyin": "péi",
+          "words": [
+            {
+              "word": "陪伴",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "陪同",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "陪伴",
+            "text": "周末，我常陪伴奶奶到公园散步。"
+          }
         },
         {
           "char": "毕",
-          "pinyin": "bì"
+          "pinyin": "bì",
+          "words": [
+            {
+              "word": "毕业",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "完毕",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "毕业",
+            "text": "哥哥毕业后，仍常常回学校看望老师。"
+          }
         },
         {
           "char": "猪",
-          "pinyin": "zhū"
+          "pinyin": "zhū",
+          "words": [
+            {
+              "word": "猪圈",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "野猪",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "猪圈",
+            "text": "农场里的猪圈每天都会打扫。"
+          }
         },
         {
           "char": "鲁",
-          "pinyin": "lǔ"
+          "pinyin": "lǔ",
+          "words": [
+            {
+              "word": "鲁莽",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "鲁菜",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "鲁莽",
+            "text": "过马路时不能鲁莽，要看清车辆再通行。"
+          }
         }
       ]
     },
@@ -789,35 +3489,163 @@
       "characters": [
         {
           "char": "孝",
-          "pinyin": "xiào"
+          "pinyin": "xiào",
+          "words": [
+            {
+              "word": "孝顺",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "孝心",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "孝顺",
+            "text": "姐姐很孝顺，经常帮爷爷整理房间。"
+          }
         },
         {
           "char": "喻",
-          "pinyin": "yù"
+          "pinyin": "yù",
+          "words": [
+            {
+              "word": "比喻",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "家喻户晓",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "比喻",
+            "text": "这句话运用比喻，把月亮写成了一只小船。"
+          }
         },
         {
           "char": "躁",
-          "pinyin": "zào"
+          "pinyin": "zào",
+          "words": [
+            {
+              "word": "急躁",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "烦躁",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "急躁",
+            "text": "拼图时不能急躁，要耐心寻找合适的碎片。"
+          }
         },
         {
           "char": "泣",
-          "pinyin": "qì"
+          "pinyin": "qì",
+          "words": [
+            {
+              "word": "哭泣",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "抽泣",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "哭泣",
+            "text": "受了委屈的弟弟躲在房间里轻轻哭泣。"
+          }
         },
         {
           "char": "弛",
-          "pinyin": "chí"
+          "pinyin": "chí",
+          "words": [
+            {
+              "word": "松弛",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "一张一弛",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "松弛",
+            "text": "训练结束后，运动员做拉伸，让紧张的肌肉逐渐松弛。"
+          }
         },
         {
           "char": "卑",
-          "pinyin": "bēi"
+          "pinyin": "bēi",
+          "words": [
+            {
+              "word": "自卑",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "卑微",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "自卑",
+            "text": "每个人都有自己的长处，不必因为一次失误而自卑。"
+          }
         },
         {
           "char": "亢",
-          "pinyin": "kàng"
+          "pinyin": "kàng",
+          "words": [
+            {
+              "word": "高亢",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "不卑不亢",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "高亢",
+            "text": "礼堂里响起了高亢嘹亮的歌声。"
+          }
         },
         {
           "char": "赋",
-          "pinyin": "fù"
+          "pinyin": "fù",
+          "words": [
+            {
+              "word": "赋予",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "天赋",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "赋予",
+            "text": "童话赋予了小树说话的本领。"
+          }
         }
       ]
     },
@@ -827,23 +3655,103 @@
       "characters": [
         {
           "char": "维",
-          "pinyin": "wéi"
+          "pinyin": "wéi",
+          "words": [
+            {
+              "word": "维护",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "维持",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "维护",
+            "text": "我们要共同维护整洁的校园环境。"
+          }
         },
         {
           "char": "孙",
-          "pinyin": "sūn"
+          "pinyin": "sūn",
+          "words": [
+            {
+              "word": "孙女",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "子孙",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "孙女",
+            "text": "奶奶牵着孙女的手，慢慢走过小桥。"
+          }
         },
         {
           "char": "眠",
-          "pinyin": "mián"
+          "pinyin": "mián",
+          "words": [
+            {
+              "word": "睡眠",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "失眠",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "睡眠",
+            "text": "充足的睡眠能让我们第二天更有精神。"
+          }
         },
         {
           "char": "寺",
-          "pinyin": "sì"
+          "pinyin": "sì",
+          "words": [
+            {
+              "word": "寺院",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "寺庙",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "寺院",
+            "text": "山间的寺院周围种着高大的银杏树。"
+          }
         },
         {
           "char": "愈",
-          "pinyin": "yù"
+          "pinyin": "yù",
+          "words": [
+            {
+              "word": "愈合",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "痊愈",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "愈合",
+            "text": "经过细心护理，小狗腿上的伤口逐渐愈合。"
+          }
         }
       ]
     },
@@ -853,27 +3761,123 @@
       "characters": [
         {
           "char": "茫",
-          "pinyin": "máng"
+          "pinyin": "máng",
+          "words": [
+            {
+              "word": "茫然",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "苍茫",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "茫然",
+            "text": "面对突然改变的路线，他一时有些茫然。"
+          }
         },
         {
           "char": "眉",
-          "pinyin": "méi"
+          "pinyin": "méi",
+          "words": [
+            {
+              "word": "眉毛",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "眉头",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "眉毛",
+            "text": "小猫的胡须和眉毛都很灵敏。"
+          }
         },
         {
           "char": "蚁",
-          "pinyin": "yǐ"
+          "pinyin": "yǐ",
+          "words": [
+            {
+              "word": "蚂蚁",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "蚁群",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "蚂蚁",
+            "text": "一只蚂蚁正努力搬动比自己还大的食物。"
+          }
         },
         {
           "char": "俗",
-          "pinyin": "sú"
+          "pinyin": "sú",
+          "words": [
+            {
+              "word": "风俗",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "俗语",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "风俗",
+            "text": "过年贴春联是家乡的一种风俗。"
+          }
         },
         {
           "char": "瑞",
-          "pinyin": "ruì"
+          "pinyin": "ruì",
+          "words": [
+            {
+              "word": "瑞雪",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "祥瑞",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "瑞雪",
+            "text": "一场瑞雪给田野盖上了厚厚的白被子。"
+          }
         },
         {
           "char": "枕",
-          "pinyin": "zhěn"
+          "pinyin": "zhěn",
+          "words": [
+            {
+              "word": "枕头",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "枕巾",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "枕头",
+            "text": "妈妈把晒过太阳的枕头放回床上。"
+          }
         }
       ]
     },
@@ -883,23 +3887,103 @@
       "characters": [
         {
           "char": "素",
-          "pinyin": "sù"
+          "pinyin": "sù",
+          "words": [
+            {
+              "word": "朴素",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "素描",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "朴素",
+            "text": "这位老人衣着朴素，说话很和气。"
+          }
         },
         {
           "char": "朱",
-          "pinyin": "zhū"
+          "pinyin": "zhū",
+          "words": [
+            {
+              "word": "朱红",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "朱砂",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "朱红",
+            "text": "古建筑的大门漆成了鲜艳的朱红色。"
+          }
         },
         {
           "char": "哨",
-          "pinyin": "shào"
+          "pinyin": "shào",
+          "words": [
+            {
+              "word": "口哨",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "哨声",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "口哨",
+            "text": "体育老师吹响口哨，同学们迅速集合。"
+          }
         },
         {
           "char": "恩",
-          "pinyin": "ēn"
+          "pinyin": "ēn",
+          "words": [
+            {
+              "word": "恩情",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "感恩",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "恩情",
+            "text": "我永远记得老师关心我的恩情。"
+          }
         },
         {
           "char": "韵",
-          "pinyin": "yùn"
+          "pinyin": "yùn",
+          "words": [
+            {
+              "word": "韵味",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "押韵",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "韵味",
+            "text": "这首小诗语言优美，读起来很有韵味。"
+          }
         }
       ]
     },
@@ -909,43 +3993,203 @@
       "characters": [
         {
           "char": "湘",
-          "pinyin": "xiāng"
+          "pinyin": "xiāng",
+          "words": [
+            {
+              "word": "湘江",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "湘菜",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "湘江",
+            "text": "清晨，人们沿着湘江边的小路锻炼身体。"
+          }
         },
         {
           "char": "粤",
-          "pinyin": "yuè"
+          "pinyin": "yuè",
+          "words": [
+            {
+              "word": "粤语",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "粤菜",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "粤语",
+            "text": "爷爷在广东生活多年，会说一些粤语。"
+          }
         },
         {
           "char": "蜀",
-          "pinyin": "shǔ"
+          "pinyin": "shǔ",
+          "words": [
+            {
+              "word": "蜀道",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "蜀汉",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "蜀道",
+            "text": "这幅画描绘了古老蜀道的险峻景色。"
+          }
         },
         {
           "char": "沪",
-          "pinyin": "hù"
+          "pinyin": "hù",
+          "words": [
+            {
+              "word": "沪剧",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "京沪铁路",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "沪剧",
+            "text": "奶奶喜欢听沪剧，常跟着轻轻哼唱。"
+          }
         },
         {
           "char": "滇",
-          "pinyin": "diān"
+          "pinyin": "diān",
+          "words": [
+            {
+              "word": "滇池",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "滇红",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "滇池",
+            "text": "我们站在滇池边，观看成群的水鸟。"
+          }
         },
         {
           "char": "赣",
-          "pinyin": "gàn"
+          "pinyin": "gàn",
+          "words": [
+            {
+              "word": "赣江",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "赣南",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "赣江",
+            "text": "赣江两岸的夜景十分美丽。"
+          }
         },
         {
           "char": "闽",
-          "pinyin": "mǐn"
+          "pinyin": "mǐn",
+          "words": [
+            {
+              "word": "闽南",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "闽江",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "闽南",
+            "text": "爷爷会唱几首动听的闽南歌谣。"
+          }
         },
         {
           "char": "陕",
-          "pinyin": "shǎn"
+          "pinyin": "shǎn",
+          "words": [
+            {
+              "word": "陕西",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "陕北",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "陕西",
+            "text": "陕西的历史博物馆里有许多珍贵文物。"
+          }
         },
         {
           "char": "窑",
-          "pinyin": "yáo"
+          "pinyin": "yáo",
+          "words": [
+            {
+              "word": "窑洞",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "砖窑",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "窑洞",
+            "text": "照片中的窑洞冬暖夏凉，是当地传统的民居。"
+          }
         },
         {
           "char": "皖",
-          "pinyin": "wǎn"
+          "pinyin": "wǎn",
+          "words": [
+            {
+              "word": "皖南",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "皖北",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "皖南",
+            "text": "皖南的古村落有许多白墙黑瓦的房屋。"
+          }
         }
       ]
     },
@@ -955,23 +4199,106 @@
       "characters": [
         {
           "char": "耻",
-          "pinyin": "chǐ"
+          "pinyin": "chǐ",
+          "words": [
+            {
+              "word": "可耻",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "羞耻",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "可耻",
+            "text": "欺负弱小是一种可耻的行为。"
+          }
         },
         {
           "char": "吾",
-          "pinyin": "wú"
+          "pinyin": "wú",
+          "words": [
+            {
+              "word": "吾辈",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "吾身",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "吾辈",
+            "text": "吾辈少年应当珍惜时光，努力学习。"
+          }
         },
         {
           "char": "谓",
-          "pinyin": "wèi"
+          "pinyin": "wèi",
+          "words": [
+            {
+              "word": "称谓",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "所谓",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "称谓",
+            "text": "叔叔、阿姨都是生活中常用的称谓。"
+          }
         },
         {
           "char": "矣",
-          "pinyin": "yǐ"
+          "pinyin": "yǐ",
+          "words": [
+            {
+              "word": "足矣",
+              "pinyin": "",
+              "meaning": "",
+              "kind": "usage"
+            },
+            {
+              "word": "由来久矣",
+              "pinyin": "",
+              "meaning": "",
+              "kind": "usage"
+            }
+          ],
+          "sentence": {
+            "groupWord": "足矣",
+            "text": "爷爷笑着说：“一家人平安团聚，足矣。”"
+          },
+          "examplesLabel": "用法示例"
         },
         {
           "char": "岂",
-          "pinyin": "qǐ"
+          "pinyin": "qǐ",
+          "words": [
+            {
+              "word": "岂能",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "岂敢",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "岂能",
+            "text": "答应了朋友的事情，岂能轻易忘记？"
+          }
         }
       ]
     },
@@ -981,57 +4308,270 @@
       "characters": [
         {
           "char": "舅",
-          "pinyin": "jiù"
+          "pinyin": "jiù",
+          "words": [
+            {
+              "word": "舅舅",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "舅妈",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "舅舅",
+            "text": "舅舅教我用竹片扎一个风筝。"
+          }
         },
         {
           "char": "津",
-          "pinyin": "jīn"
+          "pinyin": "jīn",
+          "words": [
+            {
+              "word": "天津",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "津津有味",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "津津有味",
+            "text": "我津津有味地读着新借来的故事书。"
+          }
         },
         {
           "char": "宴",
-          "pinyin": "yàn"
+          "pinyin": "yàn",
+          "words": [
+            {
+              "word": "宴会",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "赴宴",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "宴会",
+            "text": "村里举办宴会，庆祝今年的丰收。"
+          }
         },
         {
           "char": "凯",
-          "pinyin": "kǎi"
+          "pinyin": "kǎi",
+          "words": [
+            {
+              "word": "凯旋",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "奏凯",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "凯旋",
+            "text": "运动健儿载誉凯旋，大家热情迎接。"
+          }
         },
         {
           "char": "趣",
-          "pinyin": "qù"
+          "pinyin": "qù",
+          "words": [
+            {
+              "word": "有趣",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "兴趣",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "有趣",
+            "text": "这本有趣的童话让我舍不得放下。"
+          }
         },
         {
           "char": "述",
-          "pinyin": "shù"
+          "pinyin": "shù",
+          "words": [
+            {
+              "word": "讲述",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "描述",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "讲述",
+            "text": "爷爷向我们讲述年轻时的旅行故事。"
+          }
         },
         {
           "char": "勉",
-          "pinyin": "miǎn"
+          "pinyin": "miǎn",
+          "words": [
+            {
+              "word": "勉励",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "勤勉",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "勉励",
+            "text": "老师勉励我们遇到困难也不要放弃。"
+          }
         },
         {
           "char": "贾",
-          "pinyin": "jiǎ"
+          "pinyin": "jiǎ",
+          "words": [
+            {
+              "word": "贾岛",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "贾谊",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "贾岛",
+            "text": "我们读过唐代诗人贾岛写的诗。"
+          }
         },
         {
           "char": "衰",
-          "pinyin": "shuāi"
+          "pinyin": "shuāi",
+          "words": [
+            {
+              "word": "衰老",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "衰弱",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "衰老",
+            "text": "这棵老树虽然已经衰老，春天仍会长出新叶。"
+          }
         },
         {
           "char": "遣",
-          "pinyin": "qiǎn"
+          "pinyin": "qiǎn",
+          "words": [
+            {
+              "word": "派遣",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "遣词",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "派遣",
+            "text": "学校派遣三位老师去山区支教。"
+          }
         },
         {
           "char": "刊",
-          "pinyin": "kān"
+          "pinyin": "kān",
+          "words": [
+            {
+              "word": "报刊",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "刊登",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "报刊",
+            "text": "学校的报刊栏里展示着同学们的优秀作品。"
+          }
         },
         {
           "char": "朴",
-          "pinyin": "pǔ"
+          "pinyin": "pǔ",
+          "words": [
+            {
+              "word": "朴实",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "朴素",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "朴实",
+            "text": "这位农民伯伯说话朴实，待人热情。"
+          }
         },
         {
           "char": "某",
-          "pinyin": "mǒu"
+          "pinyin": "mǒu",
+          "words": [
+            {
+              "word": "某人",
+              "pinyin": "",
+              "meaning": ""
+            },
+            {
+              "word": "某些",
+              "pinyin": "",
+              "meaning": ""
+            }
+          ],
+          "sentence": {
+            "groupWord": "某些",
+            "text": "某些植物到了夜晚会把叶子合起来。"
+          }
         }
       ]
     }
-  ]
+  ],
+  "learningSupportVersion": 1,
+  "learningSupport": {
+    "type": "author-created-supplement",
+    "note": "组词与例句为教学补充；例句为自编内容，不是教材原文。"
+  }
 }

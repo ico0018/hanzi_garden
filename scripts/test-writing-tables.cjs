@@ -76,13 +76,15 @@ test('new editions have independent progress and leave previous records readable
   const before=scope.stableItemId(lesson,lesson.chars[0]);
   lesson.title='识字1（补充课名后）';
   assert.equal(scope.stableItemId(lesson,lesson.chars[0]),before);
+  lesson.chars[0].words=[{word:'春天',pinyin:'chūn tiān',meaning:''},{word:'春风',pinyin:'chūn fēng',meaning:''}];
+  assert.equal(scope.stableItemId(lesson,lesson.chars[0]),before,'adding real words must keep the original deployed character-progress identity');
 });
 
 test('character-only writing tables render usable learning controls without fabricated words', () => {
   const target={innerHTML:'',querySelector:()=>({addEventListener(){}}),querySelectorAll:()=>[]};
   const scope=vm.createContext({
     lessons:parseWritingTable(fixture(),'2026-1-lower',3),currentLessonIndex:0,currentCharIndex:0,
-    window:{},charDetail:target,cacheHumanAudio(){},escapeHtml:s=>s,escapeAttr:s=>s,
+    window:{},invalidateStudyView(){},charDetail:target,cacheHumanAudio(){},escapeHtml:s=>s,escapeAttr:s=>s,
     animateStrokes(){},renderCharacterPractice(){},playHumanChinese(){},getMeaningPinyin(){return '';}
   });
   vm.runInContext(app.slice(app.indexOf('function renderDetail('),app.indexOf('function renderCharacterPractice(')),scope);
