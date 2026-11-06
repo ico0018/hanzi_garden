@@ -4,6 +4,13 @@
 
 ## Current snapshot
 
+## 2026-11-06 — 2500字完整内容整合（Developer final candidate）
+
+Manager授权只从finish最终提交e523f8ecc123dddf11b7470fdd75edbc2dac3aad导入二下/三下2JSON及5份已提交finish-*证据，并合并保留其两个finish intake/follow-up；2000阶段内容、源作者/证据和既有业务代码不覆盖。integration-sources.json追加content_finish作者/SHA/500位与精确纠错路径，所有12册共2500字位、5000条词或用法、2500句已齐，55位明确用法示例。
+Source exceptions: Manager与QA明确允许仅三下lessonKey18 index4膀páng→bǎng且新增readingPhrase翅膀，lessonKey16 index1卜bǔ→bo且新增readingPhrase萝卜，共4字段；四下卜bǔ不动。只读check-integrated逐项建立此四字段预期对象再比较全12册原字段，不泛化忽略pinyin；其他2498位全部原字段一致。全部2500生字ID、2168新词ID、850旧教材字ID及28旧三上词ID与ba589dc完全一致。低检查器保留原字段全表比较，并允许未核新词音空字符串，不将无音词误列usage。
+Developer checks: 完整只读内容/ID审计PASS，低1300和高1200内容验证PASS；最终数据上的npm test共56项（55Node+原独立词库1）通过。npm run build当前所需2536独特汉字/连旧源总2571全部有效、缺0；明确白名单不发布content-review、ops、.agents、.git/env/内部脚本。原2168教材词表、旧TXT、目录、原词库与云/家长资源不改；旧known兼容保留5b0a87e新裁决。
+Gate: 尚不宣称最终QA PASS或已部署。交确切新SHA给QA做源文件精确比较、原字段四路径白名单、独立7调度矩阵和补充内容UI烟测。root将采用最终QA独立构建字节打包，Developer dist只作检查留存，不push/deploy/main/dev。
+
 ## 2026-11-06 — 旧known记录兼容定向修正（Manager revised decision）
 
 在fd977eb已提交2000字阶段整合之后，遵Manager新裁决：没有wrongReview字段的旧lastResult known不能证明曾错，全部保留正常间隔，不凭successCount=1自动加红标或提前拉回次日。此前6c9与本文件历史中的“旧known1保守强化”裁决由本段明确取代；不删除原历史，也不修改任何已有记录。
@@ -43,6 +50,15 @@ Manager follow-up: bdd389e保存后，Manager明确牺的牺牲/牺牲品是两�
 ## 2026-11-06 — 四至六年级组词例句（Content Developer intake）
 
 独占F:/taskHelper/hanzi-writing-examples-higher-20261106，feature/writing-examples-higher-20261106，基底ba589dc。Manager授权仅高年级6册补充，每字2组词1自编句，不改原字序/读音/来源。低年级sources独立处理。词义/词音未核时留空；语气词与单一词素只给真实自然用法并显式标用法示例。候选词仅参考现有教材词表/TXT，不盲信自动列表，不套句。先人工编四上，逐册覆盖并记录多音例外。不得push/merge/deploy/main/dev。
+
+
+## 2026-11-06 — 三下卜字定向纠错（Finish Developer follow-up）
+
+Manager转交QA完整500条通读后的同类旧注音修正：原词表第16组第1词胡萝卜及植物智萝卜luó bo已核，授权仅三下lesson16第2字卜bǔ→bo，新增readingPhrase萝卜，补充词萝卜/胡萝卜和具体洗菜句。0240ecd保留，新增定向提交；四下卜bǔ不动。finish检查器严格白名单三下膀/卜各pinyin+readingPhrase共4字段，12册2500字位置键全不变，其余2498字位原字段完全一致，500位/1000条/500句结构与git diff --check通过。QA已认可纠错，精确新提交待复核。不push/merge/deploy/main/dev。Next owner: QA / Manager。
+
+## 2026-11-06 — 低册内容收尾（Finish Developer intake）
+
+独占 F:/taskHelper/hanzi-writing-examples-finish-20261106、feature/writing-examples-finish-20261106，基线1c23f78。仅补二下/三下500教材字位的两个组词与一个自编例句，原单字/读音/课序/来源不改；其他10册只读。完成：二下250/三下250，1000条词或用法、500自编句，词拼音/释义未核全留空。受限词素10位（邓/芬/吴/佛、鸳/鸯/匕/系/屿/嗽）显式用法示例。检查通过：每字恰两不同条目含目标字、句含groupWord且groupWord属于两条、原教材字/课序/字序/总数/来源全保留。唯一Manager与QA核原词表及教育部辞典授权纠错：三下lesson18第5字膀páng→bǎng并新增readingPhrase翅膀，组词翅膀/肩膀；其余所有原读音与readingPhrase全等，校验器仅定点allowlist这两字段。证据ops/hanzi-writing-examples-20261106/finish-*，git diff --check通过；待独立QA全文验收，不声称QA PASS。不push/merge/deploy/main/dev。Next owner: QA精确候选 / Manager集成。
 
 
 ## 2026-11-05 — 本地笔画资源已合并并部署（Manager final）

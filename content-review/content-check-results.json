@@ -23,6 +23,16 @@
       ]
     },
     {
+      "book": "2026-2-lower",
+      "positions": 250,
+      "usageCharacters": [
+        "佛",
+        "吴",
+        "芬",
+        "邓"
+      ]
+    },
+    {
       "book": "2026-2-upper",
       "positions": 250,
       "usageCharacters": [
@@ -39,6 +49,18 @@
       ]
     },
     {
+      "book": "2026-3-lower",
+      "positions": 250,
+      "usageCharacters": [
+        "匕",
+        "嗽",
+        "屿",
+        "系",
+        "鸯",
+        "鸳"
+      ]
+    },
+    {
       "book": "2026-3-upper",
       "positions": 250,
       "usageCharacters": [
@@ -48,9 +70,9 @@
     }
   ],
   "checks": [
-    "all original textbook fields, orders and sources identical to baseline",
-    "completed books have exactly 2 unique words and linked natural sentence",
-    "ordinary words contain target character and matching textbook reading",
+    "all original textbook fields, orders and sources identical to baseline except the four precisely authorized fields for Grade3Lower lesson18 index4 膀 and lesson16 index1 卜",
+    "completed lower books have exactly 2 unique words and linked natural sentence",
+    "supplied ordinary-word pinyin matches target reading; unverified pinyin may remain empty",
     "usage exceptions explicit, bounded and not passed off as ordinary words",
     "2500 total textbook positions retained"
   ]

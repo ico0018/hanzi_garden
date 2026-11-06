@@ -16,3 +16,5 @@
 第二批：一下200字完成，累计550字。另有的/它/她/都/着/还的常见自然搭配明示用法示例，不假称独立常用词。固定库把照片注piān、北斗/烟斗注dòu，人工纠正为piàn、dǒu；教材字音不变。
 
 第三批二上250字完成，累计800字。逐词复阅后更正固定库的肚子dù、夹住jiā、数数shǔ shù、种植zhòng、分散sàn、仔鸡zǐ等；仔zǐ幼小义核教育部简编本：https://dict.concised.moe.edu.tw/dictView.jsp?ID=36711&la=0&powerMode=0 。已核普通词轻声如朋友péng you、眼睛yǎn jing按真实词语读音，不硬拼单字本调，Manager明确认可；coverage.normalNeutralReadings单列，不与真正多音混同。
+
+收尾批次：独立content_finish提交e523f8e补二下/三下500字，未核词音/释义留空。该批证据在 `ops/hanzi-writing-examples-20261106/finish-*`，保留人工逐项词例、句子、特殊用法和三下膀/卜四字段精确纠错依据。低册检查器在集成树只核低6册词音，高6册另由 `scripts/check-higher-examples.cjs` 检查；原字段比较仍覆盖全12册。`check-integrated.cjs` 对12册2500位及全部旧ID进行只读全量比较，严格限制四字段例外，不忽略其他拼音。原低树未跟踪候选不导入，全部内容来源和作者/SHA记录在integration-sources.json。
