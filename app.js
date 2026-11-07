@@ -59,6 +59,10 @@ function escapeAttr(value) {
   return escapeHtml(value);
 }
 
+function renderHelpDetails(label, body) {
+  return `<details class="learning-help"><summary aria-label="${escapeAttr(label)}"><span aria-hidden="true">?</span><span class="visually-hidden">${escapeHtml(label)}</span></summary><div class="help-body">${body}</div></details>`;
+}
+
 function loadSpeechVoices() {
   speechVoices = "speechSynthesis" in window ? window.speechSynthesis.getVoices() : [];
 }
@@ -234,6 +238,7 @@ async function loadLessonsFromTxt(bookId) {
 }
 
 async function loadDailyDictationWordBank(bookId) {
+  const addReadings = items => window.HANZI_DICTATION_READINGS?.applyReadings(items, bookId, window.HANZI_DICTATION_PINYIN_DATA) || items.map(item => ({ ...item, pinyin: "" }));
   dailyDictationItems = [];
   dailyDictationTable = null;
   dailyDictationBankStatus = "not-configured";
@@ -242,7 +247,7 @@ async function loadDailyDictationWordBank(bookId) {
     const response = await fetch(encodeURI(book.wordTableFile), { cache: "no-store" });
     if (!response.ok) throw new Error(`Failed to load ${book.wordTableFile}: ${response.status}`);
     dailyDictationTable = window.HANZI_DAILY_WORD_BANK.parseTextbookWordTable(await response.json(), bookId);
-    dailyDictationItems = dailyDictationTable.items;
+    dailyDictationItems = addReadings(dailyDictationTable.items);
     dailyDictationBankStatus = "ready";
     return;
   }
@@ -259,7 +264,7 @@ async function loadDailyDictationWordBank(bookId) {
   if (!response.ok) throw new Error(`Failed to load ${bankFile}: ${response.status}`);
   const words = window.HANZI_DAILY_WORD_BANK?.parseDailyWordBank(await response.text()) || [];
   if (!words.length) throw new Error(`No daily dictation words found in ${bankFile}`);
-  dailyDictationItems = window.HANZI_DAILY_WORD_BANK?.createDailyDictationItems(bookId, words) || [];
+  dailyDictationItems = addReadings(window.HANZI_DAILY_WORD_BANK?.createDailyDictationItems(bookId, words) || []);
   if (!dailyDictationItems.length) throw new Error(`Could not create daily dictation items from ${bankFile}`);
   dailyDictationBankStatus = "ready";
 }
@@ -444,18 +449,28 @@ function openWordStudy(item, opener) {
   const support = lessons.flatMap(lesson => lesson.chars).flatMap(char => char.words).find(word => word.word === item.word);
   dialog.innerHTML = `
     <div class="study-heading"><div><p>${escapeHtml(item.lessonTitle)}</p><h2 id="word-study-title">${escapeHtml(item.word)}</h2></div><button class="close-study secondary-button" type="button">关闭学习</button></div>
-    ${item.pinyin || support?.pinyin ? `<p class="word-pinyin">${escapeHtml(item.pinyin || support.pinyin)}</p>` : ""}
+    <p class="word-pinyin">${item.pinyin ? escapeHtml(item.pinyin) : "拼音暂不可用，可先听整个词的读音。"}</p>
     ${support?.meaning ? `<p>${escapeHtml(support.meaning)}</p>` : ""}
     <button class="study-listen listen-button" type="button">🔊 朗读整个词</button>
-    <p class="daily-review-note">先观察每个字的笔顺，再点“练一练”书写。这里的练习不计听写成绩。</p>
-    <div class="study-characters">${characters.map((char, index) => `
-      <section class="study-character"><h3>${escapeHtml(char)}</h3><div class="tianzi-grid study-grid"><div class="study-target" id="study-character-${index}" aria-label="${escapeAttr(char)}笔顺与书写区"></div></div>
+    <button class="study-replay primary-button" type="button">整词笔顺重播</button>
+    ${renderHelpDetails("词语学习说明", '<p>从左到右依次看笔顺，也可以单字练写。这里的练习不计听写成绩。</p><p>长词可左右滑动，点“整词笔顺重播”重新看。</p>')}
+    <p class="daily-review-note study-sequence-status" aria-live="polite">准备演示整词笔顺。</p>
+    <div class="study-word-scroll" tabindex="0" aria-label="整词田字格，长词可左右滑动"><div class="study-word-grids">${characters.map((char, index) => `
+      <div class="tianzi-grid study-grid"><div class="study-target" id="study-character-${index}" aria-label="第${index + 1}字${escapeAttr(char)}笔顺与书写区"></div></div>`).join("")}</div></div>
+    <div class="study-character-controls">${characters.map((char, index) => `
+      <section class="study-character"><h3>${escapeHtml(char)}</h3>
       <div class="study-actions"><button type="button" class="secondary-button" data-study-demo="${index}">看笔顺</button><button type="button" class="primary-button" data-study-practice="${index}">练一练</button></div><p class="daily-review-note" data-study-status="${index}" aria-live="polite">看笔顺，再自己写一写。</p></section>`).join("")}</div>`;
+  let sequence;
+  let resizeObserver;
+  let resizeHandler;
   const session = {
     live: true,
     close() {
       if (!session.live) return;
       session.live = false;
+      resizeObserver?.disconnect();
+      if (resizeHandler) window.removeEventListener?.("resize", resizeHandler);
+      sequence?.dispose();
       dialog.close(); dialog.remove();
       if (studySession === session) studySession = null;
       if (opener?.isConnected) opener.focus();
@@ -467,32 +482,81 @@ function openWordStudy(item, opener) {
   dialog.querySelector(".study-listen").addEventListener("click", () => playHumanChinese(item.word));
   document.body.appendChild(dialog);
   dialog.showModal();
-  characters.forEach((char, index) => {
-    const target = dialog.querySelector(`#study-character-${index}`);
-    const status = dialog.querySelector(`[data-study-status="${index}"]`);
-    let generation = 0;
-    const createWriter = practice => {
-      const token = ++generation;
-      const live = () => session.live && token === generation;
-      target.replaceChildren();
-      if (!window.HanziWriter || !window.XuebabangbangStrokeData) {
-        status.textContent = "书写工具未加载，请刷新后重试。"; return;
+  const targets = characters.map((_, index) => dialog.querySelector(`#study-character-${index}`));
+  const statuses = characters.map((_, index) => dialog.querySelector(`[data-study-status="${index}"]`));
+  const sequenceStatus = dialog.querySelector(".study-sequence-status");
+  const scroller = dialog.querySelector(".study-word-scroll");
+  const gridRow = dialog.querySelector(".study-word-grids");
+  let cellSize = 0;
+  if (!window.HANZI_WORD_STUDY_SEQUENCE) { sequenceStatus.textContent = "笔顺工具未加载，请刷新后重试。"; return; }
+  function createWriter(index, practice, token) {
+    const live = () => session.live && sequence.isCurrent(token);
+    if (!live()) return null;
+    const target = targets[index];
+    const status = statuses[index];
+    target.style.touchAction = practice ? "none" : "pan-x";
+    // A pending old loader must only mount into its own detached node after replay/close.
+    const mount = document.createElement("div");
+    mount.className = "study-writer-mount";
+    target.replaceChildren(mount);
+    if (!window.HanziWriter || !window.XuebabangbangStrokeData) {
+      status.textContent = "书写工具未加载，请刷新后重试。"; return null;
+    }
+    sequenceStatus.textContent = practice ? `正在练写“${characters[index]}”，整词演示已停止。` : `正在演示第${index + 1}字“${characters[index]}”。`;
+    status.textContent = practice ? "按笔顺写完这个字。" : "正在看笔顺。";
+    const writer = HanziWriter.create(mount, characters[index], {
+      width: target.clientWidth || 160, height: target.clientWidth || 160, padding: 12,
+      charDataLoader: window.XuebabangbangStrokeData.charDataLoader,
+      showCharacter: false, showOutline: false,
+      onLoadCharDataError: () => {
+        if (live()) { status.textContent = "笔画未加载，请再点一次重试。"; sequenceStatus.textContent = "笔顺暂不可用，可点整词重播重试。"; }
       }
-      status.textContent = practice ? "按笔顺写完这个字。" : "观察笔顺，也可以点“练一练”。";
-      const writer = HanziWriter.create(target, char, {
-        width: target.clientWidth || 160, height: target.clientWidth || 160, padding: 12,
-        charDataLoader: window.XuebabangbangStrokeData.charDataLoader,
-        showCharacter: !practice, showOutline: !practice,
-        onLoadCharDataError: () => { if (live()) status.textContent = "笔画未加载，请再点一次重试。"; }
-      });
-      if (practice) writer.quiz({ leniency: 1.15, showHintAfterMisses: 2, onComplete: () => { if (live()) status.textContent = "这个字写完了！继续学习下一个字吧。"; } });
-      else writer.animateCharacter();
-    };
-    target.addEventListener("touchmove", event => event.preventDefault(), { passive: false });
-    dialog.querySelector(`[data-study-demo="${index}"]`).addEventListener("click", () => createWriter(false));
-    dialog.querySelector(`[data-study-practice="${index}"]`).addEventListener("click", () => createWriter(true));
-    createWriter(false);
+    });
+    if (practice) writer.quiz({ leniency: 1.15, showHintAfterMisses: 2, onComplete: () => { if (live()) status.textContent = "这个字写完了！继续学习下一个字吧。"; } });
+    return writer;
+  }
+  sequence = window.HANZI_WORD_STUDY_SEQUENCE.createSequence({
+    createWriter: (index, token) => createWriter(index, false, token),
+    onStepComplete: index => { statuses[index].textContent = "这个字的笔顺已演示完。"; },
+    onFinished: () => { sequenceStatus.textContent = "笔顺演示完成，可以练一练了。"; },
+    onError: index => { statuses[index].textContent = "笔顺未能完成，请重试。"; }
   });
+  const allowWordScroll = () => targets.forEach(target => { target.style.touchAction = "pan-x"; });
+  const replay = () => {
+    sequence.cancel();
+    allowWordScroll();
+    targets.forEach(target => target.replaceChildren());
+    statuses.forEach(status => { status.textContent = "等待依次演示。"; });
+    sequence.play(characters.map((_, index) => index));
+  };
+  dialog.querySelector(".study-replay").addEventListener("click", replay);
+  targets.forEach((target, index) => {
+    target.addEventListener("touchmove", event => { if (target.style.touchAction === "none") event.preventDefault(); }, { passive: false });
+    dialog.querySelector(`[data-study-demo="${index}"]`).addEventListener("click", () => { allowWordScroll(); sequence.play([index]); });
+    dialog.querySelector(`[data-study-practice="${index}"]`).addEventListener("click", () => {
+      const token = sequence.cancel();
+      allowWordScroll();
+      const writer = createWriter(index, true, token);
+      if (writer) sequence.track(writer, token);
+    });
+  });
+  resizeHandler = () => {
+    if (!session.live) return;
+    const rectWidth = scroller.getBoundingClientRect?.().width || scroller.clientWidth;
+    const available = Math.floor(Math.min(scroller.clientWidth, rectWidth));
+    if (available <= 0) return;
+    const nextSize = Math.min(180, Math.floor((available + 3) / 2));
+    if (nextSize === cellSize) return;
+    cellSize = nextSize;
+    gridRow.style.setProperty("--study-cell", cellSize + "px");
+    // Recreate real Writer dimensions and mounts, rather than scaling an old SVG/quiz.
+    replay();
+  };
+  resizeHandler();
+  if (window.ResizeObserver) {
+    resizeObserver = new window.ResizeObserver(resizeHandler);
+    resizeObserver.observe(scroller);
+  } else window.addEventListener?.("resize", resizeHandler);
 }
 
 function renderDictationPreview(queue, state) {
@@ -507,8 +571,7 @@ function renderDictationPreview(queue, state) {
   dictationDetail.innerHTML = `<section class="dictation-card dictation-preview">
     <h2>先学一学，再听写</h2><label class="dictation-size-label">今日数量 <select id="dictation-size" ${state.started ? "disabled" : ""}>
       ${[10, 20, 30].includes(state.size) ? "" : `<option selected value="${escapeAttr(state.size)}">${escapeHtml(state.size)}词（今日原有）</option>`}${[10, 20, 30].map(size => `<option value="${size}" ${size === state.size ? "selected" : ""}>${size}词</option>`).join("")}</select></label>
-    <p class="daily-review-note">${state.started ? `今日已开始${queue.length}词，明日可更改数量。已答结果会保留。` : "开始前可以调整数量，开始后今天的词表固定。"} 今天实际安排${queue.length}词，先复习再学新词；其余到期词会在以后安排。</p>
-    <p class="daily-review-note">点击词语可以听读音、看笔顺、练字。红色三角感叹号表示错词强化复习，连续两个日历日正确后解除。</p>
+    ${renderHelpDetails("听写预习说明", `<p>${state.started ? "今日已开始，明日可更改数量。已答结果会保留。" : "开始前可调整数量，开始后今天的词表固定。"} 今天实际安排${queue.length}词，先复习再学新词；其余到期词以后安排。</p><p>点词语可听读音、看笔顺或练字。红色三角表示错词强化，连续两个日历日正确后解除。</p>`)}
     <div class="preview-columns">${list(queue.filter(item => reviewIds.has(item.id)), "复习词")}${list(queue.filter(item => !reviewIds.has(item.id)), "待学词")}</div>
     <button class="primary-button begin-dictation" type="button" ${!queue.length || completed >= queue.length ? "disabled" : ""}>${completed >= queue.length && queue.length ? "今日听写已完成，可继续学习词语" : state.started ? "准备好了，继续听写" : "准备好了，开始听写"}</button></section>`;
   dictationDetail.querySelector("#dictation-size").addEventListener("change", event => { getDailyQueue(Number(event.target.value)); renderDailyDictation(); });
@@ -533,7 +596,7 @@ function renderDailyDictation() {
     const title = failed ? "教材词语表加载失败" : unavailable ? "本册教材没有独立词语表" : "本册教材词语表正在整理";
     const note = failed ? "请刷新页面后重试；生字学习仍可使用。" : unavailable ? "暂不提供教材词语听写，可以继续生字学习。" : "整理完成后，就可以按教材词语表进行每日听写。";
     dictationOverview.innerHTML = `
-      <div><h2>每日听写</h2><p>按教材词语表听写，写完后自己判断掌握情况。</p></div>
+      <div><h2>每日听写</h2></div>
       <div class="lesson-badge">${failed ? "加载失败" : unavailable ? "无独立词语表" : "整理中"}</div>`;
     dictationDetail.innerHTML = `<section class="dictation-card daily-dictation-card"><h2>${title}</h2><p class="daily-review-note">${note}</p></section>`;
     return;
@@ -545,7 +608,7 @@ function renderDailyDictation() {
   const completedCount = queue.length - pending.length;
 
   dictationOverview.innerHTML = `
-    <div><h2>每日听写</h2><p>先预习，再听写。今天可选10、20或30词；写完后自己判断会不会写。</p>${dailyDictationTable ? `<p class="daily-review-note">${escapeHtml(dailyDictationTable.edition)} · 教材词语表 ${dailyDictationTable.total} 词</p>` : ""}</div>
+    <div><h2>每日听写</h2></div>
     <div class="lesson-badge">${completedCount} / ${queue.length} 已标记</div>`;
 
   if (dictationPhase !== "test" || !state.started) {
@@ -578,14 +641,15 @@ function renderDailyDictation() {
     <section class="dictation-card daily-dictation-card">
       <p class="dictation-step">第 ${completedCount + 1} / ${queue.length} 个</p>
       <span class="daily-count">${escapeHtml(item.lessonTitle)}</span>
-      <p class="daily-prompt is-hidden">请先听读音，再写下来</p>
+      <p class="daily-prompt">看拼音，把这个词写下来。</p>
+      ${renderHelpDetails("听写操作说明", '<p>可听全词读音，也可按需展开汉字答案。写完每个字后，再自己选择会不会写。</p>')}
+      <p class="dictation-pinyin" aria-label="词语拼音">${item.pinyin ? escapeHtml(item.pinyin) : "拼音暂不可用，请听读音后书写。"}</p>
       <button class="listen-button daily-listen" type="button">🔊 听写</button>
-      <button class="secondary-button reveal-dictation" type="button" aria-expanded="false">需要提示或答案</button>
+      <button class="secondary-button reveal-dictation" type="button" aria-expanded="false">显示汉字答案</button>
       <div class="dictation-answer" hidden>
-        ${item.pinyin ? `<p class="dictation-pinyin">${escapeHtml(item.pinyin)}</p>` : ""}
         <p class="dictation-answer-word">答案：${escapeHtml(item.word)}</p>
       </div>
-      <p id="daily-writing-status" class="daily-review-note">请按笔顺在田字格中写完这个词的每个汉字，完成后才可手动标记。</p>
+      <p id="daily-writing-status" class="daily-review-note">写完每个字后再自评。</p>
       <div class="tianzi-grid-list">
         ${wordCharacters.map((character, index) => `<div class="tianzi-grid daily-writing-grid"><div id="daily-writing-${index}" class="dictation-target" aria-label="第 ${index + 1} 个字书写区"></div></div>`).join("")}
       </div>
@@ -598,7 +662,7 @@ function renderDailyDictation() {
   const openAssessmentAfterWriting = () => {
     if (!isCurrent() || assessmentOpened || completedCharacters.size !== wordCharacters.length) return;
     assessmentOpened = true;
-    writingStatus.textContent = "全词已写完。请你自己选择会不会写；系统不会自动替你标记。";
+    writingStatus.textContent = "写完了，请选择会不会写。";
     dictationDetail.querySelector(".writing-complete-note")?.classList.add("is-visible");
     openSelfAssessmentModal({
       title: "写完啦，自己来判断",
@@ -617,7 +681,7 @@ function renderDailyDictation() {
     const isHidden = answer.hidden;
     answer.hidden = !isHidden;
     revealButton.setAttribute("aria-expanded", String(isHidden));
-    revealButton.textContent = isHidden ? "隐藏提示和答案" : "需要提示或答案";
+    revealButton.textContent = isHidden ? "隐藏汉字答案" : "显示汉字答案";
   });
 
   if (!window.HanziWriter || !window.XuebabangbangStrokeData || !wordCharacters.length) {
@@ -646,7 +710,7 @@ function renderDailyDictation() {
       leniency: 1.15,
       showHintAfterMisses: 2,
       onMistake: () => {
-        writingStatus.textContent = "这笔不太对，再试一次；完成全词后再由你手动标记。";
+        writingStatus.textContent = "这笔不太对，再试一次。";
       },
       onComplete: () => {
         if (!isCurrent()) return;
@@ -679,7 +743,7 @@ function renderLessons() {
 function renderOverview() {
   const lesson = lessons[currentLessonIndex];
   lessonOverview.innerHTML = `
-    <div><h2>${escapeHtml(lesson.title)}</h2><p>${escapeHtml(lesson.subtitle)}</p></div>
+    <div><h2>${escapeHtml(lesson.title)}</h2></div>
     <div class="lesson-overview-actions">
       <div class="lesson-badge">${lesson.chars.length} 个生字</div>
       <button class="primary-button start-dictation" type="button">每日听写</button>
@@ -741,8 +805,8 @@ function renderDetail() {
         <div>
           <h3 class="words-title">${escapeHtml(character.examplesLabel || (character.words.length ? "组词" : "写字表练习"))}</h3>
           <div class="word-list">
-            ${lesson.writingTable && !character.words.length ? '<p class="writing-table-note">先听读音、观察笔顺，再在田字格里写一写。</p>' : ""}
-            ${character.readingPhrase ? `<p class="writing-table-note">读音提示：${escapeHtml(character.readingPhrase)}。点击喇叭听读。</p>` : ""}
+            ${lesson.writingTable && !character.words.length ? renderHelpDetails("生字学习说明", '<p>先听读音、看笔顺，再在田字格里写一写。</p>') : ""}
+            ${character.readingPhrase ? `<p class="writing-table-note">读音：${escapeHtml(character.readingPhrase)}</p>` : ""}
             ${character.words.map((word) => `
               <div class="word-card">
                 <div class="word-heading">
@@ -758,7 +822,7 @@ function renderDetail() {
           <section class="sentence-card" aria-label="造句">
             <div class="sentence-heading">
               <h3 class="sentence-title">造句</h3>
-              <span class="sentence-group-word">关联组词：${escapeHtml(character.sentence.groupWord)}</span>
+              <span class="sentence-group-word">${escapeHtml(character.sentence.groupWord)}</span>
             </div>
             <p class="sentence-text">${escapeHtml(character.sentence.text)}</p>
           </section>` : ""}
@@ -823,13 +887,13 @@ function renderCharacterPractice(character) {
         if (token !== viewEpoch || activeView !== "learning") return;
         savePracticeProgress(practiceLessonIndex, practiceCharIndex, "learned");
         renderCharList();
-        practiceStatus.textContent = "已标记为学会，生字列表有绿色对勾。";
+        practiceStatus.textContent = "已标记为学会。";
       },
       onUnknown: () => {
         if (token !== viewEpoch || activeView !== "learning") return;
         savePracticeProgress(practiceLessonIndex, practiceCharIndex, "review");
         renderCharList();
-        practiceStatus.textContent = "已标记为还要复习，生字列表有红色提示。";
+        practiceStatus.textContent = "已标记为还要复习。";
       }
     });
   };
@@ -927,7 +991,7 @@ async function init() {
       dailyDictationTable = null;
       dailyDictationBankStatus = "error";
     }
-    document.querySelector(".topbar h1").textContent = `汉字乐园 · ${selectedBook.label}${selectedBook.legacy ? "（原有教材）" : "（2026写字表）"}`;
+    document.querySelector(".topbar h1").textContent = `汉字乐园 · ${selectedBook.label}`;
     render();
   } catch (error) {
     console.error(error);

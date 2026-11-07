@@ -2,12 +2,14 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const { validateStrokeData } = require('../stroke-resources.js');
+const { findReading } = require('../dictation-readings.js');
 
 const VERSIONS = { 'hanzi-writer': '2.0.2', 'hanzi-writer-data': '2.0.1', 'pinyin-pro': '3.18.2' };
 const SITE_FILES = [
   'index.html', 'welcome.html', 'parent.html', 'styles.css', 'cloud-ui.css',
   'app.js', 'welcome.js', 'book-catalog.js', 'writing-tables.js', 'daily-word-bank.js',
-  'stroke-resources.js', 'dictation-scheduler.js', 'cloud-config.js', 'cloud-sync.js', 'cloud-ui.js'
+  'stroke-resources.js', 'dictation-scheduler.js', 'dictation-pinyin-data.js', 'dictation-readings.js',
+  'word-study-sequence.js', 'cloud-config.js', 'cloud-sync.js', 'cloud-ui.js'
 ];
 const LEGACY_FILES = {
   '1-upper': ['生字数据_一年级上册.txt', 100], '2-upper': ['生字数据_二年级上册.txt', 250],
@@ -29,6 +31,13 @@ function collectCurriculum(root) {
   const { parseWritingTable } = require(path.join(root, 'writing-tables.js'));
   const catalog = scope.window.HANZI_BOOK_CATALOG;
   const bank = scope.window.HANZI_DAILY_WORD_BANK;
+  vm.runInNewContext(readFile(root, 'dictation-pinyin-data.js').toString(), scope);
+  const readingData = scope.window.HANZI_DICTATION_PINYIN_DATA;
+  let dictationReadingCount = 0;
+  function checkReading(bookId, item) {
+    if (!findReading(readingData, bookId, item)) throw new Error('听写拼音缺失或格式错误: ' + bookId + '|' + (item.lessonKey || '') + '|' + item.word);
+    dictationReadingCount++;
+  }
   const current = new Set();
   const legacy = new Set();
   const files = new Set(SITE_FILES);
@@ -62,7 +71,7 @@ function collectCurriculum(root) {
         if (book.wordTableFile !== wordFile) throw new Error('教材词语表目录不完整: ' + id);
         const table = bank.parseTextbookWordTable(JSON.parse(readFile(root, wordFile)), id);
         files.add(wordFile);
-        table.items.forEach(item => add(current, item.word));
+        table.items.forEach(item => { add(current, item.word); checkReading(id, item); });
         wordCount = table.total;
         wordTotal += wordCount;
       }
@@ -97,9 +106,9 @@ function collectCurriculum(root) {
   const dailyFile = '每日词语听写题库.txt';
   const dailyWords = bank.parseDailyWordBank(readFile(root, dailyFile).toString());
   if (!dailyWords.length || !dailyWords.every(word => /^[\u3400-\u9fff]+$/.test(word))) throw new Error('旧每日词库不完整');
-  bank.createDailyDictationItems('3-upper', dailyWords).forEach(item => add(legacy, item.word));
+  bank.createDailyDictationItems('3-upper', dailyWords).forEach(item => { add(legacy, item.word); checkReading('3-upper', item); });
   files.add(dailyFile);
-  return { files: [...files], current: [...current].sort(), legacy: [...legacy].sort(), characters: [...new Set([...current, ...legacy])].sort(), books };
+  return { files: [...files], current: [...current].sort(), legacy: [...legacy].sort(), characters: [...new Set([...current, ...legacy])].sort(), books, dictationReadingCount };
 }
 
 function buildStatic({ root = path.resolve(__dirname, '..'), dependencyRoot = path.join(root, 'node_modules') } = {}) {
@@ -131,7 +140,8 @@ function buildStatic({ root = path.resolve(__dirname, '..'), dependencyRoot = pa
   }
   const manifest = {
     versions: VERSIONS, currentRequired: curriculum.current.length, legacyRequired: curriculum.legacy.length,
-    copied: curriculum.characters.length, missing: [], characters: curriculum.characters, books: curriculum.books
+    copied: curriculum.characters.length, missing: [], characters: curriculum.characters, books: curriculum.books,
+    dictationReadingCount: curriculum.dictationReadingCount
   };
   prepared.push(['vendor/hanzi-data/manifest.json', Buffer.from(JSON.stringify(manifest, null, 2) + '\n')]);
 

@@ -3,6 +3,24 @@
 > Read before work. Every Agent updates this dashboard at start, block, and handoff.
 
 ## Current snapshot
+
+## 2026-11-07 — 学习窗实际宽度与简洁说明（Developer follow-up）
+
+Manager转交QA在375px实际发现两格右边框被裁、桌面缩窄后旧SVG坐标仍偏大的问题。现showModal后按学习窗scroller实测内容宽度设置相接两格尺寸；ResizeObserver仅尺寸确变时取消旧序列、换独立mount并用真实新尺寸重建Writer，关闭时断开。两格共边-3px保留，长词只在词内横滑，原Promise串行/练字和人工评分不变。
+
+用户新增要求说明默认隐藏、界面简洁：采用原生默认关闭details和带明确无障碍名称的问号summary；预习锁数/复习规则、学习操作等放入两段短详情。书架、顶栏和课程概览移除版本长文，保留册名、数量选择、进度、动作按钮、状态和加载/无词表错误。源版本元数据、教材JSON、拼音数据、调度、ID及云账号资源不改；welcome脚本/样式缓存链接同步。
+
+Checks: 本轮67项（66 Node+原独立词库1）通过；新增首次手机打开与同实例桌面缩手机的真实Writer尺寸/旧链终止/关闭observer检查，默认收起说明与可见控件及简洁书架回归。严格build当前2536字/全源2571字缺0；app/welcome语法及diff检查通过。实际375首开/缩放与问号键盘操作交QA复核，既有真实串行证据可由QA按未变模块继承；Developer不宣称最终QA通过，未push/deploy/main/dev。
+
+## 2026-11-07 — 看拼音听写与整词串行笔顺（Developer intake）
+
+Developer独占F:/taskHelper/hanzi-pinyin-sequence-20261107、feature/pinyin-stroke-sequence-20261107，基底2d4a088。仅实现听写进行时完整整词拼音默认可见（汉字答案仍隐藏），以及词语学习窗连排相接田字格/按实际动画完成顺序逐字播放。独立dictation_readings作者只写静态data与其证据，业务先fixture，待Manager通知合源；原2168教材词表+旧28题/ID/已学数据不改。
+Contract/plan: 已读固定HanziWriter2.0.2实际源码animateCharacter与_renderState取消约定；仅从其Promise确认canceled:false后推进，不固定延时。序列epoch+dialog session阻止重播/练字/关闭/快速换词/切tab的旧链续播；每次writer用独立mount节点隔离旧异步加载。拼音优先经逐词校读context/wholeword数据，不静默用单字或pinyin-pro补音；缺失明确提示且不露答案。保持原全词写完人工评分、10/20/30锁数和错词两日规则，不push/deploy/main/dev。
+Content integration: 按Manager授权先用e8bac3d覆盖阶段接线，随后仅从最终源bd6a065157c09ecc6a2e888013fe39e0a7c7531f更新datajs并选择性导入独有content-review/dictation-pinyin-20261107八份证据，不取source STATUS或未提交内容。最终覆盖2168教材词位+旧28题，共2196位置/2131词形；6儿化允许音节少一，129项审校调整和32语义例验证已记录。stage稿不发布，当前候选使用最终校读数据。
+Developer state: 整词拼音在听写默认可见、汉字答案仍隐藏；缺data/缺词有显式不可用提示，不猜读音。新适配器仅补运行时item.pinyin，原JSON、ID和存储键不改。学习窗田字格单行相接，未来字空白；实际完成前字后才建下一字，已完字保留；整词重播/单字演示/练写/关闭全部使旧序列失效，并取消当前动画/quiz。新inner mount防旧异步加载进入复用DOM。手机两字可全见，长词仅词内横滑。
+Touch handling: 查看笔顺时允许pan-x与词内横滑，仅当前练写格禁止触摸滚动；换动作时复位其他格触控状态，避免旧无条件preventDefault挡住长词滑动。相应用行为fixture验证查看可滑、练写阻止滚动；没有扩大到账号或评分逻辑。
+Checks: 原57回归+新增8行为检查共65项通过（64 Node+原独立词库1）；包括真实固定2.0.2 Promise完成/取消/缺data契约、四字顺序、重播/练字/关窗/切tab/换词旧回调、默认提示与缺音不露字、原loader接入与全部2196覆盖/ID保留。独立内容checker覆盖2196/2131、32语义例、6儿化与25原文件不变并PASS。严格build必需白名单含data/适配器/序列模块，缺data或单词拼音阻断且不覆盖旧完整dist；构建2536当前字/全源2571字缺0，2623公开文件无内部证据/私密路径。app/helper/build语法与diff检查通过。
+Handoff: 未执行Developer真实浏览器动画/移动界面验收，不声称QA已通过新UI；交精确SHA给QA独立复核。数据脚本/新版缓存链接均接入，其他词表/2500配套/TXT/目录/调度/云/parent原文件对2d4a088不变。Manager负责最终发布，Developer不push/deploy/main/dev。
 ## 2026-11-06 — 生字配套与听写预习已部署（Manager final）
 
 用户三项更新完成：12册2500写字位共5000组词/用法、2500自编句，55受限字明示用法；欢迎页移除旧教材区块而保留旧数据/ID/记录。每日预习10/20/30、逐词学习窗/本地笔顺与练字、准备好再逐词听写，仍全词写完后人工自评；开始后当天锁数、刷新留结果、旧15已答队列兼容。错词次日红三角，连续两个相邻日正确后解除每日强化，同日/漏日/再错规则与旧known不误判兼容均完成。

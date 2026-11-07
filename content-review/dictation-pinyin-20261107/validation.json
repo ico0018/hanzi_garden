@@ -1,0 +1,22 @@
+{
+  "result": "PASS",
+  "entries": 2196,
+  "uniqueReadings": 2131,
+  "perBook": {
+    "2026-2-lower": 243,
+    "2026-2-upper": 239,
+    "2026-3-lower": 271,
+    "2026-3-upper": 250,
+    "2026-4-lower": 213,
+    "2026-4-upper": 220,
+    "2026-5-lower": 142,
+    "2026-5-upper": 213,
+    "2026-6-lower": 162,
+    "2026-6-upper": 215
+  },
+  "oldWordBank": 28,
+  "contextOverrides": 0,
+  "sourceFilesUnchanged": 25,
+  "semanticRegressionExamples": 32,
+  "erhuaWords": 6
+}

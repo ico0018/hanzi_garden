@@ -119,10 +119,10 @@ test('two words and a linked sentence are validated without changing the textboo
   }
 });
 
-test('a word-study dialog has whole-word reading and per-character local demos/practice, with no grading when closed', () => {
+test('a word-study dialog has whole-word reading and per-character local demos/practice, with no grading when closed', async () => {
   const nodes = new Map();
   const node = selector => {
-    if (!nodes.has(selector)) nodes.set(selector, { clientWidth: 160, textContent: '', listeners: {}, addEventListener(type, callback) { this.listeners[type] = callback; }, replaceChildren() {} });
+    if (!nodes.has(selector)) nodes.set(selector, { clientWidth: 160, textContent: '', style: {setProperty(name,value){this[name]=value;}}, listeners: {}, addEventListener(type, callback) { this.listeners[type] = callback; }, replaceChildren() {} });
     return nodes.get(selector);
   };
   const dialog = { innerHTML: '', listeners: {}, querySelector: node, setAttribute() {}, addEventListener(type, callback) { this.listeners[type] = callback; }, showModal() {}, close() {}, remove() {} };
@@ -132,13 +132,16 @@ test('a word-study dialog has whole-word reading and per-character local demos/p
   let focused = 0;
   const loader = () => {};
   const scope = vm.createContext({
-    studySession: null, lessons: [], window: { HanziWriter: true, XuebabangbangStrokeData: { charDataLoader: loader } },
-    document: { createElement: () => dialog, body: { appendChild() {} } }, escapeHtml: s => s, escapeAttr: s => s,
+    studySession: null, lessons: [], window: { HanziWriter: true, XuebabangbangStrokeData: { charDataLoader: loader }, HANZI_WORD_STUDY_SEQUENCE: require('../word-study-sequence.js') },
+    document: { createElement: tag => tag === 'dialog' ? dialog : {}, body: { appendChild() {} } }, escapeHtml: s => s, escapeAttr: s => s,
     playHumanChinese: word => { spoken = word; },
-    HanziWriter: { create(target, char, options) { assert.equal(options.charDataLoader, loader); return { animateCharacter: () => demos.push(char), quiz: options => quizzes.push(options.onComplete) }; } }
+    HanziWriter: { create(target, char, options) { assert.equal(options.charDataLoader, loader); return { animateCharacter: () => { demos.push(char); return Promise.resolve({canceled:false}); }, quiz: options => quizzes.push(options.onComplete) }; } }
   });
+  vm.runInContext(app.slice(app.indexOf('function renderHelpDetails('), app.indexOf('function loadSpeechVoices(')), scope);
   vm.runInContext(app.slice(app.indexOf('function openWordStudy('), app.indexOf('function renderDictationPreview(')), scope);
   scope.openWordStudy({ word: '音乐', lessonTitle: '测试课', pinyin: '' }, { isConnected: true, focus() { focused++; } });
+  assert.deepEqual(demos, ['音']);
+  await new Promise(resolve => setImmediate(resolve));
   assert.deepEqual(demos, ['音', '乐']);
   node('.study-listen').listeners.click(); assert.equal(spoken, '音乐');
   node('[data-study-practice="1"]').listeners.click(); assert.equal(quizzes.length, 1);
@@ -172,12 +175,19 @@ test('preview exposes an accessible triangle warning, separates review/new words
     getTodayQueueState: () => state, todayKey: () => '2026-11-06', dailyDictationQueueKey: () => 'same-v4-key',
     dictationPhase: 'preview', renderDailyDictation: () => { rendered++; }, getDailyQueue() {}
   });
+  vm.runInContext(app.slice(app.indexOf('function renderHelpDetails('), app.indexOf('function loadSpeechVoices(')), scope);
   vm.runInContext(app.slice(app.indexOf('function renderDictationPreview('), app.indexOf('function renderDailyDictation(')), scope);
   scope.renderDictationPreview([{ id: 'review', word: '春风', lessonTitle: '第一课' }, { id: 'new', word: '春天', lessonTitle: '第二课' }], state);
   const html = scope.dictationDetail.innerHTML;
   assert.match(html, /复习词/); assert.match(html, /待学词/);
   assert.match(html, /<svg aria-hidden="true"/); assert.match(html, /fill="white"/); assert.match(html, /错词强化复习：/);
   assert.match(html, /id="dictation-size" disabled/); assert.match(html, /15词（今日原有）/);
+  assert.match(html, /<details class="learning-help"><summary aria-label="听写预习说明">/);
+  assert.doesNotMatch(html, /<details[^>]*\bopen\b/);
+  const visible = html.replace(/<details\b[\s\S]*?<\/details>/g, '');
+  assert.doesNotMatch(visible, /明日可更改|连续两个日历日|其余到期词/);
+  assert.match(visible, /id="dictation-size" disabled/);
+  assert.match(visible, /begin-dictation/);
   events.get('.begin-dictation:click')();
   assert.deepEqual(saved.results, state.results); assert.deepEqual(saved.ids, state.ids);
   assert.equal(scope.dictationPhase, 'test'); assert.equal(rendered, 1);
