@@ -79,13 +79,17 @@ body {
 .study-heading h2 { margin: 6px 0 14px; font-size: 2rem; overflow-wrap: anywhere; }
 .study-heading p { color: var(--muted); margin: 0; }
 .study-heading button { flex-shrink: 0; }
-.study-characters { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(170px, 100%), 1fr)); gap: 18px; margin-top: 20px; }
+.study-word-scroll { max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; margin: 20px 0; padding-bottom: 8px; }
+.study-word-grids { display: flex; width: max-content; gap: 0; --study-cell: clamp(100px, calc((100vw - 70px) / 2), 180px); }
+.study-character-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 12px; }
 .study-character { min-width: 0; text-align: center; }
 .study-character h3 { margin: 4px 0 10px; font-size: 1.6rem; }
-.word-study-dialog .study-grid { width: min(100%, 180px); margin: 0 auto 12px; }
-.study-target { width: 100%; height: 100%; touch-action: none; }
+.word-study-dialog .study-grid { width: var(--study-cell); flex: 0 0 var(--study-cell); margin: 0; }
+.word-study-dialog .study-grid + .study-grid { margin-left: -3px; }
+.study-target { width: 100%; height: 100%; touch-action: pan-x; }
+.study-writer-mount { width: 100%; height: 100%; touch-action: inherit; }
 .study-actions { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-.preview-word:focus-visible, .word-study-dialog button:focus-visible, #dictation-size:focus-visible { outline: 3px solid #2472a4; outline-offset: 3px; }
+.preview-word:focus-visible, .word-study-dialog button:focus-visible, .study-word-scroll:focus-visible, #dictation-size:focus-visible { outline: 3px solid #2472a4; outline-offset: 3px; }
 @media (max-width: 600px) { .preview-columns { grid-template-columns: 1fr; gap: 24px; } }
 
 .book-selector {
@@ -848,6 +852,7 @@ h1 {
   font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: 0.08em;
+  overflow-wrap: anywhere;
 }
 
 .dictation-answer {

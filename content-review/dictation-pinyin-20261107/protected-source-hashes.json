@@ -1,0 +1,29 @@
+{
+  "baseline": "2d4a088",
+  "note": "Windows原工作树文件字节SHA256；Git原文本另由check-content逐字比较，仅规范CRLF。",
+  "files": {
+    "word-tables/2026-2-lower.json": "a8c4c5fea73f7b17a53f47d38fd766e31cc149961a7c99ae960ec3b7c8248de1",
+    "word-tables/2026-2-upper.json": "1754bc9e8b0cb982ee5b7113202b8e7201ac7b8df2455de94519a816070a0e26",
+    "word-tables/2026-3-lower.json": "3bc732bd3d957e9f19e15a498a576bfb17630468568132ccf7c0d6cd64ea13a3",
+    "word-tables/2026-3-upper.json": "bbe3c43f95fbd54606b312960ed41e0237d55952b49ad95044017da8df488436",
+    "word-tables/2026-4-lower.json": "2803504d5bbe553b9d57a383d8d37e756ca3e0755164342832b58c1841c8d867",
+    "word-tables/2026-4-upper.json": "4bd8880c2cd908ebaf63881a86123da8a827a5f6b9ab78d3f0bd89b4b629f8b6",
+    "word-tables/2026-5-lower.json": "d5972411d3864ef6213921c593e63f77d29340a4a7833d3e7168da50abfc4050",
+    "word-tables/2026-5-upper.json": "6c21489ff7007c4a8f90f641c26bb919a4119d68dcde6cefc82c913db56a51d1",
+    "word-tables/2026-6-lower.json": "5c323505e6744c58994fb4e6e6f5a5876fb3746eb7d106afff93f401b2994e63",
+    "word-tables/2026-6-upper.json": "a3835195caad6bf50a13ae4614ab05d4815ffb59d59e31975927ae581e86f818",
+    "writing-tables/2026-1-lower.json": "370093204c15a575b146c0ddc8124442fbdea53379d617dd052f88a427bceafb",
+    "writing-tables/2026-1-upper.json": "4cee6840b3250c603bc335aae5607d1a33a5959a9fca847f26870c7d3d5b897d",
+    "writing-tables/2026-2-lower.json": "d05bdf6ddca1cb3f96349e9c02676a338c106322ccbe373406853c3e884aa6c7",
+    "writing-tables/2026-2-upper.json": "c29c4acb9abc81b80b840db7b27064f95865e9a7815cff5e6101bcf88b99f3e2",
+    "writing-tables/2026-3-lower.json": "f5a723d329a038336aaad9e113f494322e9917cb15d73696861dba27f59922b6",
+    "writing-tables/2026-3-upper.json": "ef2cac7258b3565efa168fa63c031596178824557eee13e2a879f7401181bb0b",
+    "writing-tables/2026-4-lower.json": "e5cf3d6e866d0f063aad8277cc96571a766637cdbd21582867ff6a0bbe4d9ed5",
+    "writing-tables/2026-4-upper.json": "1a68cfac6402cf3c62ca4413825af9c5aeeb9bccb60f340c31fb34d4df04919d",
+    "writing-tables/2026-5-lower.json": "2c7b334b66d05782a4b741b6716fc4e55fe29cd4f6b3a91a9fb92b2382b59485",
+    "writing-tables/2026-5-upper.json": "83be40262ff6c5cb3844051984d0bbb1f22d503eed22bc53a60cec558f3cf694",
+    "writing-tables/2026-6-lower.json": "e4b52e2e55150fd50de91a6d80affdd11543094bdc54c0dd880e004df7172d2a",
+    "writing-tables/2026-6-upper.json": "3cae9afd02b9566faa325bbd5e6bc1a1b9d7df906c27352fe3cbe76f7e275372",
+    "每日词语听写题库.txt": "b34938a58469bca86004f30c6454c2b3fababd5a5a4f7e260a58bd45836fe1d7"
+  }
+}

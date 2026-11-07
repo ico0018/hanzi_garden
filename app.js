@@ -234,6 +234,7 @@ async function loadLessonsFromTxt(bookId) {
 }
 
 async function loadDailyDictationWordBank(bookId) {
+  const addReadings = items => window.HANZI_DICTATION_READINGS?.applyReadings(items, bookId, window.HANZI_DICTATION_PINYIN_DATA) || items.map(item => ({ ...item, pinyin: "" }));
   dailyDictationItems = [];
   dailyDictationTable = null;
   dailyDictationBankStatus = "not-configured";
@@ -242,7 +243,7 @@ async function loadDailyDictationWordBank(bookId) {
     const response = await fetch(encodeURI(book.wordTableFile), { cache: "no-store" });
     if (!response.ok) throw new Error(`Failed to load ${book.wordTableFile}: ${response.status}`);
     dailyDictationTable = window.HANZI_DAILY_WORD_BANK.parseTextbookWordTable(await response.json(), bookId);
-    dailyDictationItems = dailyDictationTable.items;
+    dailyDictationItems = addReadings(dailyDictationTable.items);
     dailyDictationBankStatus = "ready";
     return;
   }
@@ -259,7 +260,7 @@ async function loadDailyDictationWordBank(bookId) {
   if (!response.ok) throw new Error(`Failed to load ${bankFile}: ${response.status}`);
   const words = window.HANZI_DAILY_WORD_BANK?.parseDailyWordBank(await response.text()) || [];
   if (!words.length) throw new Error(`No daily dictation words found in ${bankFile}`);
-  dailyDictationItems = window.HANZI_DAILY_WORD_BANK?.createDailyDictationItems(bookId, words) || [];
+  dailyDictationItems = addReadings(window.HANZI_DAILY_WORD_BANK?.createDailyDictationItems(bookId, words) || []);
   if (!dailyDictationItems.length) throw new Error(`Could not create daily dictation items from ${bankFile}`);
   dailyDictationBankStatus = "ready";
 }
@@ -444,18 +445,24 @@ function openWordStudy(item, opener) {
   const support = lessons.flatMap(lesson => lesson.chars).flatMap(char => char.words).find(word => word.word === item.word);
   dialog.innerHTML = `
     <div class="study-heading"><div><p>${escapeHtml(item.lessonTitle)}</p><h2 id="word-study-title">${escapeHtml(item.word)}</h2></div><button class="close-study secondary-button" type="button">关闭学习</button></div>
-    ${item.pinyin || support?.pinyin ? `<p class="word-pinyin">${escapeHtml(item.pinyin || support.pinyin)}</p>` : ""}
+    <p class="word-pinyin">${item.pinyin ? escapeHtml(item.pinyin) : "拼音暂不可用，可先听整个词的读音。"}</p>
     ${support?.meaning ? `<p>${escapeHtml(support.meaning)}</p>` : ""}
     <button class="study-listen listen-button" type="button">🔊 朗读整个词</button>
-    <p class="daily-review-note">先观察每个字的笔顺，再点“练一练”书写。这里的练习不计听写成绩。</p>
-    <div class="study-characters">${characters.map((char, index) => `
-      <section class="study-character"><h3>${escapeHtml(char)}</h3><div class="tianzi-grid study-grid"><div class="study-target" id="study-character-${index}" aria-label="${escapeAttr(char)}笔顺与书写区"></div></div>
+    <button class="study-replay primary-button" type="button">整词笔顺重播</button>
+    <p class="daily-review-note">从左到右依次看完笔顺，也可以单字练写。这里的练习不计听写成绩。</p>
+    <p class="daily-review-note study-sequence-status" aria-live="polite">准备演示整词笔顺。</p>
+    <div class="study-word-scroll" tabindex="0" aria-label="整词田字格，长词可左右滑动"><div class="study-word-grids">${characters.map((char, index) => `
+      <div class="tianzi-grid study-grid"><div class="study-target" id="study-character-${index}" aria-label="第${index + 1}字${escapeAttr(char)}笔顺与书写区"></div></div>`).join("")}</div></div>
+    <div class="study-character-controls">${characters.map((char, index) => `
+      <section class="study-character"><h3>${escapeHtml(char)}</h3>
       <div class="study-actions"><button type="button" class="secondary-button" data-study-demo="${index}">看笔顺</button><button type="button" class="primary-button" data-study-practice="${index}">练一练</button></div><p class="daily-review-note" data-study-status="${index}" aria-live="polite">看笔顺，再自己写一写。</p></section>`).join("")}</div>`;
+  let sequence;
   const session = {
     live: true,
     close() {
       if (!session.live) return;
       session.live = false;
+      sequence?.dispose();
       dialog.close(); dialog.remove();
       if (studySession === session) studySession = null;
       if (opener?.isConnected) opener.focus();
@@ -467,32 +474,62 @@ function openWordStudy(item, opener) {
   dialog.querySelector(".study-listen").addEventListener("click", () => playHumanChinese(item.word));
   document.body.appendChild(dialog);
   dialog.showModal();
-  characters.forEach((char, index) => {
-    const target = dialog.querySelector(`#study-character-${index}`);
-    const status = dialog.querySelector(`[data-study-status="${index}"]`);
-    let generation = 0;
-    const createWriter = practice => {
-      const token = ++generation;
-      const live = () => session.live && token === generation;
-      target.replaceChildren();
-      if (!window.HanziWriter || !window.XuebabangbangStrokeData) {
-        status.textContent = "书写工具未加载，请刷新后重试。"; return;
+  const targets = characters.map((_, index) => dialog.querySelector(`#study-character-${index}`));
+  const statuses = characters.map((_, index) => dialog.querySelector(`[data-study-status="${index}"]`));
+  const sequenceStatus = dialog.querySelector(".study-sequence-status");
+  if (!window.HANZI_WORD_STUDY_SEQUENCE) { sequenceStatus.textContent = "笔顺工具未加载，请刷新后重试。"; return; }
+  function createWriter(index, practice, token) {
+    const live = () => session.live && sequence.isCurrent(token);
+    if (!live()) return null;
+    const target = targets[index];
+    const status = statuses[index];
+    target.style.touchAction = practice ? "none" : "pan-x";
+    // A pending old loader must only mount into its own detached node after replay/close.
+    const mount = document.createElement("div");
+    mount.className = "study-writer-mount";
+    target.replaceChildren(mount);
+    if (!window.HanziWriter || !window.XuebabangbangStrokeData) {
+      status.textContent = "书写工具未加载，请刷新后重试。"; return null;
+    }
+    sequenceStatus.textContent = practice ? `正在练写“${characters[index]}”，整词演示已停止。` : `正在演示第${index + 1}字“${characters[index]}”。`;
+    status.textContent = practice ? "按笔顺写完这个字。" : "正在看笔顺。";
+    const writer = HanziWriter.create(mount, characters[index], {
+      width: target.clientWidth || 160, height: target.clientWidth || 160, padding: 12,
+      charDataLoader: window.XuebabangbangStrokeData.charDataLoader,
+      showCharacter: false, showOutline: false,
+      onLoadCharDataError: () => {
+        if (live()) { status.textContent = "笔画未加载，请再点一次重试。"; sequenceStatus.textContent = "笔顺暂不可用，可点整词重播重试。"; }
       }
-      status.textContent = practice ? "按笔顺写完这个字。" : "观察笔顺，也可以点“练一练”。";
-      const writer = HanziWriter.create(target, char, {
-        width: target.clientWidth || 160, height: target.clientWidth || 160, padding: 12,
-        charDataLoader: window.XuebabangbangStrokeData.charDataLoader,
-        showCharacter: !practice, showOutline: !practice,
-        onLoadCharDataError: () => { if (live()) status.textContent = "笔画未加载，请再点一次重试。"; }
-      });
-      if (practice) writer.quiz({ leniency: 1.15, showHintAfterMisses: 2, onComplete: () => { if (live()) status.textContent = "这个字写完了！继续学习下一个字吧。"; } });
-      else writer.animateCharacter();
-    };
-    target.addEventListener("touchmove", event => event.preventDefault(), { passive: false });
-    dialog.querySelector(`[data-study-demo="${index}"]`).addEventListener("click", () => createWriter(false));
-    dialog.querySelector(`[data-study-practice="${index}"]`).addEventListener("click", () => createWriter(true));
-    createWriter(false);
+    });
+    if (practice) writer.quiz({ leniency: 1.15, showHintAfterMisses: 2, onComplete: () => { if (live()) status.textContent = "这个字写完了！继续学习下一个字吧。"; } });
+    return writer;
+  }
+  sequence = window.HANZI_WORD_STUDY_SEQUENCE.createSequence({
+    createWriter: (index, token) => createWriter(index, false, token),
+    onStepComplete: index => { statuses[index].textContent = "这个字的笔顺已演示完。"; },
+    onFinished: () => { sequenceStatus.textContent = "笔顺演示完成，可以练一练了。"; },
+    onError: index => { statuses[index].textContent = "笔顺未能完成，请重试。"; }
   });
+  const allowWordScroll = () => targets.forEach(target => { target.style.touchAction = "pan-x"; });
+  const replay = () => {
+    sequence.cancel();
+    allowWordScroll();
+    targets.forEach(target => target.replaceChildren());
+    statuses.forEach(status => { status.textContent = "等待依次演示。"; });
+    sequence.play(characters.map((_, index) => index));
+  };
+  dialog.querySelector(".study-replay").addEventListener("click", replay);
+  targets.forEach((target, index) => {
+    target.addEventListener("touchmove", event => { if (target.style.touchAction === "none") event.preventDefault(); }, { passive: false });
+    dialog.querySelector(`[data-study-demo="${index}"]`).addEventListener("click", () => { allowWordScroll(); sequence.play([index]); });
+    dialog.querySelector(`[data-study-practice="${index}"]`).addEventListener("click", () => {
+      const token = sequence.cancel();
+      allowWordScroll();
+      const writer = createWriter(index, true, token);
+      if (writer) sequence.track(writer, token);
+    });
+  });
+  replay();
 }
 
 function renderDictationPreview(queue, state) {
@@ -578,11 +615,11 @@ function renderDailyDictation() {
     <section class="dictation-card daily-dictation-card">
       <p class="dictation-step">第 ${completedCount + 1} / ${queue.length} 个</p>
       <span class="daily-count">${escapeHtml(item.lessonTitle)}</span>
-      <p class="daily-prompt is-hidden">请先听读音，再写下来</p>
+      <p class="daily-prompt">看拼音，把这个词写下来。</p>
+      <p class="dictation-pinyin" aria-label="词语拼音">${item.pinyin ? escapeHtml(item.pinyin) : "拼音暂不可用，请听读音后书写。"}</p>
       <button class="listen-button daily-listen" type="button">🔊 听写</button>
-      <button class="secondary-button reveal-dictation" type="button" aria-expanded="false">需要提示或答案</button>
+      <button class="secondary-button reveal-dictation" type="button" aria-expanded="false">显示汉字答案</button>
       <div class="dictation-answer" hidden>
-        ${item.pinyin ? `<p class="dictation-pinyin">${escapeHtml(item.pinyin)}</p>` : ""}
         <p class="dictation-answer-word">答案：${escapeHtml(item.word)}</p>
       </div>
       <p id="daily-writing-status" class="daily-review-note">请按笔顺在田字格中写完这个词的每个汉字，完成后才可手动标记。</p>
@@ -617,7 +654,7 @@ function renderDailyDictation() {
     const isHidden = answer.hidden;
     answer.hidden = !isHidden;
     revealButton.setAttribute("aria-expanded", String(isHidden));
-    revealButton.textContent = isHidden ? "隐藏提示和答案" : "需要提示或答案";
+    revealButton.textContent = isHidden ? "隐藏汉字答案" : "显示汉字答案";
   });
 
   if (!window.HanziWriter || !window.XuebabangbangStrokeData || !wordCharacters.length) {

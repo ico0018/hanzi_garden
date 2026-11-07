@@ -118,6 +118,18 @@ test('build covers the exact current and legacy sources, publishes only runtime 
   assert.deepEqual(listed.sort(), expected.sort());
   assert.equal(fs.readFileSync(path.join(out, 'cloud-config.js'), 'utf8'), fs.readFileSync(path.join(root, 'cloud-config.js'), 'utf8'));
   const before = fs.readFileSync(path.join(out, 'vendor/hanzi-data/manifest.json'));
+  const readingsFile = path.join(fixture, 'dictation-pinyin-data.js');
+  const originalReadings = fs.readFileSync(readingsFile);
+  fs.unlinkSync(readingsFile);
+  assert.throws(() => buildStatic({ root: fixture }), /ENOENT/);
+  fs.writeFileSync(readingsFile, originalReadings);
+  const readingScope = { window: {} };
+  vm.runInNewContext(originalReadings.toString(), readingScope);
+  delete readingScope.window.HANZI_DICTATION_PINYIN_DATA.readings.古老;
+  fs.writeFileSync(readingsFile, 'window.HANZI_DICTATION_PINYIN_DATA=' + JSON.stringify(readingScope.window.HANZI_DICTATION_PINYIN_DATA));
+  assert.throws(() => buildStatic({ root: fixture }), /听写拼音缺失或格式错误/);
+  assert.deepEqual(fs.readFileSync(path.join(out, 'vendor/hanzi-data/manifest.json')), before);
+  fs.writeFileSync(readingsFile, originalReadings);
   const glyph = path.join(fixture, 'node_modules/hanzi-writer-data/乏.json');
   const original = fs.readFileSync(glyph);
   fs.unlinkSync(glyph);
