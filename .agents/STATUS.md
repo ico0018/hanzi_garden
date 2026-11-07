@@ -4,6 +4,14 @@
 
 ## Current snapshot
 
+## 2026-11-07 — 学习窗实际宽度与简洁说明（Developer follow-up）
+
+Manager转交QA在375px实际发现两格右边框被裁、桌面缩窄后旧SVG坐标仍偏大的问题。现showModal后按学习窗scroller实测内容宽度设置相接两格尺寸；ResizeObserver仅尺寸确变时取消旧序列、换独立mount并用真实新尺寸重建Writer，关闭时断开。两格共边-3px保留，长词只在词内横滑，原Promise串行/练字和人工评分不变。
+
+用户新增要求说明默认隐藏、界面简洁：采用原生默认关闭details和带明确无障碍名称的问号summary；预习锁数/复习规则、学习操作等放入两段短详情。书架、顶栏和课程概览移除版本长文，保留册名、数量选择、进度、动作按钮、状态和加载/无词表错误。源版本元数据、教材JSON、拼音数据、调度、ID及云账号资源不改；welcome脚本/样式缓存链接同步。
+
+Checks: 本轮67项（66 Node+原独立词库1）通过；新增首次手机打开与同实例桌面缩手机的真实Writer尺寸/旧链终止/关闭observer检查，默认收起说明与可见控件及简洁书架回归。严格build当前2536字/全源2571字缺0；app/welcome语法及diff检查通过。实际375首开/缩放与问号键盘操作交QA复核，既有真实串行证据可由QA按未变模块继承；Developer不宣称最终QA通过，未push/deploy/main/dev。
+
 ## 2026-11-07 — 看拼音听写与整词串行笔顺（Developer intake）
 
 Developer独占F:/taskHelper/hanzi-pinyin-sequence-20261107、feature/pinyin-stroke-sequence-20261107，基底2d4a088。仅实现听写进行时完整整词拼音默认可见（汉字答案仍隐藏），以及词语学习窗连排相接田字格/按实际动画完成顺序逐字播放。独立dictation_readings作者只写静态data与其证据，业务先fixture，待Manager通知合源；原2168教材词表+旧28题/ID/已学数据不改。

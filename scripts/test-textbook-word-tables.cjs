@@ -170,10 +170,11 @@ function renderScope(status = 'ready') {
     window: { HanziWriter: true, XuebabangbangStrokeData: { charDataLoader() {} } }, document: { getElementById: node,createElement:()=>node('back-to-preview') },
     HanziWriter: { create: () => ({ quiz: options => callbacks.push(options.onComplete) }) },
     getDailyQueue: () => [{ id: 'checked-word', word: '早晨', lessonTitle: '测试第一课', pinyin: 'zǎo chén' }],
-    getTodayQueueState: () => ({ started:true, results: {} }), cacheHumanAudio() {}, escapeHtml: value => value,
+    getTodayQueueState: () => ({ started:true, results: {} }), cacheHumanAudio() {}, escapeHtml: value => value, escapeAttr: value => value,
     playHumanChinese() {}, openSelfAssessmentModal: options => { modal = options; },
     saveManualDictationResult: (item, known) => marks.push([item.id, known])
   });
+  vm.runInContext(app.slice(app.indexOf('function renderHelpDetails('), app.indexOf('function loadSpeechVoices(')), scope);
   vm.runInContext(app.slice(app.indexOf('function renderDailyDictation('), app.indexOf('function renderLessons(')), scope);
   return { scope, callbacks, marks, getModal: () => modal };
 }
@@ -181,7 +182,8 @@ function renderScope(status = 'ready') {
 test('dictation requires every character to be written, then changes progress only after the learner marks it', () => {
   const { scope, callbacks, marks, getModal } = renderScope();
   scope.renderDailyDictation();
-  assert.match(scope.dictationOverview.innerHTML, /测试版 · 教材词语表 3 词/);
+  assert.doesNotMatch(scope.dictationOverview.innerHTML, /测试版|教材词语表/);
+  assert.match(scope.dictationOverview.innerHTML, /0 \/ 1 已标记/);
   assert.equal(callbacks.length, 2);
   assert.equal(getModal(), undefined);
   callbacks[0](); callbacks[0]();

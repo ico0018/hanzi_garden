@@ -62,6 +62,12 @@ body {
 }
 
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.learning-help { width: 100%; min-width: 0; margin: 4px 0 10px; text-align: left; }
+.learning-help summary { display: grid; place-items: center; width: 36px; height: 36px; margin-left: auto; border: 1px solid var(--line); border-radius: 50%; background: var(--accent-soft); color: var(--ink); cursor: pointer; list-style: none; font-weight: 800; font-size: 1.2rem; }
+.learning-help summary::-webkit-details-marker { display: none; }
+.learning-help summary:focus-visible { outline: 3px solid #2472a4; outline-offset: 3px; }
+.help-body { margin-top: 8px; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--panel); color: var(--muted); line-height: 1.7; overflow-wrap: anywhere; }
+.help-body p { margin: 4px 0; }
 .dictation-preview { max-width: 960px; }
 .dictation-size-label { display: flex; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap; }
 .dictation-size-label select { font: inherit; border: 1px solid var(--line); border-radius: 8px; padding: 10px; max-width: 100%; background: white; color: var(--ink); }
@@ -79,8 +85,8 @@ body {
 .study-heading h2 { margin: 6px 0 14px; font-size: 2rem; overflow-wrap: anywhere; }
 .study-heading p { color: var(--muted); margin: 0; }
 .study-heading button { flex-shrink: 0; }
-.study-word-scroll { max-width: 100%; overflow-x: auto; overscroll-behavior-x: contain; margin: 20px 0; padding-bottom: 8px; }
-.study-word-grids { display: flex; width: max-content; gap: 0; --study-cell: clamp(100px, calc((100vw - 70px) / 2), 180px); }
+.study-word-scroll { max-width: 100%; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; margin: 20px 0; padding-bottom: 8px; }
+.study-word-grids { display: flex; width: max-content; gap: 0; --study-cell: 180px; }
 .study-character-controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(140px, 100%), 1fr)); gap: 12px; }
 .study-character { min-width: 0; text-align: center; }
 .study-character h3 { margin: 4px 0 10px; font-size: 1.6rem; }

@@ -10,7 +10,7 @@ function renderBookOptions(target, books) {
   target.innerHTML = books.map((book) => `
     <button class="book-option ${book.id === selectedBookId ? "active" : ""}" type="button" data-book-id="${book.id}" ${book.available ? "" : "disabled"}>
       <span>${book.label}</span>
-      <small>${book.available ? (book.characterCount ? `${book.characterCount} 字 · 写字表` : "已准备") : "数据待补充"}</small>
+      <small>${book.available ? (book.characterCount ? `${book.characterCount} 个生字` : "已准备") : "待补充"}</small>
     </button>
   `).join("");
 
@@ -26,7 +26,7 @@ function renderBookSelector() {
   renderBookOptions(bookSelector, bookCatalog.filter((book) => !book.legacy));
   const selectedBook = bookCatalog.find((book) => book.id === selectedBookId);
   bookSelectionStatus.textContent = selectedBook
-    ? `当前选择：${selectedBook.label}${selectedBook.edition ? ` · ${selectedBook.edition}` : ""}`
+    ? `当前选择：${selectedBook.label}`
     : "暂无可用教材数据。";
   startLearningButton.disabled = !selectedBook;
 }

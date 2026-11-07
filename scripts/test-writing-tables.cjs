@@ -87,6 +87,7 @@ test('character-only writing tables render usable learning controls without fabr
     window:{},invalidateStudyView(){},charDetail:target,cacheHumanAudio(){},escapeHtml:s=>s,escapeAttr:s=>s,
     animateStrokes(){},renderCharacterPractice(){},playHumanChinese(){},getMeaningPinyin(){return '';}
   });
+  vm.runInContext(app.slice(app.indexOf('function renderHelpDetails('),app.indexOf('function loadSpeechVoices(')),scope);
   vm.runInContext(app.slice(app.indexOf('function renderDetail('),app.indexOf('function renderCharacterPractice(')),scope);
   scope.renderDetail();
   assert.match(target.innerHTML,/写字表练习/);

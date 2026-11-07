@@ -168,7 +168,7 @@ test('modal replay uses fresh mounts, leaves future grids blank, and stale word/
   function newDialog() {
     const nodes = new Map();
     const node = key => {
-      if (!nodes.has(key)) nodes.set(key, { clientWidth: 150, textContent: '', style: {}, children: [], listeners: {}, addEventListener(type, callback) { this.listeners[type] = callback; }, replaceChildren(...children) { this.children = children; } });
+      if (!nodes.has(key)) nodes.set(key, { clientWidth: 150, textContent: '', style: {setProperty(name,value){this[name]=value;}}, children: [], listeners: {}, addEventListener(type, callback) { this.listeners[type] = callback; }, replaceChildren(...children) { this.children = children; } });
       return nodes.get(key);
     };
     const dialog = { innerHTML: '', querySelector: node, setAttribute() {}, addEventListener() {}, showModal() {}, close() {}, remove() {}, node };
@@ -186,6 +186,7 @@ test('modal replay uses fresh mounts, leaves future grids blank, and stale word/
       return { animateCharacter: () => record.job.promise, cancelQuiz() {}, hideCharacter: () => Promise.resolve({ canceled: false }), quiz(options) { record.quiz = options; } };
     } }
   });
+  vm.runInContext(app.slice(app.indexOf('function renderHelpDetails('), app.indexOf('function loadSpeechVoices(')), scope);
   vm.runInContext(app.slice(app.indexOf('function invalidateStudyView('), app.indexOf('function escapeHtml(')), scope);
   vm.runInContext(app.slice(app.indexOf('function openWordStudy('), app.indexOf('function renderDictationPreview(')), scope);
   scope.openWordStudy({ word: '古老', lessonTitle: '课文', pinyin: 'gǔ lǎo' });
@@ -211,4 +212,56 @@ test('modal replay uses fresh mounts, leaves future grids blank, and stale word/
   assert.equal(newStatus.textContent, before);
   scope.invalidateStudyView(); records[3].job.resolve({ canceled: false }); await tick();
   assert.deepEqual(records.map(record => record.char), ['古', '古', '老', '年']);
+});
+
+test('phone first-open and desktop-to-phone resizing use actual content width and fresh Writer coordinates', async () => {
+  for (const initialWidth of [292.66, 760]) {
+    let width = initialWidth, resize, disconnected = false;
+    const records = [], nodes = new Map();
+    const node = key => {
+      if (!nodes.has(key)) {
+        const value = { textContent: '', style: { setProperty(name, value) { this[name] = value; } }, children: [], listeners: {}, addEventListener(type, callback) { this.listeners[type] = callback; }, replaceChildren(...children) { this.children = children; }, getBoundingClientRect: () => ({ width }) };
+        Object.defineProperty(value, 'clientWidth', { get: () => key === '.study-word-scroll' ? Math.round(width) : key.startsWith('#study-character-') ? parseInt(node('.study-word-grids').style['--study-cell']) - 6 : 160 });
+        nodes.set(key, value);
+      }
+      return nodes.get(key);
+    };
+    const dialog = { querySelector: node, setAttribute() {}, addEventListener() {}, showModal() {}, close() {}, remove() {} };
+    const scope = vm.createContext({ studySession: null, lessons: [], window: { HanziWriter: true, XuebabangbangStrokeData: { charDataLoader() {} }, HANZI_WORD_STUDY_SEQUENCE: { createSequence }, ResizeObserver: class { constructor(callback) { resize = callback; } observe() {} disconnect() { disconnected = true; } } }, document: { createElement: tag => tag === 'dialog' ? dialog : {}, body: { appendChild() {} } }, escapeHtml: value => value, escapeAttr: value => value, playHumanChinese() {}, HanziWriter: { create(mount, char, options) { const record = { mount, char, options, job: deferred() }; records.push(record); return { animateCharacter: () => record.job.promise, cancelQuiz() {}, hideCharacter: () => Promise.resolve({ canceled: false }) }; } } });
+    vm.runInContext(app.slice(app.indexOf('function renderHelpDetails('), app.indexOf('function loadSpeechVoices(')), scope);
+    vm.runInContext(app.slice(app.indexOf('function openWordStudy('), app.indexOf('function renderDictationPreview(')), scope);
+    scope.openWordStudy({ word: '古老', lessonTitle: '课文', pinyin: 'gǔ lǎo' });
+    const expected = () => Math.min(180, Math.floor((Math.floor(width) + 3) / 2));
+    assert.equal(records[0].options.width, expected() - 6);
+    resize(); assert.equal(records.length, 1, 'unchanged dimensions must not restart');
+    if (initialWidth > 300) {
+      width = 292.66; resize();
+      assert.equal(records.length, 2); assert.notEqual(records[0].mount, records[1].mount);
+      records[0].job.resolve({ canceled: false }); await tick();
+      assert.equal(records.length, 2, 'old resized animation cannot start the next glyph');
+    }
+    assert.ok(2 * expected() - 3 <= width, 'both shared-border cells fit the actual scroller');
+    const current = records.at(-1); assert.equal(current.options.width, expected() - 6);
+    current.job.resolve({ canceled: false }); await tick();
+    assert.equal(records.at(-1).char, '老'); assert.equal(records.at(-1).options.width, expected() - 6);
+    node('.close-study').listeners.click(); assert.equal(disconnected, true);
+    const count = records.length; width = 760; resize(); records.at(-1).job.resolve({ canceled: false }); await tick();
+    assert.equal(records.length, count);
+  }
+  const css = fs.readFileSync(path.join(root, 'styles.css'), 'utf8');
+  assert.match(css, /\.study-word-scroll[^}]*overflow-x: auto/);
+  assert.match(css, /\.study-grid \+ \.study-grid[^}]*margin-left: -3px/);
+});
+
+test('concise headings keep book names and controls while help stays natively closed', () => {
+  const nodes = Object.fromEntries(['book-selector', 'book-selection-status', 'start-learning-button'].map(id => [id, { innerHTML: '', textContent: '', addEventListener() {}, querySelectorAll: () => [] }]));
+  const welcome = vm.createContext({ window: { HANZI_BOOK_CATALOG: { book: { id: 'book', label: '三年级上册', edition: '2026年版', characterCount: 250, available: true } } }, document: { getElementById: id => nodes[id] } });
+  vm.runInContext(fs.readFileSync(path.join(root, 'welcome.js'), 'utf8'), welcome);
+  assert.equal(nodes['book-selection-status'].textContent, '当前选择：三年级上册');
+  assert.match(nodes['book-selector'].innerHTML, /250 个生字/); assert.doesNotMatch(nodes['book-selector'].innerHTML, /2026年版/);
+  const scope = vm.createContext({ escapeHtml: value => value, escapeAttr: value => value });
+  vm.runInContext(app.slice(app.indexOf('function renderHelpDetails('), app.indexOf('function loadSpeechVoices(')), scope);
+  const html = scope.renderHelpDetails('学习说明', '<p>按顺序练习。</p>');
+  assert.match(html, /<summary aria-label="学习说明">/); assert.doesNotMatch(html, /<details[^>]*\bopen\b/);
+  assert.doesNotMatch(fs.readFileSync(path.join(root, 'welcome.html'), 'utf8').replace(/<script[\s\S]*?<\/script>|<link[^>]*>/g, ''), /2026|v3\.2/);
 });
