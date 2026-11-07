@@ -4,6 +4,18 @@
 
 ## Current snapshot
 
+## 2026-11-07 — 拼音、串行笔顺与简洁界面已部署（Manager final）
+
+用户三项更新完成：听写默认完整拼音且答案继续隐藏；词语学习田字格相接，等待前字真实完成后再播后字；预习/听写/词学习长说明默认收进问号，书架与学习页版本长文精简，数量/完成进度/错误仍外显。手机首开及桌面缩手机按实际宽度重建Writer，长词局部横滑；重播/练写/关窗/换词取消旧序列。
+
+业务候选6ee5b3016c94f4f612c118519bd40d120d27a6f6；PR12 https://github.com/ico0018/hanzi_garden/pull/12 合入腾讯维护feature/textbook-word-tables-2026，merge 2ad2c71fb9ae8156f0c923df1f10ec3150c1bc6d与候选零文件差异。旧头2d4a088保留backup/2026-11-07-before-pinyin-sequence；canonical原clean安全ff，main/dev未改。其他旧树/未跟踪候选与QA有意私有STATUS保留。
+
+独立QA精确PASS：67回归、7日期/历史矩阵、11异常数量边界、5异步事件组；43源保护文件、全部2500/850写字ID及2168/28词ID与既有数据不变。2196题位/2131不同词的整词拼音与独立逐词复核冻结相等，6儿化/129审校调整有证据，非教材原注音。2571字形与固定npm字节及公开白名单通过。真实UI确认先古后老/四字串行、重播取消、375首开/desktop→375完整连格、缩放后真实一画练写成功且预习不计分、3问号默认closed/点击/Enter、短书架/进度保留与拼音可见答案隐藏。旧06d阶段裁框FAIL已在最终候选实际修复。未重复线上身份/孩子云同步，不宣称硬件手指触控。
+
+采用QA原始dist，清单SHA256 83d72266d119feed1d1120dbdd73b9a748b7a2de00ddb0eec3800bd16a739c78；2623构建文件排除实际cloud-config后2622运行资源。仅9变更小包170037字节发布，全部2622运行资源服务器逐项哈希一致，2614保护文件含实际云配置字节不变。完整备份 /srv/xuebabangbang-unified-preview/deployment-backups/hanzi-before-pinyin-sequence-20261107-192711.tar.gz（600）。数据库/容器/Nginx/DNS未操作。
+
+公网11资源覆盖每个变更文件与古/老字形，主域/hanzi及IP/hanzi共4别名请求TLS正常校验、200/SHA全PASS；全部2622是服务器核验，非公网逐项GET。证据ops/hanzi-pinyin-sequence-20261107/qa/qa-report.md、server-report.json、public-verification.json、release-report.md。Next owner: User — https://hanzi.xuebabangbang.cn/welcome.html 刷新即可。Manager仅提交本私有状态，不改变已部署业务字节。
+
 ## 2026-11-07 — 学习窗实际宽度与简洁说明（Developer follow-up）
 
 Manager转交QA在375px实际发现两格右边框被裁、桌面缩窄后旧SVG坐标仍偏大的问题。现showModal后按学习窗scroller实测内容宽度设置相接两格尺寸；ResizeObserver仅尺寸确变时取消旧序列、换独立mount并用真实新尺寸重建Writer，关闭时断开。两格共边-3px保留，长词只在词内横滑，原Promise串行/练字和人工评分不变。
